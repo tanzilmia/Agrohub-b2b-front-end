@@ -15,7 +15,7 @@ const Navbar = () => {
           {/* searchbar */}
           <div className="w-full max-w-xl relative flex">
             <span className="absolute left-4 top-3 text-lg text-gray-400">
-              <i class="ri-search-line"></i>
+              <i className="ri-search-line"></i>
             </span>
             <input
               type="text"
@@ -33,7 +33,7 @@ const Navbar = () => {
               className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
             >
               <div className="text-2xl">
-                <i class="ri-heart-line"></i>
+                <i className="ri-heart-line"></i>
               </div>
               <div className="text-xs leading-3">Wish List</div>
               <span className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
@@ -45,7 +45,7 @@ const Navbar = () => {
               className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
             >
               <div className="text-2xl">
-                <i class="ri-shopping-cart-2-line"></i>
+                <i className="ri-shopping-cart-2-line"></i>
               </div>
               <div className="text-xs leading-3">Cart</div>
               <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
@@ -57,7 +57,7 @@ const Navbar = () => {
               className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
             >
               <div className="text-2xl">
-                <i class="ri-user-3-line"></i>
+                <i className="ri-user-3-line"></i>
               </div>
               <div className="text-xs leading-3">Account</div>
             </Link>
@@ -72,7 +72,7 @@ const Navbar = () => {
           {/* all category start */}
           <div className="px-8 py-4 bg-[#29BA2F] flex items-center cursor-pointer relative group">
             <span className="text-white">
-              <i class="ri-bar-chart-horizontal-fill"></i>
+              <i className="ri-bar-chart-horizontal-fill"></i>
             </span>
             <span className="capitalize ml-2 text-white ">All Categories</span>
             <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible">
