@@ -6,55 +6,38 @@
 */
 import React, { useEffect, useState } from "react";
 import background from "./../../../Assets/Images/flashcardimage/grain.jpg";
+import { Link } from "react-router-dom";
 const OfferFlashCard = () => {
   const [days, setDays] = useState(1);
   const [hours, setHours] = useState(23);
   const [mins, setMins] = useState(59);
   const [secs, setSecs] = useState(60);
-  const [dayflip, setDayFlip] = useState(true);
-  const [hoursflip, setHoursFlip] = useState(true);
-  const [minsflip, setMinsFlip] = useState(true);
-  const [secsflip, setSecsFlip] = useState(true);
-  let timesUp = null;
+  const [timesUp, setTimesUp] = useState(0);
 
   useEffect(() => {
     // set the time out actions
     setTimeout(() => {
       if (days >= 0) {
         setSecs(secs - 1);
-        // setSecsFlip(false);
 
         if (hours === 0) {
           setDays(days - 1);
-          //   setDayFlip(false);
         }
         if (mins === 0) {
           setHours(hours - 1);
-          //   setHoursFlip(false);
+
           setMins(59);
         }
         if (secs === 0) {
           setMins(mins - 1);
-          //   setMinsFlip(false);
+
           setSecs(59);
         }
       } else if (days < 0) {
-        timesUp = 1;
+        setTimesUp(1);
       }
     }, 1000);
-  }, [secs]);
-
-  //   useEffect(() => {
-  //     setTimeout(() => {
-  //       if (!secsflip) {
-  //         setSecsFlip(true);
-  //       }
-  //       //   setSecsFlip(true);
-  //       //   setDayFlip(true);
-  //       //   setHoursFlip(true);
-  //       //   setMinsFlip(true);
-  //     }, 900);
-  //   }, [secsflip, minsflip, hoursflip, dayflip]);
+  }, [days, hours, mins, secs]);
 
   return (
     <section
@@ -88,19 +71,19 @@ const OfferFlashCard = () => {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4 text-center">
-            <a
-              href="#"
+            <Link
+              to="/"
               className="block w-full rounded bg-green-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-green-700 focus:outline-none focus:ring active:bg-green-500 sm:w-auto"
             >
               Order Now
-            </a>
+            </Link>
 
-            <a
-              href="#"
+            <Link
+              to="/"
               className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-green-600 shadow hover:text-green-700 focus:outline-none focus:ring active:text-green-500 sm:w-auto"
             >
               Check details
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -112,11 +95,7 @@ const OfferFlashCard = () => {
         {!timesUp ? (
           <div className="flex text-2xl lg:text-4xl xl:text-5xl items-center justify-center gap-y-2 font-bold transform transition-all">
             {/* for day */}
-            <div
-              className={`mr-4 bg-green-700 py-2 px-4 flex-grow ${
-                dayflip ? "flip-front" : "flip-back"
-              }`}
-            >
+            <div className={`mr-4 bg-green-700 py-2 px-4 flex-grow `}>
               <h1>{days}</h1>
               <h4 className="text-xl lg:text-2xl xl:text-3xl font-bold ">
                 Days
@@ -124,22 +103,14 @@ const OfferFlashCard = () => {
             </div>
 
             {/* for hours */}
-            <div
-              className={`mr-4 bg-green-700 py-2 px-4 flex-grow ${
-                hoursflip ? "flip-front" : "flip-back"
-              }`}
-            >
+            <div className={`mr-4 bg-green-700 py-2 px-4 flex-grow `}>
               <h1>{hours}</h1>
               <h4 className="text-xl lg:text-2xl xl:text-3xl font-bold ">
                 Hours
               </h4>
             </div>
             {/* mins flip */}
-            <div
-              className={`mr-4 bg-green-700 py-2 px-4 flex-grow ${
-                minsflip ? "flip-front" : "flip-back"
-              }`}
-            >
+            <div className={`mr-4 bg-green-700 py-2 px-4 flex-grow `}>
               <h1>{mins}</h1>
               <h4 className="text-xl lg:text-2xl xl:text-3xl font-bold  ">
                 Mins
@@ -147,11 +118,7 @@ const OfferFlashCard = () => {
             </div>
             {/* secs flip */}
 
-            <div
-              className={`mr-4 bg-green-700 py-2 px-4 flex-grow ${
-                secsflip ? "flip-front" : "flip-back"
-              } delay-75`}
-            >
+            <div className={`mr-4 bg-green-700 py-2 px-4 flex-grow  delay-75`}>
               <h1>{secs}</h1>
               <h4 className="text-xl lg:text-2xl xl:text-3xl font-bold  ">
                 Secs
