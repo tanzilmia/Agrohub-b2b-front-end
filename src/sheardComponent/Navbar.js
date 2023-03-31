@@ -29,7 +29,7 @@ const Navbar = () => {
           {/* icon */}
           <div className="flex items-center space-x-4">
             <Link
-              to={"#"}
+              to={"/"}
               className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
             >
               <div className="text-2xl">
@@ -41,7 +41,7 @@ const Navbar = () => {
               </span>
             </Link>
             <Link
-              to={"#"}
+              to={"/"}
               className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
             >
               <div className="text-2xl">
@@ -53,7 +53,7 @@ const Navbar = () => {
               </span>
             </Link>
             <Link
-              to={"#"}
+              to={"/"}
               className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
             >
               <div className="text-2xl">
