@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { useDropzone } from "react-dropzone";
 
-const Register = () => {
+const Register = (props) => {
   const [show, setShow] = useState(false);
+
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+    accept: "image/*",
+  });
+
+  const files = acceptedFiles.map((file) => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+      <img src={URL.createObjectURL(file)} alt={file.path} />
+    </li>
+  ));
+
   return (
     <nav className="bg-gray-50 min-h-screen  flex items-center justify-center">
       <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-7xl p-5 ">
@@ -14,7 +27,6 @@ const Register = () => {
           <p className="text-sm mt-4 text-[#29BA2F] text-center">
             If You'r Not A Member, Easily Register
           </p>
-
           <form action="" className="flex flex-col gap-4 ">
             <div className="flex justify-between">
               <input
@@ -40,29 +52,32 @@ const Register = () => {
                 name="number"
                 placeholder="Phone Number"
               />
-              <label
-                for="dropzone-file"
-                class="flex items-center text-center w-[45%] bg-white border-2 border-dashed rounded-lg cursor-pointer dark:border-gray-300 "
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5 text-gray-300 dark:text-gray-500 ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
-                  />
-                </svg>
+              <section className=" w-[45%] ">
+                <div {...getRootProps({ className: "dropzone" })}>
+                  <input {...getInputProps()} />
+                  <label
+                    htmlFor="dropzone-file"
+                    className="flex items-center text-center py-[6px] border-2 border-dashed rounded-lg cursor-pointer dark:border-gray-300 bg-white"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-5 h-5 text-gray-300 dark:text-gray-500 ml-2"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                      />
+                    </svg>
 
-                <h2 class="mx-3 text-gray-400">Profile Photo</h2>
-
-                <input id="dropzone-file" type="file" class="hidden" />
-              </label>
+                    <h2 className="md:mx-3 text-gray-400 ">Profile Photo</h2>
+                  </label>
+                </div>
+              </section>
             </div>
 
             <input
@@ -112,8 +127,8 @@ const Register = () => {
                 Please Select Trade Role:
               </h1>
 
-              <div class="flex items-center ml-4">
-                <div class="flex items-center mr-4">
+              <div className="flex items-center ml-4">
+                <div className="flex items-center mr-4">
                   <input
                     id="inline-radio"
                     type="radio"
@@ -121,13 +136,13 @@ const Register = () => {
                     name="inline-radio-group"
                   />
                   <label
-                    for="inline-radio"
-                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-500"
+                    htmlFor="inline-radio"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-500"
                   >
                     Buyer
                   </label>
                 </div>
-                <div class="flex items-center mr-4">
+                <div className="flex items-center mr-4">
                   <input
                     id="inline-2-radio"
                     type="radio"
@@ -135,8 +150,8 @@ const Register = () => {
                     name="inline-radio-group"
                   />
                   <label
-                    for="inline-2-radio"
-                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-500"
+                    htmlFor="inline-2-radio"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-500"
                   >
                     Seller
                   </label>
@@ -160,13 +175,14 @@ const Register = () => {
               </Link>{" "}
             </p>
           </form>
-
+          <aside className="flex justify-center ">
+            <ul className="w-32 ">{files}</ul>
+          </aside>
           <div className="mt-10 grid grid-cols-3 items-center text-gray-400">
             <hr className="border-gray-400" />
             <p className="text-center text-sm">OR</p>
             <hr className="border-gray-400" />
           </div>
-
           <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold">
             <FcGoogle className="w-8 mr-3 h-10"></FcGoogle> Login With Google
           </button>

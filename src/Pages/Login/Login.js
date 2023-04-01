@@ -67,35 +67,35 @@ const Login = () => {
             Create An Account
           </h2>
           <div className="flex items-center text-gray-500 py-2">
-            <i class="ri-bank-card-fill text-2xl ml-4"></i>
+            <i className="ri-bank-card-fill text-2xl ml-4"></i>
             <span className="text-lg ml-4">
               Save payment to view in-store purchases
             </span>
           </div>
           <div className="flex items-center text-gray-500 py-2">
-            <i class="ri-star-smile-line text-2xl ml-4"></i>
+            <i className="ri-star-smile-line text-2xl ml-4"></i>
             <span className="text-lg ml-4">Redeem Rewards</span>
           </div>
           <div className="flex  items-center text-gray-500 py-2">
-            <i class="ri-shopping-cart-fill text-2xl ml-4"></i>
+            <i className="ri-shopping-cart-fill text-2xl ml-4"></i>
             <span className="text-lg ml-4">Speedy Checkout</span>
           </div>
           <div className="flex  items-center text-gray-500 py-2">
-            <i class="ri-truck-line text-2xl ml-4"></i>
+            <i className="ri-truck-line text-2xl ml-4"></i>
             <span className="text-lg ml-4">
               Easily track orders and view order history{" "}
             </span>
           </div>
           <div className="flex  items-center text-gray-500 py-2">
-            <i class="ri-checkbox-blank-circle-line text-2xl ml-4"></i>
+            <i className="ri-checkbox-blank-circle-line text-2xl ml-4"></i>
             <span className="text-lg ml-4">Create A Regestry</span>
           </div>
           <div className="flex  items-center text-gray-500 py-2">
-            <i class="ri-git-repository-fill text-2xl ml-4"></i>
+            <i className="ri-git-repository-fill text-2xl ml-4"></i>
             <span className="text-lg ml-4">View your desgin packages</span>
           </div>
           <div className="flex  items-center text-gray-500 py-2">
-            <i class="ri-heart-add-line text-2xl ml-4"></i>
+            <i className="ri-heart-add-line text-2xl ml-4"></i>
             <span className="text-lg ml-4">Manage Favorites Lists</span>
           </div>
           <Link to={"/register"}>
