@@ -77,7 +77,7 @@ const SideNav = () => {
               />
             </svg>
 
-            <span class="mx-4 font-medium">Accounts</span>
+            <span class="mx-4 font-medium">Buyer</span>
           </a>
 
           <a
@@ -99,7 +99,7 @@ const SideNav = () => {
               />
             </svg>
 
-            <span class="mx-4 font-medium">Tickets</span>
+            <span class="mx-4 font-medium">Seller</span>
           </a>
 
           <a

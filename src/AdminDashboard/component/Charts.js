@@ -9,13 +9,14 @@ import BarChart from "./BarChart";
 
 const Charts = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center flex-wrap">
-      <BarChart />
-      <BarChart />
-      <BarChart />
-      <BarChart />
-      <BarChart />
-      <BarChart />
+    <div>
+      <h1 className="text-4xl my-8 text-center">All Summary</h1>
+      <div className="flex flex-col md:flex-row items-center justify-center flex-wrap">
+        <BarChart />
+        <BarChart />
+        <BarChart />
+        <BarChart />
+      </div>
     </div>
   );
 };

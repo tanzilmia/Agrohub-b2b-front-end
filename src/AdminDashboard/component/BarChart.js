@@ -57,41 +57,6 @@ const BarChart = () => {
     ],
   };
 
-  // options
-  // const options = {
-  //   responsive: true,
-  //   maintainAspectRatio: false,
-  //   animation: {
-  //     duration: 3000,
-  //     easing: "easeInBounce",
-  //   },
-  //   title: {
-  //     display: true,
-  //     text: "Bar + Line Chart",
-  //     fontSize: 25,
-  //   },
-  //   scales: {
-  //     xAxes: [
-  //       {
-  //         scaleLabel: {
-  //           display: true,
-  //           labelString: "Months",
-  //         },
-  //         stacked: "true",
-  //       },
-  //     ],
-  //     yAxes: [
-  //       {
-  //         scaleLabel: {
-  //           display: true,
-  //           labelString: "Values",
-  //         },
-  //         stacked: "true",
-  //       },
-  //     ],
-  //   },
-  // };
-
   const options = {
     Plugins: {
       legend: true,
@@ -105,7 +70,7 @@ const BarChart = () => {
   };
   return (
     <div>
-      <Line data={data} options={options} />
+      <Line data={data} options={options} className="w-2/3" />
     </div>
   );
 };
