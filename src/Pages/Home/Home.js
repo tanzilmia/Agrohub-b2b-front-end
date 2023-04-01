@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { myContext } from "../../contextApi/Authcontext";
+import React from "react";
+
 import FAQ from "./FAQ/FAQ";
 import OfferFlashCard from "./flashCard/OfferFlashCard";
 import HomeCategoryByProduct from "./HomeCategoryByProduct/HomeCategoryByProduct";
@@ -9,7 +9,7 @@ import Statistics from "./Statistics/Statistics";
 import TeamTrustUs from "./truestedTeam/TeamTrustsUs";
 
 const Home = () => {
-  const { test } = useContext(myContext);
+  // const { test } = useContext(myContext);
   return (
     <div>
       <h1>Hero section</h1>
