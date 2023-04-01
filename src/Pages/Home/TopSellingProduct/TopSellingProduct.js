@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 import axios from "axios";
+import { Link } from "react-router-dom";
 const TopSellingProduct = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -20,11 +21,14 @@ const TopSellingProduct = () => {
           <i className="ri-arrow-right-line ml-1"></i>
         </span>
       </div>
-      <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 pb-8">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product}></ProductCard>
-        ))}
-      </div>
+      <Link to='/details'>
+        <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 pb-8">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product}></ProductCard>
+          ))}
+
+        </div>
+      </Link>
     </div>
   );
 };
