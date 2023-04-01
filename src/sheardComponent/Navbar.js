@@ -1,10 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
 
+
+
 const Navbar = () => {
+  const location = useLocation()
+  const [showMenu, setshowMenu] = useState(true);
+
+  const updateHidden = () => {
+    switch (location.pathname) {
+      case "/":
+      case "/shop":
+      case "/aboutus":
+      case "/contact":
+        setshowMenu(true);
+        break;
+      default:
+        setshowMenu(false);
+        break;
+    }
+  };
+
+  useEffect(() => {
+    updateHidden();
+  }, [location.pathname]);
+
   return (
-    <div>
+    <>
+    {
+      showMenu &&
+
+      <div>
       {/* header section start*/}
       <header className="py-4 shadow-sm">
         <div className="container flex items-center justify-around">
@@ -150,6 +177,10 @@ const Navbar = () => {
       </div>
       {/* navbar section end */}
     </div>
+    }
+    
+    </>
+   
   );
 };
 
