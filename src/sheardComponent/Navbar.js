@@ -139,10 +139,10 @@ const Navbar = () => {
               </Link>
             </div>
             <Link
-              to={""}
+              to={"/login"}
               className=" text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
             >
-              Login/Register
+              Login
             </Link>
           </div>
           {/* navbar links end*/}
