@@ -4,11 +4,38 @@
             @Task: Making a footer components
             @timestap: 31/3/23 - Friday - 4.30pm
 */
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
 export default function Footer() {
+
+  const location = useLocation()
+  const [showMenu, setshowMenu] = useState(true);
+
+  const updateHidden = () => {
+    switch (location.pathname) {
+      case "/":
+      case "/shop":
+      case "/aboutus":
+      case "/contact":
+        setshowMenu(true);
+        break;
+      default:
+        setshowMenu(false);
+        break;
+    }
+  };
+
+  useEffect(() => {
+    updateHidden();
+  }, [location.pathname]);
+
   return (
-    <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+    
+    <>
+    {
+      showMenu &&
+      <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2">
           <Link to={"/"}>
@@ -134,5 +161,7 @@ export default function Footer() {
         </ul>
       </div>
     </div>
+    }
+    </>
   );
 }
