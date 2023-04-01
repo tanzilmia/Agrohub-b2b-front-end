@@ -5,13 +5,14 @@
             @timestap: 1/4/23 - Saturday - Morning
 */
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SideNav = () => {
   return (
     <aside class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
-      <a href="/" class="mx-auto">
+      <Link to="/" class="mx-auto">
         <img class="w-auto h-6 sm:h-7" src="" alt="" />
-      </a>
+      </Link>
 
       <div class="flex flex-col items-center mt-6 -mx-2">
         <img
@@ -29,9 +30,9 @@ const SideNav = () => {
 
       <div class="flex flex-col justify-between flex-1 mt-6">
         <nav>
-          <a
+          <Link
             class="flex items-center px-4 py-2 text-gray-700 bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200"
-            href="/"
+            to="/"
           >
             <svg
               class="w-5 h-5"
@@ -49,11 +50,11 @@ const SideNav = () => {
             </svg>
 
             <span class="mx-4 font-medium">Dashboard</span>
-          </a>
+          </Link>
 
-          <a
+          <Link
             class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-            href="/"
+            to="/"
           >
             <svg
               class="w-5 h-5"
@@ -78,11 +79,11 @@ const SideNav = () => {
             </svg>
 
             <span class="mx-4 font-medium">Buyer</span>
-          </a>
+          </Link>
 
-          <a
+          <Link
             class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-            href="/"
+            to="/"
           >
             <svg
               class="w-5 h-5"
@@ -100,11 +101,11 @@ const SideNav = () => {
             </svg>
 
             <span class="mx-4 font-medium">Seller</span>
-          </a>
+          </Link>
 
-          <a
+          <Link
             class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-            href="/"
+            to="/"
           >
             <svg
               class="w-5 h-5"
@@ -129,7 +130,7 @@ const SideNav = () => {
             </svg>
 
             <span class="mx-4 font-medium">Settings</span>
-          </a>
+          </Link>
         </nav>
       </div>
     </aside>
