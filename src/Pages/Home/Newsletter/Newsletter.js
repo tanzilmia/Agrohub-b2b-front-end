@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Newsletter() {
   return (
     <section className="max-w-xl mt-12 mx-auto px-4 md:px-8">
@@ -40,10 +42,10 @@ export default function Newsletter() {
         </form>
         <p className="mt-3 mx-auto text-center max-w-lg text-[15px] text-gray-400">
           No spam ever, we are care about the protection of your data. Read our{" "}
-          <a className="text-indigo-600 underline" href="javascript:void(0)">
+          <Link className="text-indigo-600 underline" to="/">
             {" "}
             Privacy Policy{" "}
-          </a>
+          </Link>
         </p>
       </div>
     </section>

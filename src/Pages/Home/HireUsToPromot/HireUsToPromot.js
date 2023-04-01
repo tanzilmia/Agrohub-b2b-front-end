@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function HireUsToPromot() {
   return (
     <section className="py-14">
@@ -24,8 +26,8 @@ export default function HireUsToPromot() {
               anim id est laborum, sed ut perspiciatis unde omnis iste natus
               error sit voluptatem accusantium doloremque laudantium
             </p>
-            <a
-              href="javascript:void(0)"
+            <Link
+              to="/"
               className="inline-flex gap-x-1 items-center text-indigo-600 hover:text-indigo-500 duration-150 font-medium"
             >
               Learn more
@@ -41,7 +43,7 @@ export default function HireUsToPromot() {
                   clipRule="evenodd"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
