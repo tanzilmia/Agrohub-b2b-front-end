@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-const HomeCategoryByProduct = () => {
-  return (
-    <h1>HomeCategoryByProduct</h1>
-  )
-}
-
-export default HomeCategoryByProduct
-=======
 import React from "react";
 import { Category } from "../../../utility/HomePageFakeData";
 
@@ -36,4 +25,3 @@ const HomeCategoryByProduct = () => {
 };
 
 export default HomeCategoryByProduct;
->>>>>>> origin/master

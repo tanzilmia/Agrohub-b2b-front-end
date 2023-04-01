@@ -9,12 +9,8 @@ import "remixicon/fonts/remixicon.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Authcontext>
-<<<<<<< HEAD
-    <App />
-=======
     {" "}
     <App />{" "}
->>>>>>> origin/master
   </Authcontext>
 );
 

@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-const HomeProducts = () => {
-  return (
-    <div>HomeProducts</div>
-  )
-}
-
-export default HomeProducts
-=======
 import React from "react";
 import { HomeData } from "../../../utility/HomePageFakeData";
 
@@ -38,4 +27,3 @@ const HomeProducts = () => {
 };
 
 export default HomeProducts;
->>>>>>> origin/master

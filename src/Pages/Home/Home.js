@@ -1,34 +1,17 @@
 import React from "react";
-<<<<<<< HEAD
-
+import Carousel from "../Carousel/Carousel";
+import ContactForm from "./ContactForm/ContactForm";
 import FAQ from "./FAQ/FAQ";
 import OfferFlashCard from "./flashCard/OfferFlashCard";
+import GamingProduct from "./GamingProduct/GamingProduct";
+import HireUsToPromot from "./HireUsToPromot/HireUsToPromot";
 import HomeCategoryByProduct from "./HomeCategoryByProduct/HomeCategoryByProduct";
 import HomeProducts from "./HomeProducts/HomeProducts";
+import Newsletter from "./Newsletter/Newsletter";
 import OurTeam from "./OurTeam/OurTeam";
 import Statistics from "./Statistics/Statistics";
-import TeamTrustUs from "./truestedTeam/TeamTrustsUs";
-
-const Home = () => {
-  // const { test } = useContext(myContext);
-  return (
-    <div>
-      <h1>Hero section</h1>
-      <HomeProducts />
-      <HomeCategoryByProduct />
-      <OfferFlashCard />
-      <Statistics />
-      <OurTeam />
-      <FAQ />
-      <TeamTrustUs />
-      {/* <h2>Home Page {test} </h2> */}
-=======
-import Carousel from "../Carousel/Carousel";
-import OfferFlashCard from "./flashCard/OfferFlashCard";
-import GamingProduct from "./GamingProduct/GamingProduct";
-import HomeCategoryByProduct from "./HomeCategoryByProduct/HomeCategoryByProduct";
-import HomeProducts from "./HomeProducts/HomeProducts";
 import TopSellingProduct from "./TopSellingProduct/TopSellingProduct";
+import TeamTrustUs from "./truestedTeam/TeamTrustsUs";
 
 const Home = () => {
   return (
@@ -49,8 +32,14 @@ const Home = () => {
 
       {/* Tuhin */}
       <OfferFlashCard />
+      <Statistics />
+      <TeamTrustUs />
+      <HireUsToPromot />
+      <OurTeam />
+      <FAQ />
+      <ContactForm />
+      <Newsletter />
       {/* Tuhin */}
->>>>>>> origin/master
     </div>
   );
 };
