@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { Link } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
@@ -7,6 +8,44 @@ const Navbar = () => {
     <div>
       {/* header section start*/}
       <header className="py-4 shadow-sm ">
+=======
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import header_logo from "../Assets/Images/header-logo.jpg";
+
+
+
+const Navbar = () => {
+  const location = useLocation()
+  const [showMenu, setshowMenu] = useState(true);
+
+  const updateHidden = () => {
+    switch (location.pathname) {
+      case "/":
+      case "/shop":
+      case "/aboutus":
+      case "/contact":
+        setshowMenu(true);
+        break;
+      default:
+        setshowMenu(false);
+        break;
+    }
+  };
+
+  useEffect(() => {
+    updateHidden();
+  }, [location.pathname]);
+
+  return (
+    <>
+    {
+      showMenu &&
+
+      <div>
+      {/* header section start*/}
+      <header className="py-4 shadow-sm">
+>>>>>>> origin/master
         <div className="container flex items-center justify-around">
           {/* logo  */}
           <Link to={"/"}>
@@ -29,7 +68,11 @@ const Navbar = () => {
           {/* icon */}
           <div className="flex items-center space-x-4">
             <Link
+<<<<<<< HEAD
               to={"/"}
+=======
+              to={"#"}
+>>>>>>> origin/master
               className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
             >
               <div className="text-2xl">
@@ -41,7 +84,11 @@ const Navbar = () => {
               </span>
             </Link>
             <Link
+<<<<<<< HEAD
               to={"/"}
+=======
+              to={"#"}
+>>>>>>> origin/master
               className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
             >
               <div className="text-2xl">
@@ -53,7 +100,11 @@ const Navbar = () => {
               </span>
             </Link>
             <Link
+<<<<<<< HEAD
               to={"/"}
+=======
+              to={"#"}
+>>>>>>> origin/master
               className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
             >
               <div className="text-2xl">
@@ -67,10 +118,17 @@ const Navbar = () => {
       {/* header section start*/}
 
       {/* navbar section start */}
+<<<<<<< HEAD
       <div className="bg-white">
         <div className="container mx-auto flex ">
           {/* all category start */}
           <div className="px-8 py-4 bg-[#29BA2F] flex items-center cursor-pointer relative group">
+=======
+      <div className="bg-white shadow-sm">
+        <div className="container mx-auto flex ">
+          {/* all category start */}
+          <div className="px-8 py-4 bg-[#29BA2F] flex items-center cursor-pointer relative group rounded z-10">
+>>>>>>> origin/master
             <span className="text-white">
               <i className="ri-bar-chart-horizontal-fill"></i>
             </span>
@@ -150,6 +208,13 @@ const Navbar = () => {
       </div>
       {/* navbar section end */}
     </div>
+<<<<<<< HEAD
+=======
+    }
+    
+    </>
+   
+>>>>>>> origin/master
   );
 };
 

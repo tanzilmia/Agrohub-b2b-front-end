@@ -41,6 +41,7 @@ style for flasscard in home @tuhin
   transform: rotateY(0deg);
 }
 /* flascard style ends */
+<<<<<<< HEAD
 
 /* dashboard design by tuhin */
 [x-cloak] {
@@ -65,3 +66,5 @@ style for flasscard in home @tuhin
     #fff 5%
   );
 }
+=======
+>>>>>>> origin/master

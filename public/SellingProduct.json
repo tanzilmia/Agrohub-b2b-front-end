@@ -1,0 +1,34 @@
+[
+    {
+        "id": "01",
+        "rating": 5,
+        "title": "Flex 2 (14 inch) Dual-Mode Laptop",
+        "old_price": "123",
+        "new_price": "110",
+        "image_url": "https://i.ibb.co/0j5qTS9/product-img-4.jpg"
+    },
+    {
+        "id": "02",
+        "rating": 5,
+        "title": "OnePlus 9 Pro - OnePlus (Global)",
+        "old_price": "250",
+        "new_price": "210",
+        "image_url": "https://i.ibb.co/w6rmj43/product-img-5.jpg"
+    },
+    {
+        "id": "03",
+        "rating": 5,
+        "title": "Reconnect RHTFG 5501 3 Blade Table Fan",
+        "old_price": "47",
+        "new_price": "39",
+        "image_url": "https://i.ibb.co/zHtYzB9/product-img-6.jpg"
+    },
+    {
+        "id": "04",
+        "rating": 5,
+        "title": "Sencor STS6054RD Premium Metallic 2-slot",
+        "old_price": "68",
+        "new_price": "59",
+        "image_url": "https://i.ibb.co/rms1W1v/product-img-7.jpg"
+    }
+]

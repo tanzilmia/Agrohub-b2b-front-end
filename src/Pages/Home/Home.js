@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 
 import FAQ from "./FAQ/FAQ";
 import OfferFlashCard from "./flashCard/OfferFlashCard";
@@ -21,6 +22,35 @@ const Home = () => {
       <FAQ />
       <TeamTrustUs />
       {/* <h2>Home Page {test} </h2> */}
+=======
+import Carousel from "../Carousel/Carousel";
+import OfferFlashCard from "./flashCard/OfferFlashCard";
+import GamingProduct from "./GamingProduct/GamingProduct";
+import HomeCategoryByProduct from "./HomeCategoryByProduct/HomeCategoryByProduct";
+import HomeProducts from "./HomeProducts/HomeProducts";
+import TopSellingProduct from "./TopSellingProduct/TopSellingProduct";
+
+const Home = () => {
+  return (
+    <div>
+      {/* Istiak Ahmed */}
+      <Carousel></Carousel>
+      {/* Istiak Ahmed */}
+
+      {/* Alamin */}
+      <HomeProducts />
+      <HomeCategoryByProduct />
+      {/* Alamin */}
+
+      {/* Rakibul */}
+      <TopSellingProduct></TopSellingProduct>
+      <GamingProduct></GamingProduct>
+      {/* Rakibul */}
+
+      {/* Tuhin */}
+      <OfferFlashCard />
+      {/* Tuhin */}
+>>>>>>> origin/master
     </div>
   );
 };
