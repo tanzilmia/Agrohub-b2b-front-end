@@ -41,3 +41,27 @@ style for flasscard in home @tuhin
   transform: rotateY(0deg);
 }
 /* flascard style ends */
+
+/* dashboard design by tuhin */
+[x-cloak] {
+  display: none;
+}
+
+.line {
+  background: repeating-linear-gradient(
+    to bottom,
+    #eee,
+    #eee 1px,
+    #fff 1px,
+    #fff 8%
+  );
+}
+.tick {
+  background: repeating-linear-gradient(
+    to right,
+    #eee,
+    #eee 1px,
+    #fff 1px,
+    #fff 5%
+  );
+}
