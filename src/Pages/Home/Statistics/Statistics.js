@@ -25,6 +25,7 @@ export default function Statistics() {
     },
   ];
 
+  console.log("test change");
   return (
     <section className="py-14">
       <div className="max-w-screen-xl mx-auto px-4 text-gray-600 gap-x-12 items-start justify-between lg:flex md:px-8">
