@@ -7,28 +7,34 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 
 const router = createBrowserRouter([
-    {
-        path: '/', element : <MainLayout/>,
-        children : [
-            {
-                path: '/', element : <Home/>
-            },
-            {
-                path: '/login', element : <Login/>
-            },
-            {
-                path: '/register', element : <Register/>
-            },
-            {
-                path: '/dashboard', element : <AdminLayout/>,
-                children : [
-                    {
-                        path : '/dashboard', element : <HomeDashboard/>
-                    }
-                ]
-            },
-        ]
-    }
-])
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/dashboard",
+        element: <AdminLayout />,
+        children: [
+          {
+            path: "/dashboard",
+            element: <HomeDashboard />,
+          },
+        ],
+      },
+    ],
+  },
+]);
 
-export default router
+export default router;
