@@ -13,7 +13,7 @@ const HomeCategoryByProduct = () => {
             <section className="h-72 w-60 mb-20 cursor-pointer">
               <img src={categoryData.image} alt={categoryData.name} />
 
-              <h2 className="text-xl font-semibold text-center underline hover:no-underline">
+              <h2 className="text-xl font-semibold text-center underline text-[#29BA2F]  hover:no-underline">
                 {categoryData.category}
               </h2>
             </section>

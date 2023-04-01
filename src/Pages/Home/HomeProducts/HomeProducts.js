@@ -14,7 +14,7 @@ const HomeProducts = () => {
                 <img className="" src={data.image[0].url} alt="Makeup Box" />
               </section>
               <section className="m-3">
-                <h2 className="text-2xl font-bold mb-2">{data.name}</h2>
+                <h2 className="text-2xl text-[#29BA2F] font-bold mb-2">{data.name}</h2>
                 <p className="text-xl font-semibold mb-2">{data.title}</p>
                 <p className="text-xl font-semibold">${data.price}</p>
               </section>
