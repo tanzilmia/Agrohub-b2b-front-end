@@ -1,37 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
 
-
-
 const Navbar = () => {
-  const location = useLocation()
-  const [showMenu, setshowMenu] = useState(true);
-
-  const updateHidden = () => {
-    switch (location.pathname) {
-      case "/":
-      case "/shop":
-      case "/aboutus":
-      case "/contact":
-        setshowMenu(true);
-        break;
-      default:
-        setshowMenu(false);
-        break;
-    }
-  };
-
-  useEffect(() => {
-    updateHidden();
-  }, [location.pathname]);
-
   return (
-    <>
-    {
-      showMenu &&
-
-      <div>
+    <div>
       {/* header section start*/}
       <header className="py-4 shadow-sm">
         <div className="container flex items-center justify-around">
@@ -54,7 +27,7 @@ const Navbar = () => {
             </button>
           </div>
           {/* icon */}
-          <div className="flex items-center space-x-4">
+          <div className="hidden xl:flex items-center space-x-4">
             <Link
               to={"#"}
               className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
@@ -89,6 +62,48 @@ const Navbar = () => {
               <div className="text-xs leading-3">Account</div>
             </Link>
           </div>
+          {/* responsive */}
+          <div className="px-8 mx-2 flex xl:hidden py-3 bg-[#29BA2F]  items-center cursor-pointer relative group rounded z-10">
+            <span className="text-white">
+              <i className="ri-bar-chart-horizontal-fill"></i>
+            </span>
+            <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible">
+              <Link
+                to={""}
+                className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+              >
+                <div className="text-2xl">
+                  <i className="ri-heart-line"></i>
+                </div>
+                <div className="text-xs leading-3">Wish List</div>
+                <span className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
+                  8
+                </span>
+              </Link>
+
+              <Link
+                to={""}
+                className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+              >
+                <div className="text-2xl">
+                  <i className="ri-shopping-cart-2-line"></i>
+                </div>
+                <div className="text-xs leading-3">Cart</div>
+                <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
+                  8
+                </span>
+              </Link>
+              <Link
+                to={""}
+                className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+              >
+                <div className="text-2xl">
+                  <i className="ri-user-3-line"></i>
+                </div>
+                <div className="text-xs leading-3">Account</div>
+              </Link>
+            </div>
+          </div>
         </div>
       </header>
       {/* header section start*/}
@@ -97,11 +112,11 @@ const Navbar = () => {
       <div className="bg-white shadow-sm">
         <div className="container mx-auto flex ">
           {/* all category start */}
-          <div className="px-8 py-4 bg-[#29BA2F] flex items-center cursor-pointer relative group rounded z-10">
-            <span className="text-white">
+          <div className="px-8 ml-1 py-4 bg-[#29BA2F] flex items-center cursor-pointer relative group rounded z-10">
+            <span className="text-white ml-[-30px]">
               <i className="ri-bar-chart-horizontal-fill"></i>
             </span>
-            <span className="capitalize ml-2 text-white ">All Categories</span>
+            <span className="capitalize ml-2 text-white">Categories</span>
             <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible">
               <Link
                 to={""}
@@ -138,49 +153,89 @@ const Navbar = () => {
           {/* all category end */}
 
           {/* navbar links start*/}
-          <div className="flex items-center justify-between flex-grow pl-12">
-            <div className="flex items-center space-x-6 capitalize">
+          <section className="flex justify-center w-full">
+            <div className="xl:flex hidden items-center justify-between flex-grow pl-12">
+              <div className="flex items-center space-x-6 capitalize">
+                <Link
+                  to={"/"}
+                  className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                >
+                  Home
+                </Link>
+                <Link
+                  to={"/"}
+                  className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                >
+                  Shop
+                </Link>
+                <Link
+                  to={"/"}
+                  className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                >
+                  About US
+                </Link>
+                <Link
+                  to={"/"}
+                  className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                >
+                  Contact US
+                </Link>
+              </div>
               <Link
-                to={"/"}
-                className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                to={""}
+                className=" text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
               >
-                Home
-              </Link>
-              <Link
-                to={"/"}
-                className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
-              >
-                Shop
-              </Link>
-              <Link
-                to={"/"}
-                className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
-              >
-                About US
-              </Link>
-              <Link
-                to={"/"}
-                className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
-              >
-                Contact US
+                Login/Register
               </Link>
             </div>
-            <Link
-              to={""}
-              className=" text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
-            >
-              Login/Register
-            </Link>
-          </div>
+            {/* responsive */}
+            <div className="px-8 mx-2 flex xl:hidden py-3 bg-[#29BA2F]  items-center cursor-pointer relative group rounded z-10">
+              <span className="text-white">
+                <i className="ri-bar-chart-horizontal-fill"></i>
+              </span>
+              <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible">
+                <Link
+                  to={""}
+                  className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+                >
+                  <div className="text-2xl">
+                    <i className="ri-heart-line"></i>
+                  </div>
+                  <div className="text-xs leading-3">Wish List</div>
+                  <span className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
+                    8
+                  </span>
+                </Link>
+
+                <Link
+                  to={""}
+                  className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+                >
+                  <div className="text-2xl">
+                    <i className="ri-shopping-cart-2-line"></i>
+                  </div>
+                  <div className="text-xs leading-3">Cart</div>
+                  <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
+                    8
+                  </span>
+                </Link>
+                <Link
+                  to={""}
+                  className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+                >
+                  <div className="text-2xl">
+                    <i className="ri-user-3-line"></i>
+                  </div>
+                  <div className="text-xs leading-3">Account</div>
+                </Link>
+              </div>
+            </div>
+          </section>
           {/* navbar links end*/}
         </div>
       </div>
       {/* navbar section end */}
     </div>
-    }
-    
-    </>
-   
   );
 };
 
