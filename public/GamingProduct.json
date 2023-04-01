@@ -1,0 +1,34 @@
+[
+    {
+        "id": "01",
+        "rating": 5,
+        "title": "Apple Watch Series 3",
+        "old_price": "123",
+        "new_price": "110",
+        "image_url": "https://i.ibb.co/9g4mscJ/watchs.jpg"
+    },
+    {
+        "id": "02",
+        "rating": 3,
+        "title": "Xbox Series Wireless Controller",
+        "old_price": "150",
+        "new_price": "120",
+        "image_url": "https://i.ibb.co/SNVfvyc/images-2.jpg"
+    },
+    {
+        "id": "03",
+        "rating": 4,
+        "title": "ASUS ROG Centurion Hi-Fi 7.1",
+        "old_price": "47",
+        "new_price": "39",
+        "image_url": "https://i.ibb.co/McGZR8p/images-6.jpg"
+    },
+    {
+        "id": "04",
+        "rating": 3,
+        "title": "Sony PlayStation 4 Slim",
+        "old_price": "68",
+        "new_price": "59",
+        "image_url": "https://i.ibb.co/5hbjtcJ/images-1.jpg"
+    }
+]
