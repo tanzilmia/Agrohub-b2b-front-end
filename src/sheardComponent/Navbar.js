@@ -117,7 +117,7 @@ const Navbar = () => {
               <i className="ri-bar-chart-horizontal-fill"></i>
             </span>
             <span className="capitalize ml-2 text-white">Categories</span>
-            <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible">
+            <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible font-semibold">
               <Link
                 to={""}
                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"

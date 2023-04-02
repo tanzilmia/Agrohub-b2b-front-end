@@ -3,13 +3,13 @@ import { HomeData } from "../../../utility/HomePageFakeData";
 
 const HomeProducts = () => {
   return (
-    <section>
+    <section className="">
       <h2 className="text-4xl font-bold text-center mb-20">Top Products</h2>
 
       <div className="grid place-items-center sm:grid-cols-1 md:grid-cols-2  xl:grid-cols-4  mb-5">
         {HomeData.map((data) => {
           return (
-            <main className="h-96 w-80 mb-32 cursor-pointer">
+            <main className="w-80 mb-32 cursor-pointer">
               <section>
                 <img className="" src={data.image[0].url} alt="Makeup Box" />
               </section>
