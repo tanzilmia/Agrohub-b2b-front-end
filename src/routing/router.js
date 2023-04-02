@@ -9,44 +9,70 @@ import ReviewLayout from "../Layout/ReviewLayout";
 import UserReview from "../DynamicPage/UserReview";
 import DetailsDescription from "../DynamicPage/DetailsDescription";
 import AdditionalInformation from "../DynamicPage/AdditionalInformation";
+import SellerDashboard from "../AdminDashboard/component/SellerDashboard";
+
+import BuyerDashboard from "../AdminDashboard/component/BuyerDashboard";
+import DashboardSettings from "../AdminDashboard/component/settings/DashboardSettings";
 
 const router = createBrowserRouter([
-    {
-        path: '/', element: <MainLayout />,
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/details",
+        element: <ReviewLayout />,
         children: [
-            {
-                path: '/', element: <Home />
-            },
-            {
-                path: '/login', element: <Login />
-            },
-            {
-                path: '/register', element: <Register />
-            },
-            {
-                path: '/details', element: <ReviewLayout />,
-                children: [
-                    {
-                        path: '/details/description', element: <DetailsDescription></DetailsDescription>
-                    },
-                    {
-                        path: '/details/review', element: <UserReview></UserReview>
-                    },
-                    {
-                        path: '/details/additional-information', element: <AdditionalInformation></AdditionalInformation>
-                    },
-                ]
-            },
-            {
-                path: '/dashboard', element: <AdminLayout />,
-                children: [
-                    {
-                        path: '/dashboard', element: <HomeDashboard />
-                    }
-                ]
-            },
-        ]
-    }
-])
+          {
+            path: "/details/description",
+            element: <DetailsDescription></DetailsDescription>,
+          },
+          {
+            path: "/details/review",
+            element: <UserReview></UserReview>,
+          },
+          {
+            path: "/details/additional-information",
+            element: <AdditionalInformation></AdditionalInformation>,
+          },
+        ],
+      },
+      {
+        path: "/dashboard",
+        element: <AdminLayout />,
+        children: [
+          {
+            path: "/dashboard/admin",
+            element: <HomeDashboard />,
+          },
+          {
+            path: "/dashboard/seller",
+            element: <SellerDashboard />,
+          },
+          {
+            path: "/dashboard/buyer",
+            element: <BuyerDashboard />,
+          },
+          {
+            path: "/dashboard/settings",
+            element: <DashboardSettings />,
+          },
+        ],
+      },
+    ],
+  },
+]);
 
 export default router;
