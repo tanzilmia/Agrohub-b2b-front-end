@@ -1,13 +1,13 @@
 /* 
             @Project: Agrohub (b2b website)
             @Name: MD. Mahiuddin Tuhin
-            @Task: Making Admin Layout components
+            @Task: Making Dashboard Layout components
             @timestap: 1/4/23 - Saturday - Morning
 */
 import React from "react";
 import BestSeller from "./BestSeller";
 import Charts from "./Charts";
-import TableInHome from "./TableInHome";
+import TableInHome from "./tableMenu/TableInHome";
 
 const HomeDashboard = () => {
   return (
