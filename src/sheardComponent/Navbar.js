@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
+import { myContext } from "../contextApi/Authcontext";
 
 const Navbar = () => {
 
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
+  const {user,logout} = useContext(myContext)
 
   const updateHidden = () => {
     switch (location.pathname) {
@@ -205,12 +208,16 @@ const Navbar = () => {
             >
               Contact US
             </Link>
-            <Link
-              to={""}
-              className=" text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
-            >
-              Login/Register
-            </Link>
+            { user?.email ? 
+            <button onClick={logout}>Logout</button>
+            :
+               <Link
+               to={"/login"}
+               className=" text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+             >
+               Login/Register
+             </Link>
+            }
           </div>
         </div>
         {/* responsive */}
@@ -256,8 +263,12 @@ const Navbar = () => {
               </div>
               <div className="text-xs leading-3">Contact US</div>
             </Link>
-            <Link
-              to={""}
+            {
+              user?.email ? 
+              <button onClick={logout}>Logout</button>
+              :
+              <Link
+              to={"/login"}
               className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
             >
               <div className="text-2xl">
@@ -265,6 +276,7 @@ const Navbar = () => {
               </div>
               <div className="text-xs leading-3">Login/Register</div>
             </Link>
+            }
           </div>
         </div>
         {/* navbar links end*/}
