@@ -9,6 +9,7 @@ import ReviewLayout from "../Layout/ReviewLayout";
 import UserReview from "../DynamicPage/UserReview";
 import DetailsDescription from "../DynamicPage/DetailsDescription";
 import AdditionalInformation from "../DynamicPage/AdditionalInformation";
+import ProductForm from "../AdminDashboard/ProductForm/ProductForm";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,9 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: '/dashboard', element: <HomeDashboard />
+                    },
+                    {
+                        path: '/dashboard/product-form', element: <ProductForm />
                     }
                 ]
             },
