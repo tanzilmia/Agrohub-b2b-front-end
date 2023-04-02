@@ -11,37 +11,6 @@ import DetailsDescription from "../DynamicPage/DetailsDescription";
 import AdditionalInformation from "../DynamicPage/AdditionalInformation";
 
 const router = createBrowserRouter([
-<<<<<<< HEAD
-  {
-    path: "/",
-    element: <MainLayout />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
-        path: "/dashboard",
-        element: <AdminLayout />,
-        children: [
-          {
-            path: "/dashboard",
-            element: <HomeDashboard />,
-          },
-        ],
-      },
-    ],
-  },
-]);
-=======
     {
         path: '/', element: <MainLayout />,
         children: [
@@ -79,6 +48,5 @@ const router = createBrowserRouter([
         ]
     }
 ])
->>>>>>> 7760475cb1e0649aec2ca1485f398492440ab20a
 
 export default router;

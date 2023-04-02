@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Navbar2 from '../sheardComponent/Navbar2';
 
 const ProductDetails = () => {
     return (
+        <>
+        <Navbar2/>
         <div className='mt-20'>
             <div className='grid md:grid-cols-5 items-center'>
                 <div className='md:col-span-2 flex justify-center items-center'>
@@ -93,6 +96,7 @@ const ProductDetails = () => {
             </div>
             <hr className='my-4' />
         </div>
+        </>
     );
 };
 
