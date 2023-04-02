@@ -5,6 +5,7 @@ import SideNav from '../component/SideNav';
 const AdminLayout = () => {
     return (
         <div className='flex'>
+            {/* test */}
             <div>
                 <SideNav/>
             </div>
