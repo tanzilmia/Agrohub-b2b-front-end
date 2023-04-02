@@ -4,7 +4,7 @@ import SideNav from '../component/SideNav';
 
 const AdminLayout = () => {
     return (
-        <div>
+        <div className='flex'>
             <div>
                 <SideNav/>
             </div>
