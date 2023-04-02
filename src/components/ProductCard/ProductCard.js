@@ -20,9 +20,7 @@ const ProductCard = ({ product }) => {
             <p className="text-gray-400 line-through">${old_price}</p>
             <p className="text-[#29BA2F]">${new_price}</p>
           </span>
-          <button className="bg-[#29BA2F] text-white font-semibold  px-3 py-2 mt-2">
-            Add To Cart
-          </button>
+          <button className="text-white bg-[#29BA2F] font-semibold px-3 py-2 mt-2">Add To Cart</button>
         </div>
       </div>
     </div>

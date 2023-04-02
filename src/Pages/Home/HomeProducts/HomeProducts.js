@@ -5,11 +5,10 @@ const HomeProducts = () => {
   return (
     <section className="bg-gray-100">
       <h2 className="text-4xl text-[#29BA2F] font-bold text-center mb-20">Top Products</h2>
-
       <div className="grid place-items-center sm:grid-cols-1 md:grid-cols-2  xl:grid-cols-4  mb-5">
         {HomeData.map((data) => {
           return (
-            <main className="bg-white w-80 h-[500px] mb-32 cursor-pointer">
+            <main className="bg-white w-80 h-[500px] mb-5 cursor-pointer">
               <section>
                 <img className="" src={data.image[0].url} alt="Makeup Box" />
               </section>

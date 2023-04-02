@@ -3,7 +3,7 @@ import { Category } from "../../../utility/HomePageFakeData";
 
 const HomeCategoryByProduct = () => {
   return (
-    <main className="bg-gray-100">
+    <main className="bg-gray-100 mt-[-25px]">
       <h2 className="text-4xl font-bold text-center m-24 mb-20 text-[#29BA2F] ">
         Shop By Category
       </h2>

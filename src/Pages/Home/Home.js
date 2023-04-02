@@ -15,7 +15,7 @@ import TeamTrustUs from "./truestedTeam/TeamTrustsUs";
 
 const Home = () => {
   return (
-    <div>
+    <div className="bg-gray-100">
       {/* Istiak Ahmed */}
       <Carousel></Carousel>
       {/* Istiak Ahmed */}
