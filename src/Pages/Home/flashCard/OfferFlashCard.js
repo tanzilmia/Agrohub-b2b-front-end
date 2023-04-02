@@ -41,11 +41,11 @@ const OfferFlashCard = () => {
 
   return (
     <section
-      className={`relative  bg-cover bg-center bg-no-repeat flex flex-col-reverse items-center lg:flex-row`}
+      className={`relative  bg-cover bg-center bg-no-repeat flex flex-col-reverse items-center lg:flex-row my-20 text-white`}
       style={{ backgroundImage: `url(${background})` }}
     >
       {/* div for layer of background */}
-      <div className="absolute inset-0 bg-white/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/95 sm:to-white/25"></div>
+      <div className="absolute inset-0 bg-gray/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-gray/95 sm:to-white/25"></div>
 
       {/* left div */}
       <div className="relative px-4 md:py-24 py-16 lg:py-32 sm:px-6 md:ml-8">

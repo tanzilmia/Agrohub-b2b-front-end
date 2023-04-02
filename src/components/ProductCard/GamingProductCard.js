@@ -9,20 +9,20 @@ const GamingProductCard = ({ product }) => {
                 <div className='flex gap-2 mt-2'>
                     {
                         rating === 3 ? <>
-                            <i className="ri-star-fill text-orange-600"></i>
-                            <i className="ri-star-fill text-orange-600"></i>
-                            <i className="ri-star-fill text-orange-600"></i>
+                            <i className="ri-star-fill text-[#29BA2F]"></i>
+                            <i className="ri-star-fill text-[#29BA2F]"></i>
+                            <i className="ri-star-fill text-[#29BA2F]"></i>
                         </> : rating === 4 ? <>
-                            <i className="ri-star-fill text-orange-600"></i>
-                            <i className="ri-star-fill text-orange-600"></i>
-                            <i className="ri-star-fill text-orange-600"></i>
-                            <i className="ri-star-fill text-orange-600"></i>
+                            <i className="ri-star-fill text-[#29BA2F]"></i>
+                            <i className="ri-star-fill text-[#29BA2F]"></i>
+                            <i className="ri-star-fill text-[#29BA2F]"></i>
+                            <i className="ri-star-fill text-[#29BA2F]"></i>
                         </> : <>
-                            <i className="ri-star-fill text-orange-600"></i>
-                            <i className="ri-star-fill text-orange-600"></i>
-                            <i className="ri-star-fill text-orange-600"></i>
-                            <i className="ri-star-fill text-orange-600"></i>
-                            <i className="ri-star-fill text-orange-600"></i>
+                            <i className="ri-star-fill text-[#29BA2F]"></i>
+                            <i className="ri-star-fill text-[#29BA2F]"></i>
+                            <i className="ri-star-fill text-[#29BA2F]"></i>
+                            <i className="ri-star-fill text-[#29BA2F]"></i>
+                            <i className="ri-star-fill text-[#29BA2F]"></i>
                         </>
                     }
                 </div>
@@ -30,12 +30,12 @@ const GamingProductCard = ({ product }) => {
                     <p className='text-xl my-2'>{title}</p>
                     <span className='flex gap-4 text-3xl font-semibold mb-2'>
                         <p className='text-gray-400 line-through'>${old_price}</p>
-                        <p className='text-red-400'>${new_price}</p>
+                        <p className='text-[#29BA2F]'>${new_price}</p>
                     </span>
                 </div>
             </div>
             <div className='md:absolute inset-x-0 bottom-0 text-center'>
-                <button className='bg-orange-300 px-3 py-2 m-2 sm:m-4'>Add To Cart</button>
+                <button className='bg-[#29BA2F] font-semibold text-white px-3 py-2 m-2 sm:m-4'>Add To Cart</button>
             </div>
         </div>
     );
