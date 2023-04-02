@@ -36,14 +36,13 @@ export default function Newsletter() {
             placeholder="Enter your email"
             className="text-gray-500 w-full p-3 rounded-md border outline-none focus:border-indigo-600"
           />
-          <button className="w-full mt-3 px-5 py-3 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 duration-150 outline-none shadow-md focus:shadow-none focus:ring-2 ring-offset-2 ring-indigo-600 sm:mt-0 sm:ml-3 sm:w-auto">
+          <button className="w-full mt-3 px-5 py-3 rounded-md text-white bg-[#29BA2F] font-semibold hover:bg-indigo-500 active:bg-indigo-700 duration-150 outline-none shadow-md focus:shadow-none focus:ring-2 ring-offset-2 ring-indigo-600 sm:mt-0 sm:ml-3 sm:w-auto">
             Subscribe
           </button>
         </form>
         <p className="mt-3 mx-auto text-center max-w-lg text-[15px] text-gray-400">
           No spam ever, we are care about the protection of your data. Read our{" "}
-          <Link className="text-indigo-600 underline" to="/">
-            {" "}
+          <Link className="text-[#29BA2F] underline" to="/">
             Privacy Policy{" "}
           </Link>
         </p>

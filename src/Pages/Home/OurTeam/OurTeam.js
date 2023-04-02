@@ -73,11 +73,10 @@ export default function OurTeam() {
                     alt=""
                   />
                 </div>
-                <div className="mt-4 sm:mt-0">
-                  <h4 className="text-lg text-gray-700 font-semibold">
-                    {item.name}
-                  </h4>
-                  <p className="text-indigo-600">{item.title}</p>
+                {/*  */}
+                <div className="mt-4 text-gray-700 sm:mt-0">
+                  <h4 className="text-lg  font-semibold ">{item.name}</h4>
+                  <p className="text-[#29BA2F] ">{item.title}</p>
                   <p className="text-gray-600 mt-2">{item.desc}</p>
                   <div className="mt-3 flex gap-4 text-gray-400">
                     <Link to={item.twitter}>

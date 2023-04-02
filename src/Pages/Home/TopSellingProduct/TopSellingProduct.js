@@ -15,8 +15,8 @@ const TopSellingProduct = () => {
   return (
     <div className="px-4 md:px-10 lg:px-20 bg-gray-100">
       <div className="flex justify-between py-6">
-        <h3 className="text-xl md:text-3xl font-bold">Top Selling Products</h3>
-        <span className="font-bold md:text-xl flex items-center hover:text-orange-400">
+        <h3 className="text-xl md:text-3xl font-bold text-[#29BA2F] ">Top Selling Products</h3>
+        <span className="font-bold md:text-xl flex items-center hover:text-[#29BA2F] ">
           <button className="">View More</button>
           <i className="ri-arrow-right-line ml-1"></i>
         </span>

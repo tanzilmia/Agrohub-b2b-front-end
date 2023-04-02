@@ -12,8 +12,9 @@ export default function HireUsToPromot() {
               alt=""
             />
           </div>
+          {/* text-indigo-600 */}
           <div className="max-w-xl px-4 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
-            <h3 className="text-indigo-600 font-semibold">
+            <h3 className="text-[#29BA2F]  font-semibold">
               Professional services
             </h3>
             <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
@@ -28,7 +29,7 @@ export default function HireUsToPromot() {
             </p>
             <Link
               to="/"
-              className="inline-flex gap-x-1 items-center text-indigo-600 hover:text-indigo-500 duration-150 font-medium"
+              className="inline-flex gap-x-1 items-center text-indigo-600 hover:text-[#29BA2F]  duration-150 font-medium"
             >
               Learn more
               <svg

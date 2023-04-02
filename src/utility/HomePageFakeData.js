@@ -172,7 +172,7 @@ export const HomeData = [
     description:
       "The color of the physical product may slightly vary due to the deviation of lighting sources, photography or your device display settings",
     title:
-      "Nice looking, durable this product is best and new univertion in plastic",
+      "Nice looking, durable this product is best.",
     Brand: "TFL Plastics",
     Material: "pp",
     price: 0,

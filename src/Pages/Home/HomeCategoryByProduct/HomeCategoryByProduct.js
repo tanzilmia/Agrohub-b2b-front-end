@@ -4,7 +4,7 @@ import { Category } from "../../../utility/HomePageFakeData";
 const HomeCategoryByProduct = () => {
   return (
     <main className="bg-gray-100">
-      <h2 className="text-4xl font-bold text-center m-24 mb-20 ">
+      <h2 className="text-4xl font-bold text-center m-24 mb-20 text-[#29BA2F] ">
         Shop By Category
       </h2>
       <section className="grid  place-items-center sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-5  ">
