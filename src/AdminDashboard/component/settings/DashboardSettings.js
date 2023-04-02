@@ -5,7 +5,7 @@ export default function DashboardSettings() {
   return (
     <div>
       <DashboardSettingNav />
-      <div className="m-12">
+      <div className="my-12 md:mx-12">
         <BasicSettings />
       </div>
     </div>
