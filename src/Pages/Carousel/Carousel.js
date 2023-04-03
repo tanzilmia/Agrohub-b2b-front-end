@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import React, { useEffect, useState } from "react";
 import {
   FaRegArrowAltCircleLeft,
   FaRegArrowAltCircleRight,
@@ -12,23 +10,29 @@ const Carousel = () => {
   const slides = [
     {
       url: "https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      name: "Shoe",
     },
     {
       url: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      name: "Laptop",
     },
     {
       url: "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      name: "Nike Shoe",
     },
     {
       url: "https://images.unsplash.com/photo-1610395219791-21b0353e43cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80",
+      name: "Watch",
     },
     {
       url: "https://images.unsplash.com/photo-1545289414-1c3cb1c06238?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      name: "Puma Shoes",
     },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(1);
-
+  const [autoPlay, setAutoPlay] = useState(true);
+  let timeOut = null;
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
@@ -44,15 +48,32 @@ const Carousel = () => {
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
-
+  useEffect(() => {
+    timeOut =
+      autoPlay &&
+      setTimeout(() => {
+        nextSlide();
+      }, 2500);
+    return () => {
+      clearTimeout(timeOut);
+    };
+  });
   return (
-    <div className="max-w-full h-[500px] w-full m-auto pb-16 mt-4 relative group">
+    <div
+      onMouseEnter={() => setAutoPlay(false)}
+      onMouseLeave={() => setAutoPlay(true)}
+      className="max-w-full h-[300px] xl:h-[500px] w-full m-auto pb-16 mt-4 relative cursor-pointer group"
+    >
       <div
         style={{
           backgroundImage: `url("${slides[currentIndex].url}")`,
         }}
         className="w-full  h-full  bg-center bg-cover duration-500"
-      ></div>
+      >
+        <p className="font-semibold text-2xl text-white ml-2">
+          {slides[currentIndex].name}
+        </p>
+      </div>
       {/* Left Arrow  */}
 
       <FaRegArrowAltCircleLeft

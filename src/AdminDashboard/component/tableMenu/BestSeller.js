@@ -1,4 +1,4 @@
-export default () => {
+export default function BestSeller() {
   const tableItems = [
     {
       name: "Liam James",
@@ -57,4 +57,4 @@ export default () => {
       </div>
     </div>
   );
-};
+}

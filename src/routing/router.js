@@ -9,44 +9,80 @@ import ReviewLayout from "../Layout/ReviewLayout";
 import UserReview from "../DynamicPage/UserReview";
 import DetailsDescription from "../DynamicPage/DetailsDescription";
 import AdditionalInformation from "../DynamicPage/AdditionalInformation";
+import SellerDashboard from "../AdminDashboard/component/SellerDashboard";
+
+import BuyerDashboard from "../AdminDashboard/component/BuyerDashboard";
+import DashboardSettings from "../AdminDashboard/component/settings/DashboardSettings";
+import ErrorPage from "../sheardComponent/ErrorPage";
+import ProductForm from "../AdminDashboard/ProductForm/ProductForm";
 
 const router = createBrowserRouter([
-    {
-        path: '/', element: <MainLayout />,
+  {
+    path: "/",
+    element: <MainLayout />,
+    errorElement: <ErrorPage/>,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/details",
+        element: <ReviewLayout />,
         children: [
-            {
-                path: '/', element: <Home />
-            },
-            {
-                path: '/login', element: <Login />
-            },
-            {
-                path: '/register', element: <Register />
-            },
-            {
-                path: '/details', element: <ReviewLayout />,
-                children: [
-                    {
-                        path: '/details/description', element: <DetailsDescription></DetailsDescription>
-                    },
-                    {
-                        path: '/details/review', element: <UserReview></UserReview>
-                    },
-                    {
-                        path: '/details/additional-information', element: <AdditionalInformation></AdditionalInformation>
-                    },
-                ]
-            },
-            {
-                path: '/dashboard', element: <AdminLayout />,
-                children: [
-                    {
-                        path: '/dashboard', element: <HomeDashboard />
-                    }
-                ]
-            },
-        ]
-    }
-])
+          {
+            path: "/details/description",
+            element: <DetailsDescription></DetailsDescription>,
+          },
+          {
+            path: "/details/review",
+            element: <UserReview></UserReview>,
+          },
+          {
+            path: "/details/additional-information",
+            element: <AdditionalInformation></AdditionalInformation>,
+          },
+        ],
+      },
+      {
+        path: "/dashboard",
+        element: <AdminLayout />,
+        children: [
+         
+          {
+            path: "/dashboard/admin",
+            element: <HomeDashboard />,
+          },
+          {
+            path: "/dashboard/seller",
+            element: <SellerDashboard />,
+          },
+          {
+            path: "/dashboard/buyer",
+            element: <BuyerDashboard />,
+          },
+          {
+            path: "/dashboard/addproduct",
+            element: <ProductForm/>
+          },
+          {
+            path: "/dashboard/settings",
+            element: <DashboardSettings />,
+          },
+        ],
+      },
+
+
+    ],
+  },
+]);
 
 export default router;

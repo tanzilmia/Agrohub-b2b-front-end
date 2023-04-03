@@ -9,7 +9,7 @@ import BestSeller from "./tableMenu/BestSeller";
 import Charts from "./Charts";
 import TableInHome from "./tableMenu/TableInHome";
 
-const HomeDashboard = () => {
+const BuyerDashboard = () => {
   return (
     <div className="flex flex-col">
       {/* this is default home page  */}
@@ -33,4 +33,4 @@ const HomeDashboard = () => {
   );
 };
 
-export default HomeDashboard;
+export default BuyerDashboard;

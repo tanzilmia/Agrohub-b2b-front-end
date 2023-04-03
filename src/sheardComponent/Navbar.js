@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
+import { myContext } from "../contextApi/Authcontext";
 
 const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
+  const {user,logout} = useContext(myContext)
+  console.log(user)
 
   const updateHidden = () => {
     switch (location.pathname) {

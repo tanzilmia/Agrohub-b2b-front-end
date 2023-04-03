@@ -69,7 +69,7 @@ const BarChart = () => {
     },
   };
   return (
-    <div>
+    <div className="w-[280px]">
       <Line data={data} options={options} className="w-2/3" />
     </div>
   );
