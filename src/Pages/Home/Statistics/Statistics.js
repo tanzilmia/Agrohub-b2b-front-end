@@ -8,24 +8,38 @@ import CountUp from "react-countup";
 export default function Statistics() {
   const stats = [
     {
-      data: <CountUp end={1200} duration={1} />,
+      data: <CountUp enableScrollSpy end={1200} duration={4} />,
       title: "Customers",
     },
     {
-      data: <CountUp end={5000000} duration={1} prefix="$" separator="," />,
+      data: (
+        <CountUp
+          enableScrollSpy
+          end={5000000}
+          duration={9}
+          prefix="$"
+          separator=","
+        />
+      ),
       title: "Sales",
     },
     {
-      data: <CountUp end={12} duration={1} />,
+      data: <CountUp enableScrollSpy end={12} duration={2} />,
       title: "Countries",
     },
     {
-      data: <CountUp end={200000} duration={1} prefix="$" separator="," />,
+      data: (
+        <CountUp
+          enableScrollSpy
+          end={200000}
+          duration={4}
+          prefix="$"
+          separator=","
+        />
+      ),
       title: "Total revenue",
     },
   ];
-
-  console.log("test change");
   return (
     <section className="py-14">
       <div className="max-w-screen-xl mx-auto px-4 text-gray-600 gap-x-12 items-start justify-between lg:flex md:px-8">
