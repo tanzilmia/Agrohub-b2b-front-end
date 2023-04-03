@@ -5,6 +5,7 @@
             @timestap: 31/3/23 - Friday - 6.00pm
 */
 import CountUp from "react-countup";
+import { FaFontAwesomeAlt } from "react-icons/fa";
 export default function Statistics() {
   const stats = [
     {

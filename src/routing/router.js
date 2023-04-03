@@ -15,6 +15,7 @@ import BuyerDashboard from "../AdminDashboard/component/BuyerDashboard";
 import DashboardSettings from "../AdminDashboard/component/settings/DashboardSettings";
 import ErrorPage from "../sheardComponent/ErrorPage";
 import ProductForm from "../AdminDashboard/ProductForm/ProductForm";
+import Google from "../Pages/Login/Google";
 
 const router = createBrowserRouter([
   {

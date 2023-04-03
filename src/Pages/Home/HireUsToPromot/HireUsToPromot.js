@@ -29,7 +29,7 @@ export default function HireUsToPromot() {
             </p>
             <Link
               to="/"
-              className="inline-flex gap-x-1 items-center text-indigo-600 hover:text-[#29BA2F]  duration-150 font-medium"
+              className="inline-flex gap-x-1 items-center hover:text-[#29BA2F]  duration-150 font-medium"
             >
               Learn more
               <svg

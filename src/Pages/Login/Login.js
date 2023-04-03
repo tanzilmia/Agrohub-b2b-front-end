@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
-
+import Google from "./Google";
 const Login = () => {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
@@ -13,7 +13,7 @@ const Login = () => {
   const neviget = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
-
+ 
 
   return (
     <nav className="bg-gray-50 min-h-screen  flex items-center justify-center">
@@ -137,10 +137,11 @@ const Login = () => {
             <hr className="border-gray-400" />
           </div>
 
-          <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold">
-            <FcGoogle className="w-8 mr-3 h-10"></FcGoogle> Login With Google
-          </button>
-        </div>
+          {/* <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold"> */}
+            {/* <FcGoogle className="w-8 mr-3 h-10"></FcGoogle> Login With Google */}
+            <Google />
+         {/* </button> */}
+         </div> *
 
         {/* right div */}
         <div className="w-[500px] py-5 md:block hidden">
