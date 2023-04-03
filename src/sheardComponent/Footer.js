@@ -7,6 +7,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
+
+// footer starts here
 export default function Footer() {
   const [showMenu, setshowMenu] = useState(true);
   const location = useLocation();
