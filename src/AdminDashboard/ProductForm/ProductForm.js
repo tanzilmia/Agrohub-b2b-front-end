@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 
 const ProductForm = () => {
     const [product, setProduct] = useState([])
+    const [size, setSize] = useState([]);
+    const [brand, setBrand] = useState('')
 
+    const handleSizeChange = (event) => {
+        event.preventDefault();
+        // console.log(event.target.value);
+        setBrand(event.target.value)
+        setSize([...size, event.target.value]);
+    }
     const onSubmit = (event) => {
         event.preventDefault();
         const name = event.target.productName.value;
@@ -13,6 +21,7 @@ const ProductForm = () => {
         const formData = new FormData()
         formData.append('image', image);
         const details = {
+            size,
             name,
             formData,
             price,
@@ -56,7 +65,18 @@ const ProductForm = () => {
                         </div>
                         <div className="mb-2 col-span-1">
                             <label>
-                                <span className="text-gray-700">Effective price</span>
+                                <span className="text-gray-700">Old price</span>
+                                <input
+                                    name="price"
+                                    type="text"
+                                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    placeholder="Type here..."
+                                />
+                            </label>
+                        </div>
+                        <div className="mb-2 col-span-1">
+                            <label>
+                                <span className="text-gray-700">New price</span>
                                 <input
                                     name="price"
                                     type="text"
@@ -68,12 +88,30 @@ const ProductForm = () => {
                         <div className="mb-2">
                             <label>
                                 <span className="text-gray-700">Brand</span>
-                                <input
-                                    name="brand"
-                                    type="text"
+                                <select className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    name="brand">
+                                    onChange={handleSizeChange}
+                                    <option value="Vivo">Vivo</option>
+                                    <option value="Samsung">Samsung</option>
+                                    <option value="Walton">Walton</option>
+                                    <option value="Nokia">Nokia</option>
+                                </select>
+                            </label>
+
+                        </div>
+                        <div className="mb-2">
+                            <label>
+                                <span className="text-gray-700">Size</span>
+                                <select
                                     className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                    placeholder="Type here..."
-                                />
+                                    name="size"
+                                    onChange={handleSizeChange}
+                                >
+                                    <option value="M">M</option>
+                                    <option value="S">S</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                </select>
                             </label>
                         </div>
                         <div className="mb-2">
@@ -89,7 +127,7 @@ const ProductForm = () => {
                         </div>
                         <div className="mb-2">
                             <label>
-                                <span className="text-gray-700">Availability</span>
+                                <span className="text-gray-700">Available stock</span>
                                 <input
                                     name="availability"
                                     type="text"
@@ -103,6 +141,8 @@ const ProductForm = () => {
                                 <span class="text-gray-700">Description</span>
                                 <textarea
                                     name="description"
+                                    type="text"
+                                    placeholder='Type here...'
                                     className="block border w-full mt-2 px-4 py-8 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     rows="5"
                                 ></textarea>
@@ -119,8 +159,8 @@ const ProductForm = () => {
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 };
 export default ProductForm;

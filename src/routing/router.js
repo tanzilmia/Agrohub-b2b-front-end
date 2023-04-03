@@ -15,6 +15,7 @@ import BuyerDashboard from "../AdminDashboard/component/BuyerDashboard";
 import DashboardSettings from "../AdminDashboard/component/settings/DashboardSettings";
 import ErrorPage from "../sheardComponent/ErrorPage";
 import ProductForm from "../AdminDashboard/ProductForm/ProductForm";
+import PaymentGateway from "../DynamicPage/PaymentGateway";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         path: "/details",
         element: <ReviewLayout />,
         children: [
+          {
+            path: "/details/payment-gateway",
+            element: <PaymentGateway></PaymentGateway>,
+          },
           {
             path: "/details/description",
             element: <DetailsDescription></DetailsDescription>,
