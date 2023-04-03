@@ -13,8 +13,8 @@ import SellerDashboard from "../AdminDashboard/component/SellerDashboard";
 
 import BuyerDashboard from "../AdminDashboard/component/BuyerDashboard";
 import DashboardSettings from "../AdminDashboard/component/settings/DashboardSettings";
-import AdminRouting from "./AdminRouting";
 import ErrorPage from "../sheardComponent/ErrorPage";
+import ProductForm from "../AdminDashboard/ProductForm/ProductForm";
 
 const router = createBrowserRouter([
   {
@@ -54,12 +54,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <AdminRouting><AdminLayout /></AdminRouting>,
+        element: <AdminLayout />,
         children: [
-          {
-            path: "/dashboard",
-            element: <HomeDashboard />,
-          },
+         
           {
             path: "/dashboard/admin",
             element: <HomeDashboard />,
@@ -73,11 +70,17 @@ const router = createBrowserRouter([
             element: <BuyerDashboard />,
           },
           {
+            path: "/dashboard/addproduct",
+            element: <ProductForm/>
+          },
+          {
             path: "/dashboard/settings",
             element: <DashboardSettings />,
           },
         ],
       },
+
+
     ],
   },
 ]);
