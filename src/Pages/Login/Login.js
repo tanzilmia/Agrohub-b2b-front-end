@@ -1,10 +1,19 @@
-import { useFormik } from "formik";
+import axios from "axios";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useState } from "react";
+import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { myContext } from "../../contextApi/Authcontext";
 
 const Login = () => {
   const [show, setShow] = useState(false);
+  const [error, setError] = useState("");
+  const {setisLogin,setloading} = useContext(myContext);
+  const neviget = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+
 
   return (
     <nav className="bg-gray-50 min-h-screen  flex items-center justify-center">
@@ -18,37 +27,109 @@ const Login = () => {
             If You Already A Member, Easily Login
           </p>
 
-          <form action="" className="flex flex-col gap-4 ">
-            <input
-              className="p-2 mt-8 rounded-xl border w-full"
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Email"
-            />
-            <div className="relative">
-              <input
-                className="p-2 mt-4 rounded-xl border w-full"
-                type={show ? "text" : "password"}
-                placeholder="Password"
-              />
-              <i
-                onClick={() => setShow(!show)}
-                className={
-                  show
-                    ? "ri-eye-line absolute top-[35%] text-gray-500 right-3 cursor-pointer"
-                    : "ri-eye-off-line absolute top-[35%] text-gray-500 right-3 cursor-pointer"
+          {/* forkim code here  */}
+
+          <Formik
+            initialValues={{ email: "", password: "" }}
+            validate={(values) => {
+              const errors = {};
+
+              if (!values.email) {
+                errors.email = "Email is required";
+              } else if (
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+              ) {
+                errors.email = "Invalid email address";
+              }
+
+              if (!values.password) {
+                errors.password = "Password is required";
+              } else if (values.password.length < 6) {
+                errors.password = "Password must be at least 6 characters long";
+              }
+
+              return errors;
+            }}
+            onSubmit={(values, { setSubmitting }) => {
+              setloading(true)
+              const email = values.email;
+              const password = values.password;
+              const user = {
+                email,
+                password,
+              };
+
+              axios.post(`http://localhost:5000/auth/login`, user)
+              .then(res => {
+                console.log(res.data);
+                if(res.data.message ==="Login Successful"){
+                  const token = res.data.data
+                  localStorage.setItem("accessToken",token)
+                  setisLogin(true)
+                  neviget(from, { replace: true });
                 }
-              ></i>
-            </div>
-            <button
+                if(res.data.message ==="password not Match"){
+                  setError("password not Match")
+                }
+                if(res.data.message ==="user not Valid"){
+                  setError("user not Valid")
+                }
+                setSubmitting(false);
+              })
+              .catch(err => {
+                console.log(err);
+                setSubmitting(false);
+              });
+            }}
+          >
+            {({ isSubmitting }) => (
+              <Form className="flex flex-col gap-4">
+                <Field
+                 className="p-2 mt-8 rounded-xl border w-full"
+                  type="email"
+                  name="email"
+                />
+                <ErrorMessage
+                  className="text-red-500 text-xs italic"
+                  name="email"
+                  component="div"
+                />
+                <div className="relative">
+                  <Field
+                    className="p-2 mt-4 rounded-xl border w-full"
+                    type={show ? "text" : "password"}
+                    placeholder="Password"
+                    name="password"
+                  />
+                  <i
+                    onClick={() => setShow(!show)}
+                    className={
+                      show
+                        ? "ri-eye-line absolute top-[35%] text-gray-500 right-3 cursor-pointer"
+                        : "ri-eye-off-line absolute top-[35%] text-gray-500 right-3 cursor-pointer"
+                    }
+                  ></i>
+                  <ErrorMessage
+                    className="text-red-500 text-xs italic"
+                    name="password"
+                    component="div"
+                  />
+                </div>
+
+                <button
               type="submit"
               className="bg-[#29BA2F] rounded-xl text-white py-2 hover:scale-105 duration-300 font-bold "
+              disabled={isSubmitting}
             >
               Login
             </button>
+
             <p className=" text-sm border-gray-400">Forgot Your Password?</p>
-          </form>
+
+                <p className="text-[red]">{error}</p>
+              </Form>
+            )}
+          </Formik>
 
           <div className="mt-10 grid grid-cols-3 items-center text-gray-400">
             <hr className="border-gray-400" />
