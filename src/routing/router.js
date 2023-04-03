@@ -9,10 +9,12 @@ import ReviewLayout from "../Layout/ReviewLayout";
 import UserReview from "../DynamicPage/UserReview";
 import DetailsDescription from "../DynamicPage/DetailsDescription";
 import AdditionalInformation from "../DynamicPage/AdditionalInformation";
+import ErrorPage from "../sheardComponent/ErrorPage";
+import AdminRouting from "./AdminRouting";
 
 const router = createBrowserRouter([
     {
-        path: '/', element: <MainLayout />,
+        path: '/', element: <MainLayout />,errorElement: <ErrorPage/>,
         children: [
             {
                 path: '/', element: <Home />
@@ -38,7 +40,7 @@ const router = createBrowserRouter([
                 ]
             },
             {
-                path: '/dashboard', element: <AdminLayout />,
+                path: '/dashboard', element: <AdminRouting><AdminLayout /></AdminRouting>,
                 children: [
                     {
                         path: '/dashboard', element: <HomeDashboard />

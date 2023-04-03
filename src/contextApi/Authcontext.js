@@ -7,9 +7,14 @@ const Authcontext = ({children }) => {
     const [isLogin, setisLogin] = useState(false)
    
    const token =  localStorage.getItem("accessToken")
-   console.log(token);
+   const header = {
+    headers: {
+         'Content-Type': 'application/json',
+         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        
+         }
+  };
    
-
    useEffect(() => {
     if (token || isLogin) {
       axios
@@ -40,7 +45,8 @@ const Authcontext = ({children }) => {
         setloading,
         user,
         loading,
-        logout
+        logout,
+        header
 
 
     }

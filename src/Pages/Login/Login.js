@@ -9,7 +9,7 @@ import { myContext } from "../../contextApi/Authcontext";
 const Login = () => {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
-  const {setisLogin} = useContext(myContext);
+  const {setisLogin,setloading} = useContext(myContext);
   const neviget = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -51,7 +51,7 @@ const Login = () => {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-              // setloading(true)
+              setloading(true)
               const email = values.email;
               const password = values.password;
               const user = {

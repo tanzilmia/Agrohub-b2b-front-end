@@ -4,9 +4,9 @@ import { myContext } from '../contextApi/Authcontext';
 import Loadding from '../sheardComponent/Loadding';
 
 const SellerRouting = ({children}) => {
-    const {user,Loading} = useContext(myContext)
+    const {user,loading} = useContext(myContext)
     const location = useLocation();
-    if(Loading){
+    if(loading){
          
          return <Loadding/>
     }

@@ -9,6 +9,7 @@ const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const {user,logout} = useContext(myContext)
+  console.log(user)
 
   const updateHidden = () => {
     switch (location.pathname) {
@@ -196,6 +197,16 @@ const Navbar = () => {
             >
               Shop
             </Link>
+            { user?.role === "admin" &&
+            <Link
+              to={"/dashboard"}
+              className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+            >
+              Dashboard
+            </Link>}
+           
+            
+
             <Link
               to={"/"}
               className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
@@ -245,6 +256,14 @@ const Navbar = () => {
               </div>
               <div className="text-xs leading-3">Shop</div>
             </Link>
+
+            { user?.role === "admin" &&
+            <Link
+              to={"/dashboard"}
+              className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+            >
+              Dashboard
+            </Link>}
             <Link
               to={""}
               className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"

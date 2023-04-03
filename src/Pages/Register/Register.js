@@ -4,12 +4,15 @@ import { FcGoogle } from "react-icons/fc";
 import { useDropzone } from "react-dropzone";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import axios from "axios";
+import { useContext } from "react";
+import { myContext } from "../../contextApi/Authcontext";
 
-const Register = (props) => {
+const Register = () => {
   const [show, setShow] = useState(false);
   const [file, setFile] = useState(null);
   const [profilePic, setprofilePic] = useState("")
   const [registrError, setregistrError] = useState("")
+  const {setloading} = useContext(myContext)
   const neviget = useNavigate()
 
 
@@ -131,7 +134,7 @@ const Register = (props) => {
               const { email, password, phone, firstname, lastname, role } =
                 values;
 
-               
+                setloading(true)
         
                 
 
