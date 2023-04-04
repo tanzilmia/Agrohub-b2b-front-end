@@ -1,11 +1,18 @@
 import React from "react";
+import { AiOutlineLogin } from "react-icons/ai";
+import { FaBloggerB } from "react-icons/fa";
+import { FiPhoneCall } from "react-icons/fi";
+import { RxHome } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
 const ContactUs = () => {
   return (
     <section class="bg-white dark:bg-gray-900">
       <div class="container px-6 py-12 mx-auto">
         <div class="lg:flex lg:items-center lg:-mx-6">
-          <div class="lg:w-1/2 lg:mx-6">
+          {/* contact address */}
+
+          <div class="lg:w-1/2 lg:mx-6 ">
             <h1 class="text-2xl font-semibold text-gray-800 capitalize dark:text-white lg:text-3xl">
               Contact us for <br /> more info
             </h1>
@@ -33,7 +40,7 @@ const ContactUs = () => {
                 </svg>
 
                 <span class="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
-                  Cecilia Chapman 711-2880 Nulla St. Mankato Mississippi 96522
+                  House-15 Rd no. 17, Block- C, Dhaka 1213
                 </span>
               </p>
 
@@ -54,7 +61,7 @@ const ContactUs = () => {
                 </svg>
 
                 <span class="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
-                  (257) 563-7401
+                  +880 1442012323
                 </span>
               </p>
 
@@ -84,9 +91,9 @@ const ContactUs = () => {
               <h3 class="text-gray-600 dark:text-gray-300 ">Follow us</h3>
 
               <div class="flex mt-4 -mx-1.5 ">
-                <a
+                <Link
                   class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500"
-                  href="#"
+                  to="/"
                 >
                   <svg
                     class="w-10 h-10 fill-current"
@@ -96,11 +103,11 @@ const ContactUs = () => {
                   >
                     <path d="M18.6668 6.67334C18.0002 7.00001 17.3468 7.13268 16.6668 7.33334C15.9195 6.49001 14.8115 6.44334 13.7468 6.84201C12.6822 7.24068 11.9848 8.21534 12.0002 9.33334V10C9.83683 10.0553 7.91016 9.07001 6.66683 7.33334C6.66683 7.33334 3.87883 12.2887 9.3335 14.6667C8.0855 15.498 6.84083 16.0587 5.3335 16C7.53883 17.202 9.94216 17.6153 12.0228 17.0113C14.4095 16.318 16.3708 14.5293 17.1235 11.85C17.348 11.0351 17.4595 10.1932 17.4548 9.34801C17.4535 9.18201 18.4615 7.50001 18.6668 6.67268V6.67334Z" />
                   </svg>
-                </a>
+                </Link>
 
-                <a
+                <Link
                   class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500"
-                  href="#"
+                  to="/"
                 >
                   <svg
                     class="w-8 h-8"
@@ -121,11 +128,11 @@ const ContactUs = () => {
                       fill="currentColor"
                     />
                   </svg>
-                </a>
+                </Link>
 
-                <a
+                <Link
                   class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500"
-                  href="#"
+                  to="/"
                 >
                   <svg
                     class="w-8 h-8"
@@ -138,11 +145,11 @@ const ContactUs = () => {
                       fill="currentColor"
                     />
                   </svg>
-                </a>
+                </Link>
 
-                <a
+                <Link
                   class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500"
-                  href="#"
+                  to="/"
                 >
                   <svg
                     class="w-8 h-8"
@@ -155,10 +162,12 @@ const ContactUs = () => {
                       fill="currentColor"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
+
+          {/* form */}
 
           <div class="mt-8 lg:w-1/2 lg:mx-6">
             <div class="w-full px-8 py-10 mx-auto overflow-hidden bg-white rounded-lg shadow-2xl dark:bg-gray-900 lg:max-w-xl shadow-gray-300/50 dark:shadow-black/50">
@@ -206,6 +215,45 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
+        {/* map */}
+        <div class="overflow-hidden rounded-lg lg:col-span-2 h-96 my-24  md:mx-24 lg:mx-36">
+          <iframe
+            width="100%"
+            height="100%"
+            frameborder="0"
+            title="map"
+            marginheight="0"
+            marginwidth="0"
+            scrolling="no"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25279.229015045235!2d90.39873948868711!3d23.790021285086233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c71055971ba5%3A0xefd7803ea3886e97!2sBanani!5e0!3m2!1sen!2sbd!4v1680624362428!5m2!1sen!2sbd"
+          ></iframe>
+        </div>
+
+        {/* nav */}
+        <Link
+          to="/"
+          className="flex hover:text-slate-900 fixed top-24 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
+        >
+          <RxHome className="text-2xl" />
+        </Link>
+        <Link
+          to="/contactus"
+          className="flex hover:text-slate-900 fixed top-36 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
+        >
+          <FiPhoneCall className="text-2xl" />
+        </Link>
+        <Link
+          to="/blog"
+          className="flex hover:text-slate-900 fixed top-48 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
+        >
+          <FaBloggerB className="text-2xl" />
+        </Link>
+        <Link
+          to="/login"
+          className="flex hover:text-slate-900 fixed top-60 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
+        >
+          <AiOutlineLogin className="text-2xl" />
+        </Link>
       </div>
     </section>
   );

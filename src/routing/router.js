@@ -18,6 +18,7 @@ import ProductForm from "../AdminDashboard/ProductForm/ProductForm";
 import PaymentGateway from "../DynamicPage/PaymentGateway";
 import AboutUs from "../Pages/about/AboutUs";
 import ContactUs from "../Pages/contactUs/ContactUs";
+import Blogs from "../Pages/blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/contactus",
         element: <ContactUs />,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
       },
       {
         path: "/details",
