@@ -16,80 +16,80 @@ import DashboardSettings from "../AdminDashboard/component/settings/DashboardSet
 import ErrorPage from "../sheardComponent/ErrorPage";
 import ProductForm from "../AdminDashboard/ProductForm/ProductForm";
 import PaymentGateway from "../DynamicPage/PaymentGateway";
+import AboutUs from "../Pages/about/AboutUs";
 
 const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <MainLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
         path: "/",
-        element: <MainLayout />,
-        errorElement: <ErrorPage />,
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs />,
+      },
+      {
+        path: "/details",
+        element: <ReviewLayout />,
         children: [
-            {
-                path: "/",
-                element: <Home />,
-            },
-            {
-                path: "/login",
-                element: <Login />,
-            },
-            {
-                path: "/register",
-                element: <Register />,
-            },
-            {
-                path: "/details",
-                element: <ReviewLayout />,
-                children: [
-
-                    {
-                        path: "/details/description",
-                        element: <DetailsDescription></DetailsDescription>,
-                    },
-                    {
-                        path: "/details/review",
-                        element: <UserReview></UserReview>,
-                    },
-                    {
-                        path: "/details/additional-information",
-                        element: <AdditionalInformation></AdditionalInformation>,
-                    },
-                ],
-
-            },
-            {
-                path: "/details/payment-gateway",
-                element: <PaymentGateway></PaymentGateway>,
-            },
-            {
-                path: "/dashboard",
-                element: <AdminLayout />,
-                children: [
-
-                    {
-                        path: "/dashboard/admin",
-                        element: <HomeDashboard />,
-                    },
-                    {
-                        path: "/dashboard/seller",
-                        element: <SellerDashboard />,
-                    },
-                    {
-                        path: "/dashboard/buyer",
-                        element: <BuyerDashboard />,
-                    },
-                    {
-                        path: "/dashboard/addproduct",
-                        element: <ProductForm />
-                    },
-                    {
-                        path: "/dashboard/settings",
-                        element: <DashboardSettings />,
-                    },
-                ],
-            },
-
-
+          {
+            path: "/details/description",
+            element: <DetailsDescription></DetailsDescription>,
+          },
+          {
+            path: "/details/review",
+            element: <UserReview></UserReview>,
+          },
+          {
+            path: "/details/additional-information",
+            element: <AdditionalInformation></AdditionalInformation>,
+          },
         ],
-    },
+      },
+      {
+        path: "/details/payment-gateway",
+        element: <PaymentGateway></PaymentGateway>,
+      },
+      {
+        path: "/dashboard",
+        element: <AdminLayout />,
+        children: [
+          {
+            path: "/dashboard/admin",
+            element: <HomeDashboard />,
+          },
+          {
+            path: "/dashboard/seller",
+            element: <SellerDashboard />,
+          },
+          {
+            path: "/dashboard/buyer",
+            element: <BuyerDashboard />,
+          },
+          {
+            path: "/dashboard/addproduct",
+            element: <ProductForm />,
+          },
+          {
+            path: "/dashboard/settings",
+            element: <DashboardSettings />,
+          },
+        ],
+      },
+    ],
+  },
 ]);
 
 export default router;
