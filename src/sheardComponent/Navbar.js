@@ -3,12 +3,12 @@ import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
 import { myContext } from "../contextApi/Authcontext";
+import Modal from "../components/ProductCard/Modal";
 
 const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const { user, logout } = useContext(myContext);
-  console.log(user);
 
   const updateHidden = () => {
     switch (location.pathname) {
@@ -33,7 +33,7 @@ const Navbar = () => {
       {showMenu && (
         <nav>
           {/* header section start*/}
-          <header className="py-4 shadow-sm">
+          <header className="py-4 relative shadow-sm">
             <div className="container flex items-center justify-around">
               {/* logo  */}
               <Link to={"/"}>
@@ -80,7 +80,7 @@ const Navbar = () => {
             </span> */}
                 </Link>
                 <Link
-                  to={"#"}
+                  to={"/userDetails"}
                   className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
                 >
                   <div className="text-2xl">
@@ -99,10 +99,9 @@ const Navbar = () => {
                     to={""}
                     className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
-                    <div className="text-2xl">
+                    <div className="text-2xl hover:text-[#29BA2F]">
                       <i className="ri-heart-line"></i>
                     </div>
-                    <div className="text-xs leading-3">Wish List</div>
                     {/* <span className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
                 8
               </span> */}
@@ -112,23 +111,21 @@ const Navbar = () => {
                     to={""}
                     className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
-                    <div className="text-2xl">
+                    <div className="text-2xl hover:text-[#29BA2F]">
                       <i className="ri-shopping-cart-2-line"></i>
                     </div>
-                    <div className="text-xs leading-3">Cart</div>
                     <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
                       8
                     </span>
                   </Link>
-                  <Link
-                    to={""}
+                  <button
+                    to={"/userDetails"}
                     className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
-                    <div className="text-2xl">
+                    <div className="text-2xl hover:text-[#29BA2F]">
                       <i className="ri-user-3-line"></i>
                     </div>
-                    <div className="text-xs leading-3">Account</div>
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
