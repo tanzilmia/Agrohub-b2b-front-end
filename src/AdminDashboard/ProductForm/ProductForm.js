@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useContext, useState } from "react";
+import { myContext } from "../../contextApi/Authcontext";
 
 const ProductForm = () => {
   const [size, setSize] = useState([]);
   const [brand, setBrand] = useState("");
+  const { user, header } = useContext(myContext);
 
   const handleSizeChange = (event) => {
     event.preventDefault();
@@ -35,16 +38,38 @@ const ProductForm = () => {
       .then((data) => {
         if (data.success) {
           const product = {
+            sellerName: user?.name,
+            sellerEmail: user?.email,
+            sellerPhone: user?.phone,
+            sellerProfilePicture: user?.profilePic,
             name,
             image: data.data.display_url,
             oldPrice,
             newPrice,
-            brand,
             size,
             stock,
             description,
+            role: user?.role,
+            additionalInfo: [{ name: "test" }],
           };
-          console.log(product);
+
+          axios
+            .post(
+              `http://localhost:5000/seller/product?email=${user?.email}`,
+              product,
+              header
+            )
+            .then((res) => {
+              console.log(res.data);
+            })
+            .catch((err) => {
+              console.log(err.message);
+            });
+
+          const productBrand = {
+            brand,
+          };
+          console.log(productBrand);
         }
       });
   };
