@@ -17,6 +17,7 @@ import ErrorPage from "../sheardComponent/ErrorPage";
 import ProductForm from "../AdminDashboard/ProductForm/ProductForm";
 import PaymentGateway from "../DynamicPage/PaymentGateway";
 import AboutUs from "../Pages/about/AboutUs";
+import ContactUs from "../Pages/contactUs/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/aboutUs",
         element: <AboutUs />,
+      },
+      {
+        path: "/contactus",
+        element: <ContactUs />,
       },
       {
         path: "/details",
