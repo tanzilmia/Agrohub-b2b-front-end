@@ -6,13 +6,14 @@ import { CiGlass } from "react-icons/ci";
 
 function Provider() {
   const SendData = (data) => {
-    // axios.post("/auth/google", data.credential)}
-    //
-    // fetch("/auth/post", {
-    //   method:"POST",
-    //   body:JSON.stringify({hi:"hi}"})
-    // })
+    axios.post("http://localhost:5000/auth/google", data);
   };
+  
+  // fetch("/auth/post", {
+  //   method:"POST",
+  //   body:JSON.stringify({hi:"hi}"})
+  // })
+
   return (
     <div className="App">
       <GoogleLogin
