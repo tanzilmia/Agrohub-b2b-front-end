@@ -18,76 +18,78 @@ import ProductForm from "../AdminDashboard/ProductForm/ProductForm";
 import PaymentGateway from "../DynamicPage/PaymentGateway";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainLayout />,
-    errorElement: <ErrorPage/>,
-    children: [
-      {
+    {
         path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
-        path: "/details",
-        element: <ReviewLayout />,
+        element: <MainLayout />,
+        errorElement: <ErrorPage />,
         children: [
-          {
-            path: "/details/payment-gateway",
-            element: <PaymentGateway></PaymentGateway>,
-          },
-          {
-            path: "/details/description",
-            element: <DetailsDescription></DetailsDescription>,
-          },
-          {
-            path: "/details/review",
-            element: <UserReview></UserReview>,
-          },
-          {
-            path: "/details/additional-information",
-            element: <AdditionalInformation></AdditionalInformation>,
-          },
-        ],
-      },
-      {
-        path: "/dashboard",
-        element: <AdminLayout />,
-        children: [
-         
-          {
-            path: "/dashboard/admin",
-            element: <HomeDashboard />,
-          },
-          {
-            path: "/dashboard/seller",
-            element: <SellerDashboard />,
-          },
-          {
-            path: "/dashboard/buyer",
-            element: <BuyerDashboard />,
-          },
-          {
-            path: "/dashboard/addproduct",
-            element: <ProductForm/>
-          },
-          {
-            path: "/dashboard/settings",
-            element: <DashboardSettings />,
-          },
-        ],
-      },
+            {
+                path: "/",
+                element: <Home />,
+            },
+            {
+                path: "/login",
+                element: <Login />,
+            },
+            {
+                path: "/register",
+                element: <Register />,
+            },
+            {
+                path: "/details",
+                element: <ReviewLayout />,
+                children: [
+
+                    {
+                        path: "/details/description",
+                        element: <DetailsDescription></DetailsDescription>,
+                    },
+                    {
+                        path: "/details/review",
+                        element: <UserReview></UserReview>,
+                    },
+                    {
+                        path: "/details/additional-information",
+                        element: <AdditionalInformation></AdditionalInformation>,
+                    },
+                ],
+
+            },
+            {
+                path: "/details/payment-gateway",
+                element: <PaymentGateway></PaymentGateway>,
+            },
+            {
+                path: "/dashboard",
+                element: <AdminLayout />,
+                children: [
+
+                    {
+                        path: "/dashboard/admin",
+                        element: <HomeDashboard />,
+                    },
+                    {
+                        path: "/dashboard/seller",
+                        element: <SellerDashboard />,
+                    },
+                    {
+                        path: "/dashboard/buyer",
+                        element: <BuyerDashboard />,
+                    },
+                    {
+                        path: "/dashboard/addproduct",
+                        element: <ProductForm />
+                    },
+                    {
+                        path: "/dashboard/settings",
+                        element: <DashboardSettings />,
+                    },
+                ],
+            },
 
 
-    ],
-  },
+        ],
+    },
 ]);
 
 export default router;

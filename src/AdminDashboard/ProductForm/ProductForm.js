@@ -138,7 +138,7 @@ const ProductForm = () => {
                         </div>
                         <div className="mb-2 col-span-2">
                             <label>
-                                <span class="text-gray-700">Description</span>
+                                <span className="text-gray-700">Description</span>
                                 <textarea
                                     name="description"
                                     type="text"
@@ -149,7 +149,7 @@ const ProductForm = () => {
                             </label>
                         </div>
 
-                        <div class="mb-6">
+                        <div className="mb-6">
                             <button
                                 type="submit"
                                 className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"

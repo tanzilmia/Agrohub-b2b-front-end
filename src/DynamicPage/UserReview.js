@@ -42,11 +42,11 @@ const UserReview = () => {
                         <p>Your email address will not be published. Required fields are marked *</p>
                         <p className='flex gap-2 mb-4 text-xl font-semibold'>Your Rating :
                             <span className='flex gap-2 '>
-                                <i class="ri-star-fill text-orange-600"></i>
-                                <i class="ri-star-fill text-orange-600"></i>
-                                <i class="ri-star-fill text-orange-600"></i>
-                                <i class="ri-star-fill text-orange-600"></i>
-                                <i class="ri-star-fill text-orange-600"></i>
+                                <i className="ri-star-fill text-orange-600"></i>
+                                <i className="ri-star-fill text-orange-600"></i>
+                                <i className="ri-star-fill text-orange-600"></i>
+                                <i className="ri-star-fill text-orange-600"></i>
+                                <i className="ri-star-fill text-orange-600"></i>
                             </span>
                         </p>
                     </div>

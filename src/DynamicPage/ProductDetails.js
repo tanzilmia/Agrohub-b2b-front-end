@@ -56,11 +56,11 @@ const ProductDetails = () => {
                             <p>SUBTOTAL: $430.34</p>
                         </div>
                         <div className='flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3 mt-10'>
-                            <button className='border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white'>ADD TO CART <i class="ri-shopping-cart-line"></i></button>
+                            <button className='border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white'>ADD TO CART <i className="ri-shopping-cart-line"></i></button>
                             <Link to="/details/payment-gateway">
                                 <button className='border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white'>BUY IT NOW</button>
                             </Link>
-                            <button className='border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white'>ADD TO WISHLIST <i class="ri-heart-line"></i></button>
+                            <button className='border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white'>ADD TO WISHLIST <i className="ri-heart-line"></i></button>
                         </div>
                     </div>
                 </div>

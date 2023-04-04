@@ -62,7 +62,7 @@ const AdditionalInformation = () => {
                         />
                     </label>
                 </div>
-                <div class="mb-6">
+                <div className="mb-6">
                     <button
                         type="submit"
                         className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"
