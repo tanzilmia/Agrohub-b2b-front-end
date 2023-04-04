@@ -9,11 +9,10 @@ import Google from "./Google";
 const Login = () => {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
-  const {setisLogin,setloading} = useContext(myContext);
+  const { setisLogin, setloading } = useContext(myContext);
   const neviget = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
- 
 
   return (
     <nav className="bg-gray-50 min-h-screen  flex items-center justify-center">
@@ -51,7 +50,7 @@ const Login = () => {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-              setloading(true)
+              setloading(true);
               const email = values.email;
               const password = values.password;
               const user = {
@@ -59,33 +58,34 @@ const Login = () => {
                 password,
               };
 
-              axios.post(`http://localhost:5000/auth/login`, user)
-              .then(res => {
-                console.log(res.data);
-                if(res.data.message ==="Login Successful"){
-                  const token = res.data.data
-                  localStorage.setItem("accessToken",token)
-                  setisLogin(true)
-                  neviget(from, { replace: true });
-                }
-                if(res.data.message ==="password not Match"){
-                  setError("password not Match")
-                }
-                if(res.data.message ==="user not Valid"){
-                  setError("user not Valid")
-                }
-                setSubmitting(false);
-              })
-              .catch(err => {
-                console.log(err);
-                setSubmitting(false);
-              });
+              axios
+                .post(`http://localhost:5000/auth/login`, user)
+                .then((res) => {
+                  console.log(res.data);
+                  if (res.data.message === "Login Successful") {
+                    const token = res.data.data;
+                    localStorage.setItem("accessToken", token);
+                    setisLogin(true);
+                    neviget(from, { replace: true });
+                  }
+                  if (res.data.message === "password not Match") {
+                    setError("password not Match");
+                  }
+                  if (res.data.message === "user not Valid") {
+                    setError("user not Valid");
+                  }
+                  setSubmitting(false);
+                })
+                .catch((err) => {
+                  console.log(err);
+                  setSubmitting(false);
+                });
             }}
           >
             {({ isSubmitting }) => (
               <Form className="flex flex-col gap-4">
                 <Field
-                 className="p-2 mt-8 rounded-xl border w-full"
+                  className="p-2 mt-8 rounded-xl border w-full"
                   type="email"
                   name="email"
                 />
@@ -117,14 +117,16 @@ const Login = () => {
                 </div>
 
                 <button
-              type="submit"
-              className="bg-[#29BA2F] rounded-xl text-white py-2 hover:scale-105 duration-300 font-bold "
-              disabled={isSubmitting}
-            >
-              Login
-            </button>
+                  type="submit"
+                  className="bg-[#29BA2F] rounded-xl text-white py-2 hover:scale-105 duration-300 font-bold "
+                  disabled={isSubmitting}
+                >
+                  Login
+                </button>
 
-            <p className=" text-sm border-gray-400">Forgot Your Password?</p>
+                <p className=" text-sm border-gray-400 cursor-pointer hover:text-[#29BA2F]">
+                  Forgot Your Password?
+                </p>
 
                 <p className="text-[red]">{error}</p>
               </Form>
@@ -138,12 +140,14 @@ const Login = () => {
           </div>
 
           {/* <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold"> */}
-            {/* <FcGoogle className="w-8 mr-3 h-10"></FcGoogle> Login With Google */}
-            <Google />
-         {/* </button> */}
-         </div> *
+          {/* <FcGoogle className="w-8 mr-3 h-10"></FcGoogle> Login With Google */}
 
-        {/* right div */}
+          {/* </button> */}
+          <div className="flex mt-3 justify-center items-center">
+            <Google />
+          </div>
+        </div>{" "}
+        *{/* right div */}
         <div className="w-[500px] py-5 md:block hidden">
           <h2 className="font-bold text-2xl text-[#29BA2F] text-center">
             Create An Account
