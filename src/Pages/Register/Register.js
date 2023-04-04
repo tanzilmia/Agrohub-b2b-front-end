@@ -6,35 +6,38 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import axios from "axios";
 import { useContext } from "react";
 import { myContext } from "../../contextApi/Authcontext";
+import Google from "../Login/Google";
 
 const Register = () => {
   const [show, setShow] = useState(false);
   const [file, setFile] = useState(null);
-  const [profilePic, setprofilePic] = useState("")
-  const [registrError, setregistrError] = useState("")
-  const {setloading} = useContext(myContext)
-  const neviget = useNavigate()
+  const [profilePic, setprofilePic] = useState("");
+  const [registrError, setregistrError] = useState("");
+  const { setloading } = useContext(myContext);
+  const neviget = useNavigate();
 
-
-  const { getRootProps, getInputProps} = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     // Note how this callback is never invoked if drop occurs on the inner dropzone
-    onDrop: acceptedFiles => {
+    onDrop: (acceptedFiles) => {
       setFile(acceptedFiles[0]);
-      acceptedFiles.forEach(file => {
+      acceptedFiles.forEach((file) => {
         const formData = new FormData();
-        formData.append('image', file);
-        axios.post(`https://api.imgbb.com/1/upload?key=801237049e770d2af2c17148ff032c3f`, formData)
-        .then(res => {
-          if(res.data.success){
-            const profile = res?.data?.data?.url
-            setprofilePic(profile)
-            console.log(profile)
-          }
-        })
-      })
-    }
-    
-});
+        formData.append("image", file);
+        axios
+          .post(
+            `https://api.imgbb.com/1/upload?key=801237049e770d2af2c17148ff032c3f`,
+            formData
+          )
+          .then((res) => {
+            if (res.data.success) {
+              const profile = res?.data?.data?.url;
+              setprofilePic(profile);
+              console.log(profile);
+            }
+          });
+      });
+    },
+  });
 
   return (
     <nav className="bg-gray-50 min-h-screen  flex items-center justify-center">
@@ -47,7 +50,6 @@ const Register = () => {
             If You'r Not A Member, Easily Register
           </p>
           <section className="container mt-4">
-            
             <div {...getRootProps({ className: "dropzone" })}>
               <input {...getInputProps()} />
               <div className={file === null || "hidden"}>
@@ -69,16 +71,16 @@ const Register = () => {
             </div>
             {file && (
               <div className="relative mx-auto w-28 h-28 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                <img className="absolute w-[120px] h-28 text-gray-400 -left-1" src={URL.createObjectURL(file)} alt="Selected" />
+                <img
+                  className="absolute w-[120px] h-28 text-gray-400 -left-1"
+                  src={URL.createObjectURL(file)}
+                  alt="Selected"
+                />
               </div>
             )}
           </section>
 
-          
-
-            
-
-          <Formik 
+          <Formik
             initialValues={{
               email: "",
               password: "",
@@ -86,7 +88,7 @@ const Register = () => {
               lastname: "",
               phone: "",
               role: "",
-              file: null
+              file: null,
             }}
             validate={(values) => {
               const errors = {};
@@ -127,16 +129,14 @@ const Register = () => {
               if (!values.role) {
                 errors.role = "select any role";
               }
-             
+
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
               const { email, password, phone, firstname, lastname, role } =
                 values;
 
-                setloading(true)
-        
-                
+              setloading(true);
 
               const userinfo = {
                 email,
@@ -145,19 +145,18 @@ const Register = () => {
                 phone,
                 role,
                 profilePic,
-                
               };
 
               console.log(userinfo);
 
               axios
                 .post(`http://localhost:5000/auth/register`, userinfo)
-                .then((res) =>{
-                  if(res.data.message ===  "Email Is Already Used"){
-                    setregistrError("This Email AlReady Use")
+                .then((res) => {
+                  if (res.data.message === "Email Is Already Used") {
+                    setregistrError("This Email AlReady Use");
                   }
-                  if(res.data.message ===  "success"){
-                    neviget("/login")
+                  if (res.data.message === "success") {
+                    neviget("/login");
                   }
                 })
                 .catch((e) => console.log(e.message));
@@ -290,9 +289,7 @@ const Register = () => {
                   />
                 </div>
 
-                {
-                  registrError && <p>{registrError}</p>
-                }
+                {registrError && <p>{registrError}</p>}
 
                 <button
                   className="bg-[#29BA2F] rounded-xl text-white py-2 hover:scale-105 duration-300 font-bold "
@@ -320,9 +317,12 @@ const Register = () => {
             <p className="text-center text-sm">OR</p>
             <hr className="border-gray-400" />
           </div>
-          <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold">
+          {/* <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold">
             <FcGoogle className="w-8 mr-3 h-10"></FcGoogle> Login With Google
-          </button>
+          </button> */}
+          <div className="flex justify-center mt-3 items-center">
+            <Google />
+          </div>
         </div>
       </div>
     </nav>
