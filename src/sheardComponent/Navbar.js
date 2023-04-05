@@ -205,15 +205,23 @@ const Navbar = () => {
                       Dashboard
                     </Link>
                   )}
+                  {user?.role === "seller" && (
+                    <Link
+                      to={"/dashboard"}
+                      className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                    >
+                      Dashboard
+                    </Link>
+                  )}
 
                   <Link
-                    to={"/"}
+                    to={"/aboutus"}
                     className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
                   >
                     About US
                   </Link>
                   <Link
-                    to={"/"}
+                    to={"/contactus"}
                     className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
                   >
                     Contact US
@@ -265,7 +273,7 @@ const Navbar = () => {
                     </Link>
                   )}
                   <Link
-                    to={""}
+                    to={"/aboutus"}
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
                     <div className="text-2xl">
@@ -274,7 +282,7 @@ const Navbar = () => {
                     <div className="text-xs leading-3">About US</div>
                   </Link>
                   <Link
-                    to={""}
+                    to={"/contactus"}
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
                     <div className="text-2xl">

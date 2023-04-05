@@ -19,6 +19,8 @@ import PaymentGateway from "../DynamicPage/PaymentGateway";
 import AboutUs from "../Pages/about/AboutUs";
 import ContactUs from "../Pages/contactUs/ContactUs";
 import Blogs from "../Pages/blogs/Blogs";
+import BasicSettigs from "../AdminDashboard/component/settings/BasicSettings";
+import Edete from "../AdminDashboard/component/settings/Edete";
 
 const router = createBrowserRouter([
   {
@@ -95,6 +97,20 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/settings",
             element: <DashboardSettings />,
+            children: [
+              {
+                path: "/dashboard/settings",
+                element: <BasicSettigs/>,
+              },
+              {
+                path: "/dashboard/settings/Profile",
+                element: <BasicSettigs/>,
+              },
+              {
+                path: "/dashboard/settings/edete",
+                element: <Edete/>,
+              },
+            ],
           },
         ],
       },
