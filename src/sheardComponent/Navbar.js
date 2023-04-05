@@ -9,7 +9,6 @@ const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const { user, logout } = useContext(myContext);
-  console.log(user);
   const updateHidden = () => {
     switch (location.pathname) {
       case "/":

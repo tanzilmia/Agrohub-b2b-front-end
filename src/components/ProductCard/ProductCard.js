@@ -4,7 +4,7 @@ const ProductCard = ({ product }) => {
   const { image_url, new_price, old_price, rating, title } = product;
 
   return (
-    <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center bg-white py-6">
+    <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center bg-white py-6 hover:shadow hover:shadow-gray-400">
       <img src={image_url} className="md:w-40 md:h-full mx-6" alt="" />
       <div className="mt-6 md:mt-0 mx-10">
         <div className="flex gap-2">
