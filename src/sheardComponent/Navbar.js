@@ -16,7 +16,8 @@ const Navbar = () => {
       case "/":
       case "/shop":
       case "/aboutus":
-      case "/contact":
+      case "/contactus":
+      case "/blogs":
         setshowMenu(true);
         break;
       default:
