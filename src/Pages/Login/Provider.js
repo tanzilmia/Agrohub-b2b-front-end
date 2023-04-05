@@ -8,11 +8,6 @@ function Provider() {
   const SendData = (data) => {
     axios.post("http://localhost:5000/auth/google", data);
   };
-  
-  // fetch("/auth/post", {
-  //   method:"POST",
-  //   body:JSON.stringify({hi:"hi}"})
-  // })
 
   return (
     <div className="App">
