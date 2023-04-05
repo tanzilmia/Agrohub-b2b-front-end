@@ -4,6 +4,7 @@ import ProductDetails from '../DynamicPage/ProductDetails';
 import { Outlet } from 'react-router-dom';
 
 const ReviewLayout = () => {
+    
     return (
         <div>
             <Navbar></Navbar>
