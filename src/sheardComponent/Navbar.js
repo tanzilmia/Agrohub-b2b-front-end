@@ -4,11 +4,16 @@ import { Link, useLocation } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
 import { myContext } from "../contextApi/Authcontext";
 import Modal from "../components/ProductCard/Modal";
+import { googleLogout } from "@react-oauth/google";
 
 const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const { user, logout } = useContext(myContext);
+  const Logouts = () => {
+    logout();
+    googleLogout();
+  };
   const updateHidden = () => {
     switch (location.pathname) {
       case "/":
@@ -239,7 +244,7 @@ const Navbar = () => {
                     Contact US
                   </Link>
                   {user?.email ? (
-                    <button onClick={logout}>Logout</button>
+                    <button onClick={Logouts}>Logout</button>
                   ) : (
                     <Link
                       to={"/login"}
@@ -303,7 +308,7 @@ const Navbar = () => {
                     <div className="text-xs leading-3">Contact US</div>
                   </Link>
                   {user?.email ? (
-                    <button onClick={logout}>Logout</button>
+                    <button onClick={Logouts}>Logout</button>
                   ) : (
                     <Link
                       to={"/login"}
