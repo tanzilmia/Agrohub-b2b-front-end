@@ -3,9 +3,15 @@ import React from 'react'
 const UserDetails = () => {
   return (
     <section>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div>
+<h1>hi</h1>
+    </div>
+    <div>
+
+    </div>
+    <div>
+      
+    </div>
     </section>
   )
 }

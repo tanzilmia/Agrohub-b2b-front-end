@@ -16,6 +16,7 @@ import DashboardSettings from "../AdminDashboard/component/settings/DashboardSet
 import ErrorPage from "../sheardComponent/ErrorPage";
 import ProductForm from "../AdminDashboard/ProductForm/ProductForm";
 import PaymentGateway from "../DynamicPage/PaymentGateway";
+import UserDetails from "../Pages/UserDetails/UserDetails";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register />,
+            },
+            {
+                path:"/userDetails",
+                element: <UserDetails />
             },
             {
                 path: "/details",

@@ -21,6 +21,7 @@ const Register = () => {
     onDrop: (acceptedFiles) => {
       setFile(acceptedFiles[0]);
       acceptedFiles.forEach((file) => {
+        console.log(file)
         const formData = new FormData();
         formData.append("image", file);
         axios
@@ -146,7 +147,6 @@ const Register = () => {
                 role,
                 profilePic,
               };
-
               console.log(userinfo);
 
               axios

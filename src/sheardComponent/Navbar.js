@@ -9,7 +9,7 @@ const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const { user, logout } = useContext(myContext);
-
+  console.log(user);
   const updateHidden = () => {
     switch (location.pathname) {
       case "/":
@@ -83,10 +83,21 @@ const Navbar = () => {
                   to={"/userDetails"}
                   className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
                 >
-                  <div className="text-2xl">
-                    <i className="ri-user-3-line"></i>
-                  </div>
-                  <div className="text-xs leading-3">Account</div>
+                  {user?.name ? (
+                    <img
+                      className="h-10 w-10 rounded-full"
+                      src={user.profilePic}
+                      alt={user.name}
+                      title={user.name}
+                    />
+                  ) : (
+                    <>
+                      <div className="text-2xl">
+                        <i className="ri-user-3-line"></i>
+                      </div>
+                      <div className="text-xs leading-3">Account</div>
+                    </>
+                  )}
                 </Link>
               </div>
               {/* responsive */}
@@ -118,14 +129,25 @@ const Navbar = () => {
                       8
                     </span>
                   </Link>
-                  <button
+                  <Link
                     to={"/userDetails"}
                     className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
-                    <div className="text-2xl hover:text-[#29BA2F]">
-                      <i className="ri-user-3-line"></i>
-                    </div>
-                  </button>
+                    {user?.name ? (
+                      <img
+                        className="h-10 w-10 rounded-full"
+                        src={user.profilePic}
+                        alt={user.name}
+                        title={user.name}
+                      />
+                    ) : (
+                      <>
+                        <div className="text-2xl">
+                          <i className="ri-user-3-line"></i>
+                        </div>
+                      </>
+                    )}
+                  </Link>
                 </div>
               </div>
             </div>
