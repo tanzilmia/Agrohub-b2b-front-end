@@ -50,7 +50,7 @@ const ProductForm = () => {
             stock,
             description,
             role: user?.role,
-            additionalInfo: [{ name: "test" }],
+            additionalInfo: [{}],
           };
 
           axios
@@ -69,7 +69,6 @@ const ProductForm = () => {
           const productBrand = {
             brand,
           };
-          console.log(productBrand);
         }
       });
   };
