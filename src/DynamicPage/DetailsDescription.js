@@ -1,6 +1,8 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
 
 const DetailsDescription = () => {
+  const products = useLoaderData();
   return (
     <div className="mx-10 sm:mx-20 mb-20">
       <div className="">
