@@ -10,7 +10,7 @@ const HomeProducts = () => {
           Top Products
         </h3>
         <span className="font-bold md:text-xl flex items-center hover:text-[#29BA2F] mr-2">
-          <button className="">View More</button>
+          <Link to="/products">View More</Link>
           <i className="ri-arrow-right-line ml-1"></i>
         </span>
       </div>
