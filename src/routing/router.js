@@ -62,6 +62,26 @@ const router = createBrowserRouter([
         element: <ReviewLayout />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
+        children: [
+          {
+            path: "/details/:id/description",
+            element: <DetailsDescription />,
+            loader: ({ params }) =>
+              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
+          },
+          {
+            path: "/details/:id/review",
+            element: <UserReview />,
+            loader: ({ params }) =>
+              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
+          },
+          {
+            path: "/details/:id/additional-information",
+            element: <AdditionalInformation />,
+            loader: ({ params }) =>
+              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
+          },
+        ],
       },
       {
         path: "/details/payment-gateway",

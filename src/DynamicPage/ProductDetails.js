@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import Navbar2 from "../sheardComponent/Navbar2";
 
 const ProductDetails = ({ products }) => {
-  const { name, description, newPrice, stock, size, image } = products;
+  const { _id, name, description, newPrice, stock, size, image } = products;
   return (
     <>
       <Navbar2 />
@@ -88,19 +88,19 @@ const ProductDetails = ({ products }) => {
         </div>
         <div className="flex gap-10 font-semibold text-xl md:text-3xl mt-20 mx-10 sm:mx-20">
           <NavLink
-            to="/details/description"
+            to={`/details/${_id}/description`}
             className={({ isActive }) => (isActive ? "text-orange-500" : "")}
           >
             Description
           </NavLink>
           <NavLink
-            to="/details/review"
+            to={`/details/${_id}/review`}
             className={({ isActive }) => (isActive ? "text-orange-500" : "")}
           >
             Review
           </NavLink>
           <NavLink
-            to="/details/additional-information"
+            to={`/details/${_id}/additional-information`}
             className={({ isActive }) => (isActive ? "text-orange-500" : "")}
           >
             Additional Information

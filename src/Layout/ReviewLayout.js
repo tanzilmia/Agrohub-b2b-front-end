@@ -5,12 +5,11 @@ import { Outlet, useLoaderData } from "react-router-dom";
 
 const ReviewLayout = () => {
   const products = useLoaderData();
-
   return (
     <div>
       <Navbar></Navbar>
       <ProductDetails products={products}></ProductDetails>
-      <Outlet></Outlet>
+      <Outlet products={products}></Outlet>
     </div>
   );
 };

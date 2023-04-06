@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 
 const AdditionalInformation = () => {
+  const products = useLoaderData();
   const [additionalInformation, setAdditionalInformation] = useState({
     name: "",
     feature: "",
