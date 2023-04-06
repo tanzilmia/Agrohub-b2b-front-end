@@ -1,15 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
-import ProductCard from "../../../components/ProductCard/ProductCard";
 import axios from "axios";
-import { Link } from "react-router-dom";
-const TopSellingProduct = () => {
+import React, { useCallback, useEffect, useState } from "react";
+import ProductCard from "../../components/ProductCard/ProductCard";
+
+const SellerProduct = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const fetchData = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:5000/seller/limit_Product");
+      const res = await axios.get("http://localhost:5000/seller/all_Product");
       setProducts(res.data);
       setIsLoading(false);
     } catch (error) {
@@ -52,17 +52,12 @@ const TopSellingProduct = () => {
   if (error) {
     return <div>{error}</div>;
   }
-
   return (
     <div className="px-4 md:px-10 lg:px-20 bg-gray-100">
       <div className="flex justify-between py-6">
-        <h3 className="text-xl md:text-3xl font-bold">Top Selling Products</h3>
-        <span className="font-bold md:text-xl flex items-center hover:text-orange-400">
-          <Link to={"/selling_products"}>
-            <button className="">View More</button>
-          </Link>
-          <i className="ri-arrow-right-line ml-1"></i>
-        </span>
+        <h3 className="text-xl md:text-3xl font-bold mx-auto">
+          All Selling Products
+        </h3>
       </div>
       <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 pb-8">
         {products.map((product) => (
@@ -73,4 +68,4 @@ const TopSellingProduct = () => {
   );
 };
 
-export default TopSellingProduct;
+export default SellerProduct;

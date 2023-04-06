@@ -19,6 +19,7 @@ import PaymentGateway from "../DynamicPage/PaymentGateway";
 import AboutUs from "../Pages/about/AboutUs";
 import ContactUs from "../Pages/contactUs/ContactUs";
 import Blogs from "../Pages/blogs/Blogs";
+import SellerProduct from "../Pages/SellerProduct/SellerProduct";
 
 const router = createBrowserRouter([
   {
@@ -51,22 +52,14 @@ const router = createBrowserRouter([
         element: <Blogs />,
       },
       {
-        path: "/details",
+        path: "/selling_products",
+        element: <SellerProduct />,
+      },
+      {
+        path: "/details/:id",
         element: <ReviewLayout />,
-        children: [
-          {
-            path: "/details/description",
-            element: <DetailsDescription></DetailsDescription>,
-          },
-          {
-            path: "/details/review",
-            element: <UserReview></UserReview>,
-          },
-          {
-            path: "/details/additional-information",
-            element: <AdditionalInformation></AdditionalInformation>,
-          },
-        ],
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
       },
       {
         path: "/details/payment-gateway",
