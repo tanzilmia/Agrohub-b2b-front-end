@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { myContext } from '../contextApi/Authcontext';
 
 const PaymentGateway = () => {
-    const [cardDetails, setCardValue] = useState([])
+    const { user, header } = useContext(myContext)
+    const transactionId = Math.floor(Math.random() * 100000);
     const onSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -10,27 +13,46 @@ const PaymentGateway = () => {
         const address = form.address.value;
         const city = form.city.value;
         const country = form.country.value;
-        const zipCode = form.zipCode.value;
-        const creditCardNumber = form.creditCardNumber.value;
-        const expMonth = form.expMonth.value;
-        const expYear = form.expYear.value;
+        const postCode = form.postCode.value;
+        const currency = form.currency.value;
+        const productName = form.productName.value;
+        const phoneNo = form.phoneNo.value;
         const cvv = form.cvv.value;
-        const cardValue = {
+        const cardDetails = {
             name,
             email,
             address,
             city,
             country,
-            zipCode,
-            creditCardNumber,
-            expMonth,
-            expYear,
+            postCode,
+            currency,
+            productName,
+            phoneNo,
+            transactionId,
+            paid: false,
             cvv
         }
-        setCardValue(cardValue)
-        window.location.reload();
+
+        const postData = async () => {
+            await axios.post(
+                `http://localhost:5000/payment-gateway`,
+                cardDetails,
+                header
+            )
+                .then((res) => {
+                    console.log(res.data);
+                    window.location.replace(res.data.url)
+
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                });
+        }
+        postData();
+        // window.location.reload();
     }
-    console.log(cardDetails);
+    // console.log(cardValue);
+
 
 
     return (
@@ -98,9 +120,9 @@ const PaymentGateway = () => {
                                 </div>
                                 <div className="mb-2 col-span-1">
                                     <label>
-                                        <span className="text-gray-700">Zip Code</span>
+                                        <span className="text-gray-700">Post Code</span>
                                         <input
-                                            name="zipCode"
+                                            name="postCode"
                                             type="text"
                                             className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                             placeholder="Type here..."
@@ -117,20 +139,24 @@ const PaymentGateway = () => {
                             </div>
                             <div className="mt-6 mb-2">
                                 <label>
-                                    <span className="text-gray-700">Credit Card Number</span>
-                                    <input
-                                        name="creditCardNumber"
-                                        type="text"
+                                    <span className="text-gray-700">Currency</span>
+                                    <select
                                         className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                        placeholder="Type here..."
-                                    />
+                                        name="currency"
+                                        // onChange={handleBrand}
+                                        defaultValue='BDT'
+                                    >
+
+                                        <option value='BDT'>BDT</option>
+                                        <option value='USD'>USD</option>
+                                    </select>
                                 </label>
                             </div>
                             <div className="mb-2">
                                 <label>
-                                    <span className="text-gray-700">Exp Month</span>
+                                    <span className="text-gray-700">Product Name</span>
                                     <input
-                                        name="expMonth"
+                                        name="productName"
                                         type="text"
                                         className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                         placeholder="Type here..."
@@ -140,9 +166,9 @@ const PaymentGateway = () => {
                             <div className='flex gap-6'>
                                 <div className="mb-2">
                                     <label>
-                                        <span className="text-gray-700">Exp Year</span>
+                                        <span className="text-gray-700">Phone No</span>
                                         <input
-                                            name="expYear"
+                                            name="phoneNo"
                                             type="text"
                                             className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                             placeholder="Type here..."

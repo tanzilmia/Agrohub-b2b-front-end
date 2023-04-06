@@ -19,6 +19,8 @@ import PaymentGateway from "../DynamicPage/PaymentGateway";
 import AboutUs from "../Pages/about/AboutUs";
 import ContactUs from "../Pages/contactUs/ContactUs";
 import Blogs from "../Pages/blogs/Blogs";
+import PaymentSuccess from "../DynamicPage/PaymentSuccess";
+import PaymentFail from "../DynamicPage/PaymentFail";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +73,14 @@ const router = createBrowserRouter([
       {
         path: "/details/payment-gateway",
         element: <PaymentGateway></PaymentGateway>,
+      },
+      {
+        path: "/payment-gateway/payment/success",
+        element: <PaymentSuccess></PaymentSuccess>,
+      },
+      {
+        path: "/payment-gateway/payment/fail",
+        element: <PaymentFail></PaymentFail>,
       },
       {
         path: "/dashboard",
