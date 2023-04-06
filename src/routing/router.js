@@ -19,6 +19,9 @@ import PaymentGateway from "../DynamicPage/PaymentGateway";
 import AboutUs from "../Pages/about/AboutUs";
 import ContactUs from "../Pages/contactUs/ContactUs";
 import Blogs from "../Pages/blogs/Blogs";
+import PaymentSuccess from "../DynamicPage/PaymentSuccess";
+import PaymentFail from "../DynamicPage/PaymentFail";
+import SellerProduct from "../Pages/SellerProduct/SellerProduct";
 
 const router = createBrowserRouter([
   {
