@@ -1,9 +1,14 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { myContext } from '../contextApi/Authcontext';
+import { useLoaderData } from 'react-router-dom';
 
 const PaymentGateway = () => {
     const { user, header } = useContext(myContext)
+    const products = useLoaderData();
+    const { _id, name: productName, description, newPrice, stock, size, image } = products;
+    const { name, email } = user;
+    console.log();
     const transactionId = Math.floor(Math.random() * 100000);
     const onSubmit = (event) => {
         event.preventDefault();
@@ -17,7 +22,8 @@ const PaymentGateway = () => {
         const currency = form.currency.value;
         const productName = form.productName.value;
         const phoneNo = form.phoneNo.value;
-        const cvv = form.cvv.value;
+        const price = form.price.value;
+
         const cardDetails = {
             name,
             email,
@@ -30,7 +36,7 @@ const PaymentGateway = () => {
             phoneNo,
             transactionId,
             paid: false,
-            cvv
+            price
         }
 
         const postData = async () => {
@@ -41,7 +47,7 @@ const PaymentGateway = () => {
             )
                 .then((res) => {
                     console.log(res.data);
-                    window.location.replace(res.data.url)
+                    window.location.replace(res?.data?.url)
 
                 })
                 .catch((err) => {
@@ -68,6 +74,8 @@ const PaymentGateway = () => {
                                     <input
                                         type="text"
                                         name="name"
+                                        defaultValue={name}
+                                        disabled
                                         className="w-full border block px-4 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                         placeholder="Type here..."
                                     />
@@ -79,6 +87,8 @@ const PaymentGateway = () => {
                                     <input
                                         type="email"
                                         name="email"
+                                        defaultValue={email}
+                                        disabled
                                         className="w-full border block px-4 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                         placeholder="Type here..."
                                     />
@@ -158,11 +168,14 @@ const PaymentGateway = () => {
                                     <input
                                         name="productName"
                                         type="text"
+                                        defaultValue={productName}
+                                        disabled
                                         className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                         placeholder="Type here..."
                                     />
                                 </label>
                             </div>
+
                             <div className='flex gap-6'>
                                 <div className="mb-2">
                                     <label>
@@ -177,9 +190,9 @@ const PaymentGateway = () => {
                                 </div>
                                 <div className="mb-2">
                                     <label>
-                                        <span className="text-gray-700">CVV</span>
+                                        <span className="text-gray-700">Price</span>
                                         <input
-                                            name="cvv"
+                                            name="price"
                                             type="text"
                                             className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                             placeholder="Type here..."
