@@ -1,9 +1,38 @@
-import React from "react";
+/**
+ * @ Author: Rakibul Hasan
+ * @ Create Time: 2023-04-06 00:29:27
+ * @ Modified by: Your name
+ * @ Modified time: 2023-04-06 23:50:38
+ * @ Description: Dynamically working this component Istiak Ahmed
+ */
+
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Navbar2 from "../sheardComponent/Navbar2";
 
 const ProductDetails = ({ products }) => {
   const { _id, name, description, newPrice, stock, size, image } = products;
+  const [count, setCount] = useState(1);
+  const [countPrice, setCountPrice] = useState(newPrice);
+
+  const handleIncrement = () => {
+    setCount(count + 1);
+    const numericPrice = parseFloat(newPrice);
+    const setPrice = (count + 1) * numericPrice;
+    setCountPrice(setPrice.toFixed(2));
+  };
+
+  const handleDecrement = () => {
+    if (count <= 1) {
+      setCount(1);
+      setCountPrice(newPrice);
+    } else {
+      setCount(count - 1);
+      const setPrice = (count - 1) * newPrice;
+      setCountPrice(setPrice.toFixed(2));
+    }
+  };
+
   return (
     <>
       <Navbar2 />
@@ -64,12 +93,22 @@ const ProductDetails = ({ products }) => {
               <p className="flex items-center">
                 QUANTITY:
                 <span className="flex ml-2">
-                  <p className="border border-black py-2 px-3">-</p>
-                  <p className="border border-black py-2 px-3">1</p>
-                  <p className="border border-black py-2 px-3">+</p>
+                  <button
+                    onClick={handleDecrement}
+                    className="border border-black py-2 px-3"
+                  >
+                    -
+                  </button>
+                  <p className="border border-black py-2 px-3">{count}</p>
+                  <button
+                    onClick={handleIncrement}
+                    className="border border-black py-2 px-3"
+                  >
+                    +
+                  </button>
                 </span>
               </p>
-              <p>SUBTOTAL: $430.34</p>
+              <p>SUBTOTAL: $ {countPrice}</p>
             </div>
             <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3 mt-10">
               <button className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">

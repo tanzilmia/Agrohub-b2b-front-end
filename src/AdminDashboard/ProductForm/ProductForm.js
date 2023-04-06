@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
 
 const ProductForm = () => {
   const [size, setSize] = useState([]);
   const { user, header } = useContext(myContext);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -54,6 +57,7 @@ const ProductForm = () => {
             .then((res) => {
               console.log(res.data);
               form.reset();
+              navigate("/selling_products");
             })
             .catch((error) => {
               console.log(error);
