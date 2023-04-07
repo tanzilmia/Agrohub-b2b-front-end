@@ -10,12 +10,10 @@ import Google from "./Google";
 const Login = () => {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
-  const {setisLogin,setloading} = useContext(myContext);
+  const { setisLogin, setloading } = useContext(myContext);
   const neviget = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
-
-
   return (
     <nav className="bg-gray-50 min-h-screen  flex items-center justify-center">
       <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-7xl p-5 ">
@@ -52,7 +50,7 @@ const Login = () => {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-              setloading(true)
+              setloading(true);
               const email = values.email;
               const password = values.password;
               const user = {
@@ -60,33 +58,34 @@ const Login = () => {
                 password,
               };
 
-              axios.post(`http://localhost:5000/auth/login`, user)
-              .then(res => {
-                console.log(res.data);
-                if(res.data.message ==="Login Successful"){
-                  const token = res.data.data
-                  localStorage.setItem("accessToken",token)
-                  setisLogin(true)
-                  neviget(from, { replace: true });
-                }
-                if(res.data.message ==="password not Match"){
-                  setError("password not Match")
-                }
-                if(res.data.message ==="user not Valid"){
-                  setError("user not Valid")
-                }
-                setSubmitting(false);
-              })
-              .catch(err => {
-                console.log(err);
-                setSubmitting(false);
-              });
+              axios
+                .post(`http://localhost:5000/auth/login`, user)
+                .then((res) => {
+                  console.log(res.data);
+                  if (res.data.message === "Login Successful") {
+                    const token = res.data.data;
+                    localStorage.setItem("accessToken", token);
+                    setisLogin(true);
+                    neviget(from, { replace: true });
+                  }
+                  if (res.data.message === "password not Match") {
+                    setError("password not Match");
+                  }
+                  if (res.data.message === "user not Valid") {
+                    setError("user not Valid");
+                  }
+                  setSubmitting(false);
+                })
+                .catch((err) => {
+                  console.log(err);
+                  setSubmitting(false);
+                });
             }}
           >
             {({ isSubmitting }) => (
               <Form className="flex flex-col gap-4">
                 <Field
-                 className="p-2 mt-8 rounded-xl border w-full"
+                  className="p-2 mt-8 rounded-xl border w-full"
                   type="email"
                   name="email"
                 />
@@ -118,14 +117,16 @@ const Login = () => {
                 </div>
 
                 <button
-              type="submit"
-              className="bg-[#29BA2F] rounded-xl text-white py-2 hover:scale-105 duration-300 font-bold "
-              disabled={isSubmitting}
-            >
-              Login
-            </button>
+                  type="submit"
+                  className="bg-[#29BA2F] rounded-xl text-white py-2 hover:scale-105 duration-300 font-bold "
+                  disabled={isSubmitting}
+                >
+                  Login
+                </button>
 
-            <p className=" text-sm border-gray-400">Forgot Your Password?</p>
+                <p className=" text-sm border-gray-400">
+                  Forgot Your Password?
+                </p>
 
                 <p className="text-[red]">{error}</p>
               </Form>

@@ -4,12 +4,16 @@ import { Link, useLocation } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
 import { myContext } from "../contextApi/Authcontext";
 import Modal from "../components/ProductCard/Modal";
+import { googleLogout } from "@react-oauth/google";
 
 const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const { user, logout } = useContext(myContext);
-
+  const Logouts = () => {
+    logout();
+    googleLogout();
+  };
   const updateHidden = () => {
     switch (location.pathname) {
       case "/":
@@ -84,10 +88,21 @@ const Navbar = () => {
                   to={"/userDetails"}
                   className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
                 >
-                  <div className="text-2xl">
-                    <i className="ri-user-3-line"></i>
-                  </div>
-                  <div className="text-xs leading-3">Account</div>
+                  {user?.name ? (
+                    <img
+                      className="h-10 w-10 rounded-full"
+                      src={user.profilePic}
+                      alt={user.name}
+                      title={user.name}
+                    />
+                  ) : (
+                    <>
+                      <div className="text-2xl">
+                        <i className="ri-user-3-line"></i>
+                      </div>
+                      <div className="text-xs leading-3">Account</div>
+                    </>
+                  )}
                 </Link>
               </div>
               {/* responsive */}
@@ -119,14 +134,25 @@ const Navbar = () => {
                       8
                     </span>
                   </Link>
-                  <button
+                  <Link
                     to={"/userDetails"}
                     className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
-                    <div className="text-2xl hover:text-[#29BA2F]">
-                      <i className="ri-user-3-line"></i>
-                    </div>
-                  </button>
+                    {user?.name ? (
+                      <img
+                        className="h-10 w-10 rounded-full"
+                        src={user.profilePic}
+                        alt={user.name}
+                        title={user.name}
+                      />
+                    ) : (
+                      <>
+                        <div className="text-2xl">
+                          <i className="ri-user-3-line"></i>
+                        </div>
+                      </>
+                    )}
+                  </Link>
                 </div>
               </div>
             </div>
@@ -227,7 +253,7 @@ const Navbar = () => {
                     Contact US
                   </Link>
                   {user?.email ? (
-                    <button onClick={logout}>Logout</button>
+                    <button onClick={Logouts}>Logout</button>
                   ) : (
                     <Link
                       to={"/login"}
@@ -291,7 +317,7 @@ const Navbar = () => {
                     <div className="text-xs leading-3">Contact US</div>
                   </Link>
                   {user?.email ? (
-                    <button onClick={logout}>Logout</button>
+                    <button onClick={Logouts}>Logout</button>
                   ) : (
                     <Link
                       to={"/login"}

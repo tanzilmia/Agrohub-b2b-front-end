@@ -146,7 +146,6 @@ const Register = () => {
                 role,
                 profilePic,
               };
-
               console.log(userinfo);
 
               axios

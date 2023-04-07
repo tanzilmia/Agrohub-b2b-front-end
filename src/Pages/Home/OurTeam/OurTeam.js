@@ -63,9 +63,12 @@ export default function OurTeam() {
           </p>
         </div>
         <div className="mt-12">
-          <ul className="grid gap-8 lg:grid-cols-2">
+          <ul className="grid  gap-8 lg:grid-cols-2">
             {team.map((item, idx) => (
-              <li key={idx} className="gap-8 sm:flex">
+              <li
+                key={idx}
+                className="gap-8 sm:flex hover:shadow hover:shadow-gray-400"
+              >
                 <div className="w-full h-60">
                   <img
                     src={item.avatar}
