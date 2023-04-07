@@ -59,7 +59,7 @@ const Login = () => {
               };
 
               axios
-                .post(`http://localhost:5000/auth/login`, user)
+                .post(`https://agrohub-b2b-backend.vercel.app/auth/login`, user)
                 .then((res) => {
                   console.log(res.data);
                   if (res.data.message === "Login Successful") {

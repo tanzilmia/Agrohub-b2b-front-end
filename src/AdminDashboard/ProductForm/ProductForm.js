@@ -50,7 +50,7 @@ const ProductForm = () => {
 
           axios
             .post(
-              `http://localhost:5000/seller/product?email=${user?.email}`,
+              `https://agrohub-b2b-backend.vercel.app/seller/product?email=${user?.email}`,
               product,
               header
             )

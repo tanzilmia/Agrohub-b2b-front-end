@@ -6,7 +6,7 @@ import { CiGlass } from "react-icons/ci";
 
 function Provider() {
   const SendData = (data) => {
-    axios.post("http://localhost:5000/auth/google", data);
+    axios.post("https://agrohub-b2b-backend.vercel.app/auth/google", data);
   };
 
   return (
