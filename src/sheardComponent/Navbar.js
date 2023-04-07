@@ -252,6 +252,12 @@ const Navbar = () => {
                   >
                     Contact US
                   </Link>
+                  <Link
+                    to={"/blogs"}
+                    className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                  >
+                    Blogs
+                  </Link>
                   {user?.email ? (
                     <button onClick={Logouts}>Logout</button>
                   ) : (
@@ -315,6 +321,12 @@ const Navbar = () => {
                       <i class="ri-passport-line"></i>
                     </div>
                     <div className="text-xs leading-3">Contact US</div>
+                  </Link>
+                  <Link
+                    to={"/blogs"}
+                    className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                  >
+                    Blogs
                   </Link>
                   {user?.email ? (
                     <button onClick={Logouts}>Logout</button>

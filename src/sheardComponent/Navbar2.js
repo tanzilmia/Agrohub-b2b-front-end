@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
+import { myContext } from "../contextApi/Authcontext";
+import { googleLogout } from "@react-oauth/google";
 
 const Navbar2 = () => {
+  const { user, logout } = useContext(myContext);
+  const Logouts = () => {
+    logout();
+    googleLogout();
+  };
   return (
-  <nav>
+    <nav>
     {/* header section start*/}
-    <header className="py-4 shadow-sm">
+    <header className="py-4 relative shadow-sm">
       <div className="container flex items-center justify-around">
         {/* logo  */}
         <Link to={"/"}>
@@ -49,17 +56,28 @@ const Navbar2 = () => {
             </div>
             <div className="text-xs leading-3">Cart</div>
             {/* <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
-              8
-            </span> */}
+        8
+      </span> */}
           </Link>
           <Link
-            to={"#"}
+            to={"/userDetails"}
             className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
           >
-            <div className="text-2xl">
-              <i className="ri-user-3-line"></i>
-            </div>
-            <div className="text-xs leading-3">Account</div>
+            {user?.name ? (
+              <img
+                className="h-10 w-10 rounded-full"
+                src={user.profilePic}
+                alt={user.name}
+                title={user.name}
+              />
+            ) : (
+              <>
+                <div className="text-2xl">
+                  <i className="ri-user-3-line"></i>
+                </div>
+                <div className="text-xs leading-3">Account</div>
+              </>
+            )}
           </Link>
         </div>
         {/* responsive */}
@@ -72,35 +90,43 @@ const Navbar2 = () => {
               to={""}
               className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
             >
-              <div className="text-2xl">
+              <div className="text-2xl hover:text-[#29BA2F]">
                 <i className="ri-heart-line"></i>
               </div>
-              <div className="text-xs leading-3">Wish List</div>
               {/* <span className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
-                8
-              </span> */}
+          8
+        </span> */}
             </Link>
 
             <Link
               to={""}
               className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
             >
-              <div className="text-2xl">
+              <div className="text-2xl hover:text-[#29BA2F]">
                 <i className="ri-shopping-cart-2-line"></i>
               </div>
-              <div className="text-xs leading-3">Cart</div>
               <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
                 8
               </span>
             </Link>
             <Link
-              to={""}
+              to={"/userDetails"}
               className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
             >
-              <div className="text-2xl">
-                <i className="ri-user-3-line"></i>
-              </div>
-              <div className="text-xs leading-3">Account</div>
+              {user?.name ? (
+                <img
+                  className="h-10 w-10 rounded-full"
+                  src={user.profilePic}
+                  alt={user.name}
+                  title={user.name}
+                />
+              ) : (
+                <>
+                  <div className="text-2xl">
+                    <i className="ri-user-3-line"></i>
+                  </div>
+                </>
+              )}
             </Link>
           </div>
         </div>
@@ -122,7 +148,9 @@ const Navbar2 = () => {
               to={""}
               className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
             >
-              <span className="ml-6 text-gray-600 text-sm">Electronics</span>
+              <span className="ml-6 text-gray-600 text-sm">
+                Electronics
+              </span>
             </Link>
             <Link
               to={""}
@@ -140,7 +168,9 @@ const Navbar2 = () => {
               to={""}
               className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
             >
-              <span className="ml-6 text-gray-600 text-sm">Motorbike</span>
+              <span className="ml-6 text-gray-600 text-sm">
+                Motorbike
+              </span>
             </Link>
             <Link
               to={""}
@@ -168,24 +198,51 @@ const Navbar2 = () => {
             >
               Shop
             </Link>
+            {user?.role === "admin" && (
+              <Link
+                to={"/dashboard"}
+                className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+              >
+                Dashboard
+              </Link>
+            )}
+            {user?.role === "seller" && (
+              <Link
+                to={"/dashboard"}
+                className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+              >
+                Dashboard
+              </Link>
+            )}
+
             <Link
-              to={"/"}
+              to={"/aboutus"}
               className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
             >
               About US
             </Link>
             <Link
-              to={"/"}
+              to={"/contactus"}
               className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
             >
               Contact US
             </Link>
             <Link
-              to={""}
-              className=" text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+              to={"/blogs"}
+              className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
             >
-              Login/Register
+              Blogs
             </Link>
+            {user?.email ? (
+              <button onClick={Logouts}>Logout</button>
+            ) : (
+              <Link
+                to={"/login"}
+                className=" text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+              >
+                Login/Register
+              </Link>
+            )}
           </div>
         </div>
         {/* responsive */}
@@ -213,8 +270,17 @@ const Navbar2 = () => {
               </div>
               <div className="text-xs leading-3">Shop</div>
             </Link>
+
+            {user?.role === "admin" && (
+              <Link
+                to={"/dashboard"}
+                className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+              >
+                Dashboard
+              </Link>
+            )}
             <Link
-              to={""}
+              to={"/aboutus"}
               className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
             >
               <div className="text-2xl">
@@ -223,7 +289,7 @@ const Navbar2 = () => {
               <div className="text-xs leading-3">About US</div>
             </Link>
             <Link
-              to={""}
+              to={"/contactus"}
               className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
             >
               <div className="text-2xl">
@@ -232,14 +298,24 @@ const Navbar2 = () => {
               <div className="text-xs leading-3">Contact US</div>
             </Link>
             <Link
-              to={""}
-              className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
+              to={"/blogs"}
+              className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
             >
-              <div className="text-2xl">
-                <i class="ri-login-box-line"></i>
-              </div>
-              <div className="text-xs leading-3">Login/Register</div>
+              Blogs
             </Link>
+            {user?.email ? (
+              <button onClick={Logouts}>Logout</button>
+            ) : (
+              <Link
+                to={"/login"}
+                className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
+              >
+                <div className="text-2xl">
+                  <i class="ri-login-box-line"></i>
+                </div>
+                <div className="text-xs leading-3">Login/Register</div>
+              </Link>
+            )}
           </div>
         </div>
         {/* navbar links end*/}
