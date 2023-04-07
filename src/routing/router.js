@@ -21,6 +21,8 @@ import ContactUs from "../Pages/contactUs/ContactUs";
 import Blogs from "../Pages/blogs/Blogs";
 import BasicSettigs from "../AdminDashboard/component/settings/BasicSettings";
 import Edete from "../AdminDashboard/component/settings/Edete";
+import PaymentSuccess from "../DynamicPage/PaymentSuccess";
+import PaymentFail from "../DynamicPage/PaymentFail";
 import SellerProduct from "../Pages/SellerProduct/SellerProduct";
 
 const router = createBrowserRouter([
@@ -84,8 +86,19 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/details/payment-gateway",
+        path: "/details/payment-gateway/:id",
         element: <PaymentGateway></PaymentGateway>,
+        loader: ({ params }) => {
+          return fetch(`http://localhost:5000/seller/all_Product/${params.id}`)
+        },
+      },
+      {
+        path: "/payment-gateway/payment/success",
+        element: <PaymentSuccess></PaymentSuccess>,
+      },
+      {
+        path: "/payment-gateway/payment/fail",
+        element: <PaymentFail></PaymentFail>,
       },
       {
         path: "/dashboard",

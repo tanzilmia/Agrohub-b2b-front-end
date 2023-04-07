@@ -33,6 +33,7 @@ const ProductDetails = ({ products }) => {
     }
   };
 
+  // console.log(products);
   return (
     <>
       <Navbar2 />
@@ -133,7 +134,7 @@ const ProductDetails = ({ products }) => {
               <button className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
                 ADD TO CART <i className="ri-shopping-cart-line"></i>
               </button>
-              <Link to="/details/payment-gateway">
+              <Link to={`/details/payment-gateway/${_id}`}>
                 <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
                   BUY IT NOW
                 </button>
