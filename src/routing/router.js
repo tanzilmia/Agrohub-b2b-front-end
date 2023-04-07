@@ -21,6 +21,7 @@ import ContactUs from "../Pages/contactUs/ContactUs";
 import Blogs from "../Pages/blogs/Blogs";
 import BasicSettigs from "../AdminDashboard/component/settings/BasicSettings";
 import Edete from "../AdminDashboard/component/settings/Edete";
+import SellerProduct from "../Pages/SellerProduct/SellerProduct";
 
 const router = createBrowserRouter([
   {
@@ -53,20 +54,32 @@ const router = createBrowserRouter([
         element: <Blogs />,
       },
       {
-        path: "/details",
+        path: "/selling_products",
+        element: <SellerProduct />,
+      },
+      {
+        path: "/details/:id",
         element: <ReviewLayout />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
         children: [
           {
-            path: "/details/description",
-            element: <DetailsDescription></DetailsDescription>,
+            path: "/details/:id/description",
+            element: <DetailsDescription />,
+            loader: ({ params }) =>
+              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
           },
           {
-            path: "/details/review",
-            element: <UserReview></UserReview>,
+            path: "/details/:id/review",
+            element: <UserReview />,
+            loader: ({ params }) =>
+              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
           },
           {
-            path: "/details/additional-information",
-            element: <AdditionalInformation></AdditionalInformation>,
+            path: "/details/:id/additional-information",
+            element: <AdditionalInformation />,
+            loader: ({ params }) =>
+              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
           },
         ],
       },
