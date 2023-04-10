@@ -1,3 +1,11 @@
+/**
+ * @ Author: Tuhin
+ * @ Create Time: 2023-04-10 13:45:22
+ * @ Modified by: Your name
+ * @ Modified time: 2023-04-11 01:59:16
+ * @ Description: shop page to  display product with categories
+ */
+
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "./util/carousel/Carousel";
@@ -33,7 +41,7 @@ function Shop() {
   if (!isLoading && isError) {
     content = (
       <div className="flex items-center justify-center h-screen">
-        <span class="rounded-full bg-pink-100 px-3 py-1 text-xs font-medium text-pink-800">
+        <span className="rounded-full bg-pink-100 px-3 py-1 text-xs font-medium text-pink-800">
           {error.message}
         </span>
       </div>
@@ -43,7 +51,7 @@ function Shop() {
   if (!isLoading && !isError && products.length === 0) {
     content = (
       <div className="flex items-center justify-center h-screen">
-        <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-800">
+        <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-800">
           No Product Found
         </span>
       </div>
