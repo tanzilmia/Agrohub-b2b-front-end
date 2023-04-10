@@ -1,16 +1,22 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Carousel from "./util/carousel/Carousel";
 import ShopSideNav from "./util/sidenav/ShopSideNav";
 import Loader from "./util/loader/Loader";
 import ShopAllProduct from "./util/allProduct/ShopAllProduct";
-import Pagination from "./util/pagination/Pagination";
+import { useEffect } from "react";
+import { fetchAllProducts } from "../../features/products/productsSlice";
 
 function Shop() {
+  const dispatch = useDispatch();
   const { isLoading, isError, error, products } = useSelector(
     (state) => state.allproducts
   );
 
+  // fetch product from store
+  useEffect(() => {
+    dispatch(fetchAllProducts());
+  }, [dispatch]);
   // pagination facts
 
   // conditionally load data
