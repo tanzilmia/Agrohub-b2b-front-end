@@ -1,79 +1,113 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
 
 const ProductForm = () => {
   const [size, setSize] = useState([]);
+  const [categorys, setCategorys] = useState([]);
+  const [brands, setBrands] = useState([]);
+  const [selectedImages, setSelectedImages] = useState([]);
   const { user, header } = useContext(myContext);
-
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const form = event.target;
 
     const name = form.productName.value;
-    const image = form.image.files[0];
     const oldPrice = form.oldPrice.value;
     const newPrice = form.newPrice.value;
     const category = form.category.value;
+    const brand = form.brand.value;
     const stock = form.stock.value;
     const description = form.description.value;
 
-    const formData = new FormData();
-    formData.append("image", image);
+    const handleImageUpload = async () => {
+      try {
+        const formDataArray = selectedImages.map((image, index) => {
+          const formData = new FormData();
+          formData.append("image", image);
+          formData.append("name", `Image ${index + 1}`);
+          return formData;
+        });
+
+        const uploadPromises = formDataArray.map((formData) =>
+          axios.post(
+            `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMAGE_BB_KEY}`,
+            formData
+          )
+        );
+
+        const responses = await Promise.all(uploadPromises);
+        const urls = responses.map((response) => response.data.data.url);
+        const product = {
+          sellerName: user?.name,
+          sellerEmail: user?.email,
+          sellerPhone: user?.phone,
+          sellerProfilePicture: user?.profilePic,
+          name,
+          images: urls,
+          oldPrice,
+          newPrice,
+          size,
+          stock,
+          rating: 0,
+          description,
+          role: user?.role,
+          additionalInfo: [{}],
+          totalSells: 0,
+          totalQuantity: 0,
+          category: category,
+          brand: brand,
+        };
+
+        axios
+          .post(
+            `http://localhost:5000/seller/product?email=${user?.email}`,
+            product,
+            header
+          )
+          .then((res) => {
+            console.log(res.data);
+            form.reset();
+            navigate("/selling_products");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    await handleImageUpload();
+  };
+
+  const handleImageSelection = (event) => {
+    const files = event.target.files;
+    setSelectedImages([...selectedImages, ...files]);
+  };
+
+  const handleCategoryChange = (event) => {
+    event.preventDefault();
+    const category = event.target.value;
 
     axios
-      .post(
-        "https://api.imgbb.com/1/upload?key=bb1b4cc357be233d3f5e60bd68475f0b",
-        formData
-      )
+      .get(`http://localhost:5000/admin/brands?category=${category}`)
       .then((res) => {
-        if (res.data.success) {
-          const product = {
-            sellerName: user?.name,
-            sellerEmail: user?.email,
-            sellerPhone: user?.phone,
-            sellerProfilePicture: user?.profilePic,
-            name,
-            image: res.data.data.display_url,
-            oldPrice,
-            newPrice,
-            size,
-            stock,
-            rating: 0,
-            description,
-            role: user?.role,
-            additionalInfo: [{}],
-            totalSells : 0,
-            totalQuantity: 0,
-            category:category,
-            
-            // brand:test
-          };
-
-          axios
-            .post(
-              `https://agrohub-b2b-backend.vercel.app/seller/product?email=${user?.email}`,
-              product,
-              header
-            )
-            .then((res) => {
-              console.log(res.data);
-              form.reset();
-              navigate("/selling_products");
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        }
+        setBrands(res.data);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/admin/categories`)
+      .then((res) => setCategorys(res.data))
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div className="flex justify-center border border-red-500 md:w-[1000px]">
@@ -93,9 +127,11 @@ const ProductForm = () => {
                 name="productName"
                 className="w-full border block px-4 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 placeholder="Name"
+                required
               />
             </label>
           </div>
+
           <div className="mb-2 col-span-1">
             <label>
               <span className="text-gray-700">Product Image</span>
@@ -104,6 +140,8 @@ const ProductForm = () => {
                 name="image"
                 className="w-full border block px-4 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 placeholder="Type here..."
+                required
+                onChange={handleImageSelection}
               />
             </label>
           </div>
@@ -112,9 +150,10 @@ const ProductForm = () => {
               <span className="text-gray-700">Old Price</span>
               <input
                 name="oldPrice"
-                type="text"
+                type="number"
                 className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 placeholder="Old Price"
+                required
               />
             </label>
           </div>
@@ -123,9 +162,10 @@ const ProductForm = () => {
               <span className="text-gray-700">New Price</span>
               <input
                 name="newPrice"
-                type="text"
+                type="number"
                 className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 placeholder="New Price"
+                required
               />
             </label>
           </div>
@@ -135,15 +175,33 @@ const ProductForm = () => {
               <select
                 className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 name="category"
+                required
+                onChange={handleCategoryChange}
               >
                 <option disabled selected>
                   Choose a category
                 </option>
 
-                <option>Vivo</option>
-                <option>Samsung</option>
-                <option>Walton</option>
-                <option>Nokia</option>
+                {categorys.length &&
+                  categorys.map((category) => (
+                    <option key={category._id}>{category.category}</option>
+                  ))}
+              </select>
+            </label>
+          </div>
+          <div className="mb-2">
+            <label>
+              <span className="text-gray-700">Brand</span>
+              <select
+                className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                name="brand"
+                required
+              >
+                {!brands?.length && <option>Choose a brand</option>}
+                {brands?.length &&
+                  brands?.map((brand) => (
+                    <option key={brand?._id}>{brand?.brand}</option>
+                  ))}
               </select>
             </label>
           </div>
@@ -153,6 +211,7 @@ const ProductForm = () => {
               <select
                 className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 name="size"
+                required
                 onChange={(event) => setSize([...size, event.target.value])}
               >
                 <option disabled selected>
@@ -174,6 +233,7 @@ const ProductForm = () => {
                 type="text"
                 className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 placeholder="Stock"
+                required
               />
             </label>
           </div>
@@ -186,6 +246,7 @@ const ProductForm = () => {
                 placeholder="Write Here"
                 className="block border w-full mt-2 px-4 py-8 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 rows="5"
+                required
               ></textarea>
             </label>
           </div>

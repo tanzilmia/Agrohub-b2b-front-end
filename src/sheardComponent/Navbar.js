@@ -108,7 +108,7 @@ const Navbar = () => {
               {/* responsive */}
               <div className="px-8 mx-2 flex xl:hidden py-3 bg-[#29BA2F]  items-center cursor-pointer relative group rounded z-10">
                 <span className="text-white">
-                  <i class="ri-menu-fill"></i>
+                  <i className="ri-menu-fill"></i>
                 </span>
                 <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible">
                   <Link
@@ -273,7 +273,7 @@ const Navbar = () => {
               {/* responsive */}
               <div className="px-8 mx-2 flex xl:hidden py-3  items-center cursor-pointer relative group rounded z-10">
                 <span className="text-[#29BA2F]">
-                  <i class="ri-layout-masonry-fill"></i>
+                  <i className="ri-layout-masonry-fill"></i>
                 </span>
                 <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible">
                   <Link
@@ -281,7 +281,7 @@ const Navbar = () => {
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
                     <div className="text-2xl">
-                      <i class="ri-home-3-line"></i>
+                      <i className="ri-home-3-line"></i>
                     </div>
                     <div className="text-xs leading-3">Home</div>
                   </Link>
@@ -291,7 +291,7 @@ const Navbar = () => {
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
                     <div className="text-2xl">
-                      <i class="ri-shopping-bag-3-line"></i>
+                      <i className="ri-shopping-bag-3-line"></i>
                     </div>
                     <div className="text-xs leading-3">Shop</div>
                   </Link>
@@ -309,7 +309,7 @@ const Navbar = () => {
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
                     <div className="text-2xl">
-                      <i class="ri-home-3-line"></i>
+                      <i className="ri-home-3-line"></i>
                     </div>
                     <div className="text-xs leading-3">About US</div>
                   </Link>
@@ -318,7 +318,7 @@ const Navbar = () => {
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
                     <div className="text-2xl">
-                      <i class="ri-passport-line"></i>
+                      <i className="ri-passport-line"></i>
                     </div>
                     <div className="text-xs leading-3">Contact US</div>
                   </Link>
@@ -336,7 +336,7 @@ const Navbar = () => {
                       className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                     >
                       <div className="text-2xl">
-                        <i class="ri-login-box-line"></i>
+                        <i className="ri-login-box-line"></i>
                       </div>
                       <div className="text-xs leading-3">Login/Register</div>
                     </Link>

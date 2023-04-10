@@ -2,7 +2,7 @@
  * @ Author: Rakibul Hasan
  * @ Create Time: 2023-04-06 00:29:27
  * @ Modified by: Your name
- * @ Modified time: 2023-04-07 00:29:10
+ * @ Modified time: 2023-04-11 00:38:45
  * @ Description: Dynamically working this component Istiak Ahmed
  */
 
@@ -11,7 +11,7 @@ import { Link, NavLink } from "react-router-dom";
 import Navbar2 from "../sheardComponent/Navbar2";
 
 const ProductDetails = ({ products }) => {
-  const { _id, name, description, newPrice, stock, size, image } = products;
+  const { _id, name, description, newPrice, stock, size, images } = products;
   const [count, setCount] = useState(1);
   const [countPrice, setCountPrice] = useState(newPrice);
 
@@ -40,7 +40,7 @@ const ProductDetails = ({ products }) => {
       <div className="m-20">
         <div className="grid md:grid-cols-5 items-center">
           <div className="md:col-span-2 flex justify-center items-center">
-            <img src={image} alt="" />
+            <img src={images && images[0]} alt="" />
           </div>
           <div className="md:col-span-3 mx-20">
             <h2 className="text-2xl font-semibold">{name}</h2>
@@ -83,16 +83,16 @@ const ProductDetails = ({ products }) => {
                   ))}
                 </span>
               </p>
-              <p class="flex items-center">
-                <span class="mr-2">Quality:</span>
-                <span class="flex items-center border border-black rounded-full">
+              <p className="flex items-center">
+                <span className="mr-2">Quality:</span>
+                <span className="flex items-center border border-black rounded-full">
                   <button
                     onClick={handleDecrement}
-                    class="flex items-center justify-center h-8 w-8 rounded-l-full border-r border-black"
+                    className="flex items-center justify-center h-8 w-8 rounded-l-full border-r border-black"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-4 w-4"
+                      className="h-4 w-4"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -103,14 +103,14 @@ const ProductDetails = ({ products }) => {
                       />
                     </svg>
                   </button>
-                  <p class="px-4 py-1 text-lg font-semibold">{count}</p>
+                  <p className="px-4 py-1 text-lg font-semibold">{count}</p>
                   <button
                     onClick={handleIncrement}
-                    class="flex items-center justify-center h-8 w-8 rounded-r-full border-l border-black"
+                    className="flex items-center justify-center h-8 w-8 rounded-r-full border-l border-black"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-4 w-4"
+                      className="h-4 w-4"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >

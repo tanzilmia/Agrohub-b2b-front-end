@@ -2,11 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { _id, image, newPrice, oldPrice, name } = product;
-
+  const { _id, images, newPrice, oldPrice, name } = product;
   return (
     <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center bg-white py-6">
-      <img src={image} className="md:w-40 md:h-full mx-6" alt="" />
+      <img
+        src={images && images[0]}
+        className="md:w-40 md:h-full mx-6"
+        alt=""
+      />
       <div className="mt-6 md:mt-0 mx-10">
         <div className="flex gap-2">
           <i className="ri-star-fill text-[#29BA2F]"></i>
