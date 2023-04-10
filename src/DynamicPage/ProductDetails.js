@@ -83,16 +83,16 @@ const ProductDetails = ({ products }) => {
                   ))}
                 </span>
               </p>
-              <p class="flex items-center">
-                <span class="mr-2">Quality:</span>
-                <span class="flex items-center border border-black rounded-full">
+              <p className="flex items-center">
+                <span className="mr-2">Quality:</span>
+                <span className="flex items-center border border-black rounded-full">
                   <button
                     onClick={handleDecrement}
-                    class="flex items-center justify-center h-8 w-8 rounded-l-full border-r border-black"
+                    className="flex items-center justify-center h-8 w-8 rounded-l-full border-r border-black"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-4 w-4"
+                      className="h-4 w-4"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -103,14 +103,14 @@ const ProductDetails = ({ products }) => {
                       />
                     </svg>
                   </button>
-                  <p class="px-4 py-1 text-lg font-semibold">{count}</p>
+                  <p className="px-4 py-1 text-lg font-semibold">{count}</p>
                   <button
                     onClick={handleIncrement}
-                    class="flex items-center justify-center h-8 w-8 rounded-r-full border-l border-black"
+                    className="flex items-center justify-center h-8 w-8 rounded-r-full border-l border-black"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-4 w-4"
+                      className="h-4 w-4"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >

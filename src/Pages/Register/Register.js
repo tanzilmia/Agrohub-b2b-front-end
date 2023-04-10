@@ -53,9 +53,9 @@ const Register = () => {
             <div {...getRootProps({ className: "dropzone" })}>
               <input {...getInputProps()} />
               <div className={file === null || "hidden"}>
-                <div class="relative mx-auto w-28 h-28 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                <div className="relative mx-auto w-28 h-28 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                   <svg
-                    class="absolute w-[120px] h-28 text-gray-400 -left-1"
+                    className="absolute w-[120px] h-28 text-gray-400 -left-1"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +149,10 @@ const Register = () => {
               console.log(userinfo);
 
               axios
-                .post(`https://agrohub-b2b-backend.vercel.app/auth/register`, userinfo)
+                .post(
+                  `https://agrohub-b2b-backend.vercel.app/auth/register`,
+                  userinfo
+                )
                 .then((res) => {
                   if (res.data.message === "Email Is Already Used") {
                     setregistrError("This Email AlReady Use");

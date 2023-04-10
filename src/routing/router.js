@@ -24,6 +24,7 @@ import Edete from "../AdminDashboard/component/settings/Edete";
 import PaymentSuccess from "../DynamicPage/PaymentSuccess";
 import PaymentFail from "../DynamicPage/PaymentFail";
 import SellerProduct from "../Pages/SellerProduct/SellerProduct";
+import Shop from "../Pages/shop/Shop";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/shop",
+        element: <Shop />,
       },
       {
         path: "/aboutus",
@@ -63,25 +68,33 @@ const router = createBrowserRouter([
         path: "/details/:id",
         element: <ReviewLayout />,
         loader: ({ params }) =>
-          fetch(`https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`),
+          fetch(
+            `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+          ),
         children: [
           {
             path: "/details/:id/description",
             element: <DetailsDescription />,
             loader: ({ params }) =>
-              fetch(`https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`),
+              fetch(
+                `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+              ),
           },
           {
             path: "/details/:id/review",
             element: <UserReview />,
             loader: ({ params }) =>
-              fetch(`https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`),
+              fetch(
+                `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+              ),
           },
           {
             path: "/details/:id/additional-information",
             element: <AdditionalInformation />,
             loader: ({ params }) =>
-              fetch(`https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`),
+              fetch(
+                `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+              ),
           },
         ],
       },
@@ -89,7 +102,9 @@ const router = createBrowserRouter([
         path: "/details/payment-gateway/:id",
         element: <PaymentGateway></PaymentGateway>,
         loader: ({ params }) => {
-          return fetch(`https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`)
+          return fetch(
+            `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+          );
         },
       },
       {
@@ -126,15 +141,15 @@ const router = createBrowserRouter([
             children: [
               {
                 path: "/dashboard/settings",
-                element: <BasicSettigs/>,
+                element: <BasicSettigs />,
               },
               {
                 path: "/dashboard/settings/Profile",
-                element: <BasicSettigs/>,
+                element: <BasicSettigs />,
               },
               {
                 path: "/dashboard/settings/edete",
-                element: <Edete/>,
+                element: <Edete />,
               },
             ],
           },
