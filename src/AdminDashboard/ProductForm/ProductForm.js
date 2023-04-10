@@ -43,9 +43,15 @@ const ProductForm = () => {
             newPrice,
             size,
             stock,
+            rating: 0,
             description,
             role: user?.role,
             additionalInfo: [{}],
+            totalSells : 0,
+            totalQuantity: 0,
+            category:category,
+            
+            // brand:test
           };
 
           axios
