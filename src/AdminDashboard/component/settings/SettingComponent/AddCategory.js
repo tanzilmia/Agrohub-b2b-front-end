@@ -4,7 +4,16 @@ import axios from 'axios';
 
 const AddCategory = () => {
   const handleSubmit = (values) => {
-    console.log(values, "Value");
+    console.log(values.category);
+    
+    const newCategory = {
+      category : values.category
+    }
+    axios.post(`http://localhost:5000/admin/categories`, newCategory)
+    .then(res =>{
+      console.log(res.data);
+    })
+    .catch(e=>console.log(e))
     
   };
 
