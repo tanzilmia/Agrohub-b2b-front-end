@@ -35,7 +35,7 @@ const Navbar = () => {
   return (
     <>
       {showMenu && (
-        <nav>
+        <nav className="relative">
           {/* header section start*/}
           <header className="py-4 relative shadow-sm">
             <div className="container flex items-center justify-around">
