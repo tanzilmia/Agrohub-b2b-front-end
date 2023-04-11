@@ -9,7 +9,7 @@ const TopSellingProduct = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const res = await axios.get("https://agrohub-b2b-backend.vercel.app/seller/limit_Product");
+      const res = await axios.get("http://localhost:5000/seller/limit_Product");
       setProducts(res.data);
       setIsLoading(false);
     } catch (error) {

@@ -9,7 +9,7 @@ const ReviewLayout = () => {
     <div>
       <Navbar></Navbar>
       <ProductDetails products={products}></ProductDetails>
-      <Outlet products={products}></Outlet>
+      <Outlet></Outlet>
     </div>
   );
 };

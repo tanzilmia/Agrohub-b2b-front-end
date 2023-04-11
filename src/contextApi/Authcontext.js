@@ -17,7 +17,7 @@ const Authcontext = ({ children }) => {
   useEffect(() => {
     if (token || isLogin) {
       axios
-        .post(`https://agrohub-b2b-backend.vercel.app/auth/user-info`, { token })
+        .post(`http://localhost:5000/auth/user-info`, { token })
         .then((res) => {
           if (res.data.message === "successfull") {
             setuser(res.data.data);
