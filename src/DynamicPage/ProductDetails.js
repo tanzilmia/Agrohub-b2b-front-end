@@ -2,7 +2,7 @@
  * @ Author: Rakibul Hasan
  * @ Create Time: 2023-04-06 00:29:27
  * @ Modified by: Your name
- * @ Modified time: 2023-04-11 00:38:45
+ * @ Modified time: 2023-04-11 05:43:40
  * @ Description: Dynamically working this component Istiak Ahmed
  */
 
@@ -11,7 +11,8 @@ import { Link, NavLink } from "react-router-dom";
 import Navbar2 from "../sheardComponent/Navbar2";
 
 const ProductDetails = ({ products }) => {
-  const { _id, name, description, newPrice, stock, size, images } = products;
+  const { _id, name, description, newPrice, stock, size, images, brand } =
+    products;
   const [count, setCount] = useState(1);
   const [countPrice, setCountPrice] = useState(newPrice);
 
@@ -64,11 +65,11 @@ const ProductDetails = ({ products }) => {
                 </p>
                 <p className="flex flex-row">
                   <label>Brand:</label>{" "}
-                  <span className="ml-2 font-semibold"> Cushnie et Ochs</span>
+                  <span className="ml-2 font-semibold"> {brand}</span>
                 </p>
                 <p className="flex flex-row">
                   <label>Status:</label>{" "}
-                  <span className="ml-2 font-semibold">In Stock</span>
+                  <span className="ml-2 font-semibold">{stock}</span>
                 </p>
               </div>
             </div>

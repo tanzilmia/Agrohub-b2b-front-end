@@ -2,7 +2,7 @@
             @Project: Agrohub (b2b website)
             @Name: MD. Mahiuddin Tuhin
  * @ Modified by: Your name
- * @ Modified time: 2023-04-10 17:24:22
+ * @ Modified time: 2023-04-11 05:37:59
 */
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
@@ -29,7 +29,7 @@ const SideNav = () => {
   };
 
   return (
-    <aside className="flex flex-col w-24 md:w-48 lg:w-64 h-screen px-1 md:px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+    <aside className="flex flex-col w-24 md:w-48 lg:w-64 h-screen px-1 md:px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l ">
       <Link to="/" className="mx-auto">
         <img className="w-auto h-6 sm:h-7" src="" alt="" />
       </Link>
