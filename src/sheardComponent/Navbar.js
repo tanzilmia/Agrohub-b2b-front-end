@@ -21,6 +21,7 @@ const Navbar = () => {
       case "/aboutus":
       case "/contactus":
       case "/blogs":
+      case "/custom":
         setshowMenu(true);
         break;
       default:
@@ -223,6 +224,18 @@ const Navbar = () => {
                   >
                     Shop
                   </Link>
+
+                    
+                  {
+                    user?.email &&  <Link
+                    to={"/custom"}
+                    className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                  >
+                    Custome Order
+                  </Link>
+                  }
+
+
                   {user?.role === "admin" && (
                     <Link
                       to={"/dashboard"}
@@ -295,6 +308,16 @@ const Navbar = () => {
                     </div>
                     <div className="text-xs leading-3">Shop</div>
                   </Link>
+
+
+                  {
+                    user?.email &&  <Link
+                    to={"/custom"}
+                    className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                  >
+                    Custome Order
+                  </Link>
+                  }
 
                   {user?.role === "admin" && (
                     <Link
