@@ -219,7 +219,7 @@ const Navbar = () => {
                     Home
                   </Link>
                   <Link
-                    to={"/"}
+                    to="/shop"
                     className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
                   >
                     Shop
@@ -300,7 +300,7 @@ const Navbar = () => {
                   </Link>
 
                   <Link
-                    to={""}
+                    to="/shop"
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
                     <div className="text-2xl">
