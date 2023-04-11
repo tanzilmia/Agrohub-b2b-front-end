@@ -9,25 +9,30 @@ import { RxDotFilled } from "react-icons/rx";
 const Carousel = () => {
   const slides = [
     {
-      url: "https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-      name: "Shoe",
-    },
+      url: "https://i.ibb.co/HtRP4PZ/bag-removebg-preview.png",
+      name: "Bag",
+      offer: "50%",
+     },
     {
-      url: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-      name: "Laptop",
-    },
+      url: "https://i.ibb.co/N2GGZ7L/headphone-removebg-preview.png",
+      name: "Headphone",
+      offer: "40%",
+     },
     {
-      url: "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      url: "https://i.ibb.co/ZL2Pm37/shoes-removebg-preview.png",
       name: "Nike Shoe",
-    },
+      offer: "60%",
+     },
     {
-      url: "https://images.unsplash.com/photo-1610395219791-21b0353e43cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80",
-      name: "Watch",
-    },
+      url: "https://i.ibb.co/jV0GCtc/laptop-removebg-preview.png",
+      name: "Laptop",
+      offer: "30%",
+      },
     {
-      url: "https://images.unsplash.com/photo-1545289414-1c3cb1c06238?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-      name: "Puma Shoes",
-    },
+      url: "https://i.ibb.co/L088QFj/cloth-removebg-preview.png",
+      name: "Comfort Cloth",
+      offer: "20%",
+      },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -58,6 +63,7 @@ const Carousel = () => {
       clearTimeout(timeOut);
     };
   });
+  console.log(slides[currentIndex].url)
   return (
     <div
       onMouseEnter={() => setAutoPlay(false)}
@@ -65,14 +71,27 @@ const Carousel = () => {
       className="max-w-full h-[300px] xl:h-[500px] w-full m-auto pb-16 mt-4 relative cursor-pointer group"
     >
       <div
-        style={{
-          backgroundImage: `url("${slides[currentIndex].url}")`,
-        }}
-        className="w-full  h-full  bg-center bg-cover duration-500"
+      //  style={{
+      //   backgroundImage: `url("${slides[currentIndex].url}")`,
+      // }}
+        className="grid grid-cols-3 lg:px-20 justify-center items-center w-full h-full bg-gray-100 bg-center bg-cover duration-500"
       >
-        <p className="font-semibold text-2xl text-white ml-2">
+        <div className="col-span-2">
+        <p className="font-semibold text-4xl mb-6 ml-2">
+          <span className="text-red-500">{slides[currentIndex].offer}</span> Off For Your First Shopping <br/> This Product
+        </p>
+        <p className="font-semibold text-2xl mb-6 mr-10">
+        This offer for your first shopping. If you can get offer please purchase now this product or visit more and see huge collection
+        </p>
+        <button className="border bg-red-600 text-white text-xl px-4 py-2">Visit Collections</button>
+        </div>
+        <div className="col-span-1">
+          <img className="w-80 h-80" src={slides[currentIndex].url}></img>
+          <p className="font-semibold text-2xl text-center mt-4 text-red-500 ml-2">
           {slides[currentIndex].name}
         </p>
+        </div>
+        
       </div>
       {/* Left Arrow  */}
 
