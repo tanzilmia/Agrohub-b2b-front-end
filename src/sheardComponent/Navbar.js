@@ -19,7 +19,9 @@ const Navbar = () => {
       case "/":
       case "/shop":
       case "/aboutus":
-      case "/contact":
+      case "/contactus":
+      case "/blogs":
+      case "/custom":
         setshowMenu(true);
         break;
       default:
@@ -107,7 +109,7 @@ const Navbar = () => {
               {/* responsive */}
               <div className="px-8 mx-2 flex xl:hidden py-3 bg-[#29BA2F]  items-center cursor-pointer relative group rounded z-10">
                 <span className="text-white">
-                  <i class="ri-menu-fill"></i>
+                  <i className="ri-menu-fill"></i>
                 </span>
                 <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible">
                   <Link
@@ -217,12 +219,32 @@ const Navbar = () => {
                     Home
                   </Link>
                   <Link
-                    to={"/"}
+                    to="/shop"
                     className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
                   >
                     Shop
                   </Link>
+
+                    
+                  {
+                    user?.email &&  <Link
+                    to={"/custom"}
+                    className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                  >
+                    Custome Order
+                  </Link>
+                  }
+
+
                   {user?.role === "admin" && (
+                    <Link
+                      to={"/dashboard"}
+                      className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                    >
+                      Dashboard
+                    </Link>
+                  )}
+                  {user?.role === "seller" && (
                     <Link
                       to={"/dashboard"}
                       className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
@@ -232,16 +254,22 @@ const Navbar = () => {
                   )}
 
                   <Link
-                    to={"/"}
+                    to={"/aboutus"}
                     className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
                   >
                     About US
                   </Link>
                   <Link
-                    to={"/"}
+                    to={"/contactus"}
                     className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
                   >
                     Contact US
+                  </Link>
+                  <Link
+                    to={"/blogs"}
+                    className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                  >
+                    Blogs
                   </Link>
                   {user?.email ? (
                     <button onClick={Logouts}>Logout</button>
@@ -258,7 +286,7 @@ const Navbar = () => {
               {/* responsive */}
               <div className="px-8 mx-2 flex xl:hidden py-3  items-center cursor-pointer relative group rounded z-10">
                 <span className="text-[#29BA2F]">
-                  <i class="ri-layout-masonry-fill"></i>
+                  <i className="ri-layout-masonry-fill"></i>
                 </span>
                 <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible">
                   <Link
@@ -266,20 +294,30 @@ const Navbar = () => {
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
                     <div className="text-2xl">
-                      <i class="ri-home-3-line"></i>
+                      <i className="ri-home-3-line"></i>
                     </div>
                     <div className="text-xs leading-3">Home</div>
                   </Link>
 
                   <Link
-                    to={""}
+                    to="/shop"
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
                     <div className="text-2xl">
-                      <i class="ri-shopping-bag-3-line"></i>
+                      <i className="ri-shopping-bag-3-line"></i>
                     </div>
                     <div className="text-xs leading-3">Shop</div>
                   </Link>
+
+
+                  {
+                    user?.email &&  <Link
+                    to={"/custom"}
+                    className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                  >
+                    Custome Order
+                  </Link>
+                  }
 
                   {user?.role === "admin" && (
                     <Link
@@ -290,22 +328,28 @@ const Navbar = () => {
                     </Link>
                   )}
                   <Link
-                    to={""}
+                    to={"/aboutus"}
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
                     <div className="text-2xl">
-                      <i class="ri-home-3-line"></i>
+                      <i className="ri-home-3-line"></i>
                     </div>
                     <div className="text-xs leading-3">About US</div>
                   </Link>
                   <Link
-                    to={""}
+                    to={"/contactus"}
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
                     <div className="text-2xl">
-                      <i class="ri-passport-line"></i>
+                      <i className="ri-passport-line"></i>
                     </div>
                     <div className="text-xs leading-3">Contact US</div>
+                  </Link>
+                  <Link
+                    to={"/blogs"}
+                    className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                  >
+                    Blogs
                   </Link>
                   {user?.email ? (
                     <button onClick={Logouts}>Logout</button>
@@ -315,7 +359,7 @@ const Navbar = () => {
                       className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                     >
                       <div className="text-2xl">
-                        <i class="ri-login-box-line"></i>
+                        <i className="ri-login-box-line"></i>
                       </div>
                       <div className="text-xs leading-3">Login/Register</div>
                     </Link>

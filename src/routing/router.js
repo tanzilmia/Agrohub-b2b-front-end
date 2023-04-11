@@ -16,85 +16,153 @@ import DashboardSettings from "../AdminDashboard/component/settings/DashboardSet
 import ErrorPage from "../sheardComponent/ErrorPage";
 import ProductForm from "../AdminDashboard/ProductForm/ProductForm";
 import PaymentGateway from "../DynamicPage/PaymentGateway";
-import UserDetails from "../Pages/UserDetails/UserDetails";
+import AboutUs from "../Pages/about/AboutUs";
+import ContactUs from "../Pages/contactUs/ContactUs";
+import Blogs from "../Pages/blogs/Blogs";
+import BasicSettigs from "../AdminDashboard/component/settings/BasicSettings";
+import Edete from "../AdminDashboard/component/settings/Edete";
+import PaymentSuccess from "../DynamicPage/PaymentSuccess";
+import PaymentFail from "../DynamicPage/PaymentFail";
+import SellerProduct from "../Pages/SellerProduct/SellerProduct";
+import Shop from "../Pages/shop/Shop";
+import CustomeOrder from "../Pages/custome Order/CustomeOrder";
 
 const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <MainLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
         path: "/",
-        element: <MainLayout />,
-        errorElement: <ErrorPage />,
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/shop",
+        element: <Shop />,
+      },
+      {
+        path: "/aboutus",
+        element: <AboutUs />,
+      },
+      {
+        path: "/contactus",
+        element: <ContactUs />,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
+      },
+
+      {
+        path: "/custom",
+        element: <CustomeOrder />,
+      },
+      {
+        path: "/selling_products",
+        element: <SellerProduct />,
+      },
+      {
+        path: "/details/:id",
+        element: <ReviewLayout />,
+        loader: ({ params }) =>
+          fetch(
+            `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+          ),
         children: [
-            {
-                path: "/",
-                element: <Home />,
-            },
-            {
-                path: "/login",
-                element: <Login />,
-            },
-            {
-                path: "/register",
-                element: <Register />,
-            },
-            {
-                path:"/userDetails",
-                element: <UserDetails />
-            },
-            {
-                path: "/details",
-                element: <ReviewLayout />,
-                children: [
-
-                    {
-                        path: "/details/description",
-                        element: <DetailsDescription></DetailsDescription>,
-                    },
-                    {
-                        path: "/details/review",
-                        element: <UserReview></UserReview>,
-                    },
-                    {
-                        path: "/details/additional-information",
-                        element: <AdditionalInformation></AdditionalInformation>,
-                    },
-                ],
-
-            },
-            {
-                path: "/details/payment-gateway",
-                element: <PaymentGateway></PaymentGateway>,
-            },
-            {
-                path: "/dashboard",
-                element: <AdminLayout />,
-                children: [
-
-                    {
-                        path: "/dashboard/admin",
-                        element: <HomeDashboard />,
-                    },
-                    {
-                        path: "/dashboard/seller",
-                        element: <SellerDashboard />,
-                    },
-                    {
-                        path: "/dashboard/buyer",
-                        element: <BuyerDashboard />,
-                    },
-                    {
-                        path: "/dashboard/addproduct",
-                        element: <ProductForm />
-                    },
-                    {
-                        path: "/dashboard/settings",
-                        element: <DashboardSettings />,
-                    },
-                ],
-            },
-
-
+          {
+            path: "/details/:id/description",
+            element: <DetailsDescription />,
+            loader: ({ params }) =>
+              fetch(
+                `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+              ),
+          },
+          {
+            path: "/details/:id/review",
+            element: <UserReview />,
+            loader: ({ params }) =>
+              fetch(
+                `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+              ),
+          },
+          {
+            path: "/details/:id/additional-information",
+            element: <AdditionalInformation />,
+            loader: ({ params }) =>
+              fetch(
+                `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+              ),
+          },
         ],
-    },
+      },
+      {
+        path: "/details/payment-gateway/:id",
+        element: <PaymentGateway></PaymentGateway>,
+        loader: ({ params }) => {
+          return fetch(
+            `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+          );
+        },
+      },
+      {
+        path: "/payment-gateway/payment/success",
+        element: <PaymentSuccess></PaymentSuccess>,
+      },
+      {
+        path: "/payment-gateway/payment/fail",
+        element: <PaymentFail></PaymentFail>,
+      },
+      {
+        path: "/dashboard",
+        element: <AdminLayout />,
+        children: [
+          {
+            path: "/dashboard/admin",
+            element: <HomeDashboard />,
+          },
+          {
+            path: "/dashboard/seller",
+            element: <SellerDashboard />,
+          },
+          {
+            path: "/dashboard/buyer",
+            element: <BuyerDashboard />,
+          },
+          {
+            path: "/dashboard/addproduct",
+            element: <ProductForm />,
+          },
+          {
+            path: "/dashboard/settings",
+            element: <DashboardSettings />,
+            children: [
+              {
+                path: "/dashboard/settings",
+                element: <BasicSettigs />,
+              },
+              {
+                path: "/dashboard/settings/Profile",
+                element: <BasicSettigs />,
+              },
+              {
+                path: "/dashboard/settings/edete",
+                element: <Edete />,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ]);
 
 export default router;

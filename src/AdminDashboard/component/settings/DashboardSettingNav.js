@@ -1,12 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const DashboardSettingNav = () => {
   const tabItems = [
     "Profile",
-    "Integration",
-    "Billing",
-    "Transactions",
-    "plans",
+    "edete"
   ];
   const [selectedItem, setSelectedItem] = useState(0);
 
@@ -20,20 +18,21 @@ const DashboardSettingNav = () => {
           <li
             key={idx}
             className={`py-2 border-b-2 ${
-              selectedItem == idx
+              selectedItem === idx
                 ? "border-indigo-600 text-indigo-600"
                 : "border-white text-gray-500"
             }`}
           >
-            <button
+            <Link
+              to = {`/dashboard/settings/${item}`}
               role="tab"
-              aria-selected={selectedItem == idx ? true : false}
+              aria-selected={selectedItem === idx ? true : false}
               aria-controls={`tabpanel-${idx + 1}`}
               className="py-2.5 px-4 rounded-lg duration-150 hover:text-indigo-600 hover:bg-gray-50 active:bg-gray-100 font-medium"
               onClick={() => setSelectedItem(idx)}
             >
               {item}
-            </button>
+            </Link>
           </li>
         ))}
       </ul>

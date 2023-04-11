@@ -53,9 +53,9 @@ const Register = () => {
             <div {...getRootProps({ className: "dropzone" })}>
               <input {...getInputProps()} />
               <div className={file === null || "hidden"}>
-                <div class="relative mx-auto w-28 h-28 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                <div className="relative mx-auto w-28 h-28 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                   <svg
-                    class="absolute w-[120px] h-28 text-gray-400 -left-1"
+                    className="absolute w-[120px] h-28 text-gray-400 -left-1"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +149,10 @@ const Register = () => {
               console.log(userinfo);
 
               axios
-                .post(`http://localhost:5000/auth/register`, userinfo)
+                .post(
+                  `https://agrohub-b2b-backend.vercel.app/auth/register`,
+                  userinfo
+                )
                 .then((res) => {
                   if (res.data.message === "Email Is Already Used") {
                     setregistrError("This Email AlReady Use");
@@ -330,124 +333,4 @@ const Register = () => {
 
 export default Register;
 
-// {
-//   /* <form action="" className="flex flex-col gap-4 ">
-//   <div className="flex justify-between">
-//     <input
-//       className="p-2 mt-8 rounded-xl border w-[45%]"
-//       type="text"
-//       id="firstName"
-//       name="firstName"
-//       placeholder="First Name"
-//     />
-//     <input
-//       className="p-2 mt-8 rounded-xl border w-[45%]"
-//       type="text"
-//       id="lastName"
-//       name="lastName"
-//       placeholder="Last Name"
-//     />
-//   </div>
 
-//   <div className="flex justify-between">
-//     <input
-//       className="p-2 rounded-xl border w-[45%]"
-//       type="number"
-//       id="number"
-//       name="number"
-//       placeholder="Phone Number"
-//     />
-//     <input
-//       className="p-2  rounded-xl border w-[45%]"
-//       type="email"
-//       name="email"
-//       id="email"
-//       placeholder="Email Address"
-//     />
-//   </div>
-
-//   <div className="relative">
-//     <input
-//       className="p-2 rounded-xl border w-full"
-//       name="password"
-//       id="password"
-//       type={show ? "text" : "password"}
-//       placeholder="Password"
-//     />
-//     <i
-//       onClick={() => setShow(!show)}
-//       className={
-//         show
-//           ? "ri-eye-line absolute top-[23%] text-gray-500 right-3 cursor-pointer"
-//           : "ri-eye-off-line absolute top-[23%] text-gray-500 right-3 cursor-pointer"
-//       }
-//     ></i>
-//   </div>
-
-//   <div className="relative">
-//     <input
-//       className="p-2 rounded-xl border w-full"
-//       name="confirmPassword"
-//       id="confirmPassword"
-//       type={show ? "text" : "password"}
-//       placeholder="Confirm Password"
-//     />
-//     <i
-//       onClick={() => setShow(!show)}
-//       className={
-//         show
-//           ? "ri-eye-line absolute top-[23%] text-gray-500 right-3 cursor-pointer"
-//           : "ri-eye-off-line absolute top-[23%] text-gray-500 right-3 cursor-pointer"
-//       }
-//     ></i>
-//   </div>
-
-//   <div className="flex items-center mx-auto">
-//     <h1 className="text-sm text-gray-400">Please Select Trade Role:</h1>
-
-//     <div className="flex items-center ml-4">
-//       <div className="flex items-center mr-4">
-//         <input
-//           id="inline-radio"
-//           type="radio"
-//           value="Buyer"
-//           name="role"
-//         />
-//         <label
-//           htmlFor="inline-radio"
-//           className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-500"
-//         >
-//           Buyer
-//         </label>
-//       </div>
-//       <div className="flex items-center mr-4">
-//         <input
-//           id="inline-2-radio"
-//           type="radio"
-//           value=""
-//           name="role"
-//         />
-//         <label
-//           htmlFor="inline-2-radio"
-//           className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-500"
-//         >
-//           Seller
-//         </label>
-//       </div>
-//     </div>
-//   </div>
-
-//   <button
-//     type="submit"
-//     className="bg-[#29BA2F] rounded-xl text-white py-2 hover:scale-105 duration-300 font-bold "
-//   >
-//     Register
-//   </button>
-//   <p className=" text-lg border-gray-400 text-center text-gray-500">
-//     Already have an account?{" "}
-//     <Link className="hover:underline hover:text-[#29BA2F]" to={"/login"}>
-//       Login
-//     </Link>{" "}
-//   </p>
-// </form>; */
-// }

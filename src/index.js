@@ -5,12 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Authcontext from "./contextApi/Authcontext";
 import "remixicon/fonts/remixicon.css";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Authcontext>
-    {" "}
-    <App />{" "}
+    {/* this provider is used for redux store */}
+    <Provider store={store}>
+      <App />
+    </Provider>
   </Authcontext>
 );
 
