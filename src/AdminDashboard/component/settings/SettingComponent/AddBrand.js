@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useContext } from "react";
+import { myContext } from "../../../../contextApi/Authcontext";
 
 const AddBrand = () => {
+  const {user,header} = useContext(myContext)
   const [categorys, setCategorys] = useState([]);
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
@@ -16,20 +19,18 @@ const AddBrand = () => {
       .catch((e) => console.log(e));
   }, []);
 
-  console.log(categorys);
 
   const handleSubmit = () => {
-    console.log("Brand: ", brand);
-    console.log("Category: ", category);
-
     const newBrand = {
       category: category,
       brand: brand,
     };
     axios
-      .post(`http://localhost:5000/admin/brands`, newBrand)
+      .post(`http://localhost:5000/admin/brands?email=${user?.email}`, newBrand,header)
       .then((res) => {
-        console.log(res.data);
+        if(res.data.message === "Success"){
+          setBrand("")
+        }
       })
       .catch((e) => console.log(e));
   };
