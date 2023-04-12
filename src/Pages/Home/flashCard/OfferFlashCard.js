@@ -41,8 +41,10 @@ const OfferFlashCard = () => {
 
   return (
     <section
-      className={`relative  bg-cover bg-center bg-no-repeat flex flex-col-reverse items-center lg:flex-row my-20 text-white`}
-      style={{ backgroundImage: `url(${background})` }}
+      className={`relative  bg-cover bg-center bg-no-repeat flex flex-col-reverse items-center lg:flex-row my-20 text-white mx-16 rounded-lg`}
+      style={{
+        backgroundImage: `url(https://images.unsplash.com/photo-1558008749-736d955a1e55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)`,
+      }}
     >
       {/* div for layer of background */}
       <div className="absolute inset-0 bg-gray/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-gray/95 sm:to-white/25"></div>
@@ -51,9 +53,9 @@ const OfferFlashCard = () => {
       <div className="relative px-4 md:py-24 py-16 lg:py-32 sm:px-6 md:ml-8">
         <div className="max-w-xl text-center sm:text-left">
           {!timesUp ? (
-            <h1 className="text-3xl font-extrabold sm:text-5xl">
+            <h1 className="text-3xl font-extrabold lg:text-4xl">
               Get
-              <span className="mx-4 bg-green-700 rounded-full px-6 py text-white">
+              <span className="mx-4 bg-green-700 rounded-full px-3 py text-white">
                 30%
               </span>
               Off
@@ -64,7 +66,7 @@ const OfferFlashCard = () => {
             </h1>
           )}
 
-          <p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed text-justify">
+          <p className="mt-4 max-w-lg lg:text-xl lg:text-justify">
             Get the best grain of the country. To determine the best grain of a
             particular country, several factors such as climate, soil type,
             irrigation, and agricultural practices are taken into consideration.
@@ -93,34 +95,34 @@ const OfferFlashCard = () => {
       <div className="relative mt-16 flex  gap-4 text-center lg:mx-24 ">
         {/* timout section */}
         {!timesUp ? (
-          <div className="flex text-2xl lg:text-4xl xl:text-5xl items-center justify-center gap-y-2 font-bold transform transition-all">
+          <div className="flex text-2xl lg:text-4xl items-center justify-center font-semibold lg:ml-0 ml-4 transform transition-all">
             {/* for day */}
-            <div className={`mr-4 bg-green-700 py-2 px-4 flex-grow `}>
+            <div className={`mr-4 bg-green-700 py-2 px-4 flex-grow rounded-lg`}>
               <h1>{days}</h1>
-              <h4 className="text-xl lg:text-2xl xl:text-3xl font-bold ">
-                Days
-              </h4>
+              <h4 className="text-xl  lg:text-3xl font-semibold ">Days</h4>
             </div>
 
             {/* for hours */}
-            <div className={`mr-4 bg-green-700 py-2 px-4 flex-grow `}>
+            <div className={`mr-4 bg-green-700 py-2 px-4 flex-grow rounded-lg`}>
               <h1>{hours}</h1>
-              <h4 className="text-xl lg:text-2xl xl:text-3xl font-bold ">
+              <h4 className="text-xl lg:text-2xl xl:text-3xl font-semibold ">
                 Hours
               </h4>
             </div>
             {/* mins flip */}
-            <div className={`mr-4 bg-green-700 py-2 px-4 flex-grow `}>
+            <div className={`mr-4 bg-green-700 py-2 px-4 flex-grow rounded-lg`}>
               <h1>{mins}</h1>
-              <h4 className="text-xl lg:text-2xl xl:text-3xl font-bold  ">
+              <h4 className="text-xl lg:text-2xl xl:text-3xl font-semibold ">
                 Mins
               </h4>
             </div>
             {/* secs flip */}
 
-            <div className={`mr-4 bg-green-700 py-2 px-4 flex-grow  delay-75`}>
+            <div
+              className={`mr-4 bg-green-700 py-2 px-4 flex-grow  delay-75 rounded-lg`}
+            >
               <h1>{secs}</h1>
-              <h4 className="text-xl lg:text-2xl xl:text-3xl font-bold  ">
+              <h4 className="text-xl lg:text-2xl xl:text-3xl font-semibold  ">
                 Secs
               </h4>
             </div>

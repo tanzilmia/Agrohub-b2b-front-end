@@ -25,13 +25,13 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="bg-gray-100">
       {/* Istiak Ahmed */}
       <Carousel></Carousel>
       {/* Istiak Ahmed */}
 
       {/* Alamin */}
-      <HomeProducts />
+      {/* <HomeProducts /> */}
       <HomeCategoryByProduct />
       {/* Alamin */}
 
