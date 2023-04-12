@@ -54,7 +54,7 @@ const TopSellingProduct = () => {
   }
 
   return (
-    <div className="my-20 mx-16">
+    <div className="my-40 mx-16">
       <div className="flex justify-between py-6">
         <h3 className="text-xl md:text-2xl font-semibold">
           Top Selling Products

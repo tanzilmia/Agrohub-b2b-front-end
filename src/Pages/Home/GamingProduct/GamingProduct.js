@@ -12,7 +12,7 @@ const GamingProduct = () => {
     fetchData();
   }, []);
   return (
-    <div>
+    <div className="my-40">
       <div className="mx-16">
         <div className="flex justify-between py-6">
           <h3 className="text-xl md:text-2xl font-semibold">Gamer World</h3>

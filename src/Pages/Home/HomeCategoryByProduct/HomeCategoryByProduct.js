@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const HomeCategoryByProduct = () => {
   return (
-    <main className="mx-10 my-20">
+    <main className="mx-10 my-40">
       <h2 className="lg:text-2xl text-2xl font-semibold text-center lg:m-24 mt-32 lg:mb-10 mb-16">
         Shop By Category
       </h2>

@@ -1,11 +1,3 @@
-/**
- * @ Author: Rakibul Hasan
- * @ Create Time: 2023-04-06 00:29:27
- * @ Modified by: Your name
- * @ Modified time: 2023-04-11 05:43:40
- * @ Description: Dynamically working this component Istiak Ahmed
- */
-
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Navbar2 from "../sheardComponent/Navbar2";

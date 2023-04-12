@@ -42,7 +42,7 @@ export default function Statistics() {
     },
   ];
   return (
-    <section className="py-14">
+    <section className="my-40">
       <div className="max-w-screen-xl  text-gray-600 gap-x-12 lg:flex mx-16">
         <div className="sm:hidden lg:block lg:max-w-xl">
           <img
