@@ -2,29 +2,59 @@
  * @ Author: Tuhin
  * @ Create Time: 2023-04-10 13:45:22
  * @ Modified by: Your name
- * @ Modified time: 2023-04-11 01:59:16
+ * @ Modified time: 2023-04-12 09:37:49
  * @ Description: shop page to  display product with categories
  */
 
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "./util/carousel/Carousel";
-import ShopSideNav from "./util/sidenav/ShopSideNav";
 import Loader from "./util/loader/Loader";
 import ShopAllProduct from "./util/allProduct/ShopAllProduct";
 import { useEffect } from "react";
 import { fetchAllProducts } from "../../features/products/productsSlice";
+import ShopSideNav from "./util/sidenav/ShopSideNav";
+import { getProductByCategory } from "../../features/productsByCategory/productsByCategorySlice";
+import { useState } from "react";
 
 function Shop() {
   const dispatch = useDispatch();
-  const { isLoading, isError, error, products } = useSelector(
-    (state) => state.allproducts
-  );
+  // getting all products
+  const {
+    isLoading,
+    isError,
+    error,
+    products: allProducts,
+  } = useSelector((state) => state.allproducts);
+  const [products, setProducts] = useState(allProducts);
+
+  const {
+    isLoading: byCategoryLoading,
+    isError: byCategoryIsError,
+    error: byCategoryError,
+    products: productsbyCategory,
+  } = useSelector((state) => state.productsByCategory);
+
+  // get all category from redux store
+  const {
+    isLoading: categoryLoading,
+    isError: categoryIsError,
+    error: categoryError,
+    categories,
+  } = useSelector((state) => state.allCategories);
 
   // fetch product from store
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
+
+  // get product by category
+  useEffect(() => {
+    products &&
+      categories &&
+      dispatch(getProductByCategory({ products, categories }));
+  }, [dispatch, products, categories]);
+
   // pagination facts
 
   // conditionally load data
@@ -65,7 +95,7 @@ function Shop() {
           <Carousel />
         </div>
         <div className="flex mt-24">
-          <ShopSideNav />
+          <ShopSideNav setProducts={setProducts} />
           <div className="ml-1 flex flex-col items-center justify-center">
             <ShopAllProduct products={products} />
           </div>
