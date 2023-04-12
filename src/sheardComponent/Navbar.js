@@ -9,7 +9,7 @@ import { googleLogout } from "@react-oauth/google";
 const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
-  const { user, logout } = useContext(myContext);
+  const { user, logout, productInfo } = useContext(myContext);
   const Logouts = () => {
     logout();
     googleLogout();
@@ -33,7 +33,7 @@ const Navbar = () => {
   useEffect(() => {
     updateHidden();
   }, [location.pathname]);
-
+ console.log(productInfo)
   return (
     <>
       {showMenu && (
@@ -70,7 +70,7 @@ const Navbar = () => {
                   </div>
                   <div className="text-xs leading-3">Wish List</div>
                   <span className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
-                    8
+                    {productInfo && productInfo.wishList}
                   </span>
                 </Link>
                 <Link
@@ -81,9 +81,9 @@ const Navbar = () => {
                     <i className="ri-shopping-cart-2-line"></i>
                   </div>
                   <div className="text-xs leading-3">Cart</div>
-                  {/* <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
-              8
-            </span> */}
+                  <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
+                    {productInfo && productInfo.productCount}
+                  </span>
                 </Link>
                 <Link
                   to={"/userDetails"}
@@ -225,16 +225,14 @@ const Navbar = () => {
                     Shop
                   </Link>
 
-                    
-                  {
-                    user?.email &&  <Link
-                    to={"/custom"}
-                    className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
-                  >
-                    Custome Order
-                  </Link>
-                  }
-
+                  {user?.email && (
+                    <Link
+                      to={"/custom"}
+                      className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                    >
+                      Custome Order
+                    </Link>
+                  )}
 
                   {user?.role === "admin" && (
                     <Link
@@ -309,15 +307,14 @@ const Navbar = () => {
                     <div className="text-xs leading-3">Shop</div>
                   </Link>
 
-
-                  {
-                    user?.email &&  <Link
-                    to={"/custom"}
-                    className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
-                  >
-                    Custome Order
-                  </Link>
-                  }
+                  {user?.email && (
+                    <Link
+                      to={"/custom"}
+                      className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                    >
+                      Custome Order
+                    </Link>
+                  )}
 
                   {user?.role === "admin" && (
                     <Link

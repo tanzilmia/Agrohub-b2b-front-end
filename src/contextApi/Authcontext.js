@@ -6,6 +6,11 @@ const Authcontext = ({ children }) => {
   const [loading, setloading] = useState(true);
   const [isLogin, setisLogin] = useState(false);
   const [seller, setSeller] = useState([]);
+  const [productInfo, setProductInfo] = useState({
+    productId: "",
+    productCount: 0,
+    wishList: 0,
+  });
 
   const token = localStorage.getItem("accessToken");
   const header = {
@@ -24,13 +29,13 @@ const Authcontext = ({ children }) => {
   // }
 
   useEffect(() => {
-   axios.get(`http://localhost:5000/common/sellers`)
-   .then(res => {
-     setSeller(res.data)
-   })
-   .catch(e => console.log(e))
-  }, [])
-  
+    axios
+      .get(`http://localhost:5000/common/sellers`)
+      .then((res) => {
+        setSeller(res.data);
+      })
+      .catch((e) => console.log(e));
+  }, []);
 
   useEffect(() => {
     if (token || isLogin) {
@@ -54,7 +59,7 @@ const Authcontext = ({ children }) => {
     setisLogin(false);
     setuser(null);
   };
- 
+
   const contextValue = {
     setisLogin,
     setloading,
@@ -62,7 +67,9 @@ const Authcontext = ({ children }) => {
     loading,
     logout,
     header,
-    seller
+    seller,
+    setProductInfo,
+    productInfo,
   };
   return (
     <myContext.Provider value={contextValue}> {children} </myContext.Provider>

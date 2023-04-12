@@ -3,6 +3,7 @@ import { FaStar } from "react-icons/fa";
 import { SwiperSlide } from "swiper/react";
 
 const CarouselCard = ({ product }) => {
+  
   return (
     <SwiperSlide className="flex flex-col items-center justify-center w-full max-w-sm mx-auto ">
       <div

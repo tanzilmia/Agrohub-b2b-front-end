@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
+
   const { _id, images, newPrice, oldPrice, name } = product;
   return (
     <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center bg-white py-6">

@@ -6,13 +6,16 @@
  * @ Description: Dynamically working this component Istiak Ahmed
  */
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Navbar2 from "../sheardComponent/Navbar2";
+import { myContext } from "../contextApi/Authcontext";
 
 const ProductDetails = ({ products }) => {
   const { _id, name, description, newPrice, stock, size, images, brand } =
     products;
+  const { setProductInfo } = useContext(myContext);
+
   const [count, setCount] = useState(1);
   const [countPrice, setCountPrice] = useState(newPrice);
 
@@ -33,7 +36,15 @@ const ProductDetails = ({ products }) => {
       setCountPrice(setPrice.toFixed(2));
     }
   };
-
+  const ProductAddToCard = () => {
+    return setProductInfo({
+      productId: _id,
+      productCount: count,
+    });
+  };
+  const AddDataToWishlist = () => {
+    return;
+  };
   // console.log(products);
   return (
     <>
@@ -132,7 +143,10 @@ const ProductDetails = ({ products }) => {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3 mt-10">
-              <button className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
+              <button
+                onClick={ProductAddToCard}
+                className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white"
+              >
                 ADD TO CART <i className="ri-shopping-cart-line"></i>
               </button>
               <Link to={`/details/payment-gateway/${_id}`}>
@@ -140,7 +154,10 @@ const ProductDetails = ({ products }) => {
                   BUY IT NOW
                 </button>
               </Link>
-              <button className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
+              <button
+                onClick={AddDataToWishlist}
+                className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white"
+              >
                 ADD TO WISHLIST <i className="ri-heart-line"></i>
               </button>
             </div>
