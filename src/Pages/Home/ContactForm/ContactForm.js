@@ -65,15 +65,17 @@ export default function ContactForm() {
   ];
 
   return (
-    <main className="py-14">
-      <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
+    <main className="mx-16 my-40">
+      <div className=" text-gray-600 ">
         <div className="max-w-lg mx-auto gap-12 justify-between lg:flex lg:max-w-none">
           <div className="max-w-lg space-y-3">
-            <h3 className="text-indigo-600 font-semibold">Contact</h3>
-            <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+            <h3 className="text-indigo-600 font-semibold text-center lg:text-start">
+              Contact
+            </h3>
+            <p className="text-gray-800 lg:text-2xl text-xl text-center lg:text-start font-semibold sm:text-4xl">
               Let us know how we can help
             </p>
-            <p>
+            <p className="text-justify">
               We’re here to help and answer any question you might have, We look
               forward to hearing from you! Please fill out the form, or us the
               contact information bellow .
@@ -89,7 +91,7 @@ export default function ContactForm() {
               </ul>
             </div>
           </div>
-          <div className="flex-1 mt-12 sm:max-w-lg lg:max-w-md">
+          <div className="flex-1 mt-12 lg:max-w-md">
             <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
               <div>
                 <label className="font-medium">Full name</label>

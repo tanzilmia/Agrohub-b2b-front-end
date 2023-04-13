@@ -6,7 +6,7 @@
 */
 export default function TeamTrustUs() {
   return (
-    <div className="py-14">
+    <div className="my-40">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
         <h3 className="font-semibold text-sm text-gray-600 text-center">
           TRUSTED BY TEAMS FROM AROUND THE WORLD

@@ -5,7 +5,6 @@ const DetailsDescription = () => {
   const products = useLoaderData();
   const { _id, name, description, newPrice, stock, size, images, brand } =
     products;
-  console.log(products);
   return (
     <div className="mx-10 sm:mx-20 mb-20">
       <div className="space-y-52">
