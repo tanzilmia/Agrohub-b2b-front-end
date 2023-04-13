@@ -77,7 +77,7 @@ const ProductDetails = ({ products }) => {
               <p className="flex items-center">
                 Size:
                 <span className="flex gap-3 ml-2">
-                  {size.map((sz, i) => (
+                  {size?.map((sz, i) => (
                     <p className="border border-black py-0 px-2 font-semibold">
                       {sz}
                     </p>
@@ -124,24 +124,29 @@ const ProductDetails = ({ products }) => {
                   </button>
                 </span>
               </p>
-
+                    
               <p>
                 Subtotal:{" "}
                 <span className="text-orange-300 font-semibold">$ </span>
                 <span className="font-semibold">{countPrice}</span>
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3 mt-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 mt-10">
               <button className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
                 ADD TO CART <i className="ri-shopping-cart-line"></i>
               </button>
-              <Link to={`/details/payment-gateway/${_id}`}>
-                <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
-                  BUY IT NOW
+              
+              <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
+                  <Link to={`/details/payment-gateway/${_id}`}>
+                  BUY IT NOW <i class="ri-arrow-right-fill"></i>
+                </Link>
+                
                 </button>
-              </Link>
               <button className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
                 ADD TO WISHLIST <i className="ri-heart-line"></i>
+              </button>
+              <button className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
+                CUSTOM ORDER
               </button>
             </div>
           </div>

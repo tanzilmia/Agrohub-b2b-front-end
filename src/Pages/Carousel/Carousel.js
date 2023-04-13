@@ -63,13 +63,13 @@ const Carousel = () => {
       clearTimeout(timeOut);
     };
   });
-  console.log(slides[currentIndex].url)
   return (
     <div
       onMouseEnter={() => setAutoPlay(false)}
       onMouseLeave={() => setAutoPlay(true)}
       className="max-w-full h-[300px] xl:h-[500px] w-full m-auto pb-16 mt-4 relative cursor-pointer group"
     >
+    
       <div
       //  style={{
       //   backgroundImage: `url("${slides[currentIndex].url}")`,
