@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Navbar2 from "../sheardComponent/Navbar2";
+import axios from "axios";
+import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { AiOutlineStar } from "react-icons/ai";
 
 const ProductDetails = ({ products }) => {
   const { _id, name, description, newPrice, stock, size, images, brand } =
@@ -27,24 +30,30 @@ const ProductDetails = ({ products }) => {
   };
 
   const handleRatingClick = async (ratingNumber) => {
-    setRating(ratingNumber);
     try {
-      const response = await fetch(
-        `http://localhost:5000/review/product_rating/64374d07efaf4b536eab366c/rating`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ rating: ratingNumber }),
-        }
+      const response = await axios.post(
+        `http://localhost:5000/seller/product_rating/${_id}/rating`,
+        { rating: ratingNumber }
       );
-      const data = await response.json();
-      console.log(data); // logs the response from the server
+      if (response.data) {
+        setRating(ratingNumber);
+      }
     } catch (error) {
       console.error(error);
     }
   };
+
+  const ratingStar = Array.from({ length: 5 }, (_, index) => {
+    return (
+      <span key={index}>
+        {products?.rating > index ? (
+          <FaStar className="icon text-orange-600"></FaStar>
+        ) : (
+          <AiOutlineStar className="icon text-orange-600"></AiOutlineStar>
+        )}
+      </span>
+    );
+  });
 
   return (
     <>
@@ -56,17 +65,22 @@ const ProductDetails = ({ products }) => {
           </div>
           <div className="md:col-span-3 mx-20">
             <h2 className="text-2xl font-semibold">{name}</h2>
-            <div className="flex gap-4 my-3">
-              {[1, 2, 3, 4, 5].map((number) => (
-                <i
-                  key={number}
-                  className={`ri-star-fill text-orange-600 ${
-                    rating >= number ? "opacity-100" : "opacity-50"
-                  }`}
-                  onClick={() => handleRatingClick(number)}
-                ></i>
-              ))}
-            </div>
+
+            {products?.rating === 0 ? (
+              <div className="flex gap-4 my-3">
+                {[1, 2, 3, 4, 5].map((number) => (
+                  <i
+                    key={number}
+                    className={`ri-star-fill text-orange-600 ${
+                      rating >= number ? "opacity-100" : "opacity-50"
+                    }`}
+                    onClick={() => handleRatingClick(number)}
+                  ></i>
+                ))}
+              </div>
+            ) : (
+              <div className="flex gap-4 my-3"> {ratingStar}</div>
+            )}
             <div>
               <p className=" mb-4">
                 {description ? description.slice(0, 250) : "No Description"}
@@ -92,13 +106,17 @@ const ProductDetails = ({ products }) => {
             <div className=" flex flex-col gap-4 mt-4">
               <p className="flex items-center">
                 Size:
-                <span className="flex gap-3 ml-2">
-                  {size.map((sz, i) => (
-                    <p className="border border-black py-0 px-2 font-semibold">
-                      {sz}
-                    </p>
-                  ))}
-                </span>
+                {size.length === 0 ? (
+                  <span className="ml-2 font-semibold">Not Available</span>
+                ) : (
+                  <span className="flex gap-3 ml-2">
+                    {size.map((sz, i) => (
+                      <p className="border border-black py-0 px-2 font-semibold">
+                        {sz}
+                      </p>
+                    ))}
+                  </span>
+                )}
               </p>
               <p className="flex items-center">
                 <span className="mr-2">Quality:</span>
