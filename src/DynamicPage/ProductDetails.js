@@ -1,11 +1,3 @@
-/**
- * @ Author: Rakibul Hasan
- * @ Create Time: 2023-04-06 00:29:27
- * @ Modified by: Your name
- * @ Modified time: 2023-04-11 05:43:40
- * @ Description: Dynamically working this component Istiak Ahmed
- */
-
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Navbar2 from "../sheardComponent/Navbar2";
@@ -15,7 +7,7 @@ const ProductDetails = ({ products }) => {
     products;
   const [count, setCount] = useState(1);
   const [countPrice, setCountPrice] = useState(newPrice);
-
+  const [rating, setRating] = useState(0);
   const handleIncrement = () => {
     setCount(count + 1);
     const numericPrice = parseFloat(newPrice);
@@ -34,7 +26,26 @@ const ProductDetails = ({ products }) => {
     }
   };
 
-  // console.log(products);
+  const handleRatingClick = async (ratingNumber) => {
+    setRating(ratingNumber);
+    try {
+      const response = await fetch(
+        `http://localhost:5000/review/product_rating/64374d07efaf4b536eab366c/rating`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ rating: ratingNumber }),
+        }
+      );
+      const data = await response.json();
+      console.log(data); // logs the response from the server
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <Navbar2 />
@@ -46,10 +57,15 @@ const ProductDetails = ({ products }) => {
           <div className="md:col-span-3 mx-20">
             <h2 className="text-2xl font-semibold">{name}</h2>
             <div className="flex gap-4 my-3">
-              <i className="ri-star-fill text-orange-600"></i>
-              <i className="ri-star-fill text-orange-600"></i>
-              <i className="ri-star-fill text-orange-600"></i>
-              <i className="ri-star-fill text-orange-600"></i>
+              {[1, 2, 3, 4, 5].map((number) => (
+                <i
+                  key={number}
+                  className={`ri-star-fill text-orange-600 ${
+                    rating >= number ? "opacity-100" : "opacity-50"
+                  }`}
+                  onClick={() => handleRatingClick(number)}
+                ></i>
+              ))}
             </div>
             <div>
               <p className=" mb-4">
@@ -151,7 +167,7 @@ const ProductDetails = ({ products }) => {
             </div>
           </div>
         </div>
-        <div className="flex gap-10 font-semibold text-xl md:text-3xl mt-20 mx-10 sm:mx-20">
+        <div className="flex gap-10 font-semibold text-lg mt-48 lg:text-xl">
           <NavLink
             to={`/details/${_id}/description`}
             className={({ isActive }) => (isActive ? "text-orange-500" : "")}
