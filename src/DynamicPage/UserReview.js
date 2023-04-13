@@ -9,7 +9,6 @@ const UserReview = () => {
   const { user } = useContext(myContext);
 
   const [reviews, setReviews] = useState([]);
-  console.log(user);
   const handleSubmit = (event) => {
     event.preventDefault();
 

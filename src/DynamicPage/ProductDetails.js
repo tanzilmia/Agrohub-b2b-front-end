@@ -26,8 +26,24 @@ const ProductDetails = ({ products }) => {
     }
   };
 
-  const handleRatingClick = (ratingNumber) => {
+  const handleRatingClick = async (ratingNumber) => {
     setRating(ratingNumber);
+    try {
+      const response = await fetch(
+        `http://localhost:5000/review/product_rating/64374d07efaf4b536eab366c/rating`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ rating: ratingNumber }),
+        }
+      );
+      const data = await response.json();
+      console.log(data); // logs the response from the server
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
