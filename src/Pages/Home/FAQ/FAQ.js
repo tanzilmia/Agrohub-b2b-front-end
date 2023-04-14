@@ -24,7 +24,7 @@ const FaqsCard = (props) => {
       key={idx}
       onClick={handleOpenAnswer}
     >
-      <h4 className="cursor-pointer pb-5 flex items-center justify-between text-lg text-gray-700 font-medium">
+      <h4 className="cursor-pointer pb-5 flex items-center justify-between text-base text-gray-700 font-medium">
         {faqsList.q}
         {state ? (
           <svg
@@ -64,7 +64,7 @@ const FaqsCard = (props) => {
         style={state ? { height: answerH } : { height: "0px" }}
       >
         <div>
-          <p className="text-gray-500">{faqsList.a}</p>
+          <p className="text-gray-500 text-justify">{faqsList.a}</p>
         </div>
       </div>
     </div>
@@ -96,17 +96,17 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="leading-relaxed max-w-screen-xl mt-12 mx-auto px-4 md:px-8">
+    <section className="leading-relaxed mt-12 px-4 md:px-8 my-40 mx-16">
       <div className="space-y-3 text-center">
-        <h1 className="text-3xl text-gray-800 font-semibold">
+        <h1 className="lg:text-2xl text-xl text-gray-800 font-semibold">
           Frequently Asked Questions
         </h1>
-        <p className="text-gray-600 max-w-lg mx-auto text-lg">
+        <p className="text-gray-600 text-base">
           Answered all frequently asked questions, Still confused? feel free to
           contact us.
         </p>
       </div>
-      <div className="mt-14 max-w-2xl mx-auto">
+      <div className="mt-14 max-w-7xl">
         {faqsList.map((item, idx) => (
           <FaqsCard idx={idx} faqsList={item} />
         ))}

@@ -25,6 +25,7 @@ import PaymentSuccess from "../DynamicPage/PaymentSuccess";
 import PaymentFail from "../DynamicPage/PaymentFail";
 import SellerProduct from "../Pages/SellerProduct/SellerProduct";
 import Shop from "../Pages/shop/Shop";
+import CustomeOrder from "../Pages/custome Order/CustomeOrder";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs />,
+      },
+
+      {
+        path: "/custom",
+        element: <CustomeOrder />,
       },
       {
         path: "/selling_products",

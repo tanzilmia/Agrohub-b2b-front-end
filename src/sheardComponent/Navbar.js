@@ -66,18 +66,6 @@ const Navbar = () => {
                   className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
                 >
                   <div className="text-2xl">
-                    <i className="ri-heart-line"></i>
-                  </div>
-                  <div className="text-xs leading-3">Wish List</div>
-                  <span className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
-                    8
-                  </span>
-                </Link>
-                <Link
-                  to={"#"}
-                  className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
-                >
-                  <div className="text-2xl">
                     <i className="ri-shopping-cart-2-line"></i>
                   </div>
                   <div className="text-xs leading-3">Cart</div>
@@ -225,16 +213,14 @@ const Navbar = () => {
                     Shop
                   </Link>
 
-                    
-                  {
-                    user?.email &&  <Link
-                    to={"/custom"}
-                    className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
-                  >
-                    Custome Order
-                  </Link>
-                  }
-
+                  {user?.email && (
+                    <Link
+                      to={"/custom"}
+                      className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                    >
+                      Custome Order
+                    </Link>
+                  )}
 
                   {user?.role === "admin" && (
                     <Link
@@ -309,15 +295,14 @@ const Navbar = () => {
                     <div className="text-xs leading-3">Shop</div>
                   </Link>
 
-
-                  {
-                    user?.email &&  <Link
-                    to={"/custom"}
-                    className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
-                  >
-                    Custome Order
-                  </Link>
-                  }
+                  {user?.email && (
+                    <Link
+                      to={"/custom"}
+                      className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                    >
+                      Custome Order
+                    </Link>
+                  )}
 
                   {user?.role === "admin" && (
                     <Link

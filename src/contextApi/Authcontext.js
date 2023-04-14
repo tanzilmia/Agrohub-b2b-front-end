@@ -5,6 +5,7 @@ const Authcontext = ({ children }) => {
   const [user, setuser] = useState(null);
   const [loading, setloading] = useState(true);
   const [isLogin, setisLogin] = useState(false);
+  const [seller, setSeller] = useState([]);
 
   const token = localStorage.getItem("accessToken");
   const header = {
@@ -13,6 +14,16 @@ const Authcontext = ({ children }) => {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },
   };
+
+
+  useEffect(() => {
+   axios.get(`http://localhost:5000/common/sellers`)
+   .then(res => {
+     setSeller(res.data)
+   })
+   .catch(e => console.log(e))
+  }, [])
+  
 
   useEffect(() => {
     if (token || isLogin) {
@@ -44,6 +55,7 @@ const Authcontext = ({ children }) => {
     loading,
     logout,
     header,
+    seller
   };
   return (
     <myContext.Provider value={contextValue}> {children} </myContext.Provider>
