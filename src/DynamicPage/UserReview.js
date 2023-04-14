@@ -3,12 +3,15 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { myContext } from "../contextApi/Authcontext";
 import axios from "axios";
+import { FaStar } from "react-icons/fa";
+import { AiOutlineStar } from "react-icons/ai";
 
 const UserReview = () => {
   const products = useLoaderData();
   const { user } = useContext(myContext);
 
   const [reviews, setReviews] = useState([]);
+  const [rating, setRating] = useState(0);
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -38,6 +41,37 @@ const UserReview = () => {
         console.log(error);
       });
   };
+
+  const handleRatingClick = async (ratingNumber) => {
+    try {
+      if (reviews && reviews.length > 0) {
+        const response = await axios.post(
+          `http://localhost:5000/review/product_review/${reviews[0]._id}/review`,
+          { rating: ratingNumber }
+        );
+        if (response.data) {
+          setRating(ratingNumber);
+          console.log(response.data);
+        }
+      } else {
+        console.log("No reviews found");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const ratingStar = Array.from({ length: 5 }, (_, index) => {
+    return (
+      <span key={index}>
+        {reviews[0]?.rating > index ? (
+          <FaStar className="icon text-orange-600"></FaStar>
+        ) : (
+          <AiOutlineStar className="icon text-orange-600"></AiOutlineStar>
+        )}
+      </span>
+    );
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,13 +112,7 @@ const UserReview = () => {
                           <p className="font-semibold text-sm text-gray-400">
                             {review?.userName}
                           </p>
-                          <div className="flex gap-1 ">
-                            <i className="ri-star-fill text-orange-500"></i>
-                            <i className="ri-star-fill text-orange-500"></i>
-                            <i className="ri-star-fill text-orange-500"></i>
-                            <i className="ri-star-fill text-orange-500"></i>
-                            <i className="ri-star-fill text-orange-500"></i>
-                          </div>
+                          <div className="flex gap-4 my-3"> {ratingStar}</div>
                         </div>
                         <p className="text-sm text-gray-500">
                           {review && review?.date.slice(0, 10)}
@@ -107,15 +135,19 @@ const UserReview = () => {
               Your email address will not be published. Required fields are
               marked *
             </p>
-            <p className="flex gap-2 mb-4 text-base font-semibold">
+            <p className="flex gap-2 mb-4  text-base font-semibold">
               Your Rating :
-              <span className="flex gap-2 ">
-                <i className="ri-star-fill text-orange-600"></i>
-                <i className="ri-star-fill text-orange-600"></i>
-                <i className="ri-star-fill text-orange-600"></i>
-                <i className="ri-star-fill text-orange-600"></i>
-                <i className="ri-star-fill text-orange-600"></i>
-              </span>
+              <div className="flex gap-2 ">
+                {[1, 2, 3, 4, 5].map((number) => (
+                  <i
+                    key={number}
+                    className={`ri-star-fill text-orange-600 ${
+                      rating >= number ? "opacity-100" : "opacity-50"
+                    }`}
+                    onClick={() => handleRatingClick(number)}
+                  ></i>
+                ))}
+              </div>
             </p>
           </div>
           <form onSubmit={handleSubmit}>
