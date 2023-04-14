@@ -19,10 +19,8 @@ const Login = () => {
       <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-7xl p-5 ">
         {/* left div */}
         <div className="md:w-[500px] px-16">
-          <h2 className="font-bold text-2xl text-[#29BA2F] text-center">
-            Login
-          </h2>
-          <p className="text-sm mt-4 text-[#29BA2F] text-center">
+          <h2 className="font-bold text-2xl text-Primary text-center">Login</h2>
+          <p className="text-sm mt-4 text-Primary text-center">
             If You Already A Member, Easily Login
           </p>
 
@@ -118,7 +116,7 @@ const Login = () => {
 
                 <button
                   type="submit"
-                  className="bg-[#29BA2F] rounded-xl text-white py-2 hover:scale-105 duration-300 font-bold "
+                  className="bg-Primary rounded-xl text-white py-2 hover:scale-105 duration-300 font-bold "
                   disabled={isSubmitting}
                 >
                   Login
@@ -139,7 +137,7 @@ const Login = () => {
             <hr className="border-gray-400" />
           </div>
 
-          {/* <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold">
+          {/* <button className="bg-white hover:bg-Primary hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold">
             <FcGoogle className="w-8 mr-3 h-10"></FcGoogle> Login With Google
           </button> */}
           <div className="flex justify-center mt-3 items-center">
@@ -149,7 +147,7 @@ const Login = () => {
 
         {/* right div */}
         <div className="w-[500px] py-5 md:block hidden">
-          <h2 className="font-bold text-2xl text-[#29BA2F] text-center">
+          <h2 className="font-bold text-2xl text-Primary text-center">
             Create An Account
           </h2>
           <div className="flex items-center text-gray-500 py-2">
@@ -185,7 +183,7 @@ const Login = () => {
             <span className="text-lg ml-4">Manage Favorites Lists</span>
           </div>
           <Link to={"/register"}>
-            <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-3 w-1/2 mx-auto rounded-xl  flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold ">
+            <button className="bg-white hover:bg-Primary hover:text-white border py-3 w-1/2 mx-auto rounded-xl  flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold ">
               Register
             </button>
           </Link>

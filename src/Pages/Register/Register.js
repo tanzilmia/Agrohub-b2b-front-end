@@ -43,10 +43,10 @@ const Register = () => {
     <nav className="bg-gray-50 min-h-screen  flex items-center justify-center">
       <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-7xl p-5 ">
         <div className="md:w-[700px] px-16">
-          <h2 className="font-bold text-2xl text-[#29BA2F] text-center">
+          <h2 className="font-bold text-2xl text-Primary text-center">
             Register
           </h2>
-          <p className="text-sm mt-4 text-[#29BA2F] text-center">
+          <p className="text-sm mt-4 text-Primary text-center">
             If You'r Not A Member, Easily Register
           </p>
           <section className="container mt-4">
@@ -294,7 +294,7 @@ const Register = () => {
                 {registrError && <p>{registrError}</p>}
 
                 <button
-                  className="bg-[#29BA2F] rounded-xl text-white py-2 hover:scale-105 duration-300 font-bold "
+                  className="bg-Primary rounded-xl text-white py-2 hover:scale-105 duration-300 font-bold "
                   type="submit"
                   disabled={isSubmitting}
                 >
@@ -319,7 +319,7 @@ const Register = () => {
             <p className="text-center text-sm">OR</p>
             <hr className="border-gray-400" />
           </div>
-          {/* <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold">
+          {/* <button className="bg-white hover:bg-Primary hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold">
             <FcGoogle className="w-8 mr-3 h-10"></FcGoogle> Login With Google
           </button> */}
           <div className="flex justify-center mt-3 items-center">
@@ -332,5 +332,3 @@ const Register = () => {
 };
 
 export default Register;
-
-

@@ -27,7 +27,7 @@ const Blog = ({ blog, id }) => {
             className="inline-block hover:text-gray-900 hover:font-bold"
             to={`/${link}`}
           >
-            <span className="text-primary">Read more</span>
+            <span className="text-Primary">Read more</span>
           </Link>
         </div>
       </div>

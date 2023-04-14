@@ -41,9 +41,9 @@ const OfferFlashCard = () => {
 
   return (
     <section
-      className={`relative  bg-cover bg-center bg-no-repeat flex flex-col-reverse items-center lg:flex-row my-40 text-white mx-16 rounded-lg `}
+      className={`relative  bg-cover bg-center bg-no-repeat flex flex-col-reverse items-center lg:flex-row my-40 text-white mx-16 rounded-lg md:min-h-[400px]`}
       style={{
-        backgroundImage: `url(https://images.unsplash.com/photo-1558008749-736d955a1e55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)`,
+        backgroundImage: `url(https://images.unsplash.com/photo-1631679706909-1844bbd07221?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=792&q=80)`,
       }}
     >
       {/* div for layer of background */}
@@ -66,11 +66,11 @@ const OfferFlashCard = () => {
             </h1>
           )}
 
-          <p className="mt-4 max-w-lg lg:text-xl lg:text-justify">
+          {/* <p className="mt-4 max-w-lg lg:text-xl lg:text-justify">
             Get the best grain of the country. To determine the best grain of a
             particular country, several factors such as climate, soil type,
             irrigation, and agricultural practices are taken into consideration.
-          </p>
+          </p> */}
 
           <div className="mt-8 flex flex-wrap gap-4 text-center">
             <Link

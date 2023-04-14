@@ -118,7 +118,7 @@ const ProductForm = () => {
       {loading ? (
         <div className="flex justify-center items-center h-screen">
           <svg
-            className="animate-spin -ml-1 mr-3 h-10 w-10 text-[#29BA2F]"
+            className="animate-spin -ml-1 mr-3 h-10 w-10 text-Primary"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

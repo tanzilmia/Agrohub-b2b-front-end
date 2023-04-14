@@ -7,7 +7,7 @@ const HomeProducts = () => {
     <section className="bg-gray-100 border-2">
       <div className="flex justify-between py-6">
         <h3 className="text-xl md:text-3xl font-bold ml-2">Top Products</h3>
-        <span className="font-bold md:text-xl flex items-center hover:text-[#29BA2F] mr-2">
+        <span className="font-bold md:text-xl flex items-center hover:text-Primary mr-2">
           <Link to="/products">View More</Link>
           <i className="ri-arrow-right-line ml-1"></i>
         </span>
