@@ -42,8 +42,8 @@ export default function Statistics() {
     },
   ];
   return (
-    <section className="my-40">
-      <div className="max-w-screen-xl  text-gray-600 gap-x-12 lg:flex mx-16">
+    <section className="mt-28">
+      <div className="max-w-screen-xl  text-gray-600 gap-x-12 lg:flex mx-10">
         <div className="sm:hidden lg:block lg:max-w-xl">
           <img
             src="https://images.unsplash.com/photo-1622675363311-3e1904dc1885?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"

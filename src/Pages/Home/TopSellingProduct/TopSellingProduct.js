@@ -56,7 +56,7 @@ const TopSellingProduct = () => {
   }
 
   return (
-    <div className="my-40 mx-16">
+    <div className="mt-28 mx-10">
       <div className="flex justify-between py-6">
         <h3 className="text-xl md:text-2xl font-semibold flex items-center ">
           <BsFire className="mr-2 text-[#FF5721] text-3xl"></BsFire> Top Best

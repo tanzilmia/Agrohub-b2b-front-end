@@ -96,7 +96,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="leading-relaxed mt-12 px-4 md:px-8 my-40 mx-16">
+    <section className="leading-relaxed mt-28 px-4 md:px-8 mx-10">
       <div className="space-y-3 text-center">
         <h1 className="lg:text-2xl text-xl text-gray-800 font-semibold">
           Frequently Asked Questions

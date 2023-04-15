@@ -49,6 +49,28 @@ const GamingProduct = () => {
       });
   }, []);
 
+  useEffect(() => {
+    const updateCarousel = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth <= 768) {
+        setSlidesToShow(2);
+      } else if (screenWidth <= 1024) {
+        setSlidesToShow(2);
+      } else if (screenWidth <= 1280) {
+        setSlidesToShow(3);
+      } else {
+        setSlidesToShow(4);
+      }
+    };
+
+    updateCarousel();
+
+    window.addEventListener("resize", updateCarousel);
+    return () => {
+      window.removeEventListener("resize", updateCarousel);
+    };
+  }, []);
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -80,8 +102,8 @@ const GamingProduct = () => {
     return <div>{error}</div>;
   }
   return (
-    <div className="my-40">
-      <div className="mx-16">
+    <div className="mt-28">
+      <div className="mx-10">
         <div className="flex justify-between py-6">
           <h3 className="text-xl flex items-center md:text-2xl font-semibold">
             <TbCategory2 className="mr-3 text-[#FF5721] text-3xl"></TbCategory2>{" "}

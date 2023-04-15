@@ -6,9 +6,9 @@ const ProductCard = ({ product }) => {
     product;
   return (
     <Link to={`/details/${_id}`}>
-      <div class="relative w-full lg:h-[22rem]  overflow-hidden rounded-lg  shadow-md bg-white p-2 ">
+      <div class="block rounded-lg w-full overflow-hidden shadow-2xl shadow-indigo-100 hover:shadow-2xl transition-all duration-300 hover:bg-indigo-100 transform hover:-translate-y-4 hover:scale-105">
         <img
-          class=" rounded-t-lg h-48 w-full object-cover"
+          class=" rounded-t-lg lg:h-48 h-40 w-full object-cover"
           src={images && images[0]}
           alt=""
         />
@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
         </span>
         <div class="mt-4 px-5 pb-5">
           <Link to="#">
-            <h5 class="text-lg font-semibold tracking-tight text-slate-900">
+            <h5 class="lg:text-lg text-sm font-semibold tracking-tight text-slate-900">
               {name.slice(0, 20)}
             </h5>
           </Link>
@@ -72,17 +72,17 @@ const ProductCard = ({ product }) => {
             </svg>
           </div>
           <div class="flex items-center justify-between">
-            <p>
-              <span class="text-2xl font-semibold text-slate-900 ">
+            <p className="flex items-center">
+              <span class="lg:text-2xl text-md font-semibold text-slate-900 ">
                 ${oldPrice}
               </span>
-              <span class="text-sm text-slate-900 line-through ml-2">
+              <span class="lg:text-sm text-xs hidden lg:block text-slate-900 line-through ml-2">
                 ${newPrice}
               </span>
             </p>
             <Link
               to={`/details/${_id}`}
-              class="flex items-center rounded-md bg-slate-900 px-2 py-1 text-center text-sm font-normal text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+              class="flex items-center rounded-md bg-slate-900 px-2 py-1 text-center lg:text-sm text-xs font-normal text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

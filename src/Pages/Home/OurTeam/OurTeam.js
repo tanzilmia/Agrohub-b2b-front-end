@@ -52,7 +52,7 @@ export default function OurTeam() {
 
   return (
     <section className="">
-      <div className="my-40 mx-16">
+      <div className="mt-28 mx-10">
         <div className="max-w-xl">
           <h3 className="text-gray-800 text-xl lg:text-start text-center font-semibold lg:text-2xl">
             Meet our talent team
