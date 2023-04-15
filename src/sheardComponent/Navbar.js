@@ -5,11 +5,14 @@ import header_logo from "../Assets/Images/header-logo.jpg";
 import { myContext } from "../contextApi/Authcontext";
 import Modal from "../components/ProductCard/Modal";
 import { googleLogout } from "@react-oauth/google";
+import axios from "axios";
 
 const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const { user, logout } = useContext(myContext);
+  const [categorys, setCategorys] = useState([]);
+
   const Logouts = () => {
     logout();
     googleLogout();
@@ -33,6 +36,13 @@ const Navbar = () => {
   useEffect(() => {
     updateHidden();
   }, [location.pathname]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/admin/categories`)
+      .then((res) => setCategorys(res.data))
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <>
@@ -158,40 +168,18 @@ const Navbar = () => {
                 </span>
                 <span className="capitalize ml-2 text-white">Categories</span>
                 <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible font-semibold">
-                  <Link
-                    to={""}
-                    className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                  >
-                    <span className="ml-6 text-gray-600 text-sm">
-                      Electronics
-                    </span>
-                  </Link>
-                  <Link
-                    to={""}
-                    className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                  >
-                    <span className="ml-6 text-gray-600 text-sm">TV</span>
-                  </Link>
-                  <Link
-                    to={""}
-                    className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                  >
-                    <span className="ml-6 text-gray-600 text-sm">Sports</span>
-                  </Link>
-                  <Link
-                    to={""}
-                    className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                  >
-                    <span className="ml-6 text-gray-600 text-sm">
-                      Motorbike
-                    </span>
-                  </Link>
-                  <Link
-                    to={""}
-                    className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                  >
-                    <span className="ml-6 text-gray-600 text-sm">Sofa</span>
-                  </Link>
+                  {categorys &&
+                    categorys?.map((category) => (
+                      <Link
+                        key={category._id}
+                        to={""}
+                        className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+                      >
+                        <span className="ml-6 text-gray-600 text-sm">
+                          {category.category}
+                        </span>
+                      </Link>
+                    ))}
                 </div>
               </div>
               {/* all category end */}

@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { _id, images, newPrice, oldPrice, name, description } = product;
+  const { _id, images, newPrice, oldPrice, name, description, rating } =
+    product;
   return (
     <Link to={`/details/${_id}`}>
-      <div class="relative w-full lg:h-[22rem]  overflow-hidden rounded-lg  shadow-md bg-white p-2">
+      <div class="relative w-full lg:h-[22rem]  overflow-hidden rounded-lg  shadow-md bg-white p-2 ">
         <img
           class=" rounded-t-lg h-48 w-full object-cover"
           src={images && images[0]}
@@ -21,7 +22,9 @@ const ProductCard = ({ product }) => {
             </h5>
           </Link>
           <div class="mt-2.5 mb-5 flex items-center">
-            <span class="mr-2 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold"></span>
+            <span class="mr-2 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">
+              {rating}
+            </span>
             <svg
               aria-hidden="true"
               class="h-5 w-5 text-yellow-300"
@@ -83,7 +86,7 @@ const ProductCard = ({ product }) => {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="mr-2 h-6 w-6"
+                class=" h-5 w-5 mr-1"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -95,7 +98,7 @@ const ProductCard = ({ product }) => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              Add to cart
+              Details
             </Link>
           </div>
         </div>

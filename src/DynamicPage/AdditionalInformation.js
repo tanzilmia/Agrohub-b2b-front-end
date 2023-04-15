@@ -7,6 +7,7 @@ const AdditionalInformation = () => {
     name: "",
     feature: "",
   });
+  console.log(products);
 
   const datas = [
     { ...additionalInformation },

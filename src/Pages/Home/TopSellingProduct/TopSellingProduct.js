@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { BsFire } from "react-icons/bs";
+
 const TopSellingProduct = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -56,10 +58,11 @@ const TopSellingProduct = () => {
   return (
     <div className="my-40 mx-16">
       <div className="flex justify-between py-6">
-        <h3 className="text-xl md:text-2xl font-semibold">
-          Top Selling Products
+        <h3 className="text-xl md:text-2xl font-semibold flex items-center ">
+          <BsFire className="mr-2 text-[#FF5721] text-3xl"></BsFire> Top Best
+          Sellers
         </h3>
-        <span className="font-semibold md:text-sm flex items-center hover:text-orange-400">
+        <span className="font-semibold md:text-sm flex items-center text-[#FF5721] hover:text-orange-400">
           <Link to={"/selling_products"}>
             <button className="">View More</button>
           </Link>
