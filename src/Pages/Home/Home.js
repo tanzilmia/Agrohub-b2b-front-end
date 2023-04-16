@@ -25,7 +25,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-gray-100">
+    <div className="">
       {/* Istiak Ahmed */}
       <Carousel></Carousel>
       {/* Istiak Ahmed */}

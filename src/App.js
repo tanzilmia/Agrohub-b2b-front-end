@@ -15,7 +15,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="bg-gray-100">
       <RouterProvider router={router}> </RouterProvider>
     </div>
   );

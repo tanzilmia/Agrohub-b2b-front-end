@@ -49,7 +49,7 @@ const Navbar = () => {
       {showMenu && (
         <nav>
           {/* header section start*/}
-          <header className="py-4 relative shadow-sm">
+          <header className="py-4 relative shadow-sm bg-white">
             <div className="container flex items-center justify-around">
               {/* logo  */}
               <Link to={"/"}>
