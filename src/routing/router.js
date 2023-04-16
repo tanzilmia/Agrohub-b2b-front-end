@@ -26,6 +26,9 @@ import PaymentFail from "../DynamicPage/PaymentFail";
 import SellerProduct from "../Pages/SellerProduct/SellerProduct";
 import Shop from "../Pages/shop/Shop";
 import CustomeOrder from "../Pages/custome Order/CustomeOrder";
+import ChatLayout from "../ChatPage/ChatLayout/ChatLayout";
+import Inbox from "../ChatPage/ChatLayout/Inbox";
+import Defaultinbox from "../ChatPage/ChatLayout/Defaultinbox";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +69,21 @@ const router = createBrowserRouter([
         path: "/custom",
         element: <CustomeOrder />,
       },
+      {
+        path: "/seller/contact/chats",
+        element: <ChatLayout/>,
+        children :[
+          {
+            path: "/seller/contact/chats",
+            element : <Defaultinbox/>
+          },
+          {
+            path: "/seller/contact/chats/:id",
+            element : <Inbox/>
+          }
+        ]
+      },
+      
       {
         path: "/selling_products",
         element: <SellerProduct />,

@@ -1,9 +1,36 @@
+import axios from "axios";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
 
 const Sellers = () => {
-  const { seller } = useContext(myContext);
+  const {
+    user,
+    seller,
+    header,
+    setSelectedChat,
+    selectedChat,
+    setChats,
+    chats,
+  } = useContext(myContext);
+  console.log(user);
+
+  const accessChat = async (userId) => {
+    try {
+      const { data } = await axios.post(
+        `http://localhost:5000/chat/accessChat?email=${user?.email}`,
+        { userId },
+        header
+      );
+
+      if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
+      setSelectedChat(data);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
+  console.log(selectedChat);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
@@ -45,8 +72,10 @@ const Sellers = () => {
                 Profile
               </Link>
               <Link
-                to={`/seller/contact/${singleSeller._id}`}
+                to={`/seller/contact/chats`}
+                onClick={() => accessChat(singleSeller._id)}
                 className="bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-4 rounded transition duration-200 ease-in-out"
+                disabled={user?.role === "seller"} // Set disabled property based on user.role
               >
                 Contact
               </Link>
