@@ -7,11 +7,12 @@ import { myContext } from "../../contextApi/Authcontext";
 import { io } from "socket.io-client";
 // import ChatMessage from "../ChatMessage";
 
-const ENDPOINT = "http://localhost:5000"
-var socket , selectedChatCompare;
+const ENDPOINT = "http://localhost:5000";
+var socket, selectedChatCompare;
 
 const Inbox = () => {
-  const { user, header, setSelectedChat, selectedChat, chatUser } = useContext(myContext);
+  const { user, header, setSelectedChat, selectedChat, chatUser } =
+    useContext(myContext);
   const [message, setMessage] = useState([]);
   const [newMessage, setNewMessage] = useState();
   const [scoketConnected, setscoketConnected] = useState(false);
@@ -33,7 +34,7 @@ const Inbox = () => {
         );
 
         console.log(data);
-        socket.emit("new message",data)
+        socket.emit("new message", data);
 
         setMessage([...message, data]);
       } catch (e) {
@@ -49,13 +50,12 @@ const Inbox = () => {
         header
       );
       setMessage(data);
-      setLoading(false)
-      socket.emit("join chat", chatUser?._id )
+      setLoading(false);
+      socket.emit("join chat", chatUser?._id);
     } catch (e) {
       console.log(e.message);
     }
   };
-
 
   useEffect(() => {
     // Check if socket is defined
@@ -64,37 +64,34 @@ const Inbox = () => {
       console.error("socket is undefined");
       return;
     }
-  
+
     socket.on("message receive", (newMessageRecive) => {
-      if (!selectedChatCompare || selectedChatCompare._id !== newMessageRecive?.chat?._id) {
+      if (
+        !selectedChatCompare ||
+        selectedChatCompare._id !== newMessageRecive?.chat?._id
+      ) {
         // Display the message
       } else {
         setMessage([...message, newMessageRecive]);
       }
     });
-  
+
     // Clean up the effect
     return () => {
       socket.off("message receive");
     };
   }, [socket, selectedChatCompare, message]);
-  
-
 
   useEffect(() => {
-    socket = io(ENDPOINT)
-    socket.emit("setup", user)
-    socket.on("connection", ()=> setscoketConnected(true))
-  }, [user])
-  
+    socket = io(ENDPOINT);
+    socket.emit("setup", user);
+    socket.on("connection", () => setscoketConnected(true));
+  }, [user]);
 
   useEffect(() => {
     fetchMessages();
-    selectedChatCompare = chatUser
+    selectedChatCompare = chatUser;
   }, [chatUser]);
-
-
-
 
   console.log(message);
 
@@ -128,18 +125,23 @@ const Inbox = () => {
                     <div
                       key={m._id}
                       className={`flex ${
-                        user?._id === m.sender._id ? "flex-row" : "flex-row-reverse"
+                        user?._id === m.sender._id
+                          ? "flex-row-reverse"
+                          : "flex-row"
                       } space-x-4 items-start mt-2`}
                     >
-      
                       <div
                         className={`rounded-lg px-4 py-2 max-w-75% ${
-                          user?._id === m.sender._id ? "bg-blue-500" : "bg-white"
+                          user?._id === m.sender._id
+                            ? "bg-blue-500"
+                            : "bg-white"
                         }`}
                       >
                         <p
                           className={`text-sm ${
-                            user?._id === m.sender._id ? "text-white" : "text-black"
+                            user?._id === m.sender._id
+                              ? "text-white"
+                              : "text-black"
                           }`}
                         >
                           {m?.content}
