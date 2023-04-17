@@ -2,7 +2,7 @@
  * @ Author: Tuhin
  * @ Create Time: 2023-04-10 13:45:22
  * @ Modified by: Your name
- * @ Modified time: 2023-04-11 01:59:16
+ * @ Modified time: 2023-04-16 17:24:22
  * @ Description: shop page to  display product with categories
  */
 
@@ -18,7 +18,7 @@ import { fetchAllProducts } from "../../features/products/productsSlice";
 function Shop() {
   const dispatch = useDispatch();
   const { isLoading, isError, error, products } = useSelector(
-    (state) => state.allproducts
+    (state) => state.products
   );
 
   // fetch product from store
