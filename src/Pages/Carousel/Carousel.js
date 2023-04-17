@@ -34,14 +34,14 @@ const Carousel = () => {
     return () => {
       clearTimeout(timeOut);
     };
-  }, [currentIndex, autoPlay, slides.length]);
-
+  });
   return (
     <div
       onMouseEnter={() => setAutoPlay(false)}
       onMouseLeave={() => setAutoPlay(true)}
       className="max-w-full h-[300px] xl:h-[450px] relative cursor-pointer group mt-2"
     >
+    
       <div
         style={{ backgroundImage: `url("${slides[currentIndex].url}")` }}
         className="h-[300px] xl:h-[450px] bg-white bg-center bg-cover duration-500"

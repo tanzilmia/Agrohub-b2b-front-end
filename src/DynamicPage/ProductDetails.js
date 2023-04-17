@@ -1,16 +1,21 @@
+/**
+ * @ Author: Rakibul Hasan
+ * @ Create Time: 2023-04-06 00:29:27
+ * @ Modified by: Your name
+ * @ Modified time: 2023-04-11 05:43:40
+ * @ Description: Dynamically working this component Istiak Ahmed
+ */
+
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Navbar2 from "../sheardComponent/Navbar2";
-import axios from "axios";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
-import { AiOutlineStar } from "react-icons/ai";
 
 const ProductDetails = ({ products }) => {
   const { _id, name, description, newPrice, stock, size, images, brand } =
     products;
   const [count, setCount] = useState(1);
   const [countPrice, setCountPrice] = useState(newPrice);
-  const [rating, setRating] = useState(0);
+
   const handleIncrement = () => {
     setCount(count + 1);
     const numericPrice = parseFloat(newPrice);
@@ -29,32 +34,7 @@ const ProductDetails = ({ products }) => {
     }
   };
 
-  const handleRatingClick = async (ratingNumber) => {
-    try {
-      const response = await axios.post(
-        `http://localhost:5000/seller/product_rating/${_id}/rating`,
-        { rating: ratingNumber }
-      );
-      if (response.data) {
-        setRating(ratingNumber);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const ratingStar = Array.from({ length: 5 }, (_, index) => {
-    return (
-      <span key={index}>
-        {products?.rating > index ? (
-          <FaStar className="icon text-orange-600"></FaStar>
-        ) : (
-          <AiOutlineStar className="icon text-orange-600"></AiOutlineStar>
-        )}
-      </span>
-    );
-  });
-
+  // console.log(products);
   return (
     <>
       <Navbar2 />
@@ -65,22 +45,12 @@ const ProductDetails = ({ products }) => {
           </div>
           <div className="md:col-span-3 mx-20">
             <h2 className="text-2xl font-semibold">{name}</h2>
-
-            {products?.rating === 0 ? (
-              <div className="flex gap-4 my-3">
-                {[1, 2, 3, 4, 5].map((number) => (
-                  <i
-                    key={number}
-                    className={`ri-star-fill text-orange-600 ${
-                      rating >= number ? "opacity-100" : "opacity-50"
-                    }`}
-                    onClick={() => handleRatingClick(number)}
-                  ></i>
-                ))}
-              </div>
-            ) : (
-              <div className="flex gap-4 my-3"> {ratingStar}</div>
-            )}
+            <div className="flex gap-4 my-3">
+              <i className="ri-star-fill text-orange-600"></i>
+              <i className="ri-star-fill text-orange-600"></i>
+              <i className="ri-star-fill text-orange-600"></i>
+              <i className="ri-star-fill text-orange-600"></i>
+            </div>
             <div>
               <p className=" mb-4">
                 {description ? description.slice(0, 250) : "No Description"}
@@ -106,17 +76,13 @@ const ProductDetails = ({ products }) => {
             <div className=" flex flex-col gap-4 mt-4">
               <p className="flex items-center">
                 Size:
-                {size.length === 0 ? (
-                  <span className="ml-2 font-semibold">Not Available</span>
-                ) : (
-                  <span className="flex gap-3 ml-2">
-                    {size.map((sz, i) => (
-                      <p className="border border-black py-0 px-2 font-semibold">
-                        {sz}
-                      </p>
-                    ))}
-                  </span>
-                )}
+                <span className="flex gap-3 ml-2">
+                  {size?.map((sz, i) => (
+                    <p className="border border-black py-0 px-2 font-semibold">
+                      {sz}
+                    </p>
+                  ))}
+                </span>
               </p>
               <p className="flex items-center">
                 <span className="mr-2">Quality:</span>
@@ -158,29 +124,34 @@ const ProductDetails = ({ products }) => {
                   </button>
                 </span>
               </p>
-
+                    
               <p>
                 Subtotal:{" "}
                 <span className="text-orange-300 font-semibold">$ </span>
                 <span className="font-semibold">{countPrice}</span>
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3 mt-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 mt-10">
               <button className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
                 ADD TO CART <i className="ri-shopping-cart-line"></i>
               </button>
-              <Link to={`/details/payment-gateway/${_id}`}>
-                <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
-                  BUY IT NOW
+              
+              <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
+                  <Link to={`/details/payment-gateway/${_id}`}>
+                  BUY IT NOW <i class="ri-arrow-right-fill"></i>
+                </Link>
+                
                 </button>
-              </Link>
               <button className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
                 ADD TO WISHLIST <i className="ri-heart-line"></i>
+              </button>
+              <button className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
+                CUSTOM ORDER
               </button>
             </div>
           </div>
         </div>
-        <div className="flex gap-10 font-semibold text-lg mt-48 lg:text-xl">
+        <div className="flex gap-10 font-semibold text-xl md:text-3xl mt-20 mx-10 sm:mx-20">
           <NavLink
             to={`/details/${_id}/description`}
             className={({ isActive }) => (isActive ? "text-orange-500" : "")}

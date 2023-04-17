@@ -160,7 +160,6 @@ const ProductForm = () => {
                   />
                 </label>
               </div>
-
               <div className="mb-2 col-span-1">
                 <label>
                   <span className="text-gray-700">Product Image</span>
