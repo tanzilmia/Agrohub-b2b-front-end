@@ -108,7 +108,7 @@ const Navbar = () => {
                   )}
                 </Link>
                 {
-                  user?.email && <Link> <span><BsFillChatRightDotsFill/></span> </Link>
+                  user?.email && <Link to ="/seller/contact/chats"> <span><BsFillChatRightDotsFill/></span> </Link>
                 }
               </div>
               {/* responsive */}
