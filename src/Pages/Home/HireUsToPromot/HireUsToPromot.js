@@ -2,24 +2,24 @@ import { Link } from "react-router-dom";
 
 export default function HireUsToPromot() {
   return (
-    <section className="py-14">
-      <div className="max-w-screen-xl mx-auto md:px-8">
+    <section className="my-40">
+      <div className="mx-16">
         <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex">
           <div className="flex-1 sm:hidden lg:block">
             <img
               src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-              className="md:max-w-lg sm:rounded-lg"
+              className="md:max-w-lg rounded-lg"
               alt=""
             />
           </div>
-          <div className="max-w-xl px-4 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
-            <h3 className="text-indigo-600 font-semibold">
+          <div className="max-w-xl   mt-6 md:mt-0 lg:max-w-2xl lg:space-y-10 space-y-5">
+            <h3 className="text-indigo-600 text-center lg:text-start font-semibold">
               Professional services
             </h3>
-            <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+            <p className="text-gray-800 text-lg font-semibold lg:text-2xl text-center lg:text-start">
               Hire Business Promoter to Promot Your Business
             </p>
-            <p className="mt-3 text-gray-600">
+            <p className="mt-3 text-gray-600 text-justify ">
               Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
               cupidatat non proident, sunt in culpa qui officia deserunt mollit
