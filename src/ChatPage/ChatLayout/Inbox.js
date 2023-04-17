@@ -4,15 +4,20 @@ import { useState } from "react";
 import { useContext } from "react";
 import ScrollableFeed from "react-scrollable-feed";
 import { myContext } from "../../contextApi/Authcontext";
+import { io } from "socket.io-client";
 // import ChatMessage from "../ChatMessage";
+
+const ENDPOINT = "http://localhost:5000"
+var socket , selectedChatCompare;
 
 const Inbox = () => {
   const { user, header, setSelectedChat, selectedChat, chatUser } = useContext(myContext);
   const [message, setMessage] = useState([]);
   const [newMessage, setNewMessage] = useState();
+  const [scoketConnected, setscoketConnected] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { name } = selectedChat;
 
+  const { name } = selectedChat;
   const sendMessage = async (event) => {
     event.preventDefault();
     if (newMessage) {
@@ -28,6 +33,7 @@ const Inbox = () => {
         );
 
         console.log(data);
+        socket.emit("new message",data)
 
         setMessage([...message, data]);
       } catch (e) {
@@ -39,18 +45,56 @@ const Inbox = () => {
   const fetchMessages = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/chat/${chatUser._id}?email=${user?.email}`,
+        `http://localhost:5000/chat/${chatUser?._id}?email=${user?.email}`,
         header
       );
       setMessage(data);
+      setLoading(false)
+      socket.emit("join chat", chatUser?._id )
     } catch (e) {
       console.log(e.message);
     }
   };
 
+
+  useEffect(() => {
+    // Check if socket is defined
+    if (!socket) {
+      // Handle error: socket is undefined
+      console.error("socket is undefined");
+      return;
+    }
+  
+    socket.on("message receive", (newMessageRecive) => {
+      if (!selectedChatCompare || selectedChatCompare._id !== newMessageRecive?.chat?._id) {
+        // Display the message
+      } else {
+        setMessage([...message, newMessageRecive]);
+      }
+    });
+  
+    // Clean up the effect
+    return () => {
+      socket.off("message receive");
+    };
+  }, [socket, selectedChatCompare, message]);
+  
+
+
+  useEffect(() => {
+    socket = io(ENDPOINT)
+    socket.emit("setup", user)
+    socket.on("connection", ()=> setscoketConnected(true))
+  }, [user])
+  
+
   useEffect(() => {
     fetchMessages();
+    selectedChatCompare = chatUser
   }, [chatUser]);
+
+
+
 
   console.log(message);
 
