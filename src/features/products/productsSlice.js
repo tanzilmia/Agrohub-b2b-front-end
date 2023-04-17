@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getAllProducts } from "./productsApi";
+import { getAllProducts, getLimitProducts } from "./productsApi";
 
 const initialState = {
   isLoading: false,
   isError: false,
   error: "",
   products: [],
+  limitProducts: [],
 };
 
 export const fetchAllProducts = createAsyncThunk(
@@ -16,11 +17,20 @@ export const fetchAllProducts = createAsyncThunk(
   }
 );
 
+export const fetchLimitProducts = createAsyncThunk(
+  "products/fetchLimitProducts",
+  async () => {
+    const response = await getLimitProducts();
+    return response;
+  }
+);
+
 const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // get all products data case
     builder
       .addCase(fetchAllProducts.pending, (state) => {
         state.isLoading = true;
@@ -35,8 +45,27 @@ const productSlice = createSlice({
       .addCase(fetchAllProducts.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.error = action.error;
+        state.error = action.error.message;
         state.products = [];
+      });
+
+    // get limit products data case
+    builder
+      .addCase(fetchLimitProducts.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+        state.limitProducts = [];
+      })
+      .addCase(fetchLimitProducts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.limitProducts = action.payload;
+      })
+      .addCase(fetchLimitProducts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.error = action.error.message;
+        state.limitProducts = [];
       });
   },
 });

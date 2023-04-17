@@ -41,9 +41,9 @@ const OfferFlashCard = () => {
 
   return (
     <section
-      className={`relative  bg-cover bg-center bg-no-repeat flex flex-col-reverse items-center lg:flex-row my-40 text-white mx-16 rounded-lg `}
+      className={`relative  bg-cover bg-center bg-no-repeat flex flex-col-reverse items-center lg:flex-row mt-28 text-white mx-10 rounded-lg `}
       style={{
-        backgroundImage: `url(https://images.unsplash.com/photo-1558008749-736d955a1e55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)`,
+        backgroundImage: `url(https://images.unsplash.com/photo-1549421263-6064833b071b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80)`,
       }}
     >
       {/* div for layer of background */}
