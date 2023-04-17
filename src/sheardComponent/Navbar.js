@@ -3,8 +3,9 @@ import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
 import { myContext } from "../contextApi/Authcontext";
-import Modal from "../components/ProductCard/Modal";
+import { BsFillChatRightDotsFill } from 'react-icons/bs';
 import { googleLogout } from "@react-oauth/google";
+
 import axios from "axios";
 
 const Navbar = () => {
@@ -71,6 +72,9 @@ const Navbar = () => {
               </div>
               {/* icon */}
               <div className="hidden xl:flex items-center space-x-4">
+                
+                
+
                 <Link
                   to={"#"}
                   className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
@@ -103,6 +107,9 @@ const Navbar = () => {
                     </>
                   )}
                 </Link>
+                {
+                  user?.email && <Link> <span><BsFillChatRightDotsFill/></span> </Link>
+                }
               </div>
               {/* responsive */}
               <div className="px-8 mx-2 flex xl:hidden py-3 bg-[#29BA2F]  items-center cursor-pointer relative group rounded z-10">
