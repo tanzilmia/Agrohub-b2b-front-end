@@ -6,10 +6,16 @@ const Authcontext = ({ children }) => {
   const [loading, setloading] = useState(true);
   const [isLogin, setisLogin] = useState(false);
   const [seller, setSeller] = useState([]);
-  const [chats, setChats] = useState([])
-  const [selectedChat, setSelectedChat] = useState([])
-  const [chatUser, setchatUser] = useState([])
-
+  const [chats, setChats] = useState([]);
+  const [selectedChat, setSelectedChat] = useState([]);
+  const [chatUser, setchatUser] = useState([]);
+  const [productInfo, setProductInfo] = useState({
+    wishList: 0,
+    productCount: 0,
+    rating: 0,
+    countPrice: 0,
+    user,
+  });
   const token = localStorage.getItem("accessToken");
   const header = {
     headers: {
@@ -18,15 +24,22 @@ const Authcontext = ({ children }) => {
     },
   };
 
+  // function onSignIn(googleUser) {
+  //   var profile = googleUser.getBasicProfile();
+  //   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  //   console.log('Name: ' + profile.getName());
+  //   console.log('Image URL: ' + profile.getImageUrl());
+  //   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  // }
 
   useEffect(() => {
-   axios.get(`http://localhost:5000/common/sellers`)
-   .then(res => {
-     setSeller(res.data)
-   })
-   .catch(e => console.log(e))
-  }, [])
-  
+    axios
+      .get(`http://localhost:5000/common/sellers`)
+      .then((res) => {
+        setSeller(res.data);
+      })
+      .catch((e) => console.log(e));
+  }, []);
 
   useEffect(() => {
     if (token || isLogin) {
@@ -64,9 +77,9 @@ const Authcontext = ({ children }) => {
     setSelectedChat,
     selectedChat,
     setchatUser,
-    chatUser
-
-
+    chatUser,
+    productInfo,
+    setProductInfo,
   };
   return (
     <myContext.Provider value={contextValue}> {children} </myContext.Provider>

@@ -2,6 +2,7 @@ import React from "react";
 
 const ShopCard = ({ product }) => {
   const { name, image, oldPrice, newPrice, description, id } = product;
+  
   return (
     <div className="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3 shadow-2xl min-w-[320px]">
       <div className="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">

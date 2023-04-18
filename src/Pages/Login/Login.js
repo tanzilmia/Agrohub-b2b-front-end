@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
 import Google from "./Google";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -139,7 +140,10 @@ const Login = () => {
             <hr className="border-gray-400" />
           </div>
 
-          {/* <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold">
+          {/* <button
+            onClick={() => GoogleLogin()}
+            className="bg-white hover:bg-[#29BA2F] hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold"
+          >
             <FcGoogle className="w-8 mr-3 h-10"></FcGoogle> Login With Google
           </button> */}
           <div className="flex justify-center mt-3 items-center">
