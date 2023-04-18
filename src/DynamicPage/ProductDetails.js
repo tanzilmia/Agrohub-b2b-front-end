@@ -11,8 +11,18 @@ import { Link, NavLink } from "react-router-dom";
 import Navbar2 from "../sheardComponent/Navbar2";
 
 const ProductDetails = ({ products }) => {
-  const { _id, name, description, newPrice, stock, size, images, brand } =
-    products;
+  console.log(products)
+  const {
+    _id,
+    name,
+    description,
+    newPrice,
+    stock,
+    size,
+    images,
+    brand,
+    totalSells,
+  } = products;
   const [count, setCount] = useState(1);
   const [countPrice, setCountPrice] = useState(newPrice);
 
@@ -55,6 +65,7 @@ const ProductDetails = ({ products }) => {
               <p className=" mb-4">
                 {description ? description.slice(0, 250) : "No Description"}
               </p>
+              <p className=" mb-4">Total Sells: {totalSells}</p>
               <div className=" flex flex-col gap-4">
                 <p className="flex flex-row   ">
                   <label>Price: </label>{" "}
@@ -124,7 +135,7 @@ const ProductDetails = ({ products }) => {
                   </button>
                 </span>
               </p>
-                    
+
               <p>
                 Subtotal:{" "}
                 <span className="text-orange-300 font-semibold">$ </span>
@@ -135,13 +146,12 @@ const ProductDetails = ({ products }) => {
               <button className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
                 ADD TO CART <i className="ri-shopping-cart-line"></i>
               </button>
-              
+
               <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
-                  <Link to={`/details/payment-gateway/${_id}`}>
+                <Link to={`/details/payment-gateway/${_id}`}>
                   BUY IT NOW <i class="ri-arrow-right-fill"></i>
                 </Link>
-                
-                </button>
+              </button>
               <button className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
                 ADD TO WISHLIST <i className="ri-heart-line"></i>
               </button>
