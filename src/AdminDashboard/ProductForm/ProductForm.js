@@ -68,7 +68,7 @@ const ProductForm = () => {
 
         axios
           .post(
-            `http://localhost:5000/seller/product?email=${user?.email}`,
+            `https://agrohub.vercel.app/seller/product?email=${user?.email}`,
             product,
             header
           )
@@ -99,7 +99,7 @@ const ProductForm = () => {
     const category = event.target.value;
 
     axios
-      .get(`http://localhost:5000/admin/brands?category=${category}`)
+      .get(`https://agrohub.vercel.app/admin/brands?category=${category}`)
       .then((res) => {
         setBrands(res.data);
       })
@@ -108,7 +108,7 @@ const ProductForm = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/admin/categories`)
+      .get(`https://agrohub.vercel.app/admin/categories`)
       .then((res) => setCategorys(res.data))
       .catch((error) => console.log(error));
   }, []);

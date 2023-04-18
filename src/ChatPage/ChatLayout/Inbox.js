@@ -26,7 +26,7 @@ const Inbox = () => {
       try {
         setNewMessage("");
         const { data } = await axios.post(
-          `http://localhost:5000/chat/sendMessage?email=${user?.email}`,
+          `https://agrohub.vercel.app/chat/sendMessage?email=${user?.email}`,
           {
             content: newMessage,
             chatId: chatUser?._id,
@@ -47,7 +47,7 @@ const Inbox = () => {
   const fetchMessages = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/chat/${chatUser?._id}?email=${user?.email}`,
+        `https://agrohub.vercel.app/chat/${chatUser?._id}?email=${user?.email}`,
         header
       );
       setMessage(data);

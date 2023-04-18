@@ -15,7 +15,7 @@ const HomeCategoryByProduct = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:5000/admin/categories");
+      const res = await axios.get("https://agrohub.vercel.app/admin/categories");
       setProducts(res.data);
       setIsLoading(false);
     } catch (error) {

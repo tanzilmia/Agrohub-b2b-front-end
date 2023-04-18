@@ -19,7 +19,7 @@ const Chats = () => {
   const fetchChaats = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/chat/fetchChat?email=${user?.email}`,
+        `https://agrohub.vercel.app/chat/fetchChat?email=${user?.email}`,
         header
       );
 
@@ -50,7 +50,7 @@ const Chats = () => {
     selectChat(user, users, chat)
     try {
       const { data } = await axios.post(
-        `http://localhost:5000/chat/accessChat?email=${user?.email}`,
+        `https://agrohub.vercel.app/chat/accessChat?email=${user?.email}`,
         { userId },
         header
       );

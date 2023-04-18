@@ -47,7 +47,7 @@ const ProductDetails = ({ products }) => {
   const handleRatingClick = async (ratingNumber) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/seller/product_rating/${_id}/rating`,
+        `https://agrohub.vercel.app/seller/product_rating/${_id}/rating`,
         { rating: ratingNumber }
       );
       if (response.data) {

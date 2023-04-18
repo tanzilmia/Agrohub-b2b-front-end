@@ -17,7 +17,7 @@ const BuyerDashboard = () => {
 
   useEffect(()=>{
     const fetchData = async()=>{
-      const res = await axios.get(`http://localhost:5000/payment-gateway/payment-product?email=${user?.email}`)
+      const res = await axios.get(`https://agrohub.vercel.app/payment-gateway/payment-product?email=${user?.email}`)
       const data = res.data?.result;
       console.log(data)
       setBuyerProduct(data);

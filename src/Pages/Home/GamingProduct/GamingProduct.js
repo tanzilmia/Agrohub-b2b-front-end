@@ -16,12 +16,12 @@ const GamingProduct = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/admin/categories")
+      .get("https://agrohub.vercel.app/admin/categories")
       .then((res) => {
         const requests = res.data.map(async (category) => {
           try {
             const res = await axios.get(
-              `http://localhost:5000/seller/category_products?category=${category.category}`
+              `https://agrohub.vercel.app/seller/category_products?category=${category.category}`
             );
             return res.data;
           } catch (error) {

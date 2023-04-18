@@ -16,13 +16,13 @@ const HomeDashboard = () => {
   const [allProductData, setAllProductData] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const res = await axios.get("http://localhost:5000/common/sellers");
+      const res = await axios.get("https://agrohub.vercel.app/common/sellers");
       const data = await res.data;
       setUserData(data);
-      const response = await axios.get("http://localhost:5000/common/buyer");
+      const response = await axios.get("https://agrohub.vercel.app/common/buyer");
       const resData = await response.data;
       setBuyerData(resData);
-      const productdData = await axios.get("http://localhost:5000/seller/all_Product");
+      const productdData = await axios.get("https://agrohub.vercel.app/seller/all_Product");
       const resProductData = productdData.data;
       setAllProductData(resProductData);  
     };

@@ -150,7 +150,7 @@ const Register = () => {
 
               axios
                 .post(
-                  `https://agrohub-b2b-backend.vercel.app/auth/register`,
+                  `https://agrohub.vercel.app/auth/register`,
                   userinfo
                 )
                 .then((res) => {
