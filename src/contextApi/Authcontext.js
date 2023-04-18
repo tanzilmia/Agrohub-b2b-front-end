@@ -14,6 +14,7 @@ const Authcontext = ({ children }) => {
     productCount: 0,
     rating: 0,
     countPrice: 0,
+    user,
   });
   const token = localStorage.getItem("accessToken");
   const header = {
