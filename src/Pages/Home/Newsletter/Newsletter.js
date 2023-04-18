@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Newsletter() {
   return (
     <div className="">
-      <section className="max-w-xl lg:mx-auto mx-16 pb-40">
+      <section className="max-w-xl lg:mx-auto mx-10 py-28">
         <div className="space-y-3 text-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"

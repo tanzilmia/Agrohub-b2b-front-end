@@ -3,13 +3,17 @@ import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
 import { myContext } from "../contextApi/Authcontext";
-import Modal from "../components/ProductCard/Modal";
+import { BsFillChatRightDotsFill } from 'react-icons/bs';
 import { googleLogout } from "@react-oauth/google";
+
+import axios from "axios";
 
 const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const { user, logout, productInfo } = useContext(myContext);
+  const [categorys, setCategorys] = useState([]);
+
   const Logouts = () => {
     logout();
     googleLogout();
@@ -34,12 +38,20 @@ const Navbar = () => {
     updateHidden();
   }, [location.pathname]);
  console.log(productInfo)
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/admin/categories`)
+      .then((res) => setCategorys(res.data))
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <>
       {showMenu && (
         <nav className="relative">
           {/* header section start*/}
-          <header className="py-4 relative shadow-sm">
+          <header className="py-4 relative shadow-sm bg-white">
             <div className="container flex items-center justify-around">
               {/* logo  */}
               <Link to={"/"}>
@@ -61,6 +73,9 @@ const Navbar = () => {
               </div>
               {/* icon */}
               <div className="hidden xl:flex items-center space-x-4">
+                
+                
+
                 <Link
                   to={"#"}
                   className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
@@ -105,6 +120,9 @@ const Navbar = () => {
                     </>
                   )}
                 </Link>
+                {
+                  user?.email && <Link to ="/seller/contact/chats"> <span><BsFillChatRightDotsFill/></span> </Link>
+                }
               </div>
               {/* responsive */}
               <div className="px-8 mx-2 flex xl:hidden py-3 bg-[#29BA2F]  items-center cursor-pointer relative group rounded z-10">
@@ -170,40 +188,18 @@ const Navbar = () => {
                 </span>
                 <span className="capitalize ml-2 text-white">Categories</span>
                 <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible font-semibold">
-                  <Link
-                    to={""}
-                    className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                  >
-                    <span className="ml-6 text-gray-600 text-sm">
-                      Electronics
-                    </span>
-                  </Link>
-                  <Link
-                    to={""}
-                    className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                  >
-                    <span className="ml-6 text-gray-600 text-sm">TV</span>
-                  </Link>
-                  <Link
-                    to={""}
-                    className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                  >
-                    <span className="ml-6 text-gray-600 text-sm">Sports</span>
-                  </Link>
-                  <Link
-                    to={""}
-                    className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                  >
-                    <span className="ml-6 text-gray-600 text-sm">
-                      Motorbike
-                    </span>
-                  </Link>
-                  <Link
-                    to={""}
-                    className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                  >
-                    <span className="ml-6 text-gray-600 text-sm">Sofa</span>
-                  </Link>
+                  {categorys &&
+                    categorys?.map((category) => (
+                      <Link
+                        key={category._id}
+                        to={""}
+                        className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+                      >
+                        <span className="ml-6 text-gray-600 text-sm">
+                          {category.category}
+                        </span>
+                      </Link>
+                    ))}
                 </div>
               </div>
               {/* all category end */}

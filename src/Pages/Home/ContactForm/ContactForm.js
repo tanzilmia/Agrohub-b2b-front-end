@@ -65,7 +65,7 @@ export default function ContactForm() {
   ];
 
   return (
-    <main className="mx-16 my-40">
+    <main className="mx-10 mt-28">
       <div className=" text-gray-600 ">
         <div className="max-w-lg mx-auto gap-12 justify-between lg:flex lg:max-w-none">
           <div className="max-w-lg space-y-3">

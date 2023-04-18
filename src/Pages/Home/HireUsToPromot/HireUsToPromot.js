@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 export default function HireUsToPromot() {
   return (
-    <section className="my-40">
-      <div className="mx-16">
+    <section className="mt-28">
+      <div className="mx-10">
         <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex">
           <div className="flex-1 sm:hidden lg:block">
             <img

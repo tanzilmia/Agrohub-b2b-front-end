@@ -1,26 +1,20 @@
-import React, { useCallback, useEffect, useState } from "react";
-import ProductCard from "../../../components/ProductCard/ProductCard";
-import axios from "axios";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-const TopSellingProduct = () => {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+import { BsFire } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchLimitProducts } from "../../../features/products/productsSlice";
+import ProductCard from "../../../components/ProductCard/ProductCard";
 
-  const fetchData = useCallback(async () => {
-    try {
-      const res = await axios.get("http://localhost:5000/seller/limit_Product");
-      setProducts(res.data);
-      setIsLoading(false);
-    } catch (error) {
-      setError(error.message);
-      setIsLoading(false);
-    }
-  }, []);
+const TopSellingProduct = () => {
+  const dispatch = useDispatch();
+
+  const { isLoading, isError, error, limitProducts } = useSelector(
+    (state) => state.products
+  );
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    dispatch(fetchLimitProducts());
+  }, [dispatch]);
 
   if (isLoading) {
     return (
@@ -49,26 +43,26 @@ const TopSellingProduct = () => {
     );
   }
 
-  if (error) {
+  if (isError) {
     return <div>{error}</div>;
   }
 
   return (
-    <div className="my-40 mx-16">
+    <div className="mt-28 mx-10">
       <div className="flex justify-between py-6">
-        <h3 className="text-xl md:text-2xl font-semibold">
-          Top Selling Products
+        <h3 className="text-xl md:text-2xl font-semibold flex items-center">
+          <BsFire className="mr-2 text-[#FF5721] text-3xl" /> Top Best Sellers
         </h3>
-        <span className="font-semibold md:text-sm flex items-center hover:text-orange-400">
-          <Link to={"/selling_products"}>
+        <span className="font-semibold md:text-sm flex items-center text-[#FF5721] hover:text-orange-400">
+          <Link to="/selling_products">
             <button className="">View More</button>
           </Link>
           <i className="ri-arrow-right-line ml-1"></i>
         </span>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
-        {products.map((product) => (
-          <ProductCard key={product._id} product={product}></ProductCard>
+        {limitProducts.map((product) => (
+          <ProductCard key={product._id} product={product} />
         ))}
       </div>
     </div>
