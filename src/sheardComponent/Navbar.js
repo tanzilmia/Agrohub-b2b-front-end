@@ -37,7 +37,6 @@ const Navbar = () => {
   useEffect(() => {
     updateHidden();
   }, [location.pathname]);
- console.log(productInfo)
 
   useEffect(() => {
     axios

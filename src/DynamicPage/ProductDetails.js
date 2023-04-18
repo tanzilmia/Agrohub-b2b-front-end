@@ -43,6 +43,8 @@ const ProductDetails = ({ products }) => {
     return setProductInfo({
       productId: _id,
       productCount: count,
+      countPrice,
+      rating,
     });
   };
   const AddDataToWishlist = () => {

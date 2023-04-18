@@ -6,10 +6,15 @@ const Authcontext = ({ children }) => {
   const [loading, setloading] = useState(true);
   const [isLogin, setisLogin] = useState(false);
   const [seller, setSeller] = useState([]);
-  const [chats, setChats] = useState([])
-  const [selectedChat, setSelectedChat] = useState([])
-  const [chatUser, setchatUser] = useState([])
-
+  const [chats, setChats] = useState([]);
+  const [selectedChat, setSelectedChat] = useState([]);
+  const [chatUser, setchatUser] = useState([]);
+  const [productInfo, setProductInfo] = useState({
+    wishList: 0,
+    productCount: 0,
+    rating: 0,
+    countPrice: 0,
+  });
   const token = localStorage.getItem("accessToken");
   const header = {
     headers: {
@@ -71,9 +76,9 @@ const Authcontext = ({ children }) => {
     setSelectedChat,
     selectedChat,
     setchatUser,
-    chatUser
-
-
+    chatUser,
+    productInfo,
+    setProductInfo,
   };
   return (
     <myContext.Provider value={contextValue}> {children} </myContext.Provider>

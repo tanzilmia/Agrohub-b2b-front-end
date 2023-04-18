@@ -5,6 +5,7 @@ import { useContext } from "react";
 import ScrollableFeed from "react-scrollable-feed";
 import { myContext } from "../../contextApi/Authcontext";
 import { io } from "socket.io-client";
+
 // import ChatMessage from "../ChatMessage";
 
 const ENDPOINT = "http://localhost:5000";
@@ -15,7 +16,7 @@ const Inbox = () => {
     useContext(myContext);
   const [message, setMessage] = useState([]);
   const [newMessage, setNewMessage] = useState();
-  const [scoketConnected, setscoketConnected] = useState(false);
+  const [IoIosAdd, setscoketConnected] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const { name } = selectedChat;
@@ -106,7 +107,7 @@ const Inbox = () => {
           {loading ? (
             <p>Loading....</p>
           ) : (
-            <div className="h-screen bg-gray-100 flex">
+            <div className="h-screen bg-gray-100 flex border-l-4 border-blue-200">
               {/* Sidebar */}
               {/* Add sidebar content here */}
 
@@ -114,9 +115,13 @@ const Inbox = () => {
               <div className="flex-1 p-4 flex flex-col">
                 {/* Chat header */}
                 <div className="flex items-center justify-between mb-4">
-                  <div>
+                  <div className="">
+                    <div className="flex w-full justify-between">
                     <h2 className="text-2xl font-semibold">{name}</h2>
-                    <p className="text-gray-500">Online</p>
+                    
+                    </div>
+                  
+    
                   </div>
                 </div>
                 {/* Chat messages */}
