@@ -32,6 +32,8 @@ const Authcontext = ({ children }) => {
   //   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
   // }
 
+
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/common/sellers`)
@@ -63,6 +65,7 @@ const Authcontext = ({ children }) => {
     setisLogin(false);
     setuser(null);
   };
+
 
   const contextValue = {
     setisLogin,

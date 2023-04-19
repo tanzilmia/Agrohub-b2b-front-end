@@ -9,7 +9,7 @@
 import React, { useContext, useState } from "react";
 import Navbar2 from "../sheardComponent/Navbar2";
 import { myContext } from "../contextApi/Authcontext";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
@@ -17,11 +17,12 @@ import { AiOutlineStar } from "react-icons/ai";
 const ProductDetails = ({ products }) => {
   const { _id, name, description, newPrice, stock, size, images, brand } =
     products;
-  const { setProductInfo } = useContext(myContext);
+  const { setProductInfo, user } = useContext(myContext);
 
   const [count, setCount] = useState(1);
   const [countPrice, setCountPrice] = useState(newPrice);
   const [rating, setRating] = useState(0);
+  const navigate = useNavigate();
   const handleIncrement = () => {
     setCount(count + 1);
     const numericPrice = parseFloat(newPrice);
@@ -39,13 +40,29 @@ const ProductDetails = ({ products }) => {
       setCountPrice(setPrice.toFixed(2));
     }
   };
-  const ProductAddToCard = () => {
-    return setProductInfo({
+  const ProductAddToCard = async () => {
+    setProductInfo({
       productId: _id,
       productCount: count,
       countPrice,
       rating,
     });
+
+    const CartProduct = await axios.post(
+      "http://localhost:5000/CartProduct/addcartproduct",
+      {
+        Email: user.email,
+        productId: _id,
+        productCount: count,
+        countPrice,
+        rating,
+      }
+    );
+    if (CartProduct.status === 200) {
+      alert("Product add to Cart successfully");
+      navigate("/cartProduct");
+    }
+    console.log("CartProduct", CartProduct);
   };
   const AddDataToWishlist = () => {
     return;

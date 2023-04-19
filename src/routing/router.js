@@ -29,6 +29,7 @@ import CustomeOrder from "../Pages/custome Order/CustomeOrder";
 import ChatLayout from "../ChatPage/ChatLayout/ChatLayout";
 import Inbox from "../ChatPage/ChatLayout/Inbox";
 import Defaultinbox from "../ChatPage/ChatLayout/Defaultinbox";
+import CartProduct from "../Pages/CartProduct/CartProduct";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "/custom",
         element: <CustomeOrder />,
+      },
+      {
+        path: "/cartProduct",
+        element: <CartProduct />,
       },
       {
         path: "/seller/contact/chats",
