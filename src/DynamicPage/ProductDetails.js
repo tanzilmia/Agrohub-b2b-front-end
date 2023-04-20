@@ -1,11 +1,3 @@
-/**
- * @ Author: Rakibul Hasan
- * @ Create Time: 2023-04-06 00:29:27
- * @ Modified by: Your name
- * @ Modified time: 2023-04-11 05:43:40
- * @ Description: Dynamically working this component Istiak Ahmed
- */
-
 import React, { useContext, useState } from "react";
 import Navbar2 from "../sheardComponent/Navbar2";
 import { myContext } from "../contextApi/Authcontext";
@@ -72,7 +64,7 @@ const ProductDetails = ({ products }) => {
   const handleRatingClick = async (ratingNumber) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/seller/product_rating/${_id}/rating`,
+        `https://agrohub.vercel.app/seller/product_rating/${_id}/rating`,
         { rating: ratingNumber }
       );
       if (response.data) {

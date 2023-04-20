@@ -98,7 +98,7 @@ const router = createBrowserRouter([
         element: <ReviewLayout />,
         loader: ({ params }) =>
           fetch(
-            `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+            `https://agrohub.vercel.app/seller/all_Product/${params.id}`
           ),
         children: [
           {
@@ -106,7 +106,7 @@ const router = createBrowserRouter([
             element: <DetailsDescription />,
             loader: ({ params }) =>
               fetch(
-                `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+                `https://agrohub.vercel.app/seller/all_Product/${params.id}`
               ),
           },
           {
@@ -114,7 +114,7 @@ const router = createBrowserRouter([
             element: <UserReview />,
             loader: ({ params }) =>
               fetch(
-                `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+                `https://agrohub.vercel.app/seller/all_Product/${params.id}`
               ),
           },
           {
@@ -122,7 +122,7 @@ const router = createBrowserRouter([
             element: <AdditionalInformation />,
             loader: ({ params }) =>
               fetch(
-                `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+                `https://agrohub.vercel.app/seller/all_Product/${params.id}`
               ),
           },
         ],
@@ -132,7 +132,7 @@ const router = createBrowserRouter([
         element: <PaymentGateway></PaymentGateway>,
         loader: ({ params }) => {
           return fetch(
-            `https://agrohub-b2b-backend.vercel.app/seller/all_Product/${params.id}`
+            `https://agrohub.vercel.app/seller/all_Product/${params.id}`
           );
         },
       },

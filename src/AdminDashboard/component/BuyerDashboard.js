@@ -4,12 +4,26 @@
             @Task: Making Dashboard Layout components
             @timestap: 1/4/23 - Saturday - Morning
 */
-import React from "react";
-import BestSeller from "./tableMenu/BestSeller";
+import React, { useContext, useEffect, useState } from "react";
 import Charts from "./Charts";
-import TableInHome from "./tableMenu/TableInHome";
+import axios from "axios";
+import  { myContext } from "../../contextApi/Authcontext";
+import BuyerTable from "./tableMenu/BuyerTable";
 
 const BuyerDashboard = () => {
+  const {user} = useContext(myContext)
+  const [buyerProduct, setBuyerProduct] = useState([])
+  
+
+  useEffect(()=>{
+    const fetchData = async()=>{
+      const res = await axios.get(`https://agrohub.vercel.app/payment-gateway/payment-product?email=${user?.email}`)
+      const data = res.data?.result;
+      console.log(data)
+      setBuyerProduct(data);
+    }
+    fetchData();
+  },[user?.email])
   return (
     <div className="flex flex-col">
       {/* this is default home page  */}
@@ -17,16 +31,10 @@ const BuyerDashboard = () => {
         <div className="lg:col-span-3">
           <Charts />
         </div>
-        <div className="lg:col-span-2">
-          <BestSeller />
-        </div>
       </div>
       <div className="flex flex-col lg:grid lg:grid-flow-col lg:grid-cols-5 items-center justify-center">
         <div className="lg:col-span-3">
-          <TableInHome />
-        </div>
-        <div className="lg:col-span-2">
-          <BestSeller />
+          <BuyerTable buyerProduct={buyerProduct}></BuyerTable>
         </div>
       </div>
     </div>
