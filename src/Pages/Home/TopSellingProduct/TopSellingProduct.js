@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BsFire } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchLimitProducts } from "../../../features/products/productsSlice";
 import ProductCard from "../../../components/ProductCard/ProductCard";
+import { fetchLimitProducts } from "../../../features/products/productLimitSlice";
 
 const TopSellingProduct = () => {
   const dispatch = useDispatch();
 
   const { isLoading, isError, error, limitProducts } = useSelector(
-    (state) => state.products
+    (state) => state.limitProducts
   );
 
   useEffect(() => {

@@ -2,20 +2,26 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPostProduct } from "../../features/products/productsSlice";
 
 const ProductForm = () => {
   const [size, setSize] = useState([]);
   const [categorys, setCategorys] = useState([]);
   const [brands, setBrands] = useState([]);
   const [selectedImages, setSelectedImages] = useState([]);
-  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const { isLoading, isError, error, product } = useSelector(
+    (state) => state.products
+  );
 
   const { user, header } = useContext(myContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);
 
     const form = event.target;
 
@@ -66,27 +72,18 @@ const ProductForm = () => {
           brand: brand,
         };
 
-        axios
-          .post(
-            `https://agrohub.vercel.app/seller/product?email=${user?.email}`,
-            product,
-            header
-          )
-          .then((res) => {
-            console.log(res.data);
-            navigate("/selling_products");
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        try {
+          await dispatch(fetchPostProduct({ user, product, header })).unwrap();
+          navigate("/selling_products");
+        } catch (error) {
+          console.log(error);
+        }
       } catch (error) {
         console.error(error);
       }
     };
 
     await handleImageUpload();
-
-    setLoading(false);
   };
 
   const handleImageSelection = (event) => {
@@ -115,7 +112,7 @@ const ProductForm = () => {
 
   return (
     <div className="flex justify-center w-full">
-      {loading ? (
+      {isLoading ? (
         <div className="flex justify-center items-center h-screen">
           <svg
             className="animate-spin -ml-1 mr-3 h-10 w-10 text-[#29BA2F]"

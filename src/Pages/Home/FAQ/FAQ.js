@@ -107,8 +107,8 @@ export default function FAQ() {
         </p>
       </div>
       <div className="mt-14 max-w-7xl">
-        {faqsList.map((item, idx) => (
-          <FaqsCard idx={idx} faqsList={item} />
+        {faqsList.map((item, index) => (
+          <FaqsCard key={index} faqsList={item} />
         ))}
       </div>
     </section>

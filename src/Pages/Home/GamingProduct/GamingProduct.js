@@ -126,8 +126,8 @@ const GamingProduct = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 pb-8">
             {products.map((product) => (
-              <SwiperSlide>
-                <ProductCard key={product._id} product={product}></ProductCard>
+              <SwiperSlide key={product._id}>
+                <ProductCard product={product}></ProductCard>
               </SwiperSlide>
             ))}
           </div>

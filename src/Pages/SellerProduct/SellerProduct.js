@@ -1,26 +1,18 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllProducts } from "../../features/products/productsSlice";
 
 const SellerProduct = () => {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const fetchData = useCallback(async () => {
-    try {
-      const res = await axios.get("https://agrohub.vercel.app/seller/all_Product");
-      setProducts(res.data);
-      setIsLoading(false);
-    } catch (error) {
-      setError(error.message);
-      setIsLoading(false);
-    }
-  }, []);
+  const dispatch = useDispatch();
+  const { isLoading, isError, error, products } = useSelector(
+    (state) => state.products
+  );
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    dispatch(fetchAllProducts());
+  }, [dispatch]);
 
   if (isLoading) {
     return (
@@ -49,7 +41,7 @@ const SellerProduct = () => {
     );
   }
 
-  if (error) {
+  if (isError) {
     return <div>{error}</div>;
   }
   return (
