@@ -13,10 +13,9 @@ const ProductForm = () => {
 
   const dispatch = useDispatch();
 
-  const { isLoading, isError, error, product } = useSelector(
+  const { isLoading, isError, error, postProduct } = useSelector(
     (state) => state.products
   );
-
   const { user, header } = useContext(myContext);
   const navigate = useNavigate();
 
@@ -74,6 +73,8 @@ const ProductForm = () => {
 
         try {
           await dispatch(fetchPostProduct({ user, product, header })).unwrap();
+
+          console.log(product);
           navigate("/selling_products");
         } catch (error) {
           console.log(error);

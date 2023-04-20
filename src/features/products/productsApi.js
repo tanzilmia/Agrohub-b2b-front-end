@@ -20,10 +20,11 @@ export const getProductDetailsByID = async (id) => {
   return response.data;
 };
 
-export const getPostProduct = async (user, product) => {
+export const getPostProduct = async (user, product, header) => {
   const response = await axiosInstance.post(
     `https://agrohub.vercel.app/seller/product?email=${user?.email}`,
-    product
+    product,
+    header
   );
   return response.data;
 };

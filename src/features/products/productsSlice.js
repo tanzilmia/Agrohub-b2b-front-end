@@ -11,7 +11,7 @@ const initialState = {
   isLoading: false,
   isError: false,
   error: "",
-  product: [],
+  postProduct: [],
   products: [],
 };
 
@@ -25,17 +25,9 @@ export const fetchAllProducts = createAsyncThunk(
 
 export const fetchPostProduct = createAsyncThunk(
   "products/fetchPostProduct",
-  async ({ user, product, header }, { rejectWithValue }) => {
-    try {
-      const response = await axios.post(
-        `https://agrohub.vercel.app/seller/product?email=${user?.email}`,
-        product,
-        header
-      );
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
+  async ({ user, product, header }) => {
+    const response = await getPostProduct(user, product, header);
+    return response;
   }
 );
 
@@ -67,18 +59,18 @@ const productSlice = createSlice({
       .addCase(fetchPostProduct.pending, (state) => {
         state.isLoading = true;
         state.isError = false;
-        state.product = [];
+        state.postProduct = [];
       })
       .addCase(fetchPostProduct.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
-        state.product = action.payload;
+        state.postProduct = action.payload;
       })
       .addCase(fetchPostProduct.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.error = action.payload;
-        state.product = [];
+        state.postProduct = [];
       });
   },
 });
