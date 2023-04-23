@@ -2,9 +2,9 @@ import React from "react";
 
 const ShopSideNav = () => {
   return (
-    <div className="sticky top-0">
+    <div className="sticky top-0 h-screen w-80 mb-10">
       <div className="relative hidden h-screen my-4 shadow-lg lg:block ">
-        <div className="h-full bg-white rounded-2xl dark:bg-gray-700">
+        <div className="h-full bg-white rounded-2xl ">
           <div className="flex items-center justify-center pt-6">
             <svg
               width="35"
@@ -55,7 +55,7 @@ const ShopSideNav = () => {
           <nav className="mt-6">
             <div>
               <a
-                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-blue-500 uppercase transition-colors duration-200 border-r-4 border-blue-500 bg-gradient-to-r from-white to-blue-100 dark:from-gray-700 dark:to-gray-800"
+                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-blue-500 uppercase transition-colors duration-200 border-r-4 border-blue-500 bg-gradient-to-r  from-white to-blue-100  "
                 href="#"
               >
                 <span className="text-left">
@@ -74,7 +74,7 @@ const ShopSideNav = () => {
                 </span>
               </a>
               <a
-                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200 dark:text-gray-200 hover:text-blue-500"
+                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500"
                 href="#"
               >
                 <span className="text-left">
@@ -94,7 +94,7 @@ const ShopSideNav = () => {
                 </span>
               </a>
               <a
-                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200 dark:text-gray-200 hover:text-blue-500"
+                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500"
                 href="#"
               >
                 <span className="text-left">
@@ -114,7 +114,7 @@ const ShopSideNav = () => {
                 </span>
               </a>
               <a
-                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200 dark:text-gray-200 hover:text-blue-500"
+                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500"
                 href="#"
               >
                 <span className="text-left">
@@ -134,7 +134,7 @@ const ShopSideNav = () => {
                 </span>
               </a>
               <a
-                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200 dark:text-gray-200 hover:text-blue-500"
+                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500"
                 href="#"
               >
                 <span className="text-left">
@@ -154,7 +154,7 @@ const ShopSideNav = () => {
                 </span>
               </a>
               <a
-                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200 dark:text-gray-200 hover:text-blue-500"
+                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500"
                 href="#"
               >
                 <span className="text-left">
@@ -174,7 +174,7 @@ const ShopSideNav = () => {
                 </span>
               </a>
               <a
-                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200 dark:text-gray-200 hover:text-blue-500"
+                className="flex items-center justify-start w-full p-4 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500"
                 href="#"
               >
                 <span className="text-left">

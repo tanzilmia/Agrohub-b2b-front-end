@@ -1,26 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Autoplay } from "swiper/core";
 import "swiper/swiper-bundle.css";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProductCategories } from "../../../features/products/productCategoriesSlice";
+import { useGetCategoriesQuery } from "../../../features/API/APISlice";
 
 SwiperCore.use([Navigation, Autoplay]);
 
 const HomeCategoryByProduct = () => {
   const [slidesToShow, setSlidesToShow] = useState(4);
 
-  const dispatch = useDispatch();
-
-  const { isLoading, isError, error, categories } = useSelector(
-    (state) => state.categories
-  );
-
-  useEffect(() => {
-    dispatch(fetchProductCategories());
-  }, [dispatch]);
+  const { data, isLoading, isError, error } = useGetCategoriesQuery();
 
   useEffect(() => {
     const updateCarousel = () => {
@@ -91,7 +80,7 @@ const HomeCategoryByProduct = () => {
         autoplay={{ delay: 2500 }}
       >
         <section className="grid place-items-center sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-5 lg:gap-5 gap-y-5 px-5 ">
-          {categories.map((categoryData, index) => (
+          {data?.map((categoryData, index) => (
             <SwiperSlide key={categoryData._id}>
               <div className="block rounded-lg w-full overflow-hidden shadow-2xl shadow-indigo-100 hover:shadow-2xl transition-all duration-300 hover:bg-indigo-100 transform hover:-translate-y-2 hover:scale-95">
                 <img

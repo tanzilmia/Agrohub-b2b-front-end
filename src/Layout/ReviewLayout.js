@@ -2,21 +2,14 @@ import React from "react";
 import Navbar from "../sheardComponent/Navbar";
 import ProductDetails from "../DynamicPage/ProductDetails";
 import { Outlet, useLoaderData } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { fetchProductDetails } from "../features/products/productDetailsSlice";
+import { useGetProductDetailsByIDQuery } from "../features/API/APISlice";
 
 const ReviewLayout = () => {
   const products = useLoaderData();
-  const dispatch = useDispatch();
 
-  const { isLoading, isError, error, productDetail } = useSelector(
-    (state) => state.productDetail
+  const { data, isLoading, isError, error } = useGetProductDetailsByIDQuery(
+    products._id
   );
-
-  useEffect(() => {
-    dispatch(fetchProductDetails(products._id));
-  }, [dispatch, products._id]);
 
   if (isLoading) {
     return (
@@ -52,7 +45,7 @@ const ReviewLayout = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <ProductDetails products={products}></ProductDetails>
+      <ProductDetails products={data}></ProductDetails>
       <Outlet></Outlet>
     </div>
   );

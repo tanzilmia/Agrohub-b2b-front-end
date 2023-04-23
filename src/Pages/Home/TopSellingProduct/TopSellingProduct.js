@@ -1,21 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { BsFire } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../../components/ProductCard/ProductCard";
-import { fetchLimitProducts } from "../../../features/products/productLimitSlice";
+import { useGetLimitProductsQuery } from "../../../features/API/APISlice";
 
 const TopSellingProduct = () => {
-  const dispatch = useDispatch();
-
-  const { isLoading, isError, error, limitProducts } = useSelector(
-    (state) => state.limitProducts
-  );
-
-  useEffect(() => {
-    dispatch(fetchLimitProducts());
-  }, [dispatch]);
-
+  const { data, isLoading, isError, error } = useGetLimitProductsQuery();
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -61,7 +51,7 @@ const TopSellingProduct = () => {
         </span>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
-        {limitProducts.map((product) => (
+        {data?.map((product) => (
           <ProductCard key={product._id} product={product} />
         ))}
       </div>

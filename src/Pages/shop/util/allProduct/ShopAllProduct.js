@@ -25,7 +25,7 @@ const ShopAllProduct = ({ products }) => {
 
   return (
     <div ref={allProductRef}>
-      <div className="flex flex-wrap gap-4 sm:gap-4 md:gap-8 lg:gap-12  items-center justify-center">
+      <div className="flex flex-wrap  items-center justify-center gap-5">
         {products?.slice(startsFrom, productOfThisPage)?.map((product, id) => (
           <ShopCard key={id} product={product} />
         ))}

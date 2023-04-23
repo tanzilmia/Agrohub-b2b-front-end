@@ -1,19 +1,9 @@
-import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAllProducts } from "../../features/products/productsSlice";
+import { useGetAllProductsQuery } from "../../features/API/APISlice";
 
 const SellerProduct = () => {
-  const dispatch = useDispatch();
-  const { isLoading, isError, error, products } = useSelector(
-    (state) => state.products
-  );
-
-  useEffect(() => {
-    dispatch(fetchAllProducts());
-  }, [dispatch]);
-
+  const { data, isLoading, isError, error } = useGetAllProductsQuery();
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -52,7 +42,7 @@ const SellerProduct = () => {
         </h3>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 pb-8">
-        {products.map((product) => (
+        {data?.map((product) => (
           <ProductCard key={product._id} product={product}></ProductCard>
         ))}
       </div>
