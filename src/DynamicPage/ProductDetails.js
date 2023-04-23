@@ -3,7 +3,7 @@ import Navbar2 from "../sheardComponent/Navbar2";
 import { myContext } from "../contextApi/Authcontext";
 import { Link, NavLink } from "react-router-dom";
 import axios from "axios";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 
 const ProductDetails = ({ products }) => {

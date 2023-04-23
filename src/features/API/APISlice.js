@@ -35,6 +35,11 @@ export const productsAPI = createApi({
         body: product,
       }),
     }),
+
+    // get product brands
+    getBrands: builder.query({
+      query: (category) => `/admin/brands?category=${category}`,
+    }),
   }),
 });
 
@@ -44,4 +49,5 @@ export const {
   useGetCategoriesQuery,
   useGetProductDetailsByIDQuery,
   usePostProductMutation,
+  useGetBrandsQuery,
 } = productsAPI;

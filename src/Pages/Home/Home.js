@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAllProducts } from "../../features/products/productsSlice";
+import React from "react";
 import Carousel from "../Carousel/Carousel";
 import ContactForm from "./ContactForm/ContactForm";
 import FAQ from "./FAQ/FAQ";
@@ -8,7 +6,6 @@ import OfferFlashCard from "./flashCard/OfferFlashCard";
 import GamingProduct from "./GamingProduct/GamingProduct";
 import HireUsToPromot from "./HireUsToPromot/HireUsToPromot";
 import HomeCategoryByProduct from "./HomeCategoryByProduct/HomeCategoryByProduct";
-import HomeProducts from "./HomeProducts/HomeProducts";
 import Newsletter from "./Newsletter/Newsletter";
 import OurTeam from "./OurTeam/OurTeam";
 import Statistics from "./Statistics/Statistics";
@@ -16,14 +13,6 @@ import TopSellingProduct from "./TopSellingProduct/TopSellingProduct";
 import TeamTrustUs from "./truestedTeam/TeamTrustsUs";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  // fetching data from redux store
-  const { products, isLoading, isError, error } = useSelector((state) => state);
-  useEffect(() => {
-    // dispatch for get all products
-    dispatch(fetchAllProducts());
-  }, [dispatch]);
-
   return (
     <div className="">
       {/* Istiak Ahmed */}

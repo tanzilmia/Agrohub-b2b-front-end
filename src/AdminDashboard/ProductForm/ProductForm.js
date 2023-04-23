@@ -1,17 +1,23 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
-import { usePostProductMutation } from "../../features/API/APISlice";
+import {
+  useGetBrandsQuery,
+  useGetCategoriesQuery,
+  usePostProductMutation,
+} from "../../features/API/APISlice";
 
 const ProductForm = () => {
   const [size, setSize] = useState([]);
-  const [categorys, setCategorys] = useState([]);
-  const [brands, setBrands] = useState([]);
+  const [category, setCategory] = useState("");
   const [selectedImages, setSelectedImages] = useState([]);
   const { user, header } = useContext(myContext);
   const navigate = useNavigate();
+
   const [createProduct, { isLoading }] = usePostProductMutation();
+  const { data: categories } = useGetCategoriesQuery();
+  const { data: brands } = useGetBrandsQuery(category);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -83,25 +89,6 @@ const ProductForm = () => {
     const files = event.target.files;
     setSelectedImages([...selectedImages, ...files]);
   };
-
-  const handleCategoryChange = (event) => {
-    event.preventDefault();
-    const category = event.target.value;
-
-    axios
-      .get(`https://agrohub.vercel.app/admin/brands?category=${category}`)
-      .then((res) => {
-        setBrands(res.data);
-      })
-      .catch((error) => console.log(error));
-  };
-
-  useEffect(() => {
-    axios
-      .get(`https://agrohub.vercel.app/admin/categories`)
-      .then((res) => setCategorys(res.data))
-      .catch((error) => console.log(error));
-  }, []);
 
   return (
     <div className="flex justify-center w-full">
@@ -194,14 +181,14 @@ const ProductForm = () => {
                     className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     name="category"
                     required
-                    onChange={handleCategoryChange}
+                    onChange={(e) => setCategory(e.target.value)}
                   >
                     <option disabled selected>
                       Choose a category
                     </option>
 
-                    {categorys.length &&
-                      categorys.map((category) => (
+                    {categories?.length &&
+                      categories?.map((category) => (
                         <option key={category._id}>{category.category}</option>
                       ))}
                   </select>
