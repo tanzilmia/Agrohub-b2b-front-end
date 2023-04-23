@@ -2,22 +2,16 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchPostProduct } from "../../features/products/productsSlice";
+import { usePostProductMutation } from "../../features/API/APISlice";
 
 const ProductForm = () => {
   const [size, setSize] = useState([]);
   const [categorys, setCategorys] = useState([]);
   const [brands, setBrands] = useState([]);
   const [selectedImages, setSelectedImages] = useState([]);
-
-  const dispatch = useDispatch();
-
-  const { isLoading, isError, error, postProduct } = useSelector(
-    (state) => state.products
-  );
   const { user, header } = useContext(myContext);
   const navigate = useNavigate();
+  const [createProduct, { isLoading }] = usePostProductMutation();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -72,9 +66,7 @@ const ProductForm = () => {
         };
 
         try {
-          await dispatch(fetchPostProduct({ user, product, header })).unwrap();
-
-          console.log(product);
+          await createProduct({ user, header, product });
           navigate("/selling_products");
         } catch (error) {
           console.log(error);

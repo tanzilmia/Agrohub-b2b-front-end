@@ -25,6 +25,16 @@ export const productsAPI = createApi({
     getProductDetailsByID: builder.query({
       query: (id) => `/seller/all_Product/${id}`,
     }),
+
+    // post product
+    postProduct: builder.mutation({
+      query: ({ user, header, product }) => ({
+        url: `/seller/product?email=${user?.email}`,
+        method: "POST",
+        headers: header,
+        body: product,
+      }),
+    }),
   }),
 });
 
@@ -33,4 +43,5 @@ export const {
   useGetLimitProductsQuery,
   useGetCategoriesQuery,
   useGetProductDetailsByIDQuery,
+  usePostProductMutation,
 } = productsAPI;
