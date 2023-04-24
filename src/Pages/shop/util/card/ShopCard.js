@@ -1,7 +1,6 @@
 import React from "react";
 
 const ShopCard = ({ product }) => {
-  console.log(product);
   const { name, images, oldPrice, newPrice, description, id, rating, size } =
     product;
 

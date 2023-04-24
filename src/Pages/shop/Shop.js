@@ -1,13 +1,4 @@
-/**
- * @ Author: Tuhin
- * @ Create Time: 2023-04-10 13:45:22
- * @ Modified by: Your name
- * @ Modified time: 2023-04-24 00:11:51
- * @ Description: shop page to  display product with categories
- */
-
 import React from "react";
-import Carousel from "./util/carousel/Carousel";
 import ShopSideNav from "./util/sidenav/ShopSideNav";
 import Loader from "./util/loader/Loader";
 import ShopAllProduct from "./util/allProduct/ShopAllProduct";
@@ -15,7 +6,6 @@ import { useGetAllProductsQuery } from "../../features/API/APISlice";
 
 function Shop() {
   const { data, isLoading, isError, error } = useGetAllProductsQuery();
-
   let content = null;
 
   if (isLoading) {
@@ -49,12 +39,23 @@ function Shop() {
   if (!isLoading && !isError && data.length > 0) {
     content = (
       <div>
-        <div className="mx-4 md:mx-12 mt-16">
-          <Carousel />
-        </div>
-        <div className="flex mt-24">
+        <div className="flex justify-center">
           <ShopSideNav />
-          <div className="ml-1 flex flex-col items-center justify-center">
+          <div className="ml-1">
+            <div className="flex justify-between">
+              <span className="mt-5 ml-6 text-lg font-semibold text-gray-500">
+                {data && data?.length} Total Products
+              </span>
+              <select
+                data-te-select-init
+                className="mt-3 border w-44 ml-4 text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-500 dark:placeholder:text-neutral-400 dark:focus:border-primary rounded-md"
+              >
+                <option value="lowest">Price(lowest)</option>
+                <option value="lowest">Price(highest)</option>
+                <option value="lowest">Price(a-z)</option>
+                <option value="lowest">Price(z-a)</option>
+              </select>
+            </div>
             <ShopAllProduct products={data} />
           </div>
         </div>
