@@ -81,7 +81,9 @@ const Inbox = () => {
     return () => {
       socket.off("message receive");
     };
-  }, [socket, selectedChatCompare, message]);
+  });
+
+  // [socket, selectedChatCompare, message]
 
   useEffect(() => {
     socket = io(ENDPOINT);
