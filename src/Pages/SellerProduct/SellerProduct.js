@@ -1,27 +1,9 @@
-import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
+import { useGetAllProductsQuery } from "../../features/API/APISlice";
 
 const SellerProduct = () => {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const fetchData = useCallback(async () => {
-    try {
-      const res = await axios.get("https://agrohub.vercel.app/seller/all_Product");
-      setProducts(res.data);
-      setIsLoading(false);
-    } catch (error) {
-      setError(error.message);
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
+  const { data, isLoading, isError, error } = useGetAllProductsQuery();
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -49,7 +31,7 @@ const SellerProduct = () => {
     );
   }
 
-  if (error) {
+  if (isError) {
     return <div>{error}</div>;
   }
   return (
@@ -60,7 +42,7 @@ const SellerProduct = () => {
         </h3>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 pb-8">
-        {products.map((product) => (
+        {data?.map((product) => (
           <ProductCard key={product._id} product={product}></ProductCard>
         ))}
       </div>

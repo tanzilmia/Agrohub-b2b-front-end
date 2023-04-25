@@ -25,18 +25,18 @@ const ShopAllProduct = ({ products }) => {
 
   return (
     <div ref={allProductRef}>
-      <div className="flex flex-wrap gap-4 sm:gap-4 md:gap-8 lg:gap-12  items-center justify-center">
-        {products?.slice(startsFrom, productOfThisPage)?.map((product, id) => (
+      <div className="grid grid-cols-3 gap-5 mb-10">
+        {products?.map((product, id) => (
           <ShopCard key={id} product={product} />
         ))}
       </div>
-      <div className="my-16 flex items-center justify-center">
+      {/* <div className="my-16 flex items-center justify-center">
         <Pagination
           totalProduct={totalProduct}
           setCurrentPage={setCurrentPage}
           executeScroll={executeScroll}
         />
-      </div>
+      </div> */}
     </div>
   );
 };

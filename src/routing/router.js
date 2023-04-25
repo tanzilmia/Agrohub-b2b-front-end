@@ -71,19 +71,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/seller/contact/chats",
-        element: <ChatLayout/>,
-        children :[
+        element: <ChatLayout />,
+        children: [
           {
             path: "/seller/contact/chats",
-            element : <Defaultinbox/>
+            element: <Defaultinbox />,
           },
           {
             path: "/seller/contact/chats/:id",
-            element : <Inbox/>
-          }
-        ]
+            element: <Inbox />,
+          },
+        ],
       },
-      
+
       {
         path: "/selling_products",
         element: <SellerProduct />,
@@ -92,9 +92,7 @@ const router = createBrowserRouter([
         path: "/details/:id",
         element: <ReviewLayout />,
         loader: ({ params }) =>
-          fetch(
-            `https://agrohub.vercel.app/seller/all_Product/${params.id}`
-          ),
+          fetch(`https://agrohub.vercel.app/seller/all_Product/${params.id}`),
         children: [
           {
             path: "/details/:id/description",

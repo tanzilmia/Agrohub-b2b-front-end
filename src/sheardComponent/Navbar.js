@@ -3,16 +3,15 @@ import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.jpg";
 import { myContext } from "../contextApi/Authcontext";
-import { BsFillChatRightDotsFill } from 'react-icons/bs';
+import { BsFillChatRightDotsFill } from "react-icons/bs";
 import { googleLogout } from "@react-oauth/google";
 
-import axios from "axios";
+import { useGetCategoriesQuery } from "../features/API/APISlice";
 
 const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const { user, logout, productInfo } = useContext(myContext);
-  const [categorys, setCategorys] = useState([]);
 
   const Logouts = () => {
     logout();
@@ -34,16 +33,11 @@ const Navbar = () => {
     }
   };
 
+  const { data } = useGetCategoriesQuery();
+
   useEffect(() => {
     updateHidden();
   }, [location.pathname]);
-
-  useEffect(() => {
-    axios
-      .get(`https://agrohub.vercel.app/admin/categories`)
-      .then((res) => setCategorys(res.data))
-      .catch((error) => console.log(error));
-  }, []);
 
   return (
     <>
@@ -72,9 +66,6 @@ const Navbar = () => {
               </div>
               {/* icon */}
               <div className="hidden xl:flex items-center space-x-4">
-                
-                
-
                 <Link
                   to={"#"}
                   className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
@@ -119,9 +110,14 @@ const Navbar = () => {
                     </>
                   )}
                 </Link>
-                {
-                  user?.email && <Link to ="/seller/contact/chats"> <span><BsFillChatRightDotsFill/></span> </Link>
-                }
+                {user?.email && (
+                  <Link to="/seller/contact/chats">
+                    {" "}
+                    <span>
+                      <BsFillChatRightDotsFill />
+                    </span>{" "}
+                  </Link>
+                )}
               </div>
               {/* responsive */}
               <div className="px-8 mx-2 flex xl:hidden py-3 bg-[#29BA2F]  items-center cursor-pointer relative group rounded z-10">
@@ -187,8 +183,8 @@ const Navbar = () => {
                 </span>
                 <span className="capitalize ml-2 text-white">Categories</span>
                 <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible font-semibold">
-                  {categorys &&
-                    categorys?.map((category) => (
+                  {data &&
+                    data?.map((category) => (
                       <Link
                         key={category._id}
                         to={""}

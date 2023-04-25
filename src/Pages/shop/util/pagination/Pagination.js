@@ -17,7 +17,7 @@ const Pagination = ({ setCurrentPage, totalProduct, executeScroll }) => {
         {/* previous btn */}
         <a
           href="#"
-          className="px-4 py-2 mx-1 text-gray-500 capitalize bg-white rounded-md cursor-not-allowed dark:bg-gray-800 dark:text-gray-600"
+          className="px-4 py-2 mx-1 text-gray-500 capitalize bg-white rounded-md cursor-not-allowed hover:text-white dark:hover:text-gray-200 hover:bg-blue-500 dark:hover:bg-blue-500"
         >
           <div className="flex items-center -mx-1">
             <svg
@@ -42,7 +42,7 @@ const Pagination = ({ setCurrentPage, totalProduct, executeScroll }) => {
           <button
             key={page}
             onClick={() => changePageNumber(page)}
-            className="hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md sm:inline dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
+            className="hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md sm:inline  dark:text-gray-800 hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
           >
             {page}
           </button>
@@ -50,7 +50,7 @@ const Pagination = ({ setCurrentPage, totalProduct, executeScroll }) => {
 
         <a
           href="#"
-          className="px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
+          className="px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md  dark:text-gray-800 hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
         >
           <div className="flex items-center -mx-1">
             <span className="mx-1">Next</span>
