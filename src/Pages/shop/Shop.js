@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import ShopSideNav from "./util/sidenav/ShopSideNav";
 import Loader from "./util/loader/Loader";
 import ShopAllProduct from "./util/allProduct/ShopAllProduct";
-import { useGetSearchFilteringProductsQuery } from "../../features/API/APISlice";
+import {
+  useGetAllProductsQuery,
+  useGetSearchFilteringProductsQuery,
+} from "../../features/API/APISlice";
 
 function Shop() {
   const [searchValue, setSearchValue] = useState("");
@@ -10,6 +13,16 @@ function Shop() {
   const { data, isLoading, isError, error } =
     useGetSearchFilteringProductsQuery(searchValue);
 
+  const { data: allProducts } = useGetAllProductsQuery();
+
+  const getUniqueData = (data, property) => {
+    let newValue = data?.map((currentElement) => {
+      return currentElement[property];
+    });
+    return (newValue = ["All", ...new Set(newValue)]);
+  };
+
+  const categoryOnlyData = getUniqueData(allProducts, "category");
   const handleSearchFiltering = (e) => {
     setSearchValue(e.target.value);
   };
@@ -34,7 +47,10 @@ function Shop() {
     content = (
       <div>
         <div className="flex justify-center">
-          <ShopSideNav handleSearchFiltering={handleSearchFiltering} />
+          <ShopSideNav
+            handleSearchFiltering={handleSearchFiltering}
+            categoryOnlyData={categoryOnlyData}
+          />
           <div className="ml-1">
             <div className="flex justify-between">
               <span className="mt-5 ml-6 text-lg font-semibold text-gray-500">

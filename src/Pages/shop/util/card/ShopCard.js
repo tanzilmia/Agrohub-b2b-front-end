@@ -1,8 +1,17 @@
 import React from "react";
 
 const ShopCard = ({ product }) => {
-  const { name, images, oldPrice, newPrice, description, id, rating, size } =
-    product;
+  const {
+    name,
+    images,
+    oldPrice,
+    newPrice,
+    description,
+    id,
+    rating,
+    size,
+    category,
+  } = product;
 
   return (
     <div className="relative  flex flex-col items-center justify-center ">
@@ -11,24 +20,10 @@ const ShopCard = ({ product }) => {
           <div className="flex flex-col ">
             <div className="">
               <div className="relative h-62 w-full mb-3">
-                <div className="absolute flex flex-col top-0 right-0 p-3">
-                  <button className="transition ease-in duration-300 hover:text-purple-500 shadow hover:shadow-md text-gray-500 rounded-full w-8 h-8 text-center p-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        rokeLinecap="round"
-                        rokeLinejoin="round"
-                        rokeWidth="2"
-                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                      />
-                    </svg>
-                  </button>
+                <div className="absolute top-0 right-0 mt-3 mr-3 flex flex-col items-center justify-center p-1 px-2 rounded-full bg-blue-100 shadow-2xl text-gray-500 font-serif text-sm font-medium hover:bg-blue-200 transition-all duration-300">
+                  <span className="truncate">{category}</span>
                 </div>
+
                 <img
                   src={images && images[0]}
                   alt="Just a flower"

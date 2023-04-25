@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-const ShopSideNav = ({ handleSearchFiltering }) => {
+const ShopSideNav = ({ handleSearchFiltering, categoryOnlyData }) => {
   return (
     <div className="w-1/5 relative">
-      <div className=" w-80 mb-10 sticky top-32">
+      <div className=" w-80 mb-10 sticky top-16">
         <div className=" hidden h-screen my-4  lg:block ">
           <div className="h-full rounded-2xl ">
             <div className="pt-2 ml-4 ">
@@ -23,31 +22,16 @@ const ShopSideNav = ({ handleSearchFiltering }) => {
             <nav className="mt-6">
               <span className="my-3 font-medium ml-4">Category</span>
               <div>
-                <Link className="flex items-center justify-start w-full py-1 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500">
-                  <span className="mx-4 text-sm tracking-tighter leading-3 capitalize font-semibold ">
-                    All
-                  </span>
-                </Link>
-                <Link className="flex items-center justify-start w-full py-1 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500">
-                  <span className="mx-4 text-sm tracking-tighter leading-3 capitalize font-semibold ">
-                    Mobile
-                  </span>
-                </Link>
-                <Link className="flex items-center justify-start w-full py-1 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500">
-                  <span className="mx-4 text-sm tracking-tighter leading-3 capitalize font-semibold ">
-                    Laptop
-                  </span>
-                </Link>
-                <Link className="flex items-center justify-start w-full py-1 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500">
-                  <span className="mx-4 text-sm tracking-tighter leading-3 capitalize font-semibold ">
-                    Computer
-                  </span>
-                </Link>
-                <Link className="flex items-center justify-start w-full py-1 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500">
-                  <span className="mx-4 text-sm tracking-tighter leading-3 capitalize font-semibold ">
-                    Watch
-                  </span>
-                </Link>
+                {categoryOnlyData?.map((currentValue, index) => (
+                  <button
+                    key={index}
+                    className="flex items-center justify-start w-full py-1 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500"
+                  >
+                    <span className="mx-4 text-sm tracking-tighter leading-3 capitalize font-semibold ">
+                      {currentValue}
+                    </span>
+                  </button>
+                ))}
               </div>
             </nav>
             <div className="mt-10">
