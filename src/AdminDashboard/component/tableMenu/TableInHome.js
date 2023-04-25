@@ -12,8 +12,9 @@ const TableInHome = (props) => {
   const allProductData = props.allProductData;
 
   const deleteProduct = (id) => {
-    axios.delete(`https://agrohub.vercel.app/seller/delete-product/${id}`)
-      .then((res) => console.log("error",res))
+    axios
+      .delete(`http://localhost:5000/seller/delete-product/${id}`)
+      .then((res) => console.log("error", res))
       .catch((error) => console.log("catch error", error));
     console.log(id);
   };

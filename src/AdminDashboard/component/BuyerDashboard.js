@@ -7,23 +7,24 @@
 import React, { useContext, useEffect, useState } from "react";
 import Charts from "./Charts";
 import axios from "axios";
-import  { myContext } from "../../contextApi/Authcontext";
+import { myContext } from "../../contextApi/Authcontext";
 import BuyerTable from "./tableMenu/BuyerTable";
 
 const BuyerDashboard = () => {
-  const {user} = useContext(myContext)
-  const [buyerProduct, setBuyerProduct] = useState([])
-  
+  const { user } = useContext(myContext);
+  const [buyerProduct, setBuyerProduct] = useState([]);
 
-  useEffect(()=>{
-    const fetchData = async()=>{
-      const res = await axios.get(`https://agrohub.vercel.app/payment-gateway/payment-product?email=${user?.email}`)
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get(
+        `http://localhost:5000/payment-gateway/payment-product?email=${user?.email}`
+      );
       const data = res.data?.result;
-      console.log(data)
+      console.log(data);
       setBuyerProduct(data);
-    }
+    };
     fetchData();
-  },[user?.email])
+  }, [user?.email]);
   return (
     <div className="flex flex-col">
       {/* this is default home page  */}

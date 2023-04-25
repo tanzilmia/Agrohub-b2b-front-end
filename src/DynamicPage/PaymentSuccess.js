@@ -11,7 +11,7 @@ const PaymentSuccess = () => {
   const [orderData, setOrderData] = useState({});
   useEffect(() => {
     fetch(
-      `https://agrohub.vercel.app/payment-gateway/orders-by-transaction-id/${transactionId}`
+      `http://localhost:5000/payment-gateway/orders-by-transaction-id/${transactionId}`
     )
       .then((res) => res.json())
       .then((data) => setOrderData(data));

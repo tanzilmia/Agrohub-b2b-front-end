@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ShopSideNav = () => {
+const ShopSideNav = ({ handleSearchFiltering }) => {
   return (
     <div className="w-1/5 relative">
       <div className=" w-80 mb-10 sticky top-32">
         <div className=" hidden h-screen my-4  lg:block ">
           <div className="h-full rounded-2xl ">
-            <div class="pt-2 ml-4 ">
-              <div class="relative mb-4 flex w-44 flex-wrap items-stretch">
+            <div className="pt-2 ml-4 ">
+              <div className="relative mb-4 flex w-44 flex-wrap items-stretch">
                 <input
+                  onChange={handleSearchFiltering}
                   type="search"
-                  class="relative m-0 block w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-400 dark:focus:border-primary"
+                  className="relative m-0 block w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-500 dark:placeholder:text-neutral-400 dark:focus:border-primary"
                   placeholder="Search"
                   aria-label="Search"
                   aria-describedby="button-addon2"
@@ -78,7 +79,7 @@ const ShopSideNav = () => {
             </div>
             <button
               type="button"
-              class="text-gray-900 mt-5 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-6 py-2.5 text-center mr-2 mb-2"
+              className="text-gray-900 mt-5 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-6 py-2.5 text-center mr-2 mb-2"
             >
               Clear Filter
             </button>

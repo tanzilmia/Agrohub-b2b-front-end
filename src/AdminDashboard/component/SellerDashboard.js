@@ -18,10 +18,14 @@ const SellerDashboard = () => {
   // console.log(user.email)
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(`https://agrohub.vercel.app/seller/seller-product?email=${user?.email}`);
+      const res = await axios.get(
+        `http://localhost:5000/seller/seller-product?email=${user?.email}`
+      );
       const data = res.data;
       setAllProductData(data?.result);
-      const response = await axios.get(`https://agrohub.vercel.app/seller/my-buyer?email=${user?.email}`);
+      const response = await axios.get(
+        `http://localhost:5000/seller/my-buyer?email=${user?.email}`
+      );
       const resData = response?.data?.result;
       setMyBuyerData(resData);
     };

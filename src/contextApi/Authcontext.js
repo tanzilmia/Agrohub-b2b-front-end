@@ -34,7 +34,7 @@ const Authcontext = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get(`https://agrohub.vercel.app/common/sellers`)
+      .get(`http://localhost:5000/common/sellers`)
       .then((res) => {
         setSeller(res.data);
       })
@@ -44,7 +44,7 @@ const Authcontext = ({ children }) => {
   useEffect(() => {
     if (token || isLogin) {
       axios
-        .post(`https://agrohub.vercel.app/auth/user-info`, { token })
+        .post(`http://localhost:5000/auth/user-info`, { token })
         .then((res) => {
           if (res.data.message === "successfull") {
             setuser(res.data.data);

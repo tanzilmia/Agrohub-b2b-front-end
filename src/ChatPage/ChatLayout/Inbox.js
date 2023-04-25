@@ -10,7 +10,7 @@ import { io } from "socket.io-client";
 
 // import ChatMessage from "../ChatMessage";
 
-const ENDPOINT = "https://agrohub.vercel.app";
+const ENDPOINT = "http://localhost:5000";
 var socket, selectedChatCompare;
 
 const Inbox = () => {
@@ -28,7 +28,7 @@ const Inbox = () => {
       try {
         setNewMessage("");
         const { data } = await axios.post(
-          `https://agrohub.vercel.app/chat/sendMessage?email=${user?.email}`,
+          `http://localhost:5000/chat/sendMessage?email=${user?.email}`,
           {
             content: newMessage,
             chatId: chatUser?._id,
@@ -46,12 +46,12 @@ const Inbox = () => {
     }
   };
 
-  // chake commit 
+  // chake commit
 
   const fetchMessages = async () => {
     try {
       const { data } = await axios.get(
-        `https://agrohub.vercel.app/chat/${chatUser?._id}?email=${user?.email}`,
+        `http://localhost:5000/chat/${chatUser?._id}?email=${user?.email}`,
         header
       );
       setMessage(data);
@@ -123,11 +123,8 @@ const Inbox = () => {
                 <div className="flex items-center justify-between mb-4">
                   <div className="">
                     <div className="flex w-full justify-between">
-                    <h2 className="text-2xl font-semibold">{name}</h2>
-                    
+                      <h2 className="text-2xl font-semibold">{name}</h2>
                     </div>
-                  
-    
                   </div>
                 </div>
                 {/* Chat messages */}
