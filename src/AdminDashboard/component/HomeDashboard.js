@@ -22,7 +22,7 @@ const HomeDashboard = () => {
       const response = await axios.get("https://agrohub.vercel.app/common/buyer");
       const resData = await response.data;
       setBuyerData(resData);
-      const productdData = await axios.get("https://agrohub.vercel.app/seller/all_Product");
+      const productdData = await axios.get("http://localhost:5000/seller/recent_Product");
       const resProductData = productdData.data;
       setAllProductData(resProductData);  
     };

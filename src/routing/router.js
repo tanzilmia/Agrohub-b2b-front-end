@@ -29,6 +29,8 @@ import CustomeOrder from "../Pages/custome Order/CustomeOrder";
 import ChatLayout from "../ChatPage/ChatLayout/ChatLayout";
 import Inbox from "../ChatPage/ChatLayout/Inbox";
 import Defaultinbox from "../ChatPage/ChatLayout/Defaultinbox";
+import SingleSeller from "../AdminDashboard/SingleSellerInfo/SingleSeller";
+import UpdateProductInfo from "../AdminDashboard/UpdateProductInfo/UpdateProductInfo";
 
 const router = createBrowserRouter([
   {
@@ -149,6 +151,25 @@ const router = createBrowserRouter([
             path: "/dashboard/seller",
             element: <SellerDashboard />,
           },
+          {
+            path: "/dashboard/Seller/:id",
+            element: <SingleSeller/>,
+            loader: ({ params }) => {
+              return fetch(
+                `http://localhost:5000/common/seller-product/${params.id}`
+              );
+            },
+          },
+          {
+            path: "/dashboard/update-product/:id",
+            element: <UpdateProductInfo/>,
+            loader: ({ params }) => {
+              return fetch(
+                `http://localhost:5000/common/single-product/${params.id}`
+              );
+            },
+          },
+
           {
             path: "/dashboard/buyer",
             element: <BuyerDashboard />,
