@@ -4,11 +4,14 @@ import Loader from "./util/loader/Loader";
 import ShopAllProduct from "./util/allProduct/ShopAllProduct";
 import {
   useGetAllProductsQuery,
+  useGetBrandsQuery,
   useGetFilteringProductsQuery,
 } from "../../features/API/APISlice";
 
 function Shop() {
   const [searchValue, setSearchValue] = useState("");
+  const { data: brands } = useGetBrandsQuery(searchValue);
+
   const {
     data: filteringProduct,
     isLoading,
@@ -23,13 +26,6 @@ function Shop() {
   };
 
   const categoryOnlyData = getUniqueData(allProducts, "category");
-  const handleSearchFiltering = (e) => {
-    setSearchValue(e.target.value);
-  };
-
-  const handleButtonClick = (category) => {
-    setSearchValue(category);
-  };
 
   let content;
 
@@ -52,9 +48,9 @@ function Shop() {
       <div>
         <div className="flex justify-center">
           <ShopSideNav
-            handleSearchFiltering={handleSearchFiltering}
             categoryOnlyData={categoryOnlyData}
-            handleButtonClick={handleButtonClick}
+            brands={brands}
+            setSearchValue={setSearchValue}
           />
           <div className="ml-1">
             <div className="flex justify-between">
