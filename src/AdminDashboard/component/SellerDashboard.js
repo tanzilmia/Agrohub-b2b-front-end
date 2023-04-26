@@ -19,7 +19,7 @@ const SellerDashboard = () => {
   
     if (confirmed) {
       try {
-        axios.delete(`http://localhost:5000/seller/delete-seller?id=${id}`)
+        axios.delete(`http://localhost:5000/seller/delete-user?id=${id}`)
           .then(res => {
             console.log(res.data);
              
