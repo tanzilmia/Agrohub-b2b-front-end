@@ -1,6 +1,10 @@
 import React from "react";
 
 const ShopSideNav = ({ handleSearchFiltering, categoryOnlyData }) => {
+  const handleButtonClick = (category) => {
+    console.log(category);
+  };
+
   return (
     <div className="w-1/5 relative">
       <div className=" w-80 mb-10 sticky top-16">
@@ -24,6 +28,7 @@ const ShopSideNav = ({ handleSearchFiltering, categoryOnlyData }) => {
               <div>
                 {categoryOnlyData?.map((currentValue, index) => (
                   <button
+                    onClick={() => handleButtonClick(currentValue)}
                     key={index}
                     className="flex items-center justify-start w-full py-1 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500"
                   >
