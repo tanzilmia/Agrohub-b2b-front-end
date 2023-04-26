@@ -1,10 +1,10 @@
 import React from "react";
 
-const ShopSideNav = ({ handleSearchFiltering, categoryOnlyData }) => {
-  const handleButtonClick = (category) => {
-    console.log(category);
-  };
-
+const ShopSideNav = ({
+  handleSearchFiltering,
+  categoryOnlyData,
+  handleButtonClick,
+}) => {
   return (
     <div className="w-1/5 relative">
       <div className=" w-80 mb-10 sticky top-16">

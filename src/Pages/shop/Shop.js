@@ -4,27 +4,31 @@ import Loader from "./util/loader/Loader";
 import ShopAllProduct from "./util/allProduct/ShopAllProduct";
 import {
   useGetAllProductsQuery,
-  useGetSearchFilteringProductsQuery,
+  useGetFilteringProductsQuery,
 } from "../../features/API/APISlice";
 
 function Shop() {
   const [searchValue, setSearchValue] = useState("");
-
-  const { data, isLoading, isError, error } =
-    useGetSearchFilteringProductsQuery(searchValue);
-
+  const {
+    data: filteringProduct,
+    isLoading,
+    isError,
+    error,
+  } = useGetFilteringProductsQuery(searchValue);
   const { data: allProducts } = useGetAllProductsQuery();
 
   const getUniqueData = (data, property) => {
-    let newValue = data?.map((currentElement) => {
-      return currentElement[property];
-    });
-    return (newValue = ["All", ...new Set(newValue)]);
+    let values = data?.map((currentElement) => currentElement[property]);
+    return [...new Set(values)];
   };
 
   const categoryOnlyData = getUniqueData(allProducts, "category");
   const handleSearchFiltering = (e) => {
     setSearchValue(e.target.value);
+  };
+
+  const handleButtonClick = (category) => {
+    setSearchValue(category);
   };
 
   let content;
@@ -50,11 +54,12 @@ function Shop() {
           <ShopSideNav
             handleSearchFiltering={handleSearchFiltering}
             categoryOnlyData={categoryOnlyData}
+            handleButtonClick={handleButtonClick}
           />
           <div className="ml-1">
             <div className="flex justify-between">
               <span className="mt-5 ml-6 text-lg font-semibold text-gray-500">
-                {data && data.length} Total Products
+                {filteringProduct && filteringProduct.length} Total Products
               </span>
               <select
                 data-te-select-init
@@ -66,8 +71,8 @@ function Shop() {
                 <option value="z-a">Price(z-a)</option>
               </select>
             </div>
-            {data && data.length > 0 ? (
-              <ShopAllProduct products={data} />
+            {filteringProduct && filteringProduct.length > 0 ? (
+              <ShopAllProduct products={filteringProduct} />
             ) : (
               <div className="w-[1000px] flex items-center justify-center h-screen">
                 <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-800">

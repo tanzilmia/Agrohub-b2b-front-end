@@ -42,7 +42,7 @@ export const productsAPI = createApi({
     }),
 
     // get search filtering products
-    getSearchFilteringProducts: builder.query({
+    getFilteringProducts: builder.query({
       query: (search) => `/seller/search?name=${search}`,
     }),
   }),
@@ -55,5 +55,6 @@ export const {
   useGetProductDetailsByIDQuery,
   usePostProductMutation,
   useGetBrandsQuery,
-  useGetSearchFilteringProductsQuery,
+  useGetFilteringProductsQuery,
+  useGetCategoryWiseProductQuery,
 } = productsAPI;
