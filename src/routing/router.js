@@ -94,31 +94,25 @@ const router = createBrowserRouter([
         path: "/details/:id",
         element: <ReviewLayout />,
         loader: ({ params }) =>
-          fetch(`https://agrohub.vercel.app/seller/all_Product/${params.id}`),
+          fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
         children: [
           {
             path: "/details/:id/description",
             element: <DetailsDescription />,
             loader: ({ params }) =>
-              fetch(
-                `https://agrohub.vercel.app/seller/all_Product/${params.id}`
-              ),
+              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
           },
           {
             path: "/details/:id/review",
             element: <UserReview />,
             loader: ({ params }) =>
-              fetch(
-                `https://agrohub.vercel.app/seller/all_Product/${params.id}`
-              ),
+              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
           },
           {
             path: "/details/:id/additional-information",
             element: <AdditionalInformation />,
             loader: ({ params }) =>
-              fetch(
-                `https://agrohub.vercel.app/seller/all_Product/${params.id}`
-              ),
+              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
           },
         ],
       },
@@ -126,9 +120,7 @@ const router = createBrowserRouter([
         path: "/details/payment-gateway/:id",
         element: <PaymentGateway></PaymentGateway>,
         loader: ({ params }) => {
-          return fetch(
-            `https://agrohub.vercel.app/seller/all_Product/${params.id}`
-          );
+          return fetch(`http://localhost:5000/seller/all_Product/${params.id}`);
         },
       },
       {

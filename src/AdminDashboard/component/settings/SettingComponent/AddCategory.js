@@ -14,7 +14,7 @@ const AddCategory = () => {
     };
     axios
       .post(
-        `https://agrohub.vercel.app/admin/categories?email=${user?.email}`,
+        `http://localhost:5000/admin/categories?email=${user?.email}`,
         newCategory,
         header
       )

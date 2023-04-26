@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { myContext } from "../../../../contextApi/Authcontext";
 
 const AddBrand = () => {
-  const {user,header} = useContext(myContext)
+  const { user, header } = useContext(myContext);
   const [categorys, setCategorys] = useState([]);
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
@@ -12,13 +12,12 @@ const AddBrand = () => {
   // get all categories
   useEffect(() => {
     axios
-      .get(`https://agrohub.vercel.app/admin/categories`)
+      .get(`http://localhost:5000/admin/categories`)
       .then((res) => {
         setCategorys(res.data);
       })
       .catch((e) => console.log(e));
   }, []);
-
 
   const handleSubmit = () => {
     const newBrand = {
@@ -26,10 +25,14 @@ const AddBrand = () => {
       brand: brand,
     };
     axios
-      .post(`https://agrohub.vercel.app/admin/brands?email=${user?.email}`, newBrand,header)
+      .post(
+        `http://localhost:5000/admin/brands?email=${user?.email}`,
+        newBrand,
+        header
+      )
       .then((res) => {
-        if(res.data.message === "Success"){
-          setBrand("")
+        if (res.data.message === "Success") {
+          setBrand("");
         }
       })
       .catch((e) => console.log(e));

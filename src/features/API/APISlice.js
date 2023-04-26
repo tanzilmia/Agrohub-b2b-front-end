@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const productsAPI = createApi({
   reducerPath: "productsAPI",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://agrohub.vercel.app",
+    baseUrl: "http://localhost:5000",
   }),
   endpoints: (builder) => ({
     // get all products
@@ -40,6 +40,11 @@ export const productsAPI = createApi({
     getBrands: builder.query({
       query: (category) => `/admin/brands?category=${category}`,
     }),
+
+    // get search filtering products
+    getSearchFilteringProducts: builder.query({
+      query: (search) => `/seller/search?name=${search}`,
+    }),
   }),
 });
 
@@ -50,4 +55,5 @@ export const {
   useGetProductDetailsByIDQuery,
   usePostProductMutation,
   useGetBrandsQuery,
+  useGetSearchFilteringProductsQuery,
 } = productsAPI;

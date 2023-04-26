@@ -6,9 +6,9 @@ import { useLoaderData } from "react-router-dom";
 const PaymentGateway = () => {
   const { user, header } = useContext(myContext);
   const products = useLoaderData();
-  console.log(products)
+  console.log(products);
   const {
-    _id:productId,
+    _id: productId,
     name: productName,
     description,
     newPrice,
@@ -51,7 +51,7 @@ const PaymentGateway = () => {
 
     const postData = async () => {
       await axios
-        .post(`https://agrohub.vercel.app/payment-gateway`, cardDetails, header)
+        .post(`http://localhost:5000/payment-gateway`, cardDetails, header)
         .then((res) => {
           console.log(res.data);
           window.location.replace(res?.data?.url);
