@@ -15,9 +15,11 @@ const PaymentGateway = () => {
     stock,
     size,
     image,
+    sellerEmail
   } = products;
+
   const { name, email } = user;
-  console.log();
+  console.log(products);
   const transactionId = Math.floor(Math.random() * 100000);
   const onSubmit = (event) => {
     event.preventDefault();
@@ -47,6 +49,7 @@ const PaymentGateway = () => {
       transactionId,
       paid: false,
       price,
+      sellerEmail 
     };
 
     const postData = async () => {
