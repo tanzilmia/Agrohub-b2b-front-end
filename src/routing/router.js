@@ -29,12 +29,9 @@ import CustomeOrder from "../Pages/custome Order/CustomeOrder";
 import ChatLayout from "../ChatPage/ChatLayout/ChatLayout";
 import Inbox from "../ChatPage/ChatLayout/Inbox";
 import Defaultinbox from "../ChatPage/ChatLayout/Defaultinbox";
-<<<<<<< HEAD
-import CartProduct from "../Pages/CartProduct/CartProduct";
-=======
 import SingleSeller from "../AdminDashboard/SingleSellerInfo/SingleSeller";
 import UpdateProductInfo from "../AdminDashboard/UpdateProductInfo/UpdateProductInfo";
->>>>>>> master
+import CartProduct from "../Pages/CartProduct/CartProduct";
 
 const router = createBrowserRouter([
   {

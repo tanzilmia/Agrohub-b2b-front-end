@@ -12,12 +12,9 @@ const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const { user, logout, productInfo } = useContext(myContext);
-<<<<<<< HEAD
   const [categorys, setCategorys] = useState([]);
   const [openMenu, setOpenMenu] = useState(false);
-=======
 
->>>>>>> master
   const Logouts = () => {
     logout();
     googleLogout();
