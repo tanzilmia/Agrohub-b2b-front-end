@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { FiDollarSign } from "react-icons/fi";
 
-const ShopSideNav = ({ handleSearchFiltering, categoryOnlyData }) => {
-  const handleButtonClick = (category) => {
-    console.log(category);
-  };
-
+const ShopSideNav = ({ categoryOnlyData, brands, setSearchValue }) => {
+  const [priceFilter, setPriceFilter] = useState(250);
   return (
     <div className="w-1/5 relative">
       <div className=" w-80 mb-10 sticky top-16">
@@ -13,7 +11,7 @@ const ShopSideNav = ({ handleSearchFiltering, categoryOnlyData }) => {
             <div className="pt-2 ml-4 ">
               <div className="relative mb-4 flex w-44 flex-wrap items-stretch">
                 <input
-                  onChange={handleSearchFiltering}
+                  onChange={(e) => setSearchValue(e.target.value)}
                   type="search"
                   className="relative m-0 block w-[1px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-500 dark:placeholder:text-neutral-400 dark:focus:border-primary"
                   placeholder="Search"
@@ -28,7 +26,7 @@ const ShopSideNav = ({ handleSearchFiltering, categoryOnlyData }) => {
               <div>
                 {categoryOnlyData?.map((currentValue, index) => (
                   <button
-                    onClick={() => handleButtonClick(currentValue)}
+                    onClick={() => setSearchValue(currentValue)}
                     key={index}
                     className="flex items-center justify-start w-full py-1 pr-0 my-2 font-thin text-gray-500 uppercase transition-colors duration-200  hover:text-blue-500"
                   >
@@ -43,27 +41,33 @@ const ShopSideNav = ({ handleSearchFiltering, categoryOnlyData }) => {
               <span className="my-3 font-medium ml-4">Brand</span>
               <br />
               <select
+                onChange={(e) => setSearchValue(e.target.value)}
                 data-te-select-init
                 className="mt-3 border w-44 ml-4 text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-500 dark:placeholder:text-neutral-400 dark:focus:border-primary rounded-md"
               >
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-                <option value="4">Four</option>
-                <option value="5">Five</option>
-                <option value="6">Six</option>
-                <option value="7">Seven</option>
-                <option value="8">Eight</option>
+                {!brands?.length && <option>Choose a brand</option>}
+                {brands &&
+                  brands?.map((brand) => (
+                    <option key={brand._id} value={brand?.brand}>
+                      {brand?.brand}
+                    </option>
+                  ))}
               </select>
             </div>
-            <div className="mt-10">
-              <span className="my-3 font-medium ml-4">Price</span>
+            <div className="mt-10 ml-4">
+              <span className="my-3 font-medium">Price</span>
+              <div className="flex items-center mt-3">
+                <FiDollarSign className="text-gray-500 -ml-1 mr-2" />
+                <p className="text-lg font-medium">{priceFilter}</p>
+              </div>
               <input
                 type="range"
-                min="0"
-                max="100"
-                value="40"
-                className="range range-warning"
+                min="10"
+                max="50000"
+                value={priceFilter}
+                step="1"
+                className="range range-warning mt-1 -ml-1 cursor-pointer"
+                onChange={(e) => setPriceFilter(e.target.value)}
               />
             </div>
             <button
