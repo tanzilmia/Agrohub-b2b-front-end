@@ -93,7 +93,7 @@ const Navbar = () => {
                   </span>
                 </Link>
                 <Link
-                  to={"/userDetails"}
+                  // to={"/userDetails"}
                   className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
                 >
                   {user?.name ? (
