@@ -7,19 +7,20 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
 import Google from "./Google";
 import { GoogleLogin } from "@react-oauth/google";
-import Loadding from "../../sheardComponent/Loadding";
+import Loader from "../shop/util/loader/Loader";
+
 
 const Login = () => {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
+  const [Loadding, setLoadding] = useState(false);
   const { setisLogin, setloading } = useContext(myContext);
-  const [Lodding, setLodding] = useState(false);
   const neviget = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
-  if (Lodding) {
-    return <Loadding />;
+  if(Loadding){
+    return <Loader/>
   }
 
   return (
@@ -58,7 +59,7 @@ const Login = () => {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-              setLodding(true);
+              setLoadding(true)
               setloading(true);
               const email = values.email;
               const password = values.password;
@@ -75,16 +76,22 @@ const Login = () => {
                     const token = res.data.data;
                     localStorage.setItem("accessToken", token);
                     setisLogin(true);
-                    setLodding(false);
+                    setLoadding(false)
+                    
                     neviget(from, { replace: true });
                   }
-                  if (res.data.message === "password not Match") {
-                    setError("password not Match");
-                  }
                   if (res.data.message === "user not Valid") {
+                    setError("password not Match");
+                    setLoadding(false)
+                    
+                  }
+                  if (res.data.message === "something is wrong") {
                     setError("user not Valid");
+                    setLoadding(false)
+                  
                   }
                   setSubmitting(false);
+                  
                 })
                 .catch((err) => {
                   console.log(err);

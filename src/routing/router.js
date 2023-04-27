@@ -33,6 +33,7 @@ import SingleSeller from "../AdminDashboard/SingleSellerInfo/SingleSeller";
 import UpdateProductInfo from "../AdminDashboard/UpdateProductInfo/UpdateProductInfo";
 import AdminRouting from "./AdminRouting";
 import PrivetRouting from "./PrivetRouting";
+import MyProduct from "../AdminDashboard/MyProduct";
 
 const router = createBrowserRouter([
   {
@@ -135,20 +136,43 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <PrivetRouting><AdminLayout /></PrivetRouting>,
+        element: (
+          <PrivetRouting>
+            <AdminLayout />
+          </PrivetRouting>
+        ),
         children: [
           {
+            path: "/dashboard",
+            element: (
+              <PrivetRouting>
+                <HomeDashboard />
+              </PrivetRouting>
+            ),
+          },
+          {
             path: "/dashboard/admin",
-            element: <AdminRouting><HomeDashboard /></AdminRouting>,
+            element: (
+              <AdminRouting>
+                <HomeDashboard />
+              </AdminRouting>
+            ),
           },
           {
             path: "/dashboard/seller",
-            element: <AdminRouting><SellerDashboard /></AdminRouting>,
-           
+            element: (
+              <AdminRouting>
+                <SellerDashboard />
+              </AdminRouting>
+            ),
           },
           {
             path: "/dashboard/Seller/:id",
-            element: <AdminRouting><SingleSeller /></AdminRouting>,
+            element: (
+              <AdminRouting>
+                <SingleSeller />
+              </AdminRouting>
+            ),
             loader: ({ params }) => {
               return fetch(
                 `http://localhost:5000/common/seller-product/${params.id}`
@@ -157,7 +181,11 @@ const router = createBrowserRouter([
           },
           {
             path: "/dashboard/update-product/:id",
-            element: <AdminRouting><UpdateProductInfo /></AdminRouting>,
+            element: (
+              <AdminRouting>
+                <UpdateProductInfo />
+              </AdminRouting>
+            ),
             loader: ({ params }) => {
               return fetch(
                 `http://localhost:5000/common/single-product/${params.id}`
@@ -167,8 +195,11 @@ const router = createBrowserRouter([
 
           {
             path: "/dashboard/buyer",
-            element: <AdminRouting><BuyerDashboard /></AdminRouting>,
-            
+            element: (
+              <AdminRouting>
+                <BuyerDashboard />
+              </AdminRouting>
+            ),
           },
           {
             path: "/dashboard/addproduct",
@@ -180,17 +211,27 @@ const router = createBrowserRouter([
             children: [
               {
                 path: "/dashboard/settings",
-                element: <AdminRouting><BasicSettigs /></AdminRouting>,
-                
+                element: (
+                  <AdminRouting>
+                    <BasicSettigs />
+                  </AdminRouting>
+                ),
               },
               {
                 path: "/dashboard/settings/All-Product",
-                element: <AdminRouting><BasicSettigs /></AdminRouting>,
+                element: (
+                  <AdminRouting>
+                    <BasicSettigs />
+                  </AdminRouting>
+                ),
               },
               {
                 path: "/dashboard/settings/edete",
-                element: <AdminRouting><Edete /></AdminRouting>,
-                
+                element: (
+                  <AdminRouting>
+                    <Edete />
+                  </AdminRouting>
+                ),
               },
             ],
           },

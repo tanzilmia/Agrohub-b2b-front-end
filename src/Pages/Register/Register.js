@@ -160,6 +160,7 @@ const Register = () => {
                 .then((res) => {
                   if (res.data.message === "Email Is Already Used") {
                     setregistrError("This Email AlReady Use");
+                    setLodding(false)
                   }
                   if (res.data.message === "success") {
                     neviget("/login");

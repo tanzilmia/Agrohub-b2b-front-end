@@ -52,14 +52,14 @@ const HomeDashboard = () => {
       <div className="flex flex-col lg:grid lg:grid-flow-col lg:grid-cols-5  items-center justify-center">
         <div className="lg:col-span-3 flex items-center mx-3 mt-5 justify-center flex-wrap">
         <div className="flex flex-wrap justify-center">
-  <div className="w-full lg:w-1/2 py-6  px-6 shadow-lg hover:shadow-xl  mb-5  transition duration-300">
+  <div className="w-full lg:w-1/2 py-6  px-6 shadow-lg hover:shadow-xl  mb-3  transition duration-300">
     <div className="font-bold text-5xl text-center flex justify-center"> <FcCurrencyExchange/> </div>
     <p className="text-center text-2xl">
     <span className="text-base mr-2 font-bold">TOTAL</span> 
       {totalSell} <span className="text-base font-bold">TK</span>
     </p>
   </div>
-  <div className="w-full lg:w-1/2 py-6  px-6 shadow-lg hover:shadow-xl  mb-5  transition duration-300">
+  <div className="w-full lg:w-1/2 py-6  px-6 shadow-lg hover:shadow-xl  mb-3  transition duration-300">
   <div className="font-bold text-5xl text-center text-[#6c976c] flex justify-center"> <FaShoppingCart/> </div>
     <p className="text-center text-2xl">
       {totalPorduct?.length} <span className="text-base">Product</span>
