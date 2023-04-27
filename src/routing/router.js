@@ -29,7 +29,12 @@ import CustomeOrder from "../Pages/custome Order/CustomeOrder";
 import ChatLayout from "../ChatPage/ChatLayout/ChatLayout";
 import Inbox from "../ChatPage/ChatLayout/Inbox";
 import Defaultinbox from "../ChatPage/ChatLayout/Defaultinbox";
+<<<<<<< HEAD
 import CartProduct from "../Pages/CartProduct/CartProduct";
+=======
+import SingleSeller from "../AdminDashboard/SingleSellerInfo/SingleSeller";
+import UpdateProductInfo from "../AdminDashboard/UpdateProductInfo/UpdateProductInfo";
+>>>>>>> master
 
 const router = createBrowserRouter([
   {
@@ -76,19 +81,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/seller/contact/chats",
-        element: <ChatLayout/>,
-        children :[
+        element: <ChatLayout />,
+        children: [
           {
             path: "/seller/contact/chats",
-            element : <Defaultinbox/>
+            element: <Defaultinbox />,
           },
           {
             path: "/seller/contact/chats/:id",
-            element : <Inbox/>
-          }
-        ]
+            element: <Inbox />,
+          },
+        ],
       },
-      
+
       {
         path: "/selling_products",
         element: <SellerProduct />,
@@ -97,33 +102,25 @@ const router = createBrowserRouter([
         path: "/details/:id",
         element: <ReviewLayout />,
         loader: ({ params }) =>
-          fetch(
-            `https://agrohub.vercel.app/seller/all_Product/${params.id}`
-          ),
+          fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
         children: [
           {
             path: "/details/:id/description",
             element: <DetailsDescription />,
             loader: ({ params }) =>
-              fetch(
-                `https://agrohub.vercel.app/seller/all_Product/${params.id}`
-              ),
+              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
           },
           {
             path: "/details/:id/review",
             element: <UserReview />,
             loader: ({ params }) =>
-              fetch(
-                `https://agrohub.vercel.app/seller/all_Product/${params.id}`
-              ),
+              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
           },
           {
             path: "/details/:id/additional-information",
             element: <AdditionalInformation />,
             loader: ({ params }) =>
-              fetch(
-                `https://agrohub.vercel.app/seller/all_Product/${params.id}`
-              ),
+              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
           },
         ],
       },
@@ -131,9 +128,7 @@ const router = createBrowserRouter([
         path: "/details/payment-gateway/:id",
         element: <PaymentGateway></PaymentGateway>,
         loader: ({ params }) => {
-          return fetch(
-            `https://agrohub.vercel.app/seller/all_Product/${params.id}`
-          );
+          return fetch(`http://localhost:5000/seller/all_Product/${params.id}`);
         },
       },
       {
@@ -156,6 +151,25 @@ const router = createBrowserRouter([
             path: "/dashboard/seller",
             element: <SellerDashboard />,
           },
+          {
+            path: "/dashboard/Seller/:id",
+            element: <SingleSeller/>,
+            loader: ({ params }) => {
+              return fetch(
+                `http://localhost:5000/common/seller-product/${params.id}`
+              );
+            },
+          },
+          {
+            path: "/dashboard/update-product/:id",
+            element: <UpdateProductInfo/>,
+            loader: ({ params }) => {
+              return fetch(
+                `http://localhost:5000/common/single-product/${params.id}`
+              );
+            },
+          },
+
           {
             path: "/dashboard/buyer",
             element: <BuyerDashboard />,

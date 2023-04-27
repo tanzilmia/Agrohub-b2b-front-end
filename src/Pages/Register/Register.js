@@ -7,6 +7,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { myContext } from "../../contextApi/Authcontext";
 import Google from "../Login/Google";
+import Loadding from "../../sheardComponent/Loadding";
 
 const Register = () => {
   const [show, setShow] = useState(false);
@@ -14,6 +15,7 @@ const Register = () => {
   const [profilePic, setprofilePic] = useState("");
   const [registrError, setregistrError] = useState("");
   const { setloading } = useContext(myContext);
+  const [Lodding, setLodding] = useState(false);
   const neviget = useNavigate();
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -39,6 +41,11 @@ const Register = () => {
     },
   });
 
+
+  if(Lodding){
+    return <Loadding/>
+  }
+
   return (
     <nav className="bg-gray-50 min-h-screen  flex items-center justify-center">
       <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-7xl p-5 ">
@@ -61,9 +68,9 @@ const Register = () => {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                 </div>
@@ -135,7 +142,7 @@ const Register = () => {
             onSubmit={(values, { setSubmitting }) => {
               const { email, password, phone, firstname, lastname, role } =
                 values;
-
+                setLodding(true)
               setloading(true);
 
               const userinfo = {
@@ -149,16 +156,14 @@ const Register = () => {
               console.log(userinfo);
 
               axios
-                .post(
-                  `https://agrohub.vercel.app/auth/register`,
-                  userinfo
-                )
+                .post(`http://localhost:5000/auth/register`, userinfo)
                 .then((res) => {
                   if (res.data.message === "Email Is Already Used") {
                     setregistrError("This Email AlReady Use");
                   }
                   if (res.data.message === "success") {
                     neviget("/login");
+                    setLodding(false)
                   }
                 })
                 .catch((e) => console.log(e.message));
@@ -332,5 +337,3 @@ const Register = () => {
 };
 
 export default Register;
-
-

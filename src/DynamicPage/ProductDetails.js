@@ -3,6 +3,7 @@ import Navbar2 from "../sheardComponent/Navbar2";
 import { myContext } from "../contextApi/Authcontext";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+// tanzil 2
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 
@@ -64,7 +65,7 @@ const ProductDetails = ({ products }) => {
   const handleRatingClick = async (ratingNumber) => {
     try {
       const response = await axios.post(
-        `https://agrohub.vercel.app/seller/product_rating/${_id}/rating`,
+        `http://localhost:5000/seller/product_rating/${_id}/rating`,
         { rating: ratingNumber }
       );
       if (response.data) {
@@ -164,9 +165,9 @@ const ProductDetails = ({ products }) => {
                       fill="currentColor"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-10.293a1 1 0 00-1.414-1.414L10 8.586l-2.293-2.293a1 1 0 00-1.414 1.414L8.586 10l-2.293 2.293a1 1 0 001.414 1.414L10 11.414l2.293 2.293a1 1 0 001.414-1.414L11.414 10l2.293-2.293z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       />
                     </svg>
                   </button>
@@ -182,9 +183,9 @@ const ProductDetails = ({ products }) => {
                       fill="currentColor"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-10.293a1 1 0 00-1.414-1.414L10 8.586l-2.293-2.293a1 1 0 00-1.414 1.414L8.586 10l-2.293 2.293a1 1 0 001.414 1.414L10 11.414l2.293 2.293a1 1 0 001.414-1.414L11.414 10l2.293-2.293z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       />
                     </svg>
                   </button>

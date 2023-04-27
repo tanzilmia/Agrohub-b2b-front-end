@@ -1,32 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Autoplay } from "swiper/core";
 import "swiper/swiper-bundle.css";
-import axios from "axios";
+import { useGetCategoriesQuery } from "../../../features/API/APISlice";
 
 SwiperCore.use([Navigation, Autoplay]);
 
 const HomeCategoryByProduct = () => {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [slidesToShow, setSlidesToShow] = useState(4);
 
-  const fetchData = useCallback(async () => {
-    try {
-      const res = await axios.get("https://agrohub.vercel.app/admin/categories");
-      setProducts(res.data);
-      setIsLoading(false);
-    } catch (error) {
-      setError(error.message);
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+  const { data, isLoading, isError, error } = useGetCategoriesQuery();
 
   useEffect(() => {
     const updateCarousel = () => {
@@ -77,7 +60,7 @@ const HomeCategoryByProduct = () => {
     );
   }
 
-  if (error) {
+  if (isError) {
     return <div>{error}</div>;
   }
 
@@ -97,12 +80,9 @@ const HomeCategoryByProduct = () => {
         autoplay={{ delay: 2500 }}
       >
         <section className="grid place-items-center sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-5 lg:gap-5 gap-y-5 px-5 ">
-          {products.map((categoryData, index) => (
-            <SwiperSlide>
-              <div
-                key={categoryData._id}
-                className="block rounded-lg w-full overflow-hidden shadow-2xl shadow-indigo-100 hover:shadow-2xl transition-all duration-300 hover:bg-indigo-100 transform hover:-translate-y-2 hover:scale-95"
-              >
+          {data?.map((categoryData, index) => (
+            <SwiperSlide key={categoryData._id}>
+              <div className="block rounded-lg w-full overflow-hidden shadow-2xl shadow-indigo-100 hover:shadow-2xl transition-all duration-300 hover:bg-indigo-100 transform hover:-translate-y-2 hover:scale-95">
                 <img
                   src={categoryData.image}
                   alt="Category"

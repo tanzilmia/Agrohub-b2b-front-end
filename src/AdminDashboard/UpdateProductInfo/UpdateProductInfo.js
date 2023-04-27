@@ -1,38 +1,41 @@
+
+
 import axios from "axios";
-import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { myContext } from "../../contextApi/Authcontext";
+import React, { useState } from "react";
+import { useLoaderData } from "react-router-dom";
+
 import {
   useGetBrandsQuery,
   useGetCategoriesQuery,
   usePostProductMutation,
 } from "../../features/API/APISlice";
+import Loadding from "../../sheardComponent/Loadding";
 
-const ProductForm = () => {
+const UpdateProductInfo = () => {
   const [size, setSize] = useState([]);
   const [category, setCategory] = useState("");
+  const [loading, setloading] = useState(false)
   const [selectedImages, setSelectedImages] = useState([]);
-  const { user, header } = useContext(myContext);
-  const navigate = useNavigate();
+  const Myproduct = useLoaderData()
+ 
 
-  const [createProduct, { isLoading }] = usePostProductMutation();
+  const [{ isLoading }] = usePostProductMutation();
   const { data: categories } = useGetCategoriesQuery();
   const { data: brands } = useGetBrandsQuery(category);
 
   const handleSubmit = async (event) => {
+
     event.preventDefault();
-
     const form = event.target;
-
     const name = form.productName.value;
     const oldPrice = form.oldPrice.value;
     const newPrice = form.newPrice.value;
     const category = form.category.value;
     const brand = form.brand.value;
-    const stock = form.stock.value;
     const description = form.description.value;
-
+    setloading(true)
     const handleImageUpload = async () => {
+        
       try {
         const formDataArray = selectedImages.map((image, index) => {
           const formData = new FormData();
@@ -51,31 +54,29 @@ const ProductForm = () => {
         const responses = await Promise.all(uploadPromises);
         const urls = responses.map((response) => response.data.data.url);
         const product = {
-          sellerName: user?.name,
-          sellerEmail: user?.email,
-          sellerPhone: user?.phone,
-          sellerProfilePicture: user?.profilePic,
           name,
           images: urls,
           oldPrice,
           newPrice,
           size,
-          stock,
-          rating: 0,
           description,
-          role: user?.role,
-          additionalInfo: [{}],
-          totalSells: 0,
-          totalQuantity: 0,
           category: category,
           brand: brand,
         };
 
         try {
-          await createProduct({ user, header, product });
-          navigate("/selling_products");
+         
+       axios.put(`http://localhost:5000/common/edete-product?id=${Myproduct?._id}`, product)
+       .then(res => {
+        console.log(res.data);
+        if(res.data.message === "Update Success"){
+            // navigate("/dashboard/Seller")
+            window.history.back();
+            setloading(false)
+        }
+       })
         } catch (error) {
-          console.log(error);
+         console.log(error.message)
         }
       } catch (error) {
         console.error(error);
@@ -89,6 +90,10 @@ const ProductForm = () => {
     const files = event.target.files;
     setSelectedImages([...selectedImages, ...files]);
   };
+
+  if(loading){
+    return <Loadding/>
+  }
 
   return (
     <div className="flex justify-center w-full">
@@ -119,7 +124,7 @@ const ProductForm = () => {
         <div className="w-full">
           <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40  ">
             <h1 className="text-3xl font-semibold text-center text-indigo-700 uppercase">
-              Post your products
+              Update your products
             </h1>
             <form
               onSubmit={handleSubmit}
@@ -134,6 +139,7 @@ const ProductForm = () => {
                     className="w-full border block px-4 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     placeholder="Name"
                     required
+                    defaultValue={Myproduct?.name}
                   />
                 </label>
               </div>
@@ -159,6 +165,7 @@ const ProductForm = () => {
                     className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     placeholder="Old Price"
                     required
+                    defaultValue={Myproduct?.oldPrice}
                   />
                 </label>
               </div>
@@ -171,6 +178,7 @@ const ProductForm = () => {
                     className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     placeholder="New Price"
                     required
+                    defaultValue={Myproduct?.newPrice}
                   />
                 </label>
               </div>
@@ -181,10 +189,12 @@ const ProductForm = () => {
                     className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     name="category"
                     required
+                   
                     onChange={(e) => setCategory(e.target.value)}
                   >
                     <option disabled selected>
                       Choose a category
+                      
                     </option>
 
                     {categories?.length &&
@@ -229,19 +239,6 @@ const ProductForm = () => {
                   </select>
                 </label>
               </div>
-
-              <div className="mb-2">
-                <label>
-                  <span className="text-gray-700">Available stock</span>
-                  <input
-                    name="stock"
-                    type="text"
-                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    placeholder="Stock"
-                    required
-                  />
-                </label>
-              </div>
               <div className="mb-2 col-span-2">
                 <label>
                   <span className="text-gray-700">Description</span>
@@ -252,6 +249,7 @@ const ProductForm = () => {
                     className="block border w-full mt-2 px-4 py-8 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     rows="5"
                     required
+                    defaultValue={Myproduct?.description}
                   ></textarea>
                 </label>
               </div>
@@ -261,7 +259,7 @@ const ProductForm = () => {
                   type="submit"
                   className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"
                 >
-                  Post
+                  Update Product Info
                 </button>
               </div>
             </form>
@@ -272,4 +270,4 @@ const ProductForm = () => {
   );
 };
 
-export default ProductForm;
+export default UpdateProductInfo;

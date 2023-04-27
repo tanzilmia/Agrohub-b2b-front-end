@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import Pdf from "react-to-pdf";
@@ -11,10 +12,20 @@ const PaymentSuccess = () => {
   const [orderData, setOrderData] = useState({});
   useEffect(() => {
     fetch(
-      `https://agrohub.vercel.app/payment-gateway/orders-by-transaction-id/${transactionId}`
+      `http://localhost:5000/payment-gateway/orders-by-transaction-id/${transactionId}`
     )
       .then((res) => res.json())
-      .then((data) => setOrderData(data));
+      .then((data) => {
+        try{
+          console.log(transactionId)
+          axios.put(`http://localhost:5000/payment-gateway/update/success?transactionId=${transactionId}`)
+          .then(res =>  console.log(res.data))
+        }catch(e){
+          console.log(e.message);
+        }
+
+        setOrderData(data)
+      });
   }, [transactionId]);
   return (
     <div className="max-h-screen">

@@ -6,14 +6,18 @@ import { myContext } from "../contextApi/Authcontext";
 import { BsFillChatRightDotsFill } from "react-icons/bs";
 import { googleLogout } from "@react-oauth/google";
 
-import axios from "axios";
+import { useGetCategoriesQuery } from "../features/API/APISlice";
 
 const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const { user, logout, productInfo } = useContext(myContext);
+<<<<<<< HEAD
   const [categorys, setCategorys] = useState([]);
   const [openMenu, setOpenMenu] = useState(false);
+=======
+
+>>>>>>> master
   const Logouts = () => {
     logout();
     googleLogout();
@@ -34,16 +38,11 @@ const Navbar = () => {
     }
   };
 
+  const { data } = useGetCategoriesQuery();
+
   useEffect(() => {
     updateHidden();
   }, [location.pathname]);
-
-  useEffect(() => {
-    axios
-      .get(`https://agrohub.vercel.app/admin/categories`)
-      .then((res) => setCategorys(res.data))
-      .catch((error) => console.log(error));
-  }, []);
 
   return (
     <>
@@ -183,8 +182,8 @@ const Navbar = () => {
                 </span>
                 <span className="capitalize ml-2 text-white">Categories</span>
                 <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible font-semibold">
-                  {categorys &&
-                    categorys?.map((category) => (
+                  {data &&
+                    data?.map((category) => (
                       <Link
                         key={category._id}
                         to={""}

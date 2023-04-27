@@ -7,14 +7,21 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
 import Google from "./Google";
 import { GoogleLogin } from "@react-oauth/google";
+import Loadding from "../../sheardComponent/Loadding";
 
 const Login = () => {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
   const { setisLogin, setloading } = useContext(myContext);
+  const [Lodding, setLodding] = useState(false);
   const neviget = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
+
+  if (Lodding) {
+    return <Loadding />;
+  }
+
   return (
     <nav className="bg-gray-50 min-h-screen  flex items-center justify-center">
       <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-7xl p-5 ">
@@ -51,6 +58,7 @@ const Login = () => {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
+              setLodding(true);
               setloading(true);
               const email = values.email;
               const password = values.password;
@@ -60,13 +68,14 @@ const Login = () => {
               };
 
               axios
-                .post(`https://agrohub.vercel.app/auth/login`, user)
+                .post(`http://localhost:5000/auth/login`, user)
                 .then((res) => {
                   console.log(res.data);
                   if (res.data.message === "Login Successful") {
                     const token = res.data.data;
                     localStorage.setItem("accessToken", token);
                     setisLogin(true);
+                    setLodding(false);
                     neviget(from, { replace: true });
                   }
                   if (res.data.message === "password not Match") {
@@ -139,13 +148,6 @@ const Login = () => {
             <p className="text-center text-sm">OR</p>
             <hr className="border-gray-400" />
           </div>
-
-          {/* <button
-            onClick={() => GoogleLogin()}
-            className="bg-white hover:bg-[#29BA2F] hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold"
-          >
-            <FcGoogle className="w-8 mr-3 h-10"></FcGoogle> Login With Google
-          </button> */}
           <div className="flex justify-center mt-3 items-center">
             <Google />
           </div>

@@ -1,60 +1,11 @@
-/* 
-            @Project: Agrohub (b2b website)
-            @Name: MD. Mahiuddin Tuhin
-            @Task: Making Admin Layout components
-            @timestap: 1/4/23 - Saturday - Morning
-*/
-import axios from "axios";
+
 import React from "react";
 import { AiOutlineSortAscending } from "react-icons/ai";
 import { Link } from "react-router-dom";
 const TableInHome = (props) => {
   const allProductData = props.allProductData;
+  console.log(allProductData);
 
-  const deleteProduct = (id) => {
-    axios.delete(`https://agrohub.vercel.app/seller/delete-product/${id}`)
-      .then((res) => console.log("error",res))
-      .catch((error) => console.log("catch error", error));
-    console.log(id);
-  };
-
-  // const RecentProducts = [
-  //   {
-  //     name: "Arthur Melo",
-  //     status: "Active",
-  //     role: "Seller",
-  //     email: "authurmelo@example.com",
-  //     productId: "#2144l12AS",
-  //   },
-  //   {
-  //     name: "Arthur Melo",
-  //     status: "Active",
-  //     role: "Seller",
-  //     email: "authurmelo@example.com",
-  //     productId: "#2144l12AS",
-  //   },
-  //   {
-  //     name: "Arthur Melo",
-  //     status: "Active",
-  //     role: "Seller",
-  //     email: "authurmelo@example.com",
-  //     productId: "#2144l12AS",
-  //   },
-  //   {
-  //     name: "Arthur Melo",
-  //     status: "Active",
-  //     role: "Seller",
-  //     email: "authurmelo@example.com",
-  //     productId: "#2144l12AS",
-  //   },
-  //   {
-  //     name: "Arthur Melo",
-  //     status: "Active",
-  //     role: "Seller",
-  //     email: "authurmelo@example.com",
-  //     productId: "#2144l12AS",
-  //   },
-  // ];
   return (
     <section className="container px-4 mx-auto pt-16">
       <div className="flex items-center gap-x-3">
@@ -63,7 +14,7 @@ const TableInHome = (props) => {
         </h2>
 
         <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">
-          100 users
+          {allProductData.length}
         </span>
       </div>
 
@@ -98,46 +49,20 @@ const TableInHome = (props) => {
                       </button>
                     </th>
 
-                    {/* <th
-                      scope="col"
-                      className="px-2 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
-                    >
-                      <button className="flex items-center gap-x-2">
-                        <span>Role</span>
-
-                        <CiCircleQuestion />
-                      </button>
-                    </th> */}
-
                     <th
                       scope="col"
                       className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                     >
-                      Email address
+                      Brand
                     </th>
 
                     <th
                       scope="col"
                       className="pl-2 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                     >
-                      Product Id
+                    Action
                     </th>
-                    {/* {allProductData?.map((product) => {
-                      return product?.role === "seller" ? (
-                        
-                      ) : (
-                        ""
-                      );
-                    })} */}
-                    <th
-                      scope="col"
-                      className="pl-2 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
-                    >
-                      Action
-                    </th>
-                    <th scope="col" className="relative py-3.5 px-4">
-                      <span className="sr-only">Edit</span>
-                    </th>
+          
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
@@ -171,40 +96,17 @@ const TableInHome = (props) => {
                           </div>
                         </td>
                         <td className="px-2 py-4 text-xs text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                          {product?.sellerEmail}
+                          {product?.brand}
                         </td>
                         <td className="pl-2 py-4 text-sm whitespace-nowrap">
                           <div className="flex items-center">
-                            <p className="pl-2 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
-                              {product?._id}
-                            </p>
+                            <Link to ={`/details/${product?._id}`} className="pl-2 py-1 text-xs p-2 font-bold hover:cursor-pointer text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
+                               Details
+                            </Link>
                           </div>
                         </td>
-                        {/* {product?.role === "seller" ? (
-                          <>
-                            
-                          </>
-                        ) : (
-                          ""
-                        )} */}
-                        <td className="pl-2 py-4 text-sm whitespace-nowrap">
-                          <div className="flex items-center">
-                            <p className="pl-2 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
-                              <button>Update</button>
-                            </p>
-                          </div>
-                        </td>
-                        <td className="pl-2 py-4 text-sm whitespace-nowrap">
-                          <div className="flex items-center">
-                            <p className="pl-2 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
-                              <button
-                                onClick={() => deleteProduct(product?._id)}
-                              >
-                                Delete
-                              </button>
-                            </p>
-                          </div>
-                        </td>
+                     
+                       
                       </tr>
                     );
                   })}
@@ -215,7 +117,7 @@ const TableInHome = (props) => {
         </div>
       </div>
 
-      <div className="flex items-center justify-between mt-6">
+      {/* <div className="flex items-center justify-between mt-6">
         <Link
           to="/"
           className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
@@ -304,7 +206,7 @@ const TableInHome = (props) => {
             />
           </svg>
         </Link>
-      </div>
+      </div> */}
     </section>
   );
 };

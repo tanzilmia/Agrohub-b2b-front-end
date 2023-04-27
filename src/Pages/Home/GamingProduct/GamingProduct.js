@@ -1,53 +1,26 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 import { TbCategory2 } from "react-icons/tb";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Autoplay } from "swiper/core";
 import "swiper/swiper-bundle.css";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchLoadOneDataByCategories } from "../../../features/products/productCategoriesLoadOneDataSlice";
 
 SwiperCore.use([Navigation, Autoplay]);
 
 const GamingProduct = () => {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [slidesToShow, setSlidesToShow] = useState(4);
 
-  useEffect(() => {
-    axios
-      .get("https://agrohub.vercel.app/admin/categories")
-      .then((res) => {
-        const requests = res.data.map(async (category) => {
-          try {
-            const res = await axios.get(
-              `https://agrohub.vercel.app/seller/category_products?category=${category.category}`
-            );
-            return res.data;
-          } catch (error) {
-            throw new Error(
-              `Error fetching products for category "${category}": ${error.message}`
-            );
-          }
-        });
+  const dispatch = useDispatch();
 
-        Promise.all(requests)
-          .then((results) => {
-            const sortedProducts = results.flat();
-            setProducts(sortedProducts);
-          })
-          .catch((error) => {
-            setError(error.message);
-          })
-          .finally(() => {
-            setIsLoading(false);
-          });
-      })
-      .catch((error) => {
-        setError(error.message);
-        setIsLoading(false);
-      });
-  }, []);
+  const { loadOneProduct, isLoading, error } = useSelector(
+    (state) => state.loadOneDataByCategories
+  );
+
+  useEffect(() => {
+    dispatch(fetchLoadOneDataByCategories());
+  }, [dispatch]);
 
   useEffect(() => {
     const updateCarousel = () => {
@@ -125,9 +98,9 @@ const GamingProduct = () => {
           autoplay={{ delay: 2500 }}
         >
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 pb-8">
-            {products.map((product) => (
-              <SwiperSlide>
-                <ProductCard key={product._id} product={product}></ProductCard>
+            {loadOneProduct.map((product) => (
+              <SwiperSlide key={product._id}>
+                <ProductCard product={product}></ProductCard>
               </SwiperSlide>
             ))}
           </div>
