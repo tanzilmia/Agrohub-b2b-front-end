@@ -7,6 +7,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { myContext } from "../../contextApi/Authcontext";
 import Google from "../Login/Google";
+import Loadding from "../../sheardComponent/Loadding";
 
 const Register = () => {
   const [show, setShow] = useState(false);
@@ -14,6 +15,7 @@ const Register = () => {
   const [profilePic, setprofilePic] = useState("");
   const [registrError, setregistrError] = useState("");
   const { setloading } = useContext(myContext);
+  const [Lodding, setLodding] = useState(false);
   const neviget = useNavigate();
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -38,6 +40,11 @@ const Register = () => {
       });
     },
   });
+
+
+  if(Lodding){
+    return <Loadding/>
+  }
 
   return (
     <nav className="bg-gray-50 min-h-screen  flex items-center justify-center">
@@ -135,7 +142,7 @@ const Register = () => {
             onSubmit={(values, { setSubmitting }) => {
               const { email, password, phone, firstname, lastname, role } =
                 values;
-
+                setLodding(true)
               setloading(true);
 
               const userinfo = {
@@ -156,6 +163,7 @@ const Register = () => {
                   }
                   if (res.data.message === "success") {
                     neviget("/login");
+                    setLodding(false)
                   }
                 })
                 .catch((e) => console.log(e.message));
