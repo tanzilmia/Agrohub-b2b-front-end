@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import Navbar2 from "../sheardComponent/Navbar2";
 import { myContext } from "../contextApi/Authcontext";
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -8,6 +8,8 @@ import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 
 const ProductDetails = ({ products }) => {
+  const ImageRef = useRef();
+  const [currentIndex, SetcurrentIndex] = useState(0);
   const { _id, name, description, newPrice, stock, size, images, brand } =
     products;
   const { setProductInfo, user } = useContext(myContext);
@@ -94,7 +96,31 @@ const ProductDetails = ({ products }) => {
       <div className="m-20">
         <div className="grid md:grid-cols-5 items-center">
           <div className="md:col-span-2 flex justify-center items-center">
-            <img src={images && images[0]} alt="" />
+            <div className="flex flex-col">
+              {/* className="max-w-xl max-h-full" */}
+              <img
+                className="w-full h-full max-h-96"
+                src={images && images[currentIndex]}
+                alt=""
+              />
+              {/* <div className="active opacity-100 border border-[gray]"></div> */}
+              <div
+                ref={ImageRef}
+                className="thumb flex w-full h-[100px] cursor-pointer my-3 mx-0 mt-5"
+              >
+                {images.map((img, index) => (
+                  <img
+                    key={index}
+                    className={`xl:w-24 sm:w-14 h-full block object-cover border border-[#999] mr-1 opacity-70 rounded-sm ${
+                      index === currentIndex ? "active" : ""
+                    }`}
+                    src={img}
+                    onClick={() => SetcurrentIndex(index)}
+                    alt=""
+                  />
+                ))}
+              </div>
+            </div>
           </div>
           <div className="md:col-span-3 mx-20">
             <h2 className="text-2xl font-semibold">{name}</h2>

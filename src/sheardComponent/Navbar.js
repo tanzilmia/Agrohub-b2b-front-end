@@ -53,7 +53,7 @@ const Navbar = () => {
                 <img src={header_logo} alt="" className="w-32" />
               </Link>
               {/* searchbar */}
-              <div className="xl:w-full w-32 max-w-xl relative flex">
+              <div className="xl:w-full hidden xl:flex w-32 max-w-xl relative ">
                 <span className="absolute left-4 top-3 text-lg text-gray-400">
                   <i className="ri-search-line"></i>
                 </span>
