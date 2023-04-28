@@ -277,10 +277,10 @@ const Navbar = () => {
                   <i className="ri-layout-masonry-fill"></i>
                 </span>
                 <div
-                  className={`absolute w-full right-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 ${
+                  className={`absolute w-full right-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed ${
                     openMenu
-                      ? "opacity-100 duration-500 transition visible"
-                      : "invisible duration-500"
+                      ? "opacity-100 duration-500 transition  translate-x-0 visible"
+                      : "invisible duration-500 transition-all translate-x-20"
                   }`}
                   style={{ width: "200px" }}
                 >
