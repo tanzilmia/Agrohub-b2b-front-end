@@ -15,7 +15,7 @@ const HomeCategoryByProduct = () => {
     const updateCarousel = () => {
       const screenWidth = window.innerWidth;
       if (screenWidth <= 768) {
-        setSlidesToShow(2);
+        setSlidesToShow(1);
       } else if (screenWidth <= 1024) {
         setSlidesToShow(2);
       } else if (screenWidth <= 1280) {

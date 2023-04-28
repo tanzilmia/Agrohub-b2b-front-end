@@ -35,13 +35,13 @@ const SellerProduct = () => {
     return <div>{error}</div>;
   }
   return (
-    <div className="px-4 md:px-10 lg:px-20 bg-gray-100 h-screen">
+    <div className="px-4 md:px-10 lg:px-20 bg-gray-100">
       <div className="flex justify-between py-6">
         <h3 className="text-xl md:text-2xl font-semibold mx-auto">
           All Selling Products
         </h3>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 pb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-5 pb-8">
         {data?.map((product) => (
           <ProductCard key={product._id} product={product}></ProductCard>
         ))}

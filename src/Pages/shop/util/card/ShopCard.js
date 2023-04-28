@@ -18,9 +18,9 @@ const ShopCard = ({ product }) => {
   return (
     <Link to={`/details/${_id}`}>
       {" "}
-      <div className="relative  flex flex-col items-center justify-center ">
+      <div className="relative flex flex-col items-center justify-center ">
         <div className="container">
-          <div className="max-w-xs shadow-xl rounded-xl p-6">
+          <div className="w-full lg:max-w-xs shadow-xl rounded-xl p-6">
             <div className="flex flex-col ">
               <div className="">
                 <div className="relative h-62 w-full mb-3">
