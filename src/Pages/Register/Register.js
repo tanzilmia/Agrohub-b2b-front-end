@@ -162,10 +162,15 @@ const Register = () => {
                     setregistrError("This Email AlReady Use");
                     setLodding(false)
                   }
+                  if (res.data.message === "unwanted error") {
+                    setregistrError("Wrong Input");
+                    setLodding(false)
+                  }
                   if (res.data.message === "success") {
                     neviget("/login");
                     setLodding(false)
                   }
+                  
                 })
                 .catch((e) => console.log(e.message));
 
