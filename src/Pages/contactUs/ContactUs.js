@@ -19,9 +19,10 @@ const ContactUs = () => {
         "service_4yvrx5k",
         "template_kulgani",
         form.current,
-        "n8kGMbbyfL9AVeODC"
+        "uNLsTJ_dIY6J5knuY"
       )
       .then((result) => {
+        e.target.reset();
         toast.success("Your Text Send Complete!");
       })
       .catch((error) => {
