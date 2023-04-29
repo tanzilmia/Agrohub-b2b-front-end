@@ -2,7 +2,6 @@ import axios from "axios";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import { useContext } from "react";
-import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
 import Google from "./Google";
@@ -155,9 +154,9 @@ const Login = () => {
             <p className="text-center text-sm">OR</p>
             <hr className="border-gray-400" />
           </div>
-          <div className="flex justify-center mt-3 items-center">
+          {/* <div className="flex justify-center mt-3 items-center">
             <Google />
-          </div>
+          </div> */}
         </div>
 
         {/* right div */}

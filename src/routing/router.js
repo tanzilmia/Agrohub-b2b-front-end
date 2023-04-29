@@ -34,6 +34,7 @@ import UpdateProductInfo from "../AdminDashboard/UpdateProductInfo/UpdateProduct
 import AdminRouting from "./AdminRouting";
 import PrivetRouting from "./PrivetRouting";
 import MyProduct from "../AdminDashboard/MyProduct";
+import CartProduct from "../Pages/CartProduct/CartProduct";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
       {
         path: "/custom",
         element: <CustomeOrder />,
+      },
+      {
+        path: "/cartProduct",
+        element: <CartProduct />,
       },
       {
         path: "/seller/contact/chats",

@@ -2,12 +2,29 @@
 // component from the library
 import { GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { CiGlass } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
+import { myContext } from "../../contextApi/Authcontext";
 
 function Provider() {
+  const { setuser, setloading } = useContext(myContext);
+  const Navigate = useNavigate();
   const SendData = (data) => {
     axios.post("http://localhost:5000/auth/google", data);
+    // axios.post("http://localhost:5000/auth/google_login", data);
+    axios.post("http://localhost:5000/auth/login", data);
+    // get the user data
+    axios
+      .post(`http://localhost:5000/auth/google-user-info`, data)
+      .then((res) => {
+        if (res.data.message === "successfull") {
+          setuser(res.data.data);
+          setloading(false);
+        }
+      })
+      .catch((e) => console.log(e));
+    Navigate("/");
   };
 
   //  function onSignIn(googleUser) {
