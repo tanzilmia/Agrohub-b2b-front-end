@@ -2,28 +2,51 @@
 // component from the library
 import { GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CiGlass } from "react-icons/ci";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
 
 function Provider() {
-  const { setuser, setloading } = useContext(myContext);
+  const { setuser, setloading, setisLogin, setLodding } = useContext(myContext);
+  const [error, setError] = useState("");
   const Navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
   const SendData = (data) => {
     axios.post("http://localhost:5000/auth/google", data);
     // axios.post("http://localhost:5000/auth/google_login", data);
-    axios.post("http://localhost:5000/auth/login", data);
-    // get the user data
     axios
-      .post(`http://localhost:5000/auth/google-user-info`, data)
+      .post("http://localhost:5000/auth/login", data)
       .then((res) => {
-        if (res.data.message === "successfull") {
-          setuser(res.data.data);
-          setloading(false);
+        console.log(res)
+        if (res.data.message === "Login Successful") {
+          const token = res.data.data;
+          localStorage.setItem("accessToken", token);
+          setisLogin(true);
+          setLodding(false);
+          Navigate(from, { replace: true });
+        }
+        if (res.data.message === "password not Match") {
+          setError("password not Match");
+        }
+        if (res.data.message === "user not Valid") {
+          setError("user not Valid");
         }
       })
-      .catch((e) => console.log(e));
+      .catch((err) => {
+        console.log(err);
+      });
+    // get the user data
+    // axios
+    //   .post(`http://localhost:5000/auth/google-user-info`, data)
+    //   .then((res) => {
+    //     if (res.data.message === "successfull") {
+    //       setuser(res.data.data);
+    //       setloading(false);
+    //     }
+    //   })
+    //   .catch((e) => console.log(e));
     Navigate("/");
   };
 
