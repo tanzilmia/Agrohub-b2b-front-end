@@ -41,3 +41,6 @@ style for flasscard in home @tuhin
   transform: rotateY(0deg);
 }
 /* flascard style ends */
+.active{
+  border: 1px solid #29BA2F !important;
+}

@@ -12,6 +12,8 @@ const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const { user, logout, productInfo } = useContext(myContext);
+  const [categorys, setCategorys] = useState([]);
+  const [openMenu, setOpenMenu] = useState(false);
 
   const Logouts = () => {
     logout();
@@ -51,7 +53,7 @@ const Navbar = () => {
                 <img src={header_logo} alt="" className="w-32" />
               </Link>
               {/* searchbar */}
-              <div className="xl:w-full w-56 max-w-xl relative flex">
+              <div className="xl:w-full hidden xl:flex w-32 max-w-xl relative ">
                 <span className="absolute left-4 top-3 text-lg text-gray-400">
                   <i className="ri-search-line"></i>
                 </span>
@@ -60,7 +62,7 @@ const Navbar = () => {
                   className="w-full border border-[#29BA2F] border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none"
                   placeholder="Search"
                 />
-                <button className="bg-[#29BA2F] border border-[#29BA2F] text-white px-8 rounded-r-md hover:bg-transparent hover:text-[#29BA2F] transition">
+                <button className="bg-[#29BA2F] border border-[#29BA2F] text-white sm:hidden xl:block xl:px-8 rounded-r-md hover:bg-transparent hover:text-[#29BA2F] transition">
                   Search
                 </button>
               </div>
@@ -91,7 +93,7 @@ const Navbar = () => {
                   </span>
                 </Link>
                 <Link
-                  to={"/userDetails"}
+                  // to={"/userDetails"}
                   className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
                 >
                   {user?.name ? (
@@ -120,54 +122,48 @@ const Navbar = () => {
                 )}
               </div>
               {/* responsive */}
-              <div className="px-8 mx-2 flex xl:hidden py-3 bg-[#29BA2F]  items-center cursor-pointer relative group rounded z-10">
-                <span className="text-white">
+              <div className="px-8 mx-2 flex xl:hidden py-3   items-center cursor-pointer relative group rounded z-10">
+                {/* <span className="text-white">
                   <i className="ri-menu-fill"></i>
-                </span>
-                <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible">
-                  <Link
-                    to={""}
-                    className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                  >
-                    <div className="text-2xl hover:text-[#29BA2F]">
-                      <i className="ri-heart-line"></i>
-                    </div>
-                    {/* <span className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
+                </span> */}
+                <Link
+                  to={""}
+                  className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+                >
+                  {/* <span className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
                 8
               </span> */}
-                  </Link>
+                </Link>
 
-                  <Link
-                    to={""}
-                    className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                  >
-                    <div className="text-2xl hover:text-[#29BA2F]">
-                      <i className="ri-shopping-cart-2-line"></i>
-                    </div>
-                    <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
-                      8
-                    </span>
-                  </Link>
-                  <Link
-                    to={"/userDetails"}
-                    className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                  >
-                    {user?.name ? (
-                      <img
-                        className="h-10 w-10 rounded-full"
-                        src={user.profilePic}
-                        alt={user.name}
-                        title={user.name}
-                      />
-                    ) : (
-                      <>
-                        <div className="text-2xl">
-                          <i className="ri-user-3-line"></i>
-                        </div>
-                      </>
-                    )}
-                  </Link>
-                </div>
+                <Link
+                  to={""}
+                  className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+                >
+                  <div className="text-2xl hover:text-[#29BA2F]">
+                    <i className="ri-shopping-cart-2-line"></i>
+                  </div>
+                </Link>
+
+                {/* change this layout */}
+                <Link
+                  to={"/userDetails"}
+                  className="flex items-center xl:px-6 py-3 hover:bg-gray-100 transition"
+                >
+                  {user?.name ? (
+                    <img
+                      className="h-10 w-10 rounded-full"
+                      src={user.profilePic}
+                      alt={user.name}
+                      title={user.name}
+                    />
+                  ) : (
+                    <>
+                      <div className="text-2xl">
+                        <i className="ri-user-3-line"></i>
+                      </div>
+                    </>
+                  )}
+                </Link>
               </div>
             </div>
           </header>
@@ -274,17 +270,24 @@ const Navbar = () => {
               </div>
               {/* responsive */}
               <div className="px-8 mx-2 flex xl:hidden py-3  items-center cursor-pointer relative group rounded z-10">
-                <span className="text-[#29BA2F]">
+                <span
+                  onClick={() => setOpenMenu((Pre) => !Pre)}
+                  className="text-[#29BA2F]"
+                >
                   <i className="ri-layout-masonry-fill"></i>
                 </span>
-                <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible">
+                <div
+                  className={`absolute w-full right-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed ${
+                    openMenu
+                      ? "opacity-100 duration-500 transition  translate-x-0 visible"
+                      : "invisible duration-500 transition-all translate-x-20"
+                  }`}
+                  style={{ width: "200px" }}
+                >
                   <Link
-                    to={""}
+                    to={"/"}
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
-                    <div className="text-2xl">
-                      <i className="ri-home-3-line"></i>
-                    </div>
                     <div className="text-xs leading-3">Home</div>
                   </Link>
 
@@ -292,16 +295,13 @@ const Navbar = () => {
                     to="/shop"
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
-                    <div className="text-2xl">
-                      <i className="ri-shopping-bag-3-line"></i>
-                    </div>
                     <div className="text-xs leading-3">Shop</div>
                   </Link>
 
                   {user?.email && (
                     <Link
                       to={"/custom"}
-                      className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                      className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                     >
                       Custome Order
                     </Link>
@@ -319,36 +319,32 @@ const Navbar = () => {
                     to={"/aboutus"}
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
-                    <div className="text-2xl">
-                      <i className="ri-home-3-line"></i>
-                    </div>
                     <div className="text-xs leading-3">About US</div>
                   </Link>
                   <Link
                     to={"/contactus"}
                     className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
-                    <div className="text-2xl">
-                      <i className="ri-passport-line"></i>
-                    </div>
                     <div className="text-xs leading-3">Contact US</div>
                   </Link>
                   <Link
                     to={"/blogs"}
-                    className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                    className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                   >
                     Blogs
                   </Link>
                   {user?.email ? (
-                    <button onClick={Logouts}>Logout</button>
+                    <a
+                      className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
+                      onClick={Logouts}
+                    >
+                      Logout
+                    </a>
                   ) : (
                     <Link
                       to={"/login"}
                       className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                     >
-                      <div className="text-2xl">
-                        <i className="ri-login-box-line"></i>
-                      </div>
                       <div className="text-xs leading-3">Login/Register</div>
                     </Link>
                   )}

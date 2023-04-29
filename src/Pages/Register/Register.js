@@ -160,11 +160,17 @@ const Register = () => {
                 .then((res) => {
                   if (res.data.message === "Email Is Already Used") {
                     setregistrError("This Email AlReady Use");
+                    setLodding(false)
+                  }
+                  if (res.data.message === "unwanted error") {
+                    setregistrError("Wrong Input");
+                    setLodding(false)
                   }
                   if (res.data.message === "success") {
                     neviget("/login");
                     setLodding(false)
                   }
+                  
                 })
                 .catch((e) => console.log(e.message));
 
@@ -327,9 +333,9 @@ const Register = () => {
           {/* <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold">
             <FcGoogle className="w-8 mr-3 h-10"></FcGoogle> Login With Google
           </button> */}
-          <div className="flex justify-center mt-3 items-center">
+          {/* <div className="flex justify-center mt-3 items-center">
             <Google />
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>
