@@ -310,10 +310,20 @@ const Navbar = () => {
                   {user?.role === "admin" && (
                     <Link
                       to={"/dashboard"}
-                      className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"
+                      className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
                     >
                       Dashboard
                     </Link>
+                    //{/* <Link
+                    // to={"/dashboard"}
+                    // className="text-gray-600
+                    //hover:text-black
+                    //hover:border-b-2
+                    //hover:border-b-[#29BA2F]
+                    //transition"
+                    //>
+                    //  Dashboard
+                    //</Link>  */}
                   )}
                   <Link
                     to={"/aboutus"}
