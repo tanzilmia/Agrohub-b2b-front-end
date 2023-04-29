@@ -31,6 +31,10 @@ import Inbox from "../ChatPage/ChatLayout/Inbox";
 import Defaultinbox from "../ChatPage/ChatLayout/Defaultinbox";
 import SingleSeller from "../AdminDashboard/SingleSellerInfo/SingleSeller";
 import UpdateProductInfo from "../AdminDashboard/UpdateProductInfo/UpdateProductInfo";
+import Cart from "../Pages/Cart/Cart";
+import AdminRouting from "./AdminRouting";
+import PrivetRouting from "./PrivetRouting";
+import MyProduct from "../AdminDashboard/MyProduct";
 import CartProduct from "../Pages/CartProduct/CartProduct";
 
 const router = createBrowserRouter([
@@ -73,6 +77,8 @@ const router = createBrowserRouter([
         element: <CustomeOrder />,
       },
       {
+        path: "/cart",
+        element: <Cart />,
         path: "/cartProduct",
         element: <CartProduct />,
       },
@@ -138,19 +144,43 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <AdminLayout />,
+        element: (
+          <PrivetRouting>
+            <AdminLayout />
+          </PrivetRouting>
+        ),
         children: [
           {
+            path: "/dashboard",
+            element: (
+              <PrivetRouting>
+                <HomeDashboard />
+              </PrivetRouting>
+            ),
+          },
+          {
             path: "/dashboard/admin",
-            element: <HomeDashboard />,
+            element: (
+              <AdminRouting>
+                <HomeDashboard />
+              </AdminRouting>
+            ),
           },
           {
             path: "/dashboard/seller",
-            element: <SellerDashboard />,
+            element: (
+              <AdminRouting>
+                <SellerDashboard />
+              </AdminRouting>
+            ),
           },
           {
             path: "/dashboard/Seller/:id",
-            element: <SingleSeller/>,
+            element: (
+              <AdminRouting>
+                <SingleSeller />
+              </AdminRouting>
+            ),
             loader: ({ params }) => {
               return fetch(
                 `http://localhost:5000/common/seller-product/${params.id}`
@@ -159,7 +189,11 @@ const router = createBrowserRouter([
           },
           {
             path: "/dashboard/update-product/:id",
-            element: <UpdateProductInfo/>,
+            element: (
+              <AdminRouting>
+                <UpdateProductInfo />
+              </AdminRouting>
+            ),
             loader: ({ params }) => {
               return fetch(
                 `http://localhost:5000/common/single-product/${params.id}`
@@ -169,7 +203,11 @@ const router = createBrowserRouter([
 
           {
             path: "/dashboard/buyer",
-            element: <BuyerDashboard />,
+            element: (
+              <AdminRouting>
+                <BuyerDashboard />
+              </AdminRouting>
+            ),
           },
           {
             path: "/dashboard/addproduct",
@@ -181,15 +219,27 @@ const router = createBrowserRouter([
             children: [
               {
                 path: "/dashboard/settings",
-                element: <BasicSettigs />,
+                element: (
+                  <AdminRouting>
+                    <BasicSettigs />
+                  </AdminRouting>
+                ),
               },
               {
-                path: "/dashboard/settings/Profile",
-                element: <BasicSettigs />,
+                path: "/dashboard/settings/All-Product",
+                element: (
+                  <AdminRouting>
+                    <BasicSettigs />
+                  </AdminRouting>
+                ),
               },
               {
                 path: "/dashboard/settings/edete",
-                element: <Edete />,
+                element: (
+                  <AdminRouting>
+                    <Edete />
+                  </AdminRouting>
+                ),
               },
             ],
           },

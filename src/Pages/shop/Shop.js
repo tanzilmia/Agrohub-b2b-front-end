@@ -54,7 +54,7 @@ function Shop() {
           />
           <div className="ml-1">
             <div className="flex justify-between">
-              <span className="mt-5 ml-6 text-lg font-semibold text-gray-500">
+              <span className="mt-5 lg:ml-6 ml-8 lg:text-lg text-sm font-semibold text-gray-500">
                 {filteringProduct && filteringProduct.length} Total Products
               </span>
               <select

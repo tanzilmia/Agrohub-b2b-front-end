@@ -81,7 +81,7 @@ const Navbar = () => {
                   </span>
                 </Link>
                 <Link
-                  to={"#"}
+                  to={"/cart"}
                   className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
                 >
                   <div className="text-2xl">
