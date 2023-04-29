@@ -7,6 +7,7 @@ import { myContext } from "../../contextApi/Authcontext";
 import Google from "./Google";
 import { GoogleLogin } from "@react-oauth/google";
 import Loader from "../shop/util/loader/Loader";
+import useTitle from "../../hooks/useTitle";
 
 
 const Login = () => {
@@ -17,7 +18,8 @@ const Login = () => {
   const neviget = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
-
+  
+  useTitle("Login");
   if(Loadding){
     return <Loader/>
   }

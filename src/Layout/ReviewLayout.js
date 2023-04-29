@@ -3,9 +3,11 @@ import Navbar from "../sheardComponent/Navbar";
 import ProductDetails from "../DynamicPage/ProductDetails";
 import { Outlet, useLoaderData } from "react-router-dom";
 import { useGetProductDetailsByIDQuery } from "../features/API/APISlice";
+import useTitle from "../hooks/useTitle";
 
 const ReviewLayout = () => {
   const products = useLoaderData();
+  useTitle("review");
 
   const { data, isLoading, isError, error } = useGetProductDetailsByIDQuery(
     products._id

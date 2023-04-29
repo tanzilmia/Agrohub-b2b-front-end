@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 import AboutUsPost from "./AboutUsPost";
 import AboutUsVideo from "./aboutUsVideo";
 import { aboutUs } from "./utilities";
+import useTitle from "../../hooks/useTitle";
 
 const AboutUs = () => {
-  console.log("this is about us page");
+  useTitle("About us");
   return (
     <div className="pt-[120px]">
       <AboutUsVideo />

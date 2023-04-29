@@ -7,11 +7,12 @@ import {
   useGetBrandsQuery,
   useGetFilteringProductsQuery,
 } from "../../features/API/APISlice";
+import useTitle from "../../hooks/useTitle";
 
 function Shop() {
   const [searchValue, setSearchValue] = useState("");
   const { data: brands } = useGetBrandsQuery(searchValue);
-
+  useTitle("Shope");
   const {
     data: filteringProduct,
     isLoading,

@@ -1,9 +1,11 @@
 import React from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { useGetAllProductsQuery } from "../../features/API/APISlice";
+import useTitle from "../../hooks/useTitle";
 
 const SellerProduct = () => {
   const { data, isLoading, isError, error } = useGetAllProductsQuery();
+  useTitle("seller");
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">

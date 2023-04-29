@@ -2,8 +2,10 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar2 from "../../sheardComponent/Navbar2";
 import Chats from "../Chats";
+import useTitle from "../../hooks/useTitle";
 
 const ChatLayout = () => {
+  useTitle("chat");
   return (
     <>
       <Navbar2 />
