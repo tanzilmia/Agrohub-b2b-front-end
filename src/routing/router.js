@@ -31,6 +31,7 @@ import Inbox from "../ChatPage/ChatLayout/Inbox";
 import Defaultinbox from "../ChatPage/ChatLayout/Defaultinbox";
 import SingleSeller from "../AdminDashboard/SingleSellerInfo/SingleSeller";
 import UpdateProductInfo from "../AdminDashboard/UpdateProductInfo/UpdateProductInfo";
+import Cart from "../Pages/Cart/Cart";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "/custom",
         element: <CustomeOrder />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/seller/contact/chats",
