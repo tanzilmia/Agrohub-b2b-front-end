@@ -17,9 +17,9 @@ function Provider() {
     axios.post("http://localhost:5000/auth/google", data);
     // axios.post("http://localhost:5000/auth/google_login", data);
     axios
-      .post("http://localhost:5000/auth/login", data)
+      .post(`http://localhost:5000/auth/login`, user)
       .then((res) => {
-        console.log(res)
+        console.log(res.data);
         if (res.data.message === "Login Successful") {
           const token = res.data.data;
           localStorage.setItem("accessToken", token);
@@ -33,9 +33,11 @@ function Provider() {
         if (res.data.message === "user not Valid") {
           setError("user not Valid");
         }
+        setSubmitting(false);
       })
       .catch((err) => {
         console.log(err);
+        setSubmitting(false);
       });
     // get the user data
     // axios
