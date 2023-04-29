@@ -34,8 +34,11 @@ import UpdateProductInfo from "../AdminDashboard/UpdateProductInfo/UpdateProduct
 import Cart from "../Pages/Cart/Cart";
 import AdminRouting from "./AdminRouting";
 import PrivetRouting from "./PrivetRouting";
-import MyProduct from "../AdminDashboard/MyProduct";
-import CartProduct from "../Pages/CartProduct/CartProduct";
+// import MyProduct from "../AdminDashboard/MyProduct";
+// import CartProduct from "../Pages/CartProduct/CartProduct";
+import MyProduct from "../AdminDashboard/sellerBoard/MyProduct"
+import MyBuyers from "../AdminDashboard/sellerBoard/MyBuyers";
+import SellerAndAdmin from "./SellerAndAdmin";
 
 const router = createBrowserRouter([
   {
@@ -79,8 +82,8 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
-        path: "/cartProduct",
-        element: <CartProduct />,
+        // path: "/cartProduct",
+        // element: <CartProduct />,
       },
       {
         path: "/seller/contact/chats",
@@ -145,11 +148,13 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: (
-          <PrivetRouting>
+          <SellerAndAdmin>
             <AdminLayout />
-          </PrivetRouting>
+          </SellerAndAdmin>
         ),
         children: [
+
+
           {
             path: "/dashboard",
             element: (
@@ -158,6 +163,28 @@ const router = createBrowserRouter([
               </PrivetRouting>
             ),
           },
+
+// seller dashboard
+
+          {
+            path: "/dashboard/myproduct",
+            element: (
+              <SellerAndAdmin>
+                <MyProduct/>
+              </SellerAndAdmin>
+            ),
+          },
+          {
+            path: "/dashboard/mybuyers",
+            element: (
+              <SellerAndAdmin>
+                <MyBuyers/> 
+              </SellerAndAdmin>
+            ),
+          },
+
+
+
           {
             path: "/dashboard/admin",
             element: (
@@ -190,9 +217,9 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/update-product/:id",
             element: (
-              <AdminRouting>
+              <PrivetRouting>
                 <UpdateProductInfo />
-              </AdminRouting>
+              </PrivetRouting>
             ),
             loader: ({ params }) => {
               return fetch(
