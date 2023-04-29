@@ -6,12 +6,15 @@ import axios from "axios";
 // tanzil 2
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../features/cart/cartSlice";
 
 const ProductDetails = ({ products }) => {
   const ImageRef = useRef();
   const [currentIndex, SetcurrentIndex] = useState(0);
   const { _id, name, description, newPrice, stock, size, images, brand } =
     products;
+  const dispatch = useDispatch();
   const { setProductInfo, user } = useContext(myContext);
 
   const [count, setCount] = useState(1);
@@ -215,10 +218,9 @@ const ProductDetails = ({ products }) => {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3 mt-10">
-              <button
-                onClick={ProductAddToCard}
-                className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white"
-              >
+              <button 
+              onClick={()=>dispatch(addToCart(products))}
+              className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
                 ADD TO CART <i className="ri-shopping-cart-line"></i>
               </button>
               <Link to={`/details/payment-gateway/${_id}`}>

@@ -48,7 +48,7 @@ const Navbar2 = () => {
           {/* icon */}
           <div className="hidden xl:flex items-center space-x-4">
             <Link
-              to={"#"}
+              to={"/cart"}
               className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
             >
               <div className="text-2xl">
