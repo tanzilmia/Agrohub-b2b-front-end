@@ -154,9 +154,9 @@ const Login = () => {
             <p className="text-center text-sm">OR</p>
             <hr className="border-gray-400" />
           </div>
-          {/* <div className="flex justify-center mt-3 items-center">
+          <div className="flex justify-center mt-3 items-center">
             <Google />
-          </div> */}
+          </div>
         </div>
 
         {/* right div */}
