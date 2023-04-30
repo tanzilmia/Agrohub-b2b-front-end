@@ -35,7 +35,7 @@ import Cart from "../Pages/Cart/Cart";
 import AdminRouting from "./AdminRouting";
 import PrivetRouting from "./PrivetRouting";
 // import MyProduct from "../AdminDashboard/MyProduct";
-// import CartProduct from "../Pages/CartProduct/CartProduct";
+import CartProduct from "../Pages/CartProduct/CartProduct";
 import MyProduct from "../AdminDashboard/sellerBoard/MyProduct"
 import MyBuyers from "../AdminDashboard/sellerBoard/MyBuyers";
 import SellerAndAdmin from "./SellerAndAdmin";
@@ -83,8 +83,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
-        // path: "/cartProduct",
-        // element: <CartProduct />,
+      },
+      {
+        path: "/cartProduct",
+        element: <CartProduct />,
       },
       {
         path: "/seller/contact/chats",

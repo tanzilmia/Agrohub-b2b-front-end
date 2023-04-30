@@ -8,6 +8,7 @@ import { googleLogout } from "@react-oauth/google";
 
 import { useGetCategoriesQuery } from "../features/API/APISlice";
 import UserInfo from "../modal/userInfo";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const location = useLocation();
@@ -16,6 +17,8 @@ const Navbar = () => {
   const [categorys, setCategorys] = useState([]);
   const [openMenu, setOpenMenu] = useState(false);
   const [modalopen, setModalOpen] = useState(false);
+  const cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity);
+
   const Logouts = () => {
     logout();
     googleLogout();
@@ -90,7 +93,7 @@ const Navbar = () => {
                   </div>
                   <div className="text-xs leading-3">Cart</div>
                   <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
-                    {productInfo && productInfo.productCount}
+                    {cartTotalQuantity}
                   </span>
                 </Link>
                 <Link
