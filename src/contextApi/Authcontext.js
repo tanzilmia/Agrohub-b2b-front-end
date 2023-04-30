@@ -85,7 +85,6 @@ const Authcontext = ({ children }) => {
     setloading,
     user,
     setuser,
-    setloading,
     loading,
     logout,
     header,
