@@ -7,8 +7,12 @@ import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { useRef } from "react";
 import { toast } from "react-hot-toast";
+import { useContext } from "react";
+import { myContext } from "../../contextApi/Authcontext";
 
 const ContactUs = () => {
+  const { user } = useContext(myContext);
+
   const form = useRef();
 
   const handleContact = (e) => {
@@ -207,7 +211,7 @@ const ContactUs = () => {
                   <input
                     type="text"
                     name="name"
-                    placeholder="Istiak Ahmed"
+                    placeholder={user?.name}
                     className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:text-gray-500 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   />
                 </div>
@@ -218,7 +222,7 @@ const ContactUs = () => {
                   </label>
                   <input
                     type="email"
-                    placeholder="Istiakahmed180@gmail.com"
+                    placeholder={user?.email}
                     name="email"
                     className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600  dark:text-gray-500 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   />
