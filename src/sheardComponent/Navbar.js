@@ -147,16 +147,14 @@ const Navbar = () => {
                 </Link>
 
                 {/* change this layout */}
-                <Link
-                  to={"/userDetails"}
-                  className="flex items-center xl:px-6 py-3 hover:bg-gray-100 transition"
-                >
+                <a className="flex items-center xl:px-6 py-3 hover:bg-gray-100 transition">
                   {user?.name ? (
                     <img
                       className="h-10 w-10 rounded-full"
                       src={user.profilePic}
                       alt={user.name}
                       title={user.name}
+                      onClick={() => setModalOpen(true)}
                     />
                   ) : (
                     <>
@@ -165,7 +163,7 @@ const Navbar = () => {
                       </div>
                     </>
                   )}
-                </Link>
+                </a>
               </div>
             </div>
           </header>
