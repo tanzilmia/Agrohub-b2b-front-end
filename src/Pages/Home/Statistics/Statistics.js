@@ -64,7 +64,13 @@ export default function Statistics() {
           <div className="flex-none mt-6 md:mt-0 lg:mt-6">
             <ul className="inline-grid gap-y-8 gap-x-14 grid-cols-2">
               {stats.map((item, idx) => (
-                <li key={idx} className="">
+                <li
+                  style={{
+                    width: 300,
+                  }}
+                  key={idx}
+                  className=""
+                >
                   <h4 className="text-4xl text-green-700 font-semibold">
                     {item.data}
                   </h4>
