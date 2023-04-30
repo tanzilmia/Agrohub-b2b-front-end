@@ -210,7 +210,7 @@ const Navbar = () => {
               {/* navbar links start*/}
 
               <div className="xl:flex hidden items-center justify-end flex-grow pl-12">
-                <div className="flex justify-around items-center space-x-6 capitalize mr-4">
+                <div className="flex justify-around items-center font-medium space-x-6 capitalize mr-4">
                   <Link
                     to={"/"}
                     className="text-gray-600 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] transition"

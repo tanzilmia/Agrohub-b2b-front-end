@@ -12,6 +12,7 @@ import Statistics from "./Statistics/Statistics";
 import TopSellingProduct from "./TopSellingProduct/TopSellingProduct";
 import TeamTrustUs from "./truestedTeam/TeamTrustsUs";
 import useTitle from "../../hooks/useTitle";
+import ContactUs from "../contactUs/ContactUs";
 const Home = () => {
   useTitle("");
   return (
@@ -37,7 +38,8 @@ const Home = () => {
       <HireUsToPromot />
       <OurTeam />
       <FAQ />
-      <ContactForm />
+      {/* <ContactForm /> */}
+      <ContactUs/>
       <Newsletter />
       {/* Tuhin */}
     </div>

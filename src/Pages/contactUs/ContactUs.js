@@ -35,8 +35,8 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="bg-white ">
-      <div className="container px-6 py-12 mx-auto">
+    <section className="bg-gray-100 ">
+      <div className="container px-6 py-6 mx-auto">
         <div className="lg:flex lg:items-center lg:-mx-6">
           {/* contact address */}
 
@@ -250,7 +250,7 @@ const ContactUs = () => {
           </div>
         </div>
         {/* map */}
-        <div className="overflow-hidden rounded-lg lg:col-span-2 h-96 my-24  md:mx-24 lg:mx-36">
+        <div className="overflow-hidden rounded-lg lg:col-span-2 h-96 mt-24  md:mx-24 lg:mx-36">
           <iframe
             width="100%"
             height="100%"
@@ -262,32 +262,6 @@ const ContactUs = () => {
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25279.229015045235!2d90.39873948868711!3d23.790021285086233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c71055971ba5%3A0xefd7803ea3886e97!2sBanani!5e0!3m2!1sen!2sbd!4v1680624362428!5m2!1sen!2sbd"
           ></iframe>
         </div>
-
-        {/* nav */}
-        <Link
-          to="/"
-          className="flex hover:text-slate-900 fixed top-24 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-        >
-          <RxHome className="text-2xl" />
-        </Link>
-        <Link
-          to="/contactus"
-          className="flex hover:text-slate-900 fixed top-36 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-        >
-          <FiPhoneCall className="text-2xl" />
-        </Link>
-        <Link
-          to="/blog"
-          className="flex hover:text-slate-900 fixed top-48 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-        >
-          <FaBloggerB className="text-2xl" />
-        </Link>
-        <Link
-          to="/login"
-          className="flex hover:text-slate-900 fixed top-60 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-        >
-          <AiOutlineLogin className="text-2xl" />
-        </Link>
       </div>
     </section>
   );
