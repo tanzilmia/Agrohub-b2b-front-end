@@ -36,7 +36,15 @@ export default function OurTeam() {
           {seller?.map((item, idx) => (
             <li
               key={item._id}
-              className="flex items-center gap-8 p-3 hover:shadow-lg transition-all hover:scale-95 duration-300 rounded-xl "
+              className={` ${
+                idx === 1
+                  ? "flex flex-row-reverse items-center gap-8 p-3 hover:shadow-lg transition-all hover:scale-95 duration-300 rounded-xl"
+                  : "flex items-center gap-8 p-3 hover:shadow-lg transition-all hover:scale-95 duration-300 rounded-xl"
+              } ${
+                idx === 3
+                  ? "flex flex-row-reverse items-center gap-8 p-3 hover:shadow-lg transition-all hover:scale-95 duration-300 rounded-xl"
+                  : "flex items-center gap-8 p-3 hover:shadow-lg transition-all hover:scale-95 duration-300 rounded-xl"
+              }`}
             >
               <div className="flex-none">
                 <img

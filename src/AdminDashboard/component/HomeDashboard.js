@@ -5,6 +5,7 @@ import BestSeller from "./tableMenu/BestSeller";
 import TableInHome from "./tableMenu/TableInHome";
 import { FcCurrencyExchange } from 'react-icons/fc';
 import { FaShoppingCart,FaUsers } from 'react-icons/fa';
+import useTitle from "../../hooks/useTitle";
 
 
 const HomeDashboard = () => {
@@ -13,6 +14,7 @@ const HomeDashboard = () => {
   const [allProductData, setAllProductData] = useState([]);
   const [totalSell, settotalSell] = useState(null);
   const [totalPorduct, settotalPorduct] = useState([]);
+  useTitle("Dashboard");
   useEffect(() => {
     const getData = async () => {
       const res = await axios.get("http://localhost:5000/common/sellers");

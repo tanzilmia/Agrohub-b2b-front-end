@@ -11,12 +11,13 @@ import OurTeam from "./OurTeam/OurTeam";
 import Statistics from "./Statistics/Statistics";
 import TopSellingProduct from "./TopSellingProduct/TopSellingProduct";
 import TeamTrustUs from "./truestedTeam/TeamTrustsUs";
-
+import useTitle from "../../hooks/useTitle";
 const Home = () => {
+  useTitle("");
   return (
     <div className="">
       {/* Istiak Ahmed */}
-      <Carousel></Carousel>
+      <Carousel />
       {/* Istiak Ahmed */}
 
       {/* Alamin */}

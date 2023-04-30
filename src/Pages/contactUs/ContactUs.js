@@ -4,8 +4,10 @@ import { FaBloggerB } from "react-icons/fa";
 import { FiPhoneCall } from "react-icons/fi";
 import { RxHome } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const ContactUs = () => {
+  useTitle("Contact us");
   return (
     <section className="bg-white ">
       <div className="container px-6 py-12 mx-auto">

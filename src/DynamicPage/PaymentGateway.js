@@ -2,8 +2,10 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { myContext } from "../contextApi/Authcontext";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../hooks/useTitle";
 
 const PaymentGateway = () => {
+  useTitle("payment");
   const { user, header } = useContext(myContext);
   const products = useLoaderData();
   console.log(products);

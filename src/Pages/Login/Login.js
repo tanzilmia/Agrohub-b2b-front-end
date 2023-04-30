@@ -7,7 +7,8 @@ import { myContext } from "../../contextApi/Authcontext";
 import Google from "./Google";
 import { GoogleLogin } from "@react-oauth/google";
 import Loader from "../shop/util/loader/Loader";
-
+import useTitle from "../../hooks/useTitle";
+import { FaArrowRight } from "react-icons/fa";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -18,8 +19,9 @@ const Login = () => {
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
-  if(Loadding){
-    return <Loader/>
+  useTitle("Login");
+  if (Loadding) {
+    return <Loader />;
   }
 
   return (
@@ -58,7 +60,7 @@ const Login = () => {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-              setLoadding(true)
+              setLoadding(true);
               setloading(true);
               const email = values.email;
               const password = values.password;
@@ -75,22 +77,19 @@ const Login = () => {
                     const token = res.data.data;
                     localStorage.setItem("accessToken", token);
                     setisLogin(true);
-                    setLoadding(false)
-                    
+                    setLoadding(false);
+
                     neviget(from, { replace: true });
                   }
                   if (res.data.message === "user not Valid") {
                     setError("password not Match");
-                    setLoadding(false)
-                    
+                    setLoadding(false);
                   }
                   if (res.data.message === "something is wrong") {
                     setError("user not Valid");
-                    setLoadding(false)
-                  
+                    setLoadding(false);
                   }
                   setSubmitting(false);
-                  
                 })
                 .catch((err) => {
                   console.log(err);
@@ -143,6 +142,10 @@ const Login = () => {
                 <p className=" text-sm border-gray-400">
                   Forgot Your Password?
                 </p>
+                <Link to={"/register"} className="sm:block hover:text-[#29BA2F] xl:hidden cursor-pointer text-sm border-gray-400 flex items-center">
+                  Already have a Account ?
+                  {/* <FaArrowRight color="#29BA2F"/> */}
+                </Link>
 
                 <p className="text-[red]">{error}</p>
               </Form>

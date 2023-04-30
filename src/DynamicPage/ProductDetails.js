@@ -96,25 +96,25 @@ const ProductDetails = ({ products }) => {
   return (
     <>
       <Navbar2 />
-      <div className="m-20">
+      <div className="">
         <div className="grid md:grid-cols-5 items-center">
-          <div className="md:col-span-2 flex justify-center items-center">
+          <div className="col-span-1 md:col-span-2 flex justify-center items-center">
             <div className="flex flex-col">
               {/* className="max-w-xl max-h-full" */}
               <img
-                className="w-full h-full max-h-96"
+                className="w-[469px] h-[366px] max-h-96"
                 src={images && images[currentIndex]}
                 alt=""
               />
               {/* <div className="active opacity-100 border border-[gray]"></div> */}
               <div
                 ref={ImageRef}
-                className="thumb flex w-full h-[100px] cursor-pointer my-3 mx-0 mt-5"
+                className="thumb flex w-full ml-5 h-[100px] cursor-pointer my-3 mx-0 mt-5"
               >
                 {images.map((img, index) => (
                   <img
                     key={index}
-                    className={`xl:w-24 sm:w-14 h-full block object-cover border border-[#999] mr-1 opacity-70 rounded-sm ${
+                    className={`w-14 xl:w-24  h-full block object-cover border border-[#999] mr-1 opacity-70 rounded-sm ${
                       index === currentIndex ? "active" : ""
                     }`}
                     src={img}
@@ -125,7 +125,7 @@ const ProductDetails = ({ products }) => {
               </div>
             </div>
           </div>
-          <div className="md:col-span-3 mx-20">
+          <div className="md:col-span-3 ml-1 xl:mx-20">
             <h2 className="text-2xl font-semibold">{name}</h2>
 
             {products?.rating === 0 ? (
@@ -217,10 +217,12 @@ const ProductDetails = ({ products }) => {
                 <span className="font-semibold">{countPrice}</span>
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3 mt-10">
-              <button 
-              onClick={()=>dispatch(addToCart(products))}
-              className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
+            {/* flex-col */}
+            <div className="flex sm:flex-row md:flex-col lg:flex-row gap-3 mt-10">
+              <button
+                onClick={() => dispatch(addToCart(products))}
+                className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white"
+              >
                 ADD TO CART <i className="ri-shopping-cart-line"></i>
               </button>
               <Link to={`/details/payment-gateway/${_id}`}>

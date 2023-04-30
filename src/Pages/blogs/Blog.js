@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const Blog = ({ blog, id }) => {
   const { title, article, image_url, link } = blog;
+  useTitle("Blog");
   return (
     <div>
       <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none  bg-opacity-50 shadow-2xl ">

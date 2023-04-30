@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { myContext } from "../../contextApi/Authcontext";
 import Google from "../Login/Google";
 import Loadding from "../../sheardComponent/Loadding";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
   const [show, setShow] = useState(false);
@@ -17,7 +18,7 @@ const Register = () => {
   const { setloading } = useContext(myContext);
   const [Lodding, setLodding] = useState(false);
   const neviget = useNavigate();
-
+  useTitle("Register");
   const { getRootProps, getInputProps } = useDropzone({
     // Note how this callback is never invoked if drop occurs on the inner dropzone
     onDrop: (acceptedFiles) => {
