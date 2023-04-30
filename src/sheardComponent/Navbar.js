@@ -7,6 +7,7 @@ import { BsFillChatRightDotsFill } from "react-icons/bs";
 import { googleLogout } from "@react-oauth/google";
 
 import { useGetCategoriesQuery } from "../features/API/APISlice";
+import UserInfo from "../modal/userInfo";
 
 const Navbar = () => {
   const location = useLocation();
@@ -14,7 +15,7 @@ const Navbar = () => {
   const { user, logout, productInfo } = useContext(myContext);
   const [categorys, setCategorys] = useState([]);
   const [openMenu, setOpenMenu] = useState(false);
-
+  const [modalopen, setModalOpen] = useState(false);
   const Logouts = () => {
     logout();
     googleLogout();
@@ -102,6 +103,7 @@ const Navbar = () => {
                       src={user.profilePic}
                       alt={user.name}
                       title={user.name}
+                      onClick={() => setModalOpen(true)}
                     />
                   ) : (
                     <>
@@ -168,7 +170,16 @@ const Navbar = () => {
             </div>
           </header>
           {/* header section start*/}
-
+          {modalopen ? (
+            <UserInfo
+              Logouts={Logouts}
+              user={user}
+              modalopen={modalopen}
+              setModalOpen={setModalOpen}
+            />
+          ) : (
+            <></>
+          )}
           {/* navbar section start */}
           <div className="bg-white shadow-sm">
             <div className="container mx-auto flex justify-between xl:justify-around">
