@@ -32,7 +32,7 @@ const DetailsDescription = () => {
             <span className="lg:text-2xl font-semibold">{data?.brand}</span>
           </div>
         </div>
-        <div className="lg:flex lg:space-x-3 space-y-3 my-5 justify-evenly">
+        <div className="lg:flex lg:space-x-3 lg:space-y-0 space-y-3 my-5 justify-evenly">
           <img
             src={data && data?.images[0]}
             className="w-[36rem] h-96 rounded"

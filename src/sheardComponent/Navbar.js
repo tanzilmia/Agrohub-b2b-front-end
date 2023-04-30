@@ -6,7 +6,10 @@ import { myContext } from "../contextApi/Authcontext";
 import { BsFillChatRightDotsFill } from "react-icons/bs";
 import { googleLogout } from "@react-oauth/google";
 
-import { useGetCategoriesQuery } from "../features/API/APISlice";
+import {
+  useGetCategoriesQuery,
+  useGetFilteringProductsQuery,
+} from "../features/API/APISlice";
 import UserInfo from "../modal/userInfo";
 import { useSelector } from "react-redux";
 
@@ -14,12 +17,14 @@ const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const { user, logout, productInfo } = useContext(myContext);
+  const [categories, setCategories] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
   const [modalopen, setModalOpen] = useState(false);
   const cartTotalQuantity = useSelector(
     (state) => state.cart.cartTotalQuantity
   );
 
+  const { data: filteringProduct } = useGetFilteringProductsQuery(categories);
   const Logouts = () => {
     logout();
     googleLogout();
@@ -194,13 +199,16 @@ const Navbar = () => {
                 <div className="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-500 invisible group-hover:visible font-semibold">
                   {data &&
                     data?.map((category) => (
-                      <Link
-                        key={category._id}
-                        className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                      >
-                        <span className="ml-6 text-gray-600 text-sm">
-                          {category.category}
-                        </span>
+                      <Link to={""}>
+                        <option
+                          onClick={(e) => setCategories(e.target.value)}
+                          key={category._id}
+                          className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+                        >
+                          <span className="ml-6 text-gray-600 text-sm">
+                            {category.category}
+                          </span>
+                        </option>
                       </Link>
                     ))}
                 </div>
