@@ -1,13 +1,10 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { removeToCart } from "../../features/cart/cartSlice";
 
 const ProductCard = ({ product }) => {
   const { _id, images, newPrice, oldPrice, name, description, rating } =
     product;
   console.log(product);
-  const dispatch = useDispatch();
   const { pathname } = useLocation();
   return (
     <div>
@@ -92,25 +89,9 @@ const ProductCard = ({ product }) => {
                 </div>
               )}
             </div>
-            <div>
-              {pathname === "/cart" && (
-                <div className="font-semibold">
-                  <p>Quantity: {product?.quantity}</p>
-                </div>
-              )}
-            </div>
           </div>
         </div>
       </Link>
-
-      {pathname === "/cart" && (
-        <div
-          onClick={() => dispatch(removeToCart(product))}
-          className="flex items-center rounded-md bg-slate-900 px-2 py-1 text-center lg:text-sm text-xs font-normal text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
-        >
-          Remove To Cart
-        </div>
-      )}
     </div>
   );
 };
