@@ -11,7 +11,7 @@ const MyBuyers = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/payment-gateway/my-buyers?email=${user?.email}`
+        `https://agrohub.vercel.app/payment-gateway/my-buyers?email=${user?.email}`
       )
       .then((res) => {
         setmyBuyers(res.data);

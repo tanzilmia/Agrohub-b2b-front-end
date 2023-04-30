@@ -16,18 +16,18 @@ const CommonDashPage = () => {
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(
-        `http://localhost:5000/payment-gateway/my-buyers?email=${user?.email}`
+        `https://agrohub.vercel.app/payment-gateway/my-buyers?email=${user?.email}`
       );
       const resData = await response.data;
       setBuyerData(resData);
       const productdData = await axios.get(
-        `http://localhost:5000/common/my-product?email=${user?.email}`
+        `https://agrohub.vercel.app/common/my-product?email=${user?.email}`
       );
       const resProductData = productdData.data;
       setAllProductData(resProductData);
 
       const totalProduct = await axios.get(
-        `http://localhost:5000/common/my-product?email=${user?.email}`
+        `https://agrohub.vercel.app/common/my-product?email=${user?.email}`
       );
       const restotalProduct = totalProduct.data;
       settotalPorduct(restotalProduct);
@@ -38,7 +38,7 @@ const CommonDashPage = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/payment-gateway/total-mysells?email=${user?.email}`
+        `https://agrohub.vercel.app/payment-gateway/total-mysells?email=${user?.email}`
       )
       .then((res) => {
         settotalSell(res.data.totalSellPrice);

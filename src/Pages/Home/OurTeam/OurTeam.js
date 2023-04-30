@@ -12,7 +12,7 @@ export default function OurTeam() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/auth/seller")
+      .get("https://agrohub.vercel.app/auth/seller")
       .then((res) => setSeller(res.data))
       .catch((error) => console.log(error));
   }, []);

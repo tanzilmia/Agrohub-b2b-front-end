@@ -11,7 +11,7 @@ const MyProduct = () => {
     const [Products, setProducts] = useState([])
 
     useEffect(() => {
-     axios.get(`http://localhost:5000/common/my-product?email=${user?.email}`)
+     axios.get(`https://agrohub.vercel.app/common/my-product?email=${user?.email}`)
      .then(res => {
         setProducts(res.data)
      })
@@ -24,7 +24,7 @@ const MyProduct = () => {
       
         if (confirmed) {
           try {
-            axios.delete(`http://localhost:5000/seller/delete-product?id=${id}`)
+            axios.delete(`https://agrohub.vercel.app/seller/delete-product?id=${id}`)
               .then(res => {
                 console.log(res.data);
               });

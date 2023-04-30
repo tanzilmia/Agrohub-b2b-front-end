@@ -56,7 +56,7 @@ const PaymentGateway = () => {
 
     const postData = async () => {
       await axios
-        .post(`http://localhost:5000/payment-gateway`, cardDetails, header)
+        .post(`https://agrohub.vercel.app/payment-gateway`, cardDetails, header)
         .then((res) => {
           console.log(res.data);
           window.location.replace(res?.data?.url);

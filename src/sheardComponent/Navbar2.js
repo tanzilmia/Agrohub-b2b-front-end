@@ -18,7 +18,7 @@ const Navbar2 = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/admin/categories`)
+      .get(`https://agrohub.vercel.app/admin/categories`)
       .then((res) => setCategorys(res.data))
       .catch((error) => console.log(error));
   }, []);
