@@ -39,6 +39,7 @@ import PrivetRouting from "./PrivetRouting";
 import MyProduct from "../AdminDashboard/sellerBoard/MyProduct"
 import MyBuyers from "../AdminDashboard/sellerBoard/MyBuyers";
 import SellerAndAdmin from "./SellerAndAdmin";
+import CommonDashPage from "../AdminDashboard/CommonDashPage";
 
 const router = createBrowserRouter([
   {
@@ -159,7 +160,7 @@ const router = createBrowserRouter([
             path: "/dashboard",
             element: (
               <PrivetRouting>
-                <HomeDashboard />
+                <CommonDashPage />
               </PrivetRouting>
             ),
           },
@@ -182,9 +183,6 @@ const router = createBrowserRouter([
               </SellerAndAdmin>
             ),
           },
-
-
-
           {
             path: "/dashboard/admin",
             element: (
