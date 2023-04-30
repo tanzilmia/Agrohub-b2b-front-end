@@ -16,6 +16,7 @@ const Authcontext = ({ children }) => {
     countPrice: 0,
     user,
   });
+  const [searchFilter, setSearchFilter] = useState("");
   const token = localStorage.getItem("accessToken");
   const header = {
     headers: {
@@ -71,7 +72,6 @@ const Authcontext = ({ children }) => {
       setloading(false);
     }
   }, [token, isLogin]);
- 
 
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -97,6 +97,8 @@ const Authcontext = ({ children }) => {
     chatUser,
     productInfo,
     setProductInfo,
+    setSearchFilter,
+    searchFilter,
   };
   return (
     <myContext.Provider value={contextValue}> {children} </myContext.Provider>

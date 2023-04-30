@@ -41,7 +41,7 @@ const ContactUs = () => {
           {/* contact address */}
 
           <div className="lg:w-1/2 lg:mx-6 ">
-            <h1 className="text-2xl font-semibold text-gray-800 capitalize dark:text-white lg:text-3xl">
+            <h1 className="text-2xl font-semibold text-gray-800 capitalize   lg:text-3xl">
               Contact us for <br /> more info
             </h1>
 

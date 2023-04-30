@@ -14,10 +14,11 @@ const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
   const { user, logout, productInfo } = useContext(myContext);
-  const [categorys, setCategorys] = useState([]);
   const [openMenu, setOpenMenu] = useState(false);
   const [modalopen, setModalOpen] = useState(false);
-  const cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity);
+  const cartTotalQuantity = useSelector(
+    (state) => state.cart.cartTotalQuantity
+  );
 
   const Logouts = () => {
     logout();
@@ -195,7 +196,6 @@ const Navbar = () => {
                     data?.map((category) => (
                       <Link
                         key={category._id}
-                        to={""}
                         className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
                       >
                         <span className="ml-6 text-gray-600 text-sm">
