@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 const ProductCard = ({ product }) => {
   const { _id, images, newPrice, oldPrice, name, description, rating } =
     product;
-  console.log(product);
+  // console.log(product);
   const { pathname } = useLocation();
   return (
     <div>

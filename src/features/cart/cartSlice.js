@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useContext } from "react";
 import { toast } from "react-hot-toast";
+import { myContext } from "../../contextApi/Authcontext";
 
 const initialState = {
   cart: localStorage.getItem("cartProduct")
@@ -13,11 +15,12 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
+      // console.log(action)
       const selectedProduct = state.cart.find(
-        (product) => product._id === action.payload._id
+        (product) => product._id === action.payload.products._id
       );
       if (!selectedProduct) {
-        const product = { ...action.payload, quantity: 1 };
+        const product = { ...action.payload.products, quantity: 1 , userEmail: action.payload.email };
         state.cart.push(product);
         toast.success("Product Added To Cart");
       } else {
@@ -34,6 +37,7 @@ const cartSlice = createSlice({
         const product = {
           ...action.payload,
           quantity: action.payload.quantity - 1,
+          userEmail: action.payload.email
         };
         state.cart = state.cart.filter(
           (product) => product._id !== action.payload._id
@@ -53,7 +57,7 @@ const cartSlice = createSlice({
         (product) => product._id === action.payload._id
       );
       if (!selectedProduct) {
-        const product = { ...action.payload, quantity: 1 };
+        const product = { ...action.payload, quantity: 1, userEmail: action.payload.email   };
         state.cart.push(product);
       } else {
         selectedProduct.quantity += 1;
@@ -68,6 +72,7 @@ const cartSlice = createSlice({
         const product = {
           ...action.payload,
           quantity: action.payload.quantity - 1,
+          userEmail: action.payload.email
         };
         state.cart = state.cart.filter(
           (product) => product._id !== action.payload._id

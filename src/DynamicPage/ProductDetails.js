@@ -15,8 +15,10 @@ const ProductDetails = ({ products }) => {
   const { _id, name, description, newPrice, stock, size, images, brand } =
     products;
   const dispatch = useDispatch();
+
   const { setProductInfo, user } = useContext(myContext);
 
+  const email = user?.email;
   const [count, setCount] = useState(1);
   const [countPrice, setCountPrice] = useState(newPrice);
   const [rating, setRating] = useState(0);
@@ -220,30 +222,31 @@ const ProductDetails = ({ products }) => {
             {/* flex-col */}
             <div className="flex sm:flex-row md:flex-col lg:flex-row gap-3 mt-10">
               <button
-                onClick={() => dispatch(addToCart(products))}
+                onClick={() => dispatch(addToCart({products, email}))}
                 className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white"
               >
-                ADD TO CART <i className="ri-shopping-cart-line hidden lg:block"></i>
+                ADD TO CART{" "}
+                <i className="ri-shopping-cart-line hidden lg:block"></i>
               </button>
-             {
-              user?.email ?
-              <Link to={`/details/payment-gateway/${_id}`}>
-              <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
-                BUY IT NOW
-              </button>
-            </Link>
-            :
-            <Link to={`/login`}>
-            <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
-              BUY IT NOW 
-            </button>
-          </Link>
-             }
+              {user?.email ? (
+                <Link to={`/details/payment-gateway/${_id}`}>
+                  <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
+                    BUY IT NOW
+                  </button>
+                </Link>
+              ) : (
+                <Link to={`/login`}>
+                  <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
+                    BUY IT NOW
+                  </button>
+                </Link>
+              )}
               <button
                 onClick={AddDataToWishlist}
                 className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3  font-semibold hover:bg-orange-500 hover:text-white"
               >
-                ADD TO WISHLIST <i className="ri-heart-line hidden lg:block"></i>
+                ADD TO WISHLIST{" "}
+                <i className="ri-heart-line hidden lg:block"></i>
               </button>
             </div>
           </div>
