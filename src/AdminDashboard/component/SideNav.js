@@ -2,7 +2,7 @@
             @Project: Agrohub (b2b website)
             @Name: MD. Mahiuddin Tuhin
  * @ Modified by: Your name
- * @ Modified time: 2023-04-21 05:22:18
+ * @ Modified time: 2023-04-30 09:54:17
 */
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
@@ -78,6 +78,13 @@ const SideNav = () => {
 
       <div className="flex flex-col justify-between flex-1 mt-6">
         <nav>
+        <Link
+            to="/dashboard"
+            className="flex items-center md:px-4 py-2 mt-5 text-gray-600 transition-colors bg-[#f3e8e8] duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
+          >
+            Default
+          </Link>
+
           {navItems.slice().map((nav, id) => {
             const isSelected = selected
               .toLowerCase()
@@ -102,6 +109,21 @@ const SideNav = () => {
               </>
             );
           })}
+           <>
+            <Link
+            to="/dashboard/myproduct"
+            className="flex items-center md:px-4 py-2 mt-5 text-gray-600 transition-colors bg-[#f3e8e8] duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
+          >
+            My Product
+          </Link>
+            <Link
+            to="/dashboard/mybuyers"
+            className="flex items-center md:px-4 py-2 mt-5 text-gray-600 transition-colors bg-[#f3e8e8] duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
+          >
+            My Buyers
+          </Link>
+            </>
+        
           <Link
             to="/dashboard/addproduct"
             className="flex items-center md:px-4 py-2 mt-5 text-gray-600 transition-colors bg-[#f3e8e8] duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"

@@ -7,12 +7,14 @@ import {
   useGetCategoriesQuery,
   usePostProductMutation,
 } from "../../features/API/APISlice";
+import Loader from "../../Pages/shop/util/loader/Loader";
 
 const ProductForm = () => {
   const [size, setSize] = useState([]);
   const [category, setCategory] = useState("");
   const [selectedImages, setSelectedImages] = useState([]);
   const { user, header } = useContext(myContext);
+  const [Loadding, setLoadding] = useState(false);
   const navigate = useNavigate();
 
   const [createProduct, { isLoading }] = usePostProductMutation();
@@ -20,6 +22,7 @@ const ProductForm = () => {
   const { data: brands } = useGetBrandsQuery(category);
 
   const handleSubmit = async (event) => {
+    setLoadding(true)
     event.preventDefault();
 
     const form = event.target;
@@ -74,6 +77,7 @@ const ProductForm = () => {
         try {
           await createProduct({ user, header, product });
           navigate("/selling_products");
+          setLoadding(false)
         } catch (error) {
           console.log(error);
         }
@@ -89,6 +93,10 @@ const ProductForm = () => {
     const files = event.target.files;
     setSelectedImages([...selectedImages, ...files]);
   };
+
+  if(Loadding){
+    return <Loader/>
+  }
 
   return (
     <div className="flex justify-center w-full">

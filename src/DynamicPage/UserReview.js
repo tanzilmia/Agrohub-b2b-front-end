@@ -30,7 +30,7 @@ const UserReview = () => {
     };
 
     axios
-      .post("http://localhost:5000/review/product_review", productrReview)
+      .post("https://agrohub.vercel.app/review/product_review", productrReview)
       .then((res) => {
         if (res.data) {
           console.log(res.data);
@@ -46,7 +46,7 @@ const UserReview = () => {
     try {
       if (reviews && reviews.length > 0) {
         const response = await axios.post(
-          `http://localhost:5000/review/product_review/${reviews[0]._id}/review`,
+          `https://agrohub.vercel.app/review/product_review/${reviews[0]._id}/review`,
           { rating: ratingNumber }
         );
         if (response.data) {
@@ -77,7 +77,7 @@ const UserReview = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/review/multiple_review/${products?._id}`
+          `https://agrohub.vercel.app/review/multiple_review/${products?._id}`
         );
         setReviews(response.data);
       } catch (error) {

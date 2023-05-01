@@ -34,8 +34,12 @@ import UpdateProductInfo from "../AdminDashboard/UpdateProductInfo/UpdateProduct
 import Cart from "../Pages/Cart/Cart";
 import AdminRouting from "./AdminRouting";
 import PrivetRouting from "./PrivetRouting";
-import MyProduct from "../AdminDashboard/MyProduct";
+// import MyProduct from "../AdminDashboard/MyProduct";
 import CartProduct from "../Pages/CartProduct/CartProduct";
+import MyProduct from "../AdminDashboard/sellerBoard/MyProduct"
+import MyBuyers from "../AdminDashboard/sellerBoard/MyBuyers";
+import SellerAndAdmin from "./SellerAndAdmin";
+import CommonDashPage from "../AdminDashboard/CommonDashPage";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +83,8 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
         path: "/cartProduct",
         element: <CartProduct />,
       },
@@ -105,25 +111,25 @@ const router = createBrowserRouter([
         path: "/details/:id",
         element: <ReviewLayout />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
+          fetch(`https://agrohub.vercel.app/seller/all_Product/${params.id}`),
         children: [
           {
             path: "/details/:id/description",
             element: <DetailsDescription />,
             loader: ({ params }) =>
-              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
+              fetch(`https://agrohub.vercel.app/seller/all_Product/${params.id}`),
           },
           {
             path: "/details/:id/review",
             element: <UserReview />,
             loader: ({ params }) =>
-              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
+              fetch(`https://agrohub.vercel.app/seller/all_Product/${params.id}`),
           },
           {
             path: "/details/:id/additional-information",
             element: <AdditionalInformation />,
             loader: ({ params }) =>
-              fetch(`http://localhost:5000/seller/all_Product/${params.id}`),
+              fetch(`https://agrohub.vercel.app/seller/all_Product/${params.id}`),
           },
         ],
       },
@@ -131,7 +137,7 @@ const router = createBrowserRouter([
         path: "/details/payment-gateway/:id",
         element: <PaymentGateway></PaymentGateway>,
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/seller/all_Product/${params.id}`);
+          return fetch(`https://agrohub.vercel.app/seller/all_Product/${params.id}`);
         },
       },
       {
@@ -145,17 +151,38 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: (
-          <PrivetRouting>
+          <SellerAndAdmin>
             <AdminLayout />
-          </PrivetRouting>
+          </SellerAndAdmin>
         ),
         children: [
+
+
           {
             path: "/dashboard",
             element: (
               <PrivetRouting>
-                <HomeDashboard />
+                <CommonDashPage />
               </PrivetRouting>
+            ),
+          },
+
+// seller dashboard
+
+          {
+            path: "/dashboard/myproduct",
+            element: (
+              <SellerAndAdmin>
+                <MyProduct/>
+              </SellerAndAdmin>
+            ),
+          },
+          {
+            path: "/dashboard/mybuyers",
+            element: (
+              <SellerAndAdmin>
+                <MyBuyers/> 
+              </SellerAndAdmin>
             ),
           },
           {
@@ -183,20 +210,20 @@ const router = createBrowserRouter([
             ),
             loader: ({ params }) => {
               return fetch(
-                `http://localhost:5000/common/seller-product/${params.id}`
+                `https://agrohub.vercel.app/common/seller-product/${params.id}`
               );
             },
           },
           {
             path: "/dashboard/update-product/:id",
             element: (
-              <AdminRouting>
+              <PrivetRouting>
                 <UpdateProductInfo />
-              </AdminRouting>
+              </PrivetRouting>
             ),
             loader: ({ params }) => {
               return fetch(
-                `http://localhost:5000/common/single-product/${params.id}`
+                `https://agrohub.vercel.app/common/single-product/${params.id}`
               );
             },
           },

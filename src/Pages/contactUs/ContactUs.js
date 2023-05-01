@@ -4,18 +4,44 @@ import { FaBloggerB } from "react-icons/fa";
 import { FiPhoneCall } from "react-icons/fi";
 import { RxHome } from "react-icons/rx";
 import { Link } from "react-router-dom";
-import useTitle from "../../hooks/useTitle";
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
+import { toast } from "react-hot-toast";
+import { useContext } from "react";
+import { myContext } from "../../contextApi/Authcontext";
 
 const ContactUs = () => {
-  useTitle("Contact us");
+  const { user } = useContext(myContext);
+
+  const form = useRef();
+
+  const handleContact = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_4yvrx5k",
+        "template_kulgani",
+        form.current,
+        "uNLsTJ_dIY6J5knuY"
+      )
+      .then((result) => {
+        e.target.reset();
+        toast.success("Your Text Send Complete!");
+      })
+      .catch((error) => {
+        console.log(error.text);
+      });
+  };
+
   return (
-    <section className="bg-white ">
-      <div className="container px-6 py-12 mx-auto">
+    <section className="bg-gray-100 ">
+      <div className="container px-6 py-6 mx-auto">
         <div className="lg:flex lg:items-center lg:-mx-6">
           {/* contact address */}
 
           <div className="lg:w-1/2 lg:mx-6 ">
-            <h1 className="text-2xl font-semibold text-gray-800 capitalize dark:text-white lg:text-3xl">
+            <h1 className="text-2xl font-semibold text-gray-800 capitalize   lg:text-3xl">
               Contact us for <br /> more info
             </h1>
 
@@ -177,14 +203,15 @@ const ContactUs = () => {
                 What do you want to ask
               </h1>
 
-              <form className="mt-6">
+              <form ref={form} onSubmit={handleContact} className="mt-6">
                 <div className="flex-1">
                   <label className="block mb-2 text-sm text-gray-500 ">
                     Full Name
                   </label>
                   <input
                     type="text"
-                    placeholder="John Doe"
+                    name="name"
+                    placeholder={user?.name}
                     className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:text-gray-500 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   />
                 </div>
@@ -195,7 +222,8 @@ const ContactUs = () => {
                   </label>
                   <input
                     type="email"
-                    placeholder="johndoe@example.com"
+                    placeholder={user?.email}
+                    name="email"
                     className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600  dark:text-gray-500 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   />
                 </div>
@@ -205,12 +233,16 @@ const ContactUs = () => {
                     Message
                   </label>
                   <textarea
+                    name="message"
                     className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:placeholder-gray-600  dark:text-gray-500 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     placeholder="Message"
                   ></textarea>
                 </div>
 
-                <button className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                <button
+                  type="submit"
+                  className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                >
                   get in touch
                 </button>
               </form>
@@ -218,7 +250,7 @@ const ContactUs = () => {
           </div>
         </div>
         {/* map */}
-        <div className="overflow-hidden rounded-lg lg:col-span-2 h-96 my-24  md:mx-24 lg:mx-36">
+        <div className="overflow-hidden rounded-lg lg:col-span-2 h-96 mt-24  md:mx-24 lg:mx-36">
           <iframe
             width="100%"
             height="100%"
@@ -230,32 +262,6 @@ const ContactUs = () => {
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25279.229015045235!2d90.39873948868711!3d23.790021285086233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c71055971ba5%3A0xefd7803ea3886e97!2sBanani!5e0!3m2!1sen!2sbd!4v1680624362428!5m2!1sen!2sbd"
           ></iframe>
         </div>
-
-        {/* nav */}
-        <Link
-          to="/"
-          className="flex hover:text-slate-900 fixed top-24 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-        >
-          <RxHome className="text-2xl" />
-        </Link>
-        <Link
-          to="/contactus"
-          className="flex hover:text-slate-900 fixed top-36 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-        >
-          <FiPhoneCall className="text-2xl" />
-        </Link>
-        <Link
-          to="/blog"
-          className="flex hover:text-slate-900 fixed top-48 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-        >
-          <FaBloggerB className="text-2xl" />
-        </Link>
-        <Link
-          to="/login"
-          className="flex hover:text-slate-900 fixed top-60 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-        >
-          <AiOutlineLogin className="text-2xl" />
-        </Link>
       </div>
     </section>
   );

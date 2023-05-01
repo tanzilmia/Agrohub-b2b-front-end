@@ -47,7 +47,7 @@ const ProductDetails = ({ products }) => {
     });
 
     const CartProduct = await axios.post(
-      "http://localhost:5000/CartProduct/addcartproduct",
+      "https://agrohub.vercel.app/CartProduct/addcartproduct",
       {
         Email: user.email,
         productId: _id,
@@ -70,7 +70,7 @@ const ProductDetails = ({ products }) => {
   const handleRatingClick = async (ratingNumber) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/seller/product_rating/${_id}/rating`,
+        `https://agrohub.vercel.app/seller/product_rating/${_id}/rating`,
         { rating: ratingNumber }
       );
       if (response.data) {
@@ -96,7 +96,7 @@ const ProductDetails = ({ products }) => {
   return (
     <>
       <Navbar2 />
-      <div className="">
+      <div className="px-3 mt-3">
         <div className="grid md:grid-cols-5 items-center">
           <div className="col-span-1 md:col-span-2 flex justify-center items-center">
             <div className="flex flex-col">
@@ -114,7 +114,7 @@ const ProductDetails = ({ products }) => {
                 {images.map((img, index) => (
                   <img
                     key={index}
-                    className={`w-14 xl:w-24  h-full block object-cover border border-[#999] mr-1 opacity-70 rounded-sm ${
+                    className={`w-24 xl:w-24 lg:w-24  h-full block object-cover border border-[#999] mr-1 opacity-70 rounded-sm ${
                       index === currentIndex ? "active" : ""
                     }`}
                     src={img}
@@ -126,7 +126,7 @@ const ProductDetails = ({ products }) => {
             </div>
           </div>
           <div className="md:col-span-3 ml-1 xl:mx-20">
-            <h2 className="text-2xl font-semibold">{name}</h2>
+            <h2 className="lg:text-2xl text-xl font-semibold">{name}</h2>
 
             {products?.rating === 0 ? (
               <div className="flex gap-4 my-3">
@@ -223,23 +223,32 @@ const ProductDetails = ({ products }) => {
                 onClick={() => dispatch(addToCart(products))}
                 className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white"
               >
-                ADD TO CART <i className="ri-shopping-cart-line"></i>
+                ADD TO CART <i className="ri-shopping-cart-line hidden lg:block"></i>
               </button>
+             {
+              user?.email ?
               <Link to={`/details/payment-gateway/${_id}`}>
-                <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
-                  BUY IT NOW
-                </button>
-              </Link>
+              <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
+                BUY IT NOW
+              </button>
+            </Link>
+            :
+            <Link to={`/login`}>
+            <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
+              BUY IT NOW 
+            </button>
+          </Link>
+             }
               <button
                 onClick={AddDataToWishlist}
-                className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white"
+                className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3  font-semibold hover:bg-orange-500 hover:text-white"
               >
-                ADD TO WISHLIST <i className="ri-heart-line"></i>
+                ADD TO WISHLIST <i className="ri-heart-line hidden lg:block"></i>
               </button>
             </div>
           </div>
         </div>
-        <div className="flex gap-10 font-semibold text-lg mt-48 lg:text-xl">
+        <div className="flex gap-10 font-semibold text-lg lg:mt-20 mt-10 mb-10 lg:text-xl">
           <NavLink
             to={`/details/${_id}/description`}
             className={({ isActive }) => (isActive ? "text-orange-500" : "")}

@@ -1,10 +1,8 @@
-
 import React from "react";
 import { AiOutlineSortAscending } from "react-icons/ai";
 import { Link } from "react-router-dom";
 const TableInHome = (props) => {
   const allProductData = props.allProductData;
-  console.log(allProductData);
 
   return (
     <section className="container px-4 mx-auto pt-16">
@@ -60,9 +58,8 @@ const TableInHome = (props) => {
                       scope="col"
                       className="pl-2 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                     >
-                    Action
+                      Action
                     </th>
-          
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
@@ -100,13 +97,14 @@ const TableInHome = (props) => {
                         </td>
                         <td className="pl-2 py-4 text-sm whitespace-nowrap">
                           <div className="flex items-center">
-                            <Link to ={`/details/${product?._id}`} className="pl-2 py-1 text-xs p-2 font-bold hover:cursor-pointer text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
-                               Details
+                            <Link
+                              to={`/details/${product?._id}`}
+                              className="pl-2 py-1 text-xs p-2 font-bold hover:cursor-pointer text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60"
+                            >
+                              Details
                             </Link>
                           </div>
                         </td>
-                     
-                       
                       </tr>
                     );
                   })}

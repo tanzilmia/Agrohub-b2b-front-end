@@ -8,7 +8,9 @@ import "remixicon/fonts/remixicon.css";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import { Toaster } from "react-hot-toast";
+import { getTotals } from "./features/cart/cartSlice";
 
+store.dispatch(getTotals());
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Authcontext>

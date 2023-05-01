@@ -8,7 +8,7 @@ const BasicSettings = () => {
   const [AllProduct, setAllProduct] = useState([])
   useEffect(() => {
     try{
-    axios.get("http://localhost:5000/seller/all_Product")
+    axios.get("https://agrohub.vercel.app/seller/all_Product")
     .then(res => {
       setAllProduct(res.data)
     })

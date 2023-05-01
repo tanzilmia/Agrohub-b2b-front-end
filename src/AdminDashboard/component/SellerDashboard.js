@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const SellerDashboard = () => {
  const [sellers, setsellers] = useState([])
   useEffect(() => {
-    axios.get(`http://localhost:5000/common/sellers`)
+    axios.get(`https://agrohub.vercel.app/common/sellers`)
     .then(res => {
       setsellers(res.data)
     })
@@ -19,7 +19,7 @@ const SellerDashboard = () => {
   
     if (confirmed) {
       try {
-        axios.delete(`http://localhost:5000/seller/delete-user?id=${id}`)
+        axios.delete(`https://agrohub.vercel.app/seller/delete-user?id=${id}`)
           .then(res => {
             console.log(res.data);
              

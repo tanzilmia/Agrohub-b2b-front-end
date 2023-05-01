@@ -13,12 +13,11 @@ const Sellers = () => {
     setChats,
     chats,
   } = useContext(myContext);
-  console.log(user);
 
   const accessChat = async (userId) => {
     try {
       const { data } = await axios.post(
-        `http://localhost:5000/chat/accessChat?email=${user?.email}`,
+        `https://agrohub.vercel.app/chat/accessChat?email=${user?.email}`,
         { userId },
         header
       );
@@ -30,8 +29,6 @@ const Sellers = () => {
     }
   };
   //  add neew comment
-
-  console.log(selectedChat);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
