@@ -35,13 +35,13 @@ const DetailsDescription = () => {
         <div className="lg:flex lg:space-x-3 lg:space-y-0 space-y-3 my-5 justify-evenly">
           <img
             src={data && data?.images[0]}
-            className="w-[36rem] h-96 rounded"
+            className="w-[36rem] h-96 rounded-3xl"
             alt=""
           />
           <img
             src={data && data?.images[1]}
             alt=""
-            className="w-[36rem] h-96 rounded"
+            className="w-[36rem] h-96 rounded-3xl"
           />
         </div>
         <p className="mt-20 text-justify">{data?.description}</p>

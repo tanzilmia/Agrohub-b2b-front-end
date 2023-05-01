@@ -23,7 +23,6 @@ const Navbar = () => {
   const cartTotalQuantity = useSelector(
     (state) => state.cart.cartTotalQuantity
   );
-
   const { data: filteringProduct } = useGetFilteringProductsQuery(categories);
   const Logouts = () => {
     logout();
