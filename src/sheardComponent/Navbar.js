@@ -298,8 +298,8 @@ const Navbar = () => {
                 <div
                   className={`absolute w-full right-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed ${
                     openMenu
-                      ? "opacity-100 duration-500 transition  translate-x-0 visible"
-                      : "invisible duration-500 transition-all translate-x-20"
+                      ? "opacity-100 duration-500 transition  translate-x-[10px] visible"
+                      : "invisible duration-500 transition-all translate-x-[-1000px]"
                   }`}
                   style={{ width: "200px" }}
                 >

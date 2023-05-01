@@ -66,7 +66,7 @@ export default function Statistics() {
               {stats.map((item, idx) => (
                 <li
                   style={{
-                    width: 300,
+                    width: 100,
                   }}
                   key={idx}
                   className=""
