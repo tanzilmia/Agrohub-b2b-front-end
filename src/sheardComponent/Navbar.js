@@ -5,6 +5,7 @@ import header_logo from "../Assets/Images/header-logo.jpg";
 import { myContext } from "../contextApi/Authcontext";
 import { BsFillChatRightDotsFill } from "react-icons/bs";
 import { googleLogout } from "@react-oauth/google";
+import { RiSunLine, RiMoonLine } from "react-icons/ri";
 
 import {
   useGetCategoriesQuery,
@@ -16,6 +17,7 @@ import { useSelector } from "react-redux";
 const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const { user, logout, productInfo } = useContext(myContext);
   const [categories, setCategories] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
@@ -46,16 +48,28 @@ const Navbar = () => {
 
   const { data } = useGetCategoriesQuery();
 
+  const handleThemeSwitch = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
+
   useEffect(() => {
     updateHidden();
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (isDarkMode === true) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
 
   return (
     <>
       {showMenu && (
         <nav className="relative">
           {/* header section start*/}
-          <header className="py-4 relative shadow-sm bg-white">
+          <header className="py-4 relative shadow-sm bg-white ">
             <div className="container flex items-center justify-around">
               {/* logo  */}
               <Link to={"/"}>
@@ -75,20 +89,25 @@ const Navbar = () => {
                   Search
                 </button>
               </div>
+
               {/* icon */}
               <div className="hidden xl:flex items-center space-x-4">
-                <Link
-                  to={"#"}
-                  className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
-                >
-                  <div className="text-2xl">
-                    <i className="ri-heart-line"></i>
-                  </div>
-                  <div className="text-xs leading-3">Wish List</div>
-                  <span className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
-                    {productInfo && productInfo.wishList}
-                  </span>
-                </Link>
+                <div>
+                  <button
+                    className={`flex items-center justify-center w-10 h-10 bg-gray-200 dark:bg-gray-800 rounded-full focus:outline-none ${
+                      isDarkMode ? "shadow-md" : ""
+                    }`}
+                    onClick={handleThemeSwitch}
+                  >
+                    <i
+                      className={`${
+                        isDarkMode ? "text-yellow-300" : "text-gray-500"
+                      } transition-colors duration-300 text-2xl`}
+                    >
+                      {isDarkMode ? <RiMoonLine /> : <RiSunLine />}
+                    </i>
+                  </button>
+                </div>
                 <Link
                   to={"/cart"}
                   className="text-center text-gray-700 hover:text-[#29BA2F] transition relative"
