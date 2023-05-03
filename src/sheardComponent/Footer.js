@@ -6,7 +6,7 @@
 */
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import header_logo from "../Assets/Images/header-logo.jpg";
+import header_logo from "../Assets/Images/header-logo.png";
 
 // footer starts here
 export default function Footer() {
