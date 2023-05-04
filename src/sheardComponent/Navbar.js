@@ -17,7 +17,11 @@ import { useSelector } from "react-redux";
 const Navbar = () => {
   const location = useLocation();
   const [showMenu, setshowMenu] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [theme, setTheme] = useState(
+    localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+  );
   const { user, logout, productInfo } = useContext(myContext);
   const [categories, setCategories] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
@@ -48,21 +52,19 @@ const Navbar = () => {
 
   const { data } = useGetCategoriesQuery();
 
-  const handleThemeSwitch = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-  };
-
   useEffect(() => {
     updateHidden();
   }, [location.pathname]);
 
   useEffect(() => {
-    if (isDarkMode === true) {
+    if (theme) {
       document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
     } else {
       document.documentElement.classList.remove("dark");
+      localStorage.theme = "light";
     }
-  }, [isDarkMode]);
+  }, [theme]);
 
   return (
     <>
@@ -94,16 +96,16 @@ const Navbar = () => {
               <div className="hidden xl:flex items-center space-x-4">
                 <button
                   className={`flex items-center justify-center w-10 h-10  hover:bg-gray-200 hover:dark:bg-gray-700 rounded-full focus:outline-none ${
-                    isDarkMode ? "shadow-md" : ""
+                    theme ? "shadow-md" : ""
                   }`}
-                  onClick={handleThemeSwitch}
+                  onClick={() => setTheme((prevMode) => !prevMode)}
                 >
                   <i
                     className={`${
-                      isDarkMode ? "text-yellow-300" : "text-black"
+                      theme ? "text-yellow-300" : "text-black"
                     } transition-colors duration-300 text-2xl`}
                   >
-                    {isDarkMode ? <RiMoonLine /> : <RiSunLine />}
+                    {theme ? <RiMoonLine /> : <RiSunLine />}
                   </i>
                 </button>
 
@@ -153,16 +155,16 @@ const Navbar = () => {
               <div className="px-8 mx-2 flex xl:hidden py-3   items-center cursor-pointer relative group rounded z-10">
                 <button
                   className={`flex items-center mr-3 justify-center w-10 h-10  hover:bg-gray-200 hover:dark:bg-gray-700 rounded-full focus:outline-none ${
-                    isDarkMode ? "shadow-md" : ""
+                    theme ? "shadow-md" : ""
                   }`}
-                  onClick={handleThemeSwitch}
+                  onClick={() => setTheme((prevMode) => !prevMode)}
                 >
                   <i
                     className={`${
-                      isDarkMode ? "text-yellow-300" : "text-black"
+                      theme ? "text-yellow-300" : "text-black"
                     } transition-colors duration-300 text-2xl`}
                   >
-                    {isDarkMode ? <RiMoonLine /> : <RiSunLine />}
+                    {theme ? <RiMoonLine /> : <RiSunLine />}
                   </i>
                 </button>
 
