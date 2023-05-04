@@ -83,7 +83,7 @@ const GamingProduct = () => {
             <TbCategory2 className="mr-3 text-[#FF5721] text-3xl dark:text-indigo-500"></TbCategory2>{" "}
             Shop By Categories
           </h3>
-          <span className="font-semibold md:text-sm flex items-center text-[#FF5721] dark:text-indigo-500 hover:text-orange-400">
+          <span className="font-semibold md:text-sm flex items-center text-[#FF5721] dark:hover:text-indigo-400 dark:text-indigo-500 hover:text-orange-400">
             <Link to={"/shop"}>
               {" "}
               <button className="">View More</button>
