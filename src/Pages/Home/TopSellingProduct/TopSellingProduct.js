@@ -18,10 +18,11 @@ const TopSellingProduct = () => {
   return (
     <div className="mt-28 mx-10">
       <div className="flex justify-between py-6">
-        <h3 className="text-xl md:text-2xl font-semibold flex items-center">
-          <BsFire className="mr-2 text-[#FF5721] text-3xl" /> Top Best Sellers
+        <h3 className="text-xl md:text-2xl font-semibold flex items-center dark:text-white">
+          <BsFire className="mr-2 text-[#FF5721] text-3xl dark:text-indigo-500" />{" "}
+          Top Best Sellers
         </h3>
-        <span className="font-semibold md:text-sm flex items-center text-[#FF5721] hover:text-orange-400">
+        <span className="font-semibold md:text-sm flex items-center text-[#FF5721] dark:text-indigo-500 hover:text-orange-400 dark:hover:text-indigo-400 ">
           <Link to="/selling_products">
             <button className="">View More</button>
           </Link>

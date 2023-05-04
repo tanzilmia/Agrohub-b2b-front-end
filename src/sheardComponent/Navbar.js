@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import header_logo from "../Assets/Images/header-logo.png";
 import { myContext } from "../contextApi/Authcontext";
-import { BsFillChatRightDotsFill } from "react-icons/bs";
+import { FcSms } from "react-icons/fc";
 import { googleLogout } from "@react-oauth/google";
 import { RiSunLine, RiMoonLine } from "react-icons/ri";
 
@@ -101,7 +101,7 @@ const Navbar = () => {
                   >
                     <i
                       className={`${
-                        isDarkMode ? "text-yellow-300" : "text-gray-500"
+                        isDarkMode ? "text-yellow-300" : "text-black"
                       } transition-colors duration-300 text-2xl`}
                     >
                       {isDarkMode ? <RiMoonLine /> : <RiSunLine />}
@@ -145,7 +145,7 @@ const Navbar = () => {
                   <Link to="/seller/contact/chats">
                     {" "}
                     <span>
-                      <BsFillChatRightDotsFill />
+                      <FcSms className="text-2xl" />
                     </span>{" "}
                   </Link>
                 )}

@@ -14,7 +14,7 @@ function App() {
   }, [products, dispatch]);
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 dark:bg-[#1B1B1D]">
       <RouterProvider router={router}> </RouterProvider>
     </div>
   );

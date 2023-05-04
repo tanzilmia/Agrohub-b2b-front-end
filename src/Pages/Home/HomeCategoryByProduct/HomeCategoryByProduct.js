@@ -65,7 +65,7 @@ const HomeCategoryByProduct = () => {
   }
 
   return (
-    <main className="mx-10 mt-20">
+    <main className="mx-10 mt-20 dark:text-[#FFFFFF]">
       <h2 className="lg:text-2xl text-2xl font-semibold text-center lg:m-24 mt-32 lg:mb-10 mb-16">
         Shop By Category
       </h2>
@@ -82,7 +82,7 @@ const HomeCategoryByProduct = () => {
         <section className="grid place-items-center sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-5 lg:gap-5 gap-y-5 px-5 ">
           {data?.map((categoryData, index) => (
             <SwiperSlide key={categoryData._id}>
-              <div className="block rounded-lg w-full overflow-hidden shadow-2xl shadow-indigo-100 hover:shadow-2xl transition-all duration-300 hover:bg-indigo-100 transform hover:-translate-y-2 hover:scale-95">
+              <div className="block rounded-lg w-full overflow-hidden shadow-2xl shadow-indigo-100 dark:shadow-black hover:shadow-2xl transition-all duration-300 hover:bg-indigo-100 dark:bg-[#4B5563] dark:hover:bg-indigo-800 transform hover:-translate-y-2 hover:scale-95">
                 <img
                   src={categoryData.image}
                   alt="Category"
