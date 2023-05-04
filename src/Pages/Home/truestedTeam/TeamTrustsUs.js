@@ -8,7 +8,7 @@ export default function TeamTrustUs() {
   return (
     <div className="mt-28">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
-        <h3 className="font-semibold text-sm text-gray-600 text-center">
+        <h3 className="font-semibold text-sm text-gray-600 text-center dark:text-gray-300">
           TRUSTED BY TEAMS FROM AROUND THE WORLD
         </h3>
         <div className="mt-6">

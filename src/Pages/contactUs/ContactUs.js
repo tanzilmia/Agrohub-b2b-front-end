@@ -35,13 +35,13 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="bg-gray-100 ">
+    <section className="bg-gray-100 dark:bg-[#1B1B1D]">
       <div className="container px-6 py-6 mx-auto">
         <div className="lg:flex lg:items-center lg:-mx-6">
           {/* contact address */}
 
           <div className="lg:w-1/2 lg:mx-6 ">
-            <h1 className="text-2xl font-semibold text-gray-800 capitalize   lg:text-3xl">
+            <h1 className="text-2xl font-semibold text-gray-800 capitalize dark:text-gray-300  lg:text-3xl">
               Contact us for <br /> more info
             </h1>
 
@@ -67,7 +67,7 @@ const ContactUs = () => {
                   />
                 </svg>
 
-                <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-500">
+                <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
                   House-15 Rd no. 17, Block- C, Dhaka 1213
                 </span>
               </p>
@@ -88,7 +88,7 @@ const ContactUs = () => {
                   />
                 </svg>
 
-                <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-500">
+                <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
                   +880 1442012323
                 </span>
               </p>
@@ -109,18 +109,18 @@ const ContactUs = () => {
                   />
                 </svg>
 
-                <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-500">
+                <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
                   acb@example.com
                 </span>
               </p>
             </div>
 
             <div className="mt-6 w-80 md:mt-8">
-              <h3 className="text-gray-600 dark:text-gray-500 ">Follow us</h3>
+              <h3 className="text-gray-600 dark:text-gray-400 ">Follow us</h3>
 
               <div className="flex mt-4 -mx-1.5 ">
                 <Link
-                  className="mx-1.5 dark:hover:text-blue-400 text-gray-500 transition-colors duration-300 transform hover:text-blue-500"
+                  className="mx-1.5 dark:hover:text-indigo-400 dark:text-gray-400 text-gray-500 transition-colors duration-300 transform hover:text-blue-500"
                   to="/"
                 >
                   <svg
@@ -134,7 +134,7 @@ const ContactUs = () => {
                 </Link>
 
                 <Link
-                  className="mx-1.5 dark:hover:text-blue-400 text-gray-500 transition-colors duration-300 transform hover:text-blue-500"
+                  className="mx-1.5 dark:hover:text-indigo-400 dark:text-gray-400 text-gray-500  transition-colors duration-300 transform hover:text-blue-500"
                   to="/"
                 >
                   <svg
@@ -159,7 +159,7 @@ const ContactUs = () => {
                 </Link>
 
                 <Link
-                  className="mx-1.5 dark:hover:text-blue-400 text-gray-500 transition-colors duration-300 transform hover:text-blue-500"
+                  className="mx-1.5 dark:hover:text-indigo-400 dark:text-gray-400 text-gray-500 transition-colors duration-300 transform hover:text-blue-500"
                   to="/"
                 >
                   <svg
@@ -176,7 +176,7 @@ const ContactUs = () => {
                 </Link>
 
                 <Link
-                  className="mx-1.5 dark:hover:text-blue-400 text-gray-500 transition-colors duration-300 transform hover:text-blue-500"
+                  className="mx-1.5 dark:hover:text-indigo-400 dark:text-gray-400 text-gray-500 transition-colors duration-300 transform hover:text-blue-500"
                   to="/"
                 >
                   <svg
@@ -199,42 +199,42 @@ const ContactUs = () => {
 
           <div className="mt-8 lg:w-1/2 lg:mx-6">
             <div className="w-full">
-              <h1 className="text-lg font-medium text-gray-700">
+              <h1 className="text-lg font-medium text-gray-700 dark:text-gray-300">
                 What do you want to ask
               </h1>
 
               <form ref={form} onSubmit={handleContact} className="mt-6">
                 <div className="flex-1">
-                  <label className="block mb-2 text-sm text-gray-500 ">
+                  <label className="block mb-2 text-sm text-gray-500 dark:text-gray-300">
                     Full Name
                   </label>
                   <input
                     type="text"
                     name="name"
                     placeholder={user?.name}
-                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:text-gray-500 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 dark:bg-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-900  dark:text-gray-800 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   />
                 </div>
 
                 <div className="flex-1 mt-6">
-                  <label className="block mb-2 text-sm text-gray-500 ">
+                  <label className="block mb-2 text-sm text-gray-500 dark:text-gray-300">
                     Email address
                   </label>
                   <input
                     type="email"
                     placeholder={user?.email}
                     name="email"
-                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600  dark:text-gray-500 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    className="block w-full px-5 py-3 mt-2 text-gray-700 dark:bg-gray-400 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-900  dark:text-gray-800 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   />
                 </div>
 
                 <div className="w-full mt-6">
-                  <label className="block mb-2 text-sm text-gray-500">
+                  <label className="block mb-2 text-sm text-gray-500 dark:text-gray-300">
                     Message
                   </label>
                   <textarea
                     name="message"
-                    className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:placeholder-gray-600  dark:text-gray-500 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 dark:bg-gray-400  placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:placeholder-gray-900  dark:text-gray-800 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     placeholder="Message"
                   ></textarea>
                 </div>
@@ -243,7 +243,7 @@ const ContactUs = () => {
                   type="submit"
                   className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
                 >
-                  get in touch
+                  Contact Me
                 </button>
               </form>
             </div>

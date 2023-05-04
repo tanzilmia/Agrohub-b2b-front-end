@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
   return (
     <div>
       <Link to={`/details/${_id}`}>
-        <div className="block rounded-lg w-full overflow-hidden shadow-2xl shadow-indigo-100 hover:shadow-2xl transition-all duration-300 hover:bg-indigo-100 transform hover:-translate-y-4 hover:scale-105">
+        <div className="block rounded-lg w-full overflow-hidden shadow-2xl dark:bg-[#4B5563] shadow-indigo-100 dark:shadow-black hover:shadow-2xl transition-all duration-300 hover:bg-indigo-100 dark:hover:bg-indigo-500 transform hover:-translate-y-4 hover:scale-105">
           <img
             className=" rounded-t-lg lg:h-48 h-40 w-full object-cover"
             src={images && images[0]}
@@ -20,7 +20,7 @@ const ProductCard = ({ product }) => {
           </span>
           <div className="mt-4 px-5 pb-5">
             <Link to="#">
-              <h5 className="lg:text-lg text-sm font-semibold tracking-tight text-slate-900">
+              <h5 className="lg:text-lg text-sm font-semibold tracking-tight text-slate-900 dark:text-white">
                 {name.slice(0, 20)}
               </h5>
             </Link>
@@ -76,15 +76,15 @@ const ProductCard = ({ product }) => {
             </div>
             <div className="flex items-center justify-between">
               <p className="flex items-center">
-                <span className="lg:text-2xl text-md font-semibold text-slate-900 ">
-                  ${oldPrice}
-                </span>
-                <span className="lg:text-sm text-xs hidden lg:block text-slate-900 line-through ml-2">
+                <span className="lg:text-2xl text-md font-semibold text-slate-900 dark:text-white">
                   ${newPrice}
+                </span>
+                <span className="lg:text-sm text-xs hidden lg:block text-slate-900 line-through ml-2 ">
+                  ${oldPrice}
                 </span>
               </p>
               {pathname === "/" && (
-                <div className="flex items-center rounded-md bg-slate-900 px-2 py-1 text-center lg:text-sm text-xs font-normal text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                <div className="flex items-center rounded-md bg-slate-900 px-2 py-1 text-center lg:text-sm text-xs font-normal text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-semibold">
                   Add To Cart
                 </div>
               )}

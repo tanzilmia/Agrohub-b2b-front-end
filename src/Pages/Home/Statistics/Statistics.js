@@ -53,10 +53,10 @@ export default function Statistics() {
         </div>
         <div className="lg:mt-0 gap-12 mt-6 md:flex lg:block">
           <div className="max-w-2xl">
-            <h3 className="text-gray-800 text-lg text-center font-semibold lg:text-start lg:text-2xl">
+            <h3 className="text-gray-800 dark:text-gray-300 text-lg text-center font-semibold lg:text-start lg:text-2xl">
               We do our best to make customers always happy
             </h3>
-            <p className="mt-3 max-w-xl">
+            <p className="mt-3 max-w-xl dark:text-gray-400">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
               venenatis sollicitudin quam ut tincidunt.
             </p>
@@ -65,10 +65,12 @@ export default function Statistics() {
             <ul className="inline-grid gap-y-8 gap-x-14 grid-cols-2">
               {stats.map((item, idx) => (
                 <li key={idx} className="">
-                  <h4 className="text-4xl text-green-700 font-semibold">
+                  <h4 className="text-4xl text-green-700 dark:text-indigo-500 font-semibold">
                     {item.data}
                   </h4>
-                  <p className="mt-3 font-medium">{item.title}</p>
+                  <p className="mt-3 font-medium dark:text-gray-300">
+                    {item.title}
+                  </p>
                 </li>
               ))}
             </ul>

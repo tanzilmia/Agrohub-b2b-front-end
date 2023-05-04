@@ -6,6 +6,7 @@ import SwiperCore, { Navigation, Autoplay } from "swiper/core";
 import "swiper/swiper-bundle.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLoadOneDataByCategories } from "../../../features/products/productCategoriesLoadOneDataSlice";
+import { Link } from "react-router-dom";
 
 SwiperCore.use([Navigation, Autoplay]);
 
@@ -78,12 +79,15 @@ const GamingProduct = () => {
     <div className="mt-28">
       <div className="mx-10">
         <div className="flex justify-between py-6">
-          <h3 className="text-xl flex items-center md:text-2xl font-semibold">
-            <TbCategory2 className="mr-3 text-[#FF5721] text-3xl"></TbCategory2>{" "}
+          <h3 className="text-xl flex items-center md:text-2xl font-semibold dark:text-white">
+            <TbCategory2 className="mr-3 text-[#FF5721] text-3xl dark:text-indigo-500"></TbCategory2>{" "}
             Shop By Categories
           </h3>
-          <span className="font-semibold md:text-sm flex items-center text-[#FF5721] hover:text-orange-400">
-            <button className="">View More</button>
+          <span className="font-semibold md:text-sm flex items-center text-[#FF5721] dark:text-indigo-500 hover:text-orange-400">
+            <Link to={"/shop"}>
+              {" "}
+              <button className="">View More</button>
+            </Link>
             <i className="ri-arrow-right-line ml-1"></i>
           </span>
         </div>
