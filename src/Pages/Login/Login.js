@@ -4,11 +4,8 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
-import Google from "./Google";
-import { GoogleLogin } from "@react-oauth/google";
 import Loader from "../shop/util/loader/Loader";
 import useTitle from "../../hooks/useTitle";
-import { FaArrowRight } from "react-icons/fa";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -151,15 +148,6 @@ const Login = () => {
               </Form>
             )}
           </Formik>
-
-          <div className="mt-10 grid grid-cols-3 items-center text-gray-400">
-            <hr className="border-gray-400" />
-            <p className="text-center text-sm">OR</p>
-            <hr className="border-gray-400" />
-          </div>
-          <div className="flex justify-center mt-3 items-center">
-            <Google />
-          </div>
         </div>
 
         {/* right div */}

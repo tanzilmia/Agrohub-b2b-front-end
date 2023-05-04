@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
 import { useDropzone } from "react-dropzone";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import axios from "axios";
 import { useContext } from "react";
 import { myContext } from "../../contextApi/Authcontext";
-import Google from "../Login/Google";
 import Loadding from "../../sheardComponent/Loadding";
 import useTitle from "../../hooks/useTitle";
 
@@ -310,7 +308,7 @@ const Register = () => {
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  Submit
+                  Register Now
                 </button>
                 <div className="flex">
                   <p className="text-xs">
@@ -325,18 +323,6 @@ const Register = () => {
           </Formik>
 
           <div></div>
-
-          <div className="mt-10 grid grid-cols-3 items-center text-gray-400">
-            <hr className="border-gray-400" />
-            <p className="text-center text-sm">OR</p>
-            <hr className="border-gray-400" />
-          </div>
-          {/* <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-1 w-3/4 mx-auto rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold">
-            <FcGoogle className="w-8 mr-3 h-10"></FcGoogle> Login With Google
-          </button> */}
-          <div className="flex justify-center mt-3 items-center">
-            <Google />
-          </div>
         </div>
       </div>
     </nav>
