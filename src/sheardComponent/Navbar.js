@@ -92,22 +92,21 @@ const Navbar = () => {
 
               {/* icon */}
               <div className="hidden xl:flex items-center space-x-4">
-                <div>
-                  <button
-                    className={`flex items-center justify-center w-10 h-10  hover:bg-gray-200 hover:dark:bg-gray-700 rounded-full focus:outline-none ${
-                      isDarkMode ? "shadow-md" : ""
-                    }`}
-                    onClick={handleThemeSwitch}
+                <button
+                  className={`flex items-center justify-center w-10 h-10  hover:bg-gray-200 hover:dark:bg-gray-700 rounded-full focus:outline-none ${
+                    isDarkMode ? "shadow-md" : ""
+                  }`}
+                  onClick={handleThemeSwitch}
+                >
+                  <i
+                    className={`${
+                      isDarkMode ? "text-yellow-300" : "text-black"
+                    } transition-colors duration-300 text-2xl`}
                   >
-                    <i
-                      className={`${
-                        isDarkMode ? "text-yellow-300" : "text-black"
-                      } transition-colors duration-300 text-2xl`}
-                    >
-                      {isDarkMode ? <RiMoonLine /> : <RiSunLine />}
-                    </i>
-                  </button>
-                </div>
+                    {isDarkMode ? <RiMoonLine /> : <RiSunLine />}
+                  </i>
+                </button>
+
                 <Link
                   to={"/cart"}
                   className="text-center text-gray-700 dark:text-gray-200  hover:text-[#29BA2F] dark:hover:text-indigo-400  transition relative"
@@ -152,25 +151,32 @@ const Navbar = () => {
               </div>
               {/* responsive */}
               <div className="px-8 mx-2 flex xl:hidden py-3   items-center cursor-pointer relative group rounded z-10">
-                {/* <span className="text-white">
-                  <i className="ri-menu-fill"></i>
-                </span> */}
-                <Link
-                  to={""}
-                  className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+                <button
+                  className={`flex items-center mr-3 justify-center w-10 h-10  hover:bg-gray-200 hover:dark:bg-gray-700 rounded-full focus:outline-none ${
+                    isDarkMode ? "shadow-md" : ""
+                  }`}
+                  onClick={handleThemeSwitch}
                 >
-                  {/* <span className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] text-white text-xs">
-                8
-              </span> */}
-                </Link>
+                  <i
+                    className={`${
+                      isDarkMode ? "text-yellow-300" : "text-black"
+                    } transition-colors duration-300 text-2xl`}
+                  >
+                    {isDarkMode ? <RiMoonLine /> : <RiSunLine />}
+                  </i>
+                </button>
 
                 <Link
-                  to={""}
-                  className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+                  to={"/cart"}
+                  className="text-center mr-4 text-gray-700 dark:text-gray-200  hover:text-[#29BA2F] dark:hover:text-indigo-400  transition relative"
                 >
-                  <div className="text-2xl hover:text-[#29BA2F]">
+                  <div className="text-2xl">
                     <i className="ri-shopping-cart-2-line"></i>
                   </div>
+                  <div className="text-xs leading-3  font-semibold">Cart</div>
+                  <span className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#29BA2F] dark:bg-indigo-600 text-white text-xs">
+                    {cartTotalQuantity}
+                  </span>
                 </Link>
 
                 {/* change this layout */}
@@ -322,7 +328,7 @@ const Navbar = () => {
                   <i className="ri-layout-masonry-fill"></i>
                 </span>
                 <div
-                  className={`absolute w-full right-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed ${
+                  className={`absolute w-full right-0 top-full  bg-white dark:bg-[#96A2B3] shadow-md py-3 divide-y   dark:text-white ${
                     openMenu
                       ? "opacity-100 duration-500 transition  translate-x-0 visible"
                       : "invisible duration-500 transition-all translate-x-20"
@@ -331,76 +337,66 @@ const Navbar = () => {
                 >
                   <Link
                     to={"/"}
-                    className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
+                    className="flex justify-center px-6 py-4 hover:bg-gray-100  dark:hover:bg-indigo-500 transition"
                   >
-                    <div className="text-xs leading-3">Home</div>
+                    <div className=" leading-3">Home</div>
                   </Link>
 
                   <Link
                     to="/shop"
-                    className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
+                    className="flex justify-center px-6 py-4 hover:bg-gray-100 dark:hover:bg-indigo-500 transition"
                   >
-                    <div className="text-xs leading-3">Shop</div>
+                    <div className=" leading-3">Shop</div>
                   </Link>
 
                   {user?.email && (
                     <Link
                       to={"/custom"}
-                      className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
+                      className="flex  px-6 py-3 justify-center hover:bg-gray-100 dark:hover:bg-indigo-500 transition"
                     >
                       Custome Order
                     </Link>
                   )}
 
-                  {user?.role === "admin" && (
+                  {(user?.role === "seller" || user?.role === "admin") && (
                     <Link
                       to={"/dashboard"}
-                      className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
+                      className="flex  px-6 py-3 justify-center hover:bg-gray-100 dark:hover:bg-indigo-500 transition"
                     >
                       Dashboard
                     </Link>
-                    //{/* <Link
-                    // to={"/dashboard"}
-                    // className="text-gray-600
-                    //hover:text-black
-                    //hover:border-b-2
-                    //hover:border-b-[#29BA2F]
-                    //transition"
-                    //>
-                    //  Dashboard
-                    //</Link>  */}
                   )}
                   <Link
                     to={"/aboutus"}
-                    className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
+                    className="flex justify-center px-6 py-4 hover:bg-gray-100 dark:hover:bg-indigo-500 transition"
                   >
-                    <div className="text-xs leading-3">About US</div>
+                    <div className=" leading-3">About US</div>
                   </Link>
                   <Link
                     to={"/contactus"}
-                    className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
+                    className="flex  px-6 py-4 justify-center hover:bg-gray-100 dark:hover:bg-indigo-500 transition"
                   >
-                    <div className="text-xs leading-3">Contact US</div>
+                    <div className=" leading-3">Contact US</div>
                   </Link>
                   <Link
                     to={"/blogs"}
-                    className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
+                    className="flex  px-6 py-3 justify-center hover:bg-gray-100 dark:hover:bg-indigo-500 transition"
                   >
                     Blogs
                   </Link>
                   {user?.email ? (
-                    <a
-                      className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
+                    <Link
+                      className="flex  px-6 py-3 justify-center hover:bg-gray-100 dark:hover:bg-indigo-500 transition"
                       onClick={Logouts}
                     >
                       Logout
-                    </a>
+                    </Link>
                   ) : (
                     <Link
                       to={"/login"}
-                      className="flex flex-col items-center px-6 py-3 hover:bg-gray-100 transition"
+                      className="flex  px-6 py-3 justify-center hover:bg-gray-100 dark:hover:bg-indigo-500 transition"
                     >
-                      <div className="text-xs leading-3">Login/Register</div>
+                      Login/Register
                     </Link>
                   )}
                 </div>
