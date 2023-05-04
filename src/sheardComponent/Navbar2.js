@@ -303,16 +303,7 @@ const Navbar2 = () => {
                     >
                       Dashboard
                     </Link>
-                    //{/* <Link
-                    // to={"/dashboard"}
-                    // className="text-gray-600
-                    //hover:text-black
-                    //hover:border-b-2
-                    //hover:border-b-[#29BA2F]
-                    //transition"
-                    //>
-                    //  Dashboard
-                    //</Link>  */}
+                   
                   )}
                   <Link
                     to={"/aboutus"}
