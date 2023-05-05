@@ -251,7 +251,7 @@ const ProductDetails = ({ products }) => {
             </div>
           </div>
         </div>
-        <div className="flex gap-10 font-semibold text-lg lg:mt-20 mt-10 lg:text-xl dark:text-gray-300">
+        <div className="flex gap-10 font-semibold text-lg lg:mt-20 mt-10 lg:text-xl dark:text-gray-300 py-5">
           <NavLink
             to={`/details/${_id}/description`}
             className={({ isActive }) => (isActive ? "text-orange-500" : "")}
@@ -271,7 +271,6 @@ const ProductDetails = ({ products }) => {
             Additional Information
           </NavLink>
         </div>
-        <hr className="my-4" />
       </div>
     </>
   );

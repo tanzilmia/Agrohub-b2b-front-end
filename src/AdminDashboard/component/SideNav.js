@@ -2,7 +2,7 @@
             @Project: Agrohub (b2b website)
             @Name: MD. Mahiuddin Tuhin
  * @ Modified by: Your name
- * @ Modified time: 2023-04-30 09:54:17
+ * @ Modified time: 2023-05-05 23:16:17
 */
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
@@ -29,7 +29,7 @@ const SideNav = () => {
   };
 
   return (
-    <aside className="flex flex-col w-24 md:w-48 lg:w-64 h-screen px-1 md:px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l ">
+    <aside className="flex flex-col w-24 md:w-48 lg:w-64  px-1 md:px-4 py-8 overflow-y-auto bg-white h-full dark:bg-[#4B5563] border-r rtl:border-r-0 rtl:border-l ">
       <Link to="/" className="mx-auto">
         <img className="w-auto h-6 sm:h-7" src="" alt="" />
       </Link>
@@ -78,9 +78,9 @@ const SideNav = () => {
 
       <div className="flex flex-col justify-between flex-1 mt-6">
         <nav>
-        <Link
+          <Link
             to="/dashboard"
-            className="flex items-center md:px-4 py-2 mt-5 text-gray-600 transition-colors bg-[#f3e8e8] duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
+            className="flex items-center md:px-4 py-2 mt-5 text-gray-600 transition-colors bg-[#f3e8e8] duration-300 transform rounded-lg  hover:bg-gray-200 font-semibold dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900 dark:bg-indigo-500 dark:text-white"
           >
             Default
           </Link>
@@ -91,11 +91,11 @@ const SideNav = () => {
               .includes(nav.name.toLowerCase());
 
             return (
-              <>
+              <div>
                 {user?.role === "admin" && (
                   <Link
                     key={id}
-                    className={`flex items-center md:px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900 ${
+                    className={`flex items-center md:px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-lg  hover:bg-gray-200 dark:hover:bg-gray-800 dark:bg-indigo-500 dark:text-white dark:hover:text-gray-200 hover:text-slate-900 ${
                       isSelected ? "bg-gray-300" : "bg-slate-100"
                     }`}
                     to={`/dashboard/${nav.name}`}
@@ -103,36 +103,38 @@ const SideNav = () => {
                   >
                     {nav.icon}
 
-                    <span className="mx-1 md:mx-4 font-medium">{nav.name}</span>
+                    <span className="mx-1 md:mx-4 font-medium ">
+                      {nav.name}
+                    </span>
                   </Link>
                 )}
-              </>
+              </div>
             );
           })}
-           <>
+          <>
             <Link
-            to="/dashboard/myproduct"
-            className="flex items-center md:px-4 py-2 mt-5 text-gray-600 transition-colors bg-[#f3e8e8] duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
-          >
-            My Product
-          </Link>
+              to="/dashboard/myproduct"
+              className="flex items-center md:px-4 py-2 mt-5 text-gray-600 transition-colors bg-[#f3e8e8] dark:bg-indigo-500 dark:text-white duration-300 transform rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
+            >
+              My Product
+            </Link>
             <Link
-            to="/dashboard/mybuyers"
-            className="flex items-center md:px-4 py-2 mt-5 text-gray-600 transition-colors bg-[#f3e8e8] duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
-          >
-            My Buyers
-          </Link>
-            </>
-        
+              to="/dashboard/mybuyers"
+              className="flex items-center md:px-4 py-2 mt-5 dark:bg-indigo-500 dark:text-white text-gray-600 transition-colors bg-[#f3e8e8] duration-300 transform rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
+            >
+              My Buyers
+            </Link>
+          </>
+
           <Link
             to="/dashboard/addproduct"
-            className="flex items-center md:px-4 py-2 mt-5 text-gray-600 transition-colors bg-[#f3e8e8] duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
+            className="flex items-center md:px-4 py-2 mt-5 dark:bg-indigo-500 dark:text-white text-gray-600 transition-colors bg-[#f3e8e8] duration-300 transform rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
           >
             Add Product
           </Link>
           <Link
             to="/"
-            className="flex items-center md:px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
+            className="flex items-center md:px-4 py-2 mt-5 dark:bg-indigo-500 dark:text-white text-gray-600 transition-colors duration-300 transform rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
           >
             Back To Home
           </Link>

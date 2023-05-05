@@ -60,7 +60,7 @@ const AdditionalInformation = () => {
       </div>
       <form
         onSubmit={onSubmit}
-        className="mx-20 mb-6 md:grid md:grid-cols-2 gap-x-20"
+        className="mx-20 md:grid md:grid-cols-2 gap-x-20"
       >
         <div className="mb-2">
           <label>

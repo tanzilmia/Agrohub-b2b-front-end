@@ -22,7 +22,7 @@ const ProductForm = () => {
   const { data: brands } = useGetBrandsQuery(category);
 
   const handleSubmit = async (event) => {
-    setLoadding(true)
+    setLoadding(true);
     event.preventDefault();
 
     const form = event.target;
@@ -77,7 +77,7 @@ const ProductForm = () => {
         try {
           await createProduct({ user, header, product });
           navigate("/selling_products");
-          setLoadding(false)
+          setLoadding(false);
         } catch (error) {
           console.log(error);
         }
@@ -94,12 +94,12 @@ const ProductForm = () => {
     setSelectedImages([...selectedImages, ...files]);
   };
 
-  if(Loadding){
-    return <Loader/>
+  if (Loadding) {
+    return <Loader />;
   }
 
   return (
-    <div className="flex justify-center w-full">
+    <div className="flex justify-center w-full ">
       {isLoading ? (
         <div className="flex justify-center items-center h-screen">
           <svg
@@ -124,8 +124,8 @@ const ProductForm = () => {
           </svg>
         </div>
       ) : (
-        <div className="w-full">
-          <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40  ">
+        <div className="w-full ">
+          <div className="w-full p-6 m-auto dark:bg-[#1B1B1D] bg-white rounded-md shadow-xl shadow-rose-600/40  ">
             <h1 className="text-3xl font-semibold text-center text-indigo-700 uppercase">
               Post your products
             </h1>
@@ -135,11 +135,13 @@ const ProductForm = () => {
             >
               <div className="mb-2 col-span-1">
                 <label>
-                  <span className="text-gray-700">Product Name</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    Product Name
+                  </span>
                   <input
                     type="text"
                     name="productName"
-                    className="w-full border block px-4 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="w-full border block px-4 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300"
                     placeholder="Name"
                     required
                   />
@@ -147,11 +149,13 @@ const ProductForm = () => {
               </div>
               <div className="mb-2 col-span-1">
                 <label>
-                  <span className="text-gray-700">Product Image</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    Product Image
+                  </span>
                   <input
                     type="file"
                     name="image"
-                    className="w-full border block px-4 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="w-full border block px-4 py-2 mt-2 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     placeholder="Type here..."
                     required
                     onChange={handleImageSelection}
@@ -160,11 +164,13 @@ const ProductForm = () => {
               </div>
               <div className="mb-2 col-span-1">
                 <label>
-                  <span className="text-gray-700">Old Price</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    Old Price
+                  </span>
                   <input
                     name="oldPrice"
                     type="number"
-                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="block border w-full mt-2 px-4 py-2 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     placeholder="Old Price"
                     required
                   />
@@ -172,11 +178,13 @@ const ProductForm = () => {
               </div>
               <div className="mb-2 col-span-1">
                 <label>
-                  <span className="text-gray-700">New Price</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    New Price
+                  </span>
                   <input
                     name="newPrice"
                     type="number"
-                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="block border w-full mt-2 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     placeholder="New Price"
                     required
                   />
@@ -184,9 +192,11 @@ const ProductForm = () => {
               </div>
               <div className="mb-2">
                 <label>
-                  <span className="text-gray-700">Category</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    Category
+                  </span>
                   <select
-                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="block border w-full mt-2 px-4 py-2 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     name="category"
                     required
                     onChange={(e) => setCategory(e.target.value)}
@@ -204,9 +214,11 @@ const ProductForm = () => {
               </div>
               <div className="mb-2">
                 <label>
-                  <span className="text-gray-700">Brand</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    Brand
+                  </span>
                   <select
-                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="block border w-full mt-2 px-4 py-2 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     name="brand"
                     required
                   >
@@ -220,9 +232,9 @@ const ProductForm = () => {
               </div>
               <div className="mb-2">
                 <label>
-                  <span className="text-gray-700">Size</span>
+                  <span className="text-gray-700 dark:text-gray-400">Size</span>
                   <select
-                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="block border w-full mt-2 px-4 py-2 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     name="size"
                     required
                     onChange={(event) => setSize([...size, event.target.value])}
@@ -240,11 +252,13 @@ const ProductForm = () => {
 
               <div className="mb-2">
                 <label>
-                  <span className="text-gray-700">Available stock</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    Available stock
+                  </span>
                   <input
                     name="stock"
                     type="text"
-                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="block border w-full mt-2 px-4 py-2 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     placeholder="Stock"
                     required
                   />
@@ -252,12 +266,14 @@ const ProductForm = () => {
               </div>
               <div className="mb-2 col-span-2">
                 <label>
-                  <span className="text-gray-700">Description</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    Description
+                  </span>
                   <textarea
                     name="description"
                     type="text"
                     placeholder="Write Here"
-                    className="block border w-full mt-2 px-4 py-8 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="block border w-full mt-2 px-4 py-8 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     rows="5"
                     required
                   ></textarea>
@@ -267,7 +283,7 @@ const ProductForm = () => {
               <div className="mb-6">
                 <button
                   type="submit"
-                  className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"
+                  className="h-10 px-5 font-semibold text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"
                 >
                   Post
                 </button>

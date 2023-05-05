@@ -12,7 +12,7 @@ import useTitle from "../../hooks/useTitle";
 const AboutUs = () => {
   useTitle("About us");
   return (
-    <div className="pt-[120px]">
+    <div className="pt-[120px] lg:mx-10">
       <AboutUsVideo />
       {aboutUs.slice().map((item, id) => (
         <AboutUsPost
@@ -23,32 +23,6 @@ const AboutUs = () => {
           image={item.image}
         />
       ))}
-
-      {/* nav */}
-      <Link
-        to="/"
-        className="flex hover:text-slate-900 fixed top-24 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-      >
-        <RxHome className="text-2xl" />
-      </Link>
-      <Link
-        to="/contactus"
-        className="flex hover:text-slate-900 fixed top-36 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-      >
-        <FiPhoneCall className="text-2xl" />
-      </Link>
-      <Link
-        to="/blog"
-        className="flex hover:text-slate-900 fixed top-48 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-      >
-        <FaBloggerB className="text-2xl" />
-      </Link>
-      <Link
-        to="/login"
-        className="flex hover:text-slate-900 fixed top-60 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-      >
-        <AiOutlineLogin className="text-2xl" />
-      </Link>
     </div>
   );
 };

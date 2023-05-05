@@ -11,7 +11,7 @@ const Blogs = () => {
   return (
     <div>
       <div className="py-12">
-        <div className="xl:container m-auto px-6 bg-gray-100 md:px-12 xl:px-6">
+        <div className="xl:container m-auto px-6 bg-[#F3F4F6] dark:bg-[#1B1B1D] md:px-12 xl:px-6">
           <div className="mb-12 space-y-2 text-center">
             <h2 className="text-3xl font-bold text-gray-600 md:text-4xl ">
               Sharing is Caring
@@ -25,32 +25,6 @@ const Blogs = () => {
               <Blog blog={blog} key={id} id={id} />
             ))}
           </div>
-
-          {/* nav */}
-          <Link
-            to="/"
-            className="flex hover:text-slate-900 fixed top-24 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-          >
-            <RxHome className="text-2xl" />
-          </Link>
-          <Link
-            to="/contactus"
-            className="flex hover:text-slate-900 fixed top-36 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-          >
-            <FiPhoneCall className="text-2xl" />
-          </Link>
-          <Link
-            to="/blog"
-            className="flex hover:text-slate-900 fixed top-48 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-          >
-            <FaBloggerB className="text-2xl" />
-          </Link>
-          <Link
-            to="/login"
-            className="flex hover:text-slate-900 fixed top-60 right-0 mr-1 hover:mr-2 border p-2 rounded-2xl bg-slate-800 hover:bg-white text-white"
-          >
-            <AiOutlineLogin className="text-2xl" />
-          </Link>
         </div>
       </div>
     </div>
