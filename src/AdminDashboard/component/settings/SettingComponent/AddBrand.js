@@ -12,7 +12,7 @@ const AddBrand = () => {
   // get all categories
   useEffect(() => {
     axios
-      .get(`https://agrohub.vercel.app/admin/categories`)
+      .get(`https://agrohub-b2b-new-server.vercel.app/admin/categories`)
       .then((res) => {
         setCategorys(res.data);
       })
@@ -26,7 +26,7 @@ const AddBrand = () => {
     };
     axios
       .post(
-        `https://agrohub.vercel.app/admin/brands?email=${user?.email}`,
+        `https://agrohub-b2b-new-server.vercel.app/admin/brands?email=${user?.email}`,
         newBrand,
         header
       )

@@ -3,7 +3,7 @@ import React from "react";
 import useTitle from "../../hooks/useTitle";
 
 const CartProduct = () => {
-  axios.get("https://agrohub.vercel.app/CartProduct/getcartproduct").then((data) => {
+  axios.get("https://agrohub-b2b-new-server.vercel.app/CartProduct/getcartproduct").then((data) => {
   });
   useTitle("cart product");
 

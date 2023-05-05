@@ -47,7 +47,7 @@ const ProductDetails = ({ products }) => {
     });
 
     const CartProduct = await axios.post(
-      "https://agrohub.vercel.app/CartProduct/addcartproduct",
+      "https://agrohub-b2b-new-server.vercel.app/CartProduct/addcartproduct",
       {
         Email: user.email,
         productId: _id,
@@ -70,7 +70,7 @@ const ProductDetails = ({ products }) => {
   const handleRatingClick = async (ratingNumber) => {
     try {
       const response = await axios.post(
-        `https://agrohub.vercel.app/seller/product_rating/${_id}/rating`,
+        `https://agrohub-b2b-new-server.vercel.app/seller/product_rating/${_id}/rating`,
         { rating: ratingNumber }
       );
       if (response.data) {

@@ -111,25 +111,25 @@ const router = createBrowserRouter([
         path: "/details/:id",
         element: <ReviewLayout />,
         loader: ({ params }) =>
-          fetch(`https://agrohub.vercel.app/seller/all_Product/${params.id}`),
+          fetch(`https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`),
         children: [
           {
             path: "/details/:id/description",
             element: <DetailsDescription />,
             loader: ({ params }) =>
-              fetch(`https://agrohub.vercel.app/seller/all_Product/${params.id}`),
+              fetch(`https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`),
           },
           {
             path: "/details/:id/review",
             element: <UserReview />,
             loader: ({ params }) =>
-              fetch(`https://agrohub.vercel.app/seller/all_Product/${params.id}`),
+              fetch(`https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`),
           },
           {
             path: "/details/:id/additional-information",
             element: <AdditionalInformation />,
             loader: ({ params }) =>
-              fetch(`https://agrohub.vercel.app/seller/all_Product/${params.id}`),
+              fetch(`https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`),
           },
         ],
       },
@@ -137,7 +137,7 @@ const router = createBrowserRouter([
         path: "/details/payment-gateway/:id",
         element: <PaymentGateway></PaymentGateway>,
         loader: ({ params }) => {
-          return fetch(`https://agrohub.vercel.app/seller/all_Product/${params.id}`);
+          return fetch(`https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`);
         },
       },
       {
@@ -210,7 +210,7 @@ const router = createBrowserRouter([
             ),
             loader: ({ params }) => {
               return fetch(
-                `https://agrohub.vercel.app/common/seller-product/${params.id}`
+                `https://agrohub-b2b-new-server.vercel.app/common/seller-product/${params.id}`
               );
             },
           },
@@ -223,7 +223,7 @@ const router = createBrowserRouter([
             ),
             loader: ({ params }) => {
               return fetch(
-                `https://agrohub.vercel.app/common/single-product/${params.id}`
+                `https://agrohub-b2b-new-server.vercel.app/common/single-product/${params.id}`
               );
             },
           },

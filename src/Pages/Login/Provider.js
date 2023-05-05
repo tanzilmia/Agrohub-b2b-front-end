@@ -14,10 +14,10 @@ function Provider() {
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
   const SendData = (data) => {
-    axios.post("https://agrohub.vercel.app/auth/google", data);
-    // axios.post("https://agrohub.vercel.app/auth/google_login", data);
+    axios.post("https://agrohub-b2b-new-server.vercel.app/auth/google", data);
+    // axios.post("https://agrohub-b2b-new-server.vercel.app/auth/google_login", data);
     axios
-      .post("https://agrohub.vercel.app/auth/login", data)
+      .post("https://agrohub-b2b-new-server.vercel.app/auth/login", data)
       .then((res) => {
         console.log(res)
         if (res.data.message === "Login Successful") {
@@ -39,7 +39,7 @@ function Provider() {
       });
     // get the user data
     // axios
-    //   .post(`https://agrohub.vercel.app/auth/google-user-info`, data)
+    //   .post(`https://agrohub-b2b-new-server.vercel.app/auth/google-user-info`, data)
     //   .then((res) => {
     //     if (res.data.message === "successfull") {
     //       setuser(res.data.data);

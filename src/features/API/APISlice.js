@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const productsAPI = createApi({
   reducerPath: "productsAPI",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://agrohub.vercel.app",
+    baseUrl: "https://agrohub-b2b-new-server.vercel.app",
   }),
   endpoints: (builder) => ({
     // get all products

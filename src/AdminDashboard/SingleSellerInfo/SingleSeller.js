@@ -8,7 +8,7 @@ const SingleSeller = () => {
       
         if (confirmed) {
           try {
-            axios.delete(`https://agrohub.vercel.app/seller/delete-product?id=${id}`)
+            axios.delete(`https://agrohub-b2b-new-server.vercel.app/seller/delete-product?id=${id}`)
               .then(res => {
                 console.log(res.data);
               });

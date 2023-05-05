@@ -155,7 +155,7 @@ const Register = () => {
               console.log(userinfo);
 
               axios
-                .post(`https://agrohub.vercel.app/auth/register`, userinfo)
+                .post(`https://agrohub-b2b-new-server.vercel.app/auth/register`, userinfo)
                 .then((res) => {
                   if (res.data.message === "Email Is Already Used") {
                     setregistrError("This Email AlReady Use");

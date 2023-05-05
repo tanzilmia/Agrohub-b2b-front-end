@@ -10,11 +10,11 @@ const initialState = {
 export const fetchLoadOneDataByCategories = createAsyncThunk(
   "products/fetchLoadOneDataByCategories",
   async () => {
-    const response = await axios.get("https://agrohub.vercel.app/admin/categories");
+    const response = await axios.get("https://agrohub-b2b-new-server.vercel.app/admin/categories");
     const requests = response.data.map(async (category) => {
       try {
         const res = await axios.get(
-          `https://agrohub.vercel.app/seller/category_products?category=${category.category}`
+          `https://agrohub-b2b-new-server.vercel.app/seller/category_products?category=${category.category}`
         );
         return res.data;
       } catch (error) {

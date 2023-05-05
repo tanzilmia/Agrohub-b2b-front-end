@@ -34,7 +34,7 @@ const Authcontext = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get(`https://agrohub.vercel.app/common/sellers`)
+      .get(`https://agrohub-b2b-new-server.vercel.app/common/sellers`)
       .then((res) => {
         setSeller(res.data);
       })
@@ -44,7 +44,7 @@ const Authcontext = ({ children }) => {
   useEffect(() => {
     if (token || isLogin) {
       axios
-        .post(`https://agrohub.vercel.app/auth/user-info`, { token })
+        .post(`https://agrohub-b2b-new-server.vercel.app/auth/user-info`, { token })
         .then((res) => {
           if (res.data.message === "successfull") {
             setuser(res.data.data);
@@ -59,7 +59,7 @@ const Authcontext = ({ children }) => {
   useEffect(() => {
     if (token || isLogin) {
       axios
-        .post(`https://agrohub.vercel.app/auth/google-user-info`, { token })
+        .post(`https://agrohub-b2b-new-server.vercel.app/auth/google-user-info`, { token })
         .then((res) => {
           if (res.data.message === "successfull") {
             setuser(res.data.data);

@@ -12,13 +12,13 @@ const PaymentSuccess = () => {
   const [orderData, setOrderData] = useState({});
   useEffect(() => {
     fetch(
-      `https://agrohub.vercel.app/payment-gateway/orders-by-transaction-id/${transactionId}`
+      `https://agrohub-b2b-new-server.vercel.app/payment-gateway/orders-by-transaction-id/${transactionId}`
     )
       .then((res) => res.json())
       .then((data) => {
         try{
           console.log(transactionId)
-          axios.put(`https://agrohub.vercel.app/payment-gateway/update/success?transactionId=${transactionId}`)
+          axios.put(`https://agrohub-b2b-new-server.vercel.app/payment-gateway/update/success?transactionId=${transactionId}`)
           .then(res =>  console.log(res.data))
         }catch(e){
           console.log(e.message);

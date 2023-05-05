@@ -13,20 +13,20 @@ const MyProduct = () => {
   const [totalPorduct, settotalPorduct] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const res = await axios.get("https://agrohub.vercel.app/common/sellers");
+      const res = await axios.get("https://agrohub-b2b-new-server.vercel.app/common/sellers");
       const data = await res.data;
       setUserData(data);
-      const response = await axios.get("https://agrohub.vercel.app/common/buyer");
+      const response = await axios.get("https://agrohub-b2b-new-server.vercel.app/common/buyer");
       const resData = await response.data;
       setBuyerData(resData);
       const productdData = await axios.get(
-        "https://agrohub.vercel.app/seller/recent_Product"
+        "https://agrohub-b2b-new-server.vercel.app/seller/recent_Product"
       );
       const resProductData = productdData.data;
       setAllProductData(resProductData);
 
       const totalProduct = await axios.get(
-        "https://agrohub.vercel.app/seller/all_Product"
+        "https://agrohub-b2b-new-server.vercel.app/seller/all_Product"
       );
       const restotalProduct = totalProduct.data;
       settotalPorduct(restotalProduct);
@@ -36,7 +36,7 @@ const MyProduct = () => {
 
   useEffect(() => {
     axios
-      .get(`https://agrohub.vercel.app/payment-gateway/totalsells`)
+      .get(`https://agrohub-b2b-new-server.vercel.app/payment-gateway/totalsells`)
       .then((res) => {
         settotalSell(res.data.totalSellPrice);
       })

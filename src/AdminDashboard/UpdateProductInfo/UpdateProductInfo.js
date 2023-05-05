@@ -66,7 +66,7 @@ const UpdateProductInfo = () => {
 
         try {
          
-       axios.put(`https://agrohub.vercel.app/common/edete-product?id=${Myproduct?._id}`, product)
+       axios.put(`https://agrohub-b2b-new-server.vercel.app/common/edete-product?id=${Myproduct?._id}`, product)
        .then(res => {
         console.log(res.data);
         if(res.data.message === "Update Success"){

@@ -17,7 +17,7 @@ const Sellers = () => {
   const accessChat = async (userId) => {
     try {
       const { data } = await axios.post(
-        `https://agrohub.vercel.app/chat/accessChat?email=${user?.email}`,
+        `https://agrohub-b2b-new-server.vercel.app/chat/accessChat?email=${user?.email}`,
         { userId },
         header
       );

@@ -4,7 +4,7 @@ const BuyerDashboard = () => {
   const [bayers, setbayers] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://agrohub.vercel.app/common/buyer`)
+      .get(`https://agrohub-b2b-new-server.vercel.app/common/buyer`)
       .then((res) => {
         setbayers(res.data);
       })
@@ -19,7 +19,7 @@ const BuyerDashboard = () => {
     if (confirmed) {
       try {
         axios
-          .delete(`https://agrohub.vercel.app/seller/delete-user?id=${id}`)
+          .delete(`https://agrohub-b2b-new-server.vercel.app/seller/delete-user?id=${id}`)
           .then((res) => {
             console.log(res.data);
           });
