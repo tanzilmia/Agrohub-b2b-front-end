@@ -37,9 +37,9 @@ const SellerProduct = () => {
     return <div>{error}</div>;
   }
   return (
-    <div className="px-4 md:px-10 lg:px-20 bg-gray-100">
+    <div className="px-4 md:px-10 lg:px-20 bg-gray-100 dark:bg-[#1B1B1D]">
       <div className="flex justify-between py-6">
-        <h3 className="text-xl md:text-2xl font-semibold mx-auto">
+        <h3 className="text-xl md:text-2xl font-semibold mx-auto dark:text-white">
           All Selling Products
         </h3>
       </div>

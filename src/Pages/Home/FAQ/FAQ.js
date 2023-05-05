@@ -24,7 +24,7 @@ const FaqsCard = (props) => {
       key={idx}
       onClick={handleOpenAnswer}
     >
-      <h4 className="cursor-pointer pb-5 flex items-center justify-between text-base text-gray-700 font-medium">
+      <h4 className="cursor-pointer pb-5 flex items-center justify-between text-base text-gray-700 font-medium dark:text-gray-300">
         {faqsList.q}
         {state ? (
           <svg
@@ -64,7 +64,9 @@ const FaqsCard = (props) => {
         style={state ? { height: answerH } : { height: "0px" }}
       >
         <div>
-          <p className="text-gray-500 text-justify">{faqsList.a}</p>
+          <p className="text-gray-500 text-justify dark:text-gray-400">
+            {faqsList.a}
+          </p>
         </div>
       </div>
     </div>
@@ -98,10 +100,10 @@ export default function FAQ() {
   return (
     <section className="leading-relaxed mt-28 px-4 md:px-8 mx-10">
       <div className="space-y-3 text-center">
-        <h1 className="lg:text-2xl text-xl text-gray-800 font-semibold">
+        <h1 className="lg:text-2xl text-xl text-gray-800 font-semibold dark:text-gray-200">
           Frequently Asked Questions
         </h1>
-        <p className="text-gray-600 text-base">
+        <p className="text-gray-600 text-base dark:text-gray-300">
           Answered all frequently asked questions, Still confused? feel free to
           contact us.
         </p>

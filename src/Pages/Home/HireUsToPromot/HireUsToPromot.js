@@ -16,10 +16,10 @@ export default function HireUsToPromot() {
             <h3 className="text-indigo-600 text-center lg:text-start font-semibold">
               Professional services
             </h3>
-            <p className="text-gray-800 text-lg font-semibold lg:text-2xl text-center lg:text-start">
+            <p className="text-gray-800 text-lg font-semibold lg:text-2xl text-center lg:text-start dark:text-gray-300">
               Hire Business Promoter to Promot Your Business
             </p>
-            <p className="mt-3 text-gray-600 text-justify ">
+            <p className="mt-3 dark:text-gray-400 text-gray-600 text-justify ">
               Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
               cupidatat non proident, sunt in culpa qui officia deserunt mollit

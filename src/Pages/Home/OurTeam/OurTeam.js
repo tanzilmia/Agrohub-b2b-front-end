@@ -20,10 +20,10 @@ export default function OurTeam() {
   return (
     <section className="mt-16 lg:mt-28 px-4 lg:px-10">
       <div className="max-w-6xl mx-auto">
-        <h3 className="text-2xl lg:text-2xl font-semibold text-gray-800 text-center ">
+        <h3 className="text-2xl lg:text-2xl font-semibold text-gray-800 text-center dark:text-gray-300">
           Meet Our Talent Team
         </h3>
-        <p className="mt-3 text-base text-gray-600 text-center">
+        <p className="mt-3 text-base text-gray-600 text-center dark:text-gray-400">
           MERN is a free and open-source JavaScript software stack for building
           dynamic web sites and web applications. Because all components of the
           MERN stack support programs that are written in JavaScript, MERN
@@ -55,11 +55,13 @@ export default function OurTeam() {
               </div>
               <div className="flex-grow">
                 <div className="flex flex-col justify-center h-full">
-                  <h4 className="text-lg font-semibold text-gray-700 mb-2">
+                  <h4 className="text-lg font-semibold text-gray-700 mb-2 dark:text-white">
                     {item?.name}
                   </h4>
-                  <p className="text-sm text-gray-700">MERN Stack Developer</p>
-                  <p className="text-sm text-gray-500 mt-1 text-justify">
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    MERN Stack Developer
+                  </p>
+                  <p className="text-sm text-gray-500 mt-1 text-justify dark:text-gray-400">
                     A group of technologies known as the MERN stack makes it
                     possible to develop applications more quickly. The prime
                     objective of a MERN stack developer is to create
