@@ -10,7 +10,7 @@ import { io } from "socket.io-client";
 
 // import ChatMessage from "../ChatMessage";
 
-const ENDPOINT = "https://agrohub.vercel.app/";
+const ENDPOINT = "https://agrohub.vercel.app";
 var socket, selectedChatCompare;
 
 const Inbox = () => {
