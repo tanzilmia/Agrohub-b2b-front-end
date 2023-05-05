@@ -126,7 +126,9 @@ const ProductDetails = ({ products }) => {
             </div>
           </div>
           <div className="md:col-span-3 ml-1 xl:mx-20">
-            <h2 className="lg:text-2xl text-xl font-semibold">{name}</h2>
+            <h2 className="lg:text-2xl text-xl font-semibold dark:text-gray-300">
+              {name}
+            </h2>
 
             {products?.rating === 0 ? (
               <div className="flex gap-4 my-3">
@@ -144,29 +146,29 @@ const ProductDetails = ({ products }) => {
               <div className="flex gap-4 my-3"> {ratingStar}</div>
             )}
             <div>
-              <p className=" mb-4">
+              <p className=" mb-4 dark:text-gray-400">
                 {description ? description.slice(0, 250) : "No Description"}
               </p>
               <div className=" flex flex-col gap-4">
-                <p className="flex flex-row   ">
+                <p className="flex flex-row dark:text-gray-300">
                   <label>Price: </label>{" "}
                   <span className="ml-2 font-semibold text-lg">
                     {" "}
                     <span className="text-orange-300 ">$</span> {newPrice}
                   </span>
                 </p>
-                <p className="flex flex-row">
+                <p className="flex flex-row dark:text-gray-300">
                   <label>Brand:</label>{" "}
                   <span className="ml-2 font-semibold"> {brand}</span>
                 </p>
-                <p className="flex flex-row">
+                <p className="flex flex-row dark:text-gray-300">
                   <label>Status:</label>{" "}
                   <span className="ml-2 font-semibold">{stock}</span>
                 </p>
               </div>
             </div>
             <div className=" flex flex-col gap-4 mt-4">
-              <p className="flex items-center">
+              <p className="flex items-center dark:text-gray-300 ">
                 Size:
                 {size.length === 0 ? (
                   <span className="ml-2 font-semibold">Not Available</span>
@@ -180,12 +182,12 @@ const ProductDetails = ({ products }) => {
                   </span>
                 )}
               </p>
-              <p className="flex items-center">
+              <p className="flex items-center dark:text-gray-300">
                 <span className="mr-2">Quality:</span>
-                <span className="flex items-center border border-black rounded-full">
+                <span className="flex items-center border border-black rounded-full dark:border-gray-300">
                   <button
                     onClick={handleDecrement}
-                    className="flex items-center justify-center h-8 w-8 rounded-l-full border-r border-black"
+                    className="flex items-center justify-center h-8 w-8 rounded-l-full border-r border-black dark:border-gray-300 "
                   >
                     <svg
                       width={15}
@@ -198,11 +200,11 @@ const ProductDetails = ({ products }) => {
                   <p className="px-4 py-1 text-lg font-semibold">{count}</p>
                   <button
                     onClick={handleIncrement}
-                    className="flex items-center justify-center h-8 w-8 rounded-r-full border-l border-black"
+                    className="flex items-center justify-center h-8 w-8 rounded-r-full border-l border-black dark:border-gray-300"
                   >
                     <svg
                       width={15}
-                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns="https://icons8.com/icon/efXxtDBBjc22/add"
                       viewBox="0 0 448 512"
                     >
                       <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
@@ -211,7 +213,7 @@ const ProductDetails = ({ products }) => {
                 </span>
               </p>
 
-              <p>
+              <p className="dark:text-gray-300">
                 Subtotal:{" "}
                 <span className="text-orange-300 font-semibold">$ </span>
                 <span className="font-semibold">{countPrice}</span>
@@ -221,34 +223,35 @@ const ProductDetails = ({ products }) => {
             <div className="flex sm:flex-row md:flex-col lg:flex-row gap-3 mt-10">
               <button
                 onClick={() => dispatch(addToCart(products))}
-                className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white"
+                className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white dark:text-gray-200 dark:hover:bg-indigo-600"
               >
-                ADD TO CART <i className="ri-shopping-cart-line hidden lg:block"></i>
+                ADD TO CART{" "}
+                <i className="ri-shopping-cart-line hidden lg:block"></i>
               </button>
-             {
-              user?.email ?
-              <Link to={`/details/payment-gateway/${_id}`}>
-              <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
-                BUY IT NOW
-              </button>
-            </Link>
-            :
-            <Link to={`/login`}>
-            <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white">
-              BUY IT NOW 
-            </button>
-          </Link>
-             }
+              {user?.email ? (
+                <Link to={`/details/payment-gateway/${_id}`}>
+                  <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white dark:text-gray-200 dark:hover:bg-indigo-600">
+                    BUY IT NOW
+                  </button>
+                </Link>
+              ) : (
+                <Link to={`/login`}>
+                  <button className="border-2 max-w-[250px] rounded-full py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white dark:text-gray-200 dark:hover:bg-indigo-600">
+                    BUY IT NOW
+                  </button>
+                </Link>
+              )}
               <button
                 onClick={AddDataToWishlist}
-                className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3  font-semibold hover:bg-orange-500 hover:text-white"
+                className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3  font-semibold hover:bg-orange-500 hover:text-white dark:text-gray-200 dark:hover:bg-indigo-600"
               >
-                ADD TO WISHLIST <i className="ri-heart-line hidden lg:block"></i>
+                ADD TO WISHLIST{" "}
+                <i className="ri-heart-line hidden lg:block"></i>
               </button>
             </div>
           </div>
         </div>
-        <div className="flex gap-10 font-semibold text-lg lg:mt-20 mt-10 mb-10 lg:text-xl">
+        <div className="flex gap-10 font-semibold text-lg lg:mt-20 mt-10 lg:text-xl dark:text-gray-300">
           <NavLink
             to={`/details/${_id}/description`}
             className={({ isActive }) => (isActive ? "text-orange-500" : "")}

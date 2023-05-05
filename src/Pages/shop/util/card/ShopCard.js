@@ -20,12 +20,12 @@ const ShopCard = ({ product }) => {
       {" "}
       <div className="relative flex flex-col items-center justify-center ">
         <div className="container">
-          <div className="w-full lg:max-w-xs shadow-xl rounded-xl p-6">
-            <div className="flex flex-col ">
+          <div className="w-full lg:max-w-xs shadow-xl rounded-xl p-3 dark:bg-[#4B5563]">
+            <div className="flex flex-col  ">
               <div className="">
                 <div className="relative h-62 w-full mb-3">
                   <div className="absolute top-0 right-0 mt-3 mr-3 flex flex-col items-center justify-center p-1 px-2 rounded-full bg-blue-100 shadow-2xl text-gray-500 font-serif text-sm font-medium hover:bg-blue-200 transition-all duration-300">
-                    <span className="truncate">{category}</span>
+                    <span className="truncate ">{category}</span>
                   </div>
 
                   <img
@@ -48,7 +48,7 @@ const ShopCard = ({ product }) => {
                       <span className=" whitespace-nowrap mr-3">{rating}</span>
                     </div>
                     <div className="flex items-center w-full justify-between min-w-0 ">
-                      <h2 className="text-lg mr-auto cursor-pointer  hover:text-purple-500 truncate ">
+                      <h2 className="text-lg mr-auto cursor-pointer  hover:text-purple-500 dark:hover:text-purple-400 truncate dark:text-gray-300">
                         {name}
                       </h2>
                       <div className="flex items-center bg-green-400 text-white text-xs px-2 py-1 ml-3 rounded-lg">
@@ -57,16 +57,18 @@ const ShopCard = ({ product }) => {
                     </div>
                   </div>
                   <div className="flex justify-between">
-                    <div className="text-xl  font-semibold mt-1">
+                    <div className="text-xl  font-semibold mt-1 dark:text-gray-300">
                       ${newPrice}
                     </div>
                     <div className="lg:flex  py-4  text-sm text-gray-600">
                       <div className="flex-1 inline-flex items-center mb-3">
-                        <span className="text-secondary whitespace-nowrap mr-3">
+                        <span className="text-secondary whitespace-nowrap mr-3 dark:text-gray-300">
                           Size
                         </span>
                         <div className="cursor-pointer text-gray-400">
-                          <span className="hover:text-purple-500">{size}</span>
+                          <span className="hover:text-purple-500">
+                            {size.length ? size : "Not Available"}
+                          </span>
                         </div>
                       </div>
                     </div>

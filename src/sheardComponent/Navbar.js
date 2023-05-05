@@ -135,10 +135,12 @@ const Navbar = () => {
                     />
                   ) : (
                     <>
-                      <div className="text-2xl">
-                        <i className="ri-user-3-line"></i>
+                      <div className="dark:text-gray-200 font-semibold dark:hover:text-indigo-400">
+                        <div className="text-2xl">
+                          <i className="ri-user-3-line "></i>
+                        </div>
+                        <div className="text-xs leading-3">Account</div>
                       </div>
-                      <div className="text-xs leading-3">Account</div>
                     </>
                   )}
                 </Link>

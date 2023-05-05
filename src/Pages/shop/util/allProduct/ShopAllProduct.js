@@ -25,7 +25,7 @@ const ShopAllProduct = ({ products }) => {
 
   return (
     <div ref={allProductRef}>
-      <div className="grid grid-cols-1 lg:grid-cols-3 lg:ml-0 ml-8 md:grid-cols-2 gap-5 mb-10">
+      <div className="grid grid-cols-1 lg:grid-cols-3 lg:ml-0 ml-8 md:grid-cols-2 gap-5 mb-10 mt-3">
         {products?.map((product, id) => (
           <ShopCard key={id} product={product} />
         ))}

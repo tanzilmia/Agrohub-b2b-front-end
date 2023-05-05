@@ -55,12 +55,12 @@ function Shop() {
           />
           <div className="ml-1">
             <div className="flex justify-between">
-              <span className="mt-5 lg:ml-6 ml-8 lg:text-lg text-sm font-semibold text-gray-500">
+              <span className="mt-5 lg:ml-6 ml-8 lg:text-lg text-sm font-semibold text-gray-500 dark:text-gray-300">
                 {filteringProduct && filteringProduct.length} Total Products
               </span>
               <select
                 data-te-select-init
-                className="mt-3 border w-44 ml-4 text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-500 dark:placeholder:text-neutral-400 dark:focus:border-primary rounded-md"
+                className="mt-3 border w-44 ml-4 text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-gray-300 dark:placeholder:text-neutral-400 dark:focus:border-primary rounded-md dark:bg-[#1B1B1D] "
               >
                 <option value="lowest">Price(lowest)</option>
                 <option value="highest">Price(highest)</option>
