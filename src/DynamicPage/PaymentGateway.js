@@ -142,6 +142,7 @@ const PaymentGateway = () => {
                     />
                   </label>
                 </div>
+              
                 <div className="mb-2 col-span-1">
                   <label>
                     <span className="text-gray-700">Post Code</span>

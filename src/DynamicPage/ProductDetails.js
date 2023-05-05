@@ -14,11 +14,12 @@ const ProductDetails = ({ products }) => {
   const [currentIndex, SetcurrentIndex] = useState(0);
   const { _id, name, description, newPrice, stock, size, images, brand } =
     products;
+    
   const dispatch = useDispatch();
-
+  const uniqueId = Math.ceil(Math.random() * 100000);
   const { setProductInfo, user } = useContext(myContext);
-
   const email = user?.email;
+
   const [count, setCount] = useState(1);
   const [countPrice, setCountPrice] = useState(newPrice);
   const [rating, setRating] = useState(0);
@@ -222,7 +223,7 @@ const ProductDetails = ({ products }) => {
             {/* flex-col */}
             <div className="flex sm:flex-row md:flex-col lg:flex-row gap-3 mt-10">
               <button
-                onClick={() => dispatch(addToCart({products, email}))}
+                onClick={() => dispatch(addToCart({products, email, uniqueId}))}
                 className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white"
               >
                 ADD TO CART{" "}

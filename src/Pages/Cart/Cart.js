@@ -19,6 +19,7 @@ const Cart = () => {
   console.log(cartTotalAmount);
   const dispatch = useDispatch();
   const { user } = useContext(myContext);
+  const email = user?.email;
 
   useEffect(() => {
     dispatch(getTotals());
@@ -43,7 +44,7 @@ const Cart = () => {
               </tr>
               <tr className="w-full gap-3 border border-3"></tr>
 
-              {products?.map((product) => (
+              {findProduct?.map((product) => (
                 <tr key={product._id} className="w-full border border-3">
                   <td className="flex items-center gap-4">
                     <img
@@ -109,7 +110,7 @@ const Cart = () => {
                 </span>
               </Link>
               <button
-                onClick={() => dispatch(clearCart())}
+                onClick={() => dispatch(clearCart(email))}
                 className="border-2 px-6 py-3 bg-red-600 text-white text-xl"
               >
                 Clear Cart
