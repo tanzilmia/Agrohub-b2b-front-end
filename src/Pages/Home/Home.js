@@ -13,6 +13,7 @@ import TopSellingProduct from "./TopSellingProduct/TopSellingProduct";
 import TeamTrustUs from "./truestedTeam/TeamTrustsUs";
 import useTitle from "../../hooks/useTitle";
 import ContactUs from "../contactUs/ContactUs";
+import PopularBlogs from "./PopularBlogs/PopularBlogs";
 const Home = () => {
   useTitle("");
   return (
@@ -40,7 +41,8 @@ const Home = () => {
       <FAQ />
       {/* <ContactForm /> */}
       <ContactUs/>
-      <Newsletter />
+      {/* <Newsletter /> */}
+      <PopularBlogs/>
       {/* Tuhin */}
     </div>
   );
