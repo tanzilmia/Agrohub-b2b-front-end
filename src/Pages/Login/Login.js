@@ -22,8 +22,8 @@ const Login = () => {
   }
 
   return (
-    <nav className="bg-gray-50 min-h-screen  flex items-center justify-center">
-      <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-7xl p-5 ">
+    <nav className="bg-gray-50 dark:bg-[#1B1B1D] min-h-screen  flex items-center justify-center">
+      <div className="bg-gray-100 dark:bg-[#4B5563] flex rounded-2xl shadow-lg max-w-7xl p-5 ">
         {/* left div */}
         <div className="md:w-[500px] px-16">
           <h2 className="font-bold text-2xl text-[#29BA2F] text-center">
@@ -97,18 +97,18 @@ const Login = () => {
             {({ isSubmitting }) => (
               <Form className="flex flex-col gap-4">
                 <Field
-                  className="p-2 mt-8 rounded-xl border w-full"
+                  className="p-2 mt-8 rounded-xl border w-full dark:bg-[#81858d] dark:text-white"
                   type="email"
                   name="email"
                 />
                 <ErrorMessage
-                  className="text-red-500 text-xs italic"
+                  className="text-red-500 text-xs italic "
                   name="email"
                   component="div"
                 />
                 <div className="relative">
                   <Field
-                    className="p-2 mt-4 rounded-xl border w-full"
+                    className="p-2 mt-4 rounded-xl border w-full dark:bg-[#81858d] dark:text-white dark:placeholder:text-gray-300"
                     type={show ? "text" : "password"}
                     placeholder="Password"
                     name="password"
@@ -117,8 +117,8 @@ const Login = () => {
                     onClick={() => setShow(!show)}
                     className={
                       show
-                        ? "ri-eye-line absolute top-[35%] text-gray-500 right-3 cursor-pointer"
-                        : "ri-eye-off-line absolute top-[35%] text-gray-500 right-3 cursor-pointer"
+                        ? "ri-eye-line absolute top-[43%] text-gray-500 dark:text-white right-3 cursor-pointer"
+                        : "ri-eye-off-line absolute top-[43%] text-gray-500 right-3 dark:text-white cursor-pointer"
                     }
                   ></i>
                   <ErrorMessage
@@ -136,12 +136,14 @@ const Login = () => {
                   Login
                 </button>
 
-                <p className=" text-sm border-gray-400">
+                <p className=" text-sm border-gray-400 dark:text-[#29BA2F]">
                   Forgot Your Password?
                 </p>
-                <Link to={"/register"} className="sm:block hover:text-[#29BA2F] xl:hidden cursor-pointer text-sm border-gray-400 flex items-center">
+                <Link
+                  to={"/register"}
+                  className="sm:block hover:text-[#29BA2F] xl:hidden cursor-pointer text-sm border-gray-400 flex items-center"
+                >
                   Already have a Account ?
-                  {/* <FaArrowRight color="#29BA2F"/> */}
                 </Link>
 
                 <p className="text-[red]">{error}</p>
@@ -155,40 +157,40 @@ const Login = () => {
           <h2 className="font-bold text-2xl text-[#29BA2F] text-center">
             Create An Account
           </h2>
-          <div className="flex items-center text-gray-500 py-2">
+          <div className="flex items-center text-gray-500 py-2 dark:text-gray-300">
             <i className="ri-bank-card-fill text-2xl ml-4"></i>
             <span className="text-lg ml-4">
               Save payment to view in-store purchases
             </span>
           </div>
-          <div className="flex items-center text-gray-500 py-2">
+          <div className="flex items-center text-gray-500 py-2 dark:text-gray-300">
             <i className="ri-star-smile-line text-2xl ml-4"></i>
             <span className="text-lg ml-4">Redeem Rewards</span>
           </div>
-          <div className="flex  items-center text-gray-500 py-2">
+          <div className="flex  items-center text-gray-500 py-2 dark:text-gray-300">
             <i className="ri-shopping-cart-fill text-2xl ml-4"></i>
             <span className="text-lg ml-4">Speedy Checkout</span>
           </div>
-          <div className="flex  items-center text-gray-500 py-2">
+          <div className="flex  items-center text-gray-500 py-2 dark:text-gray-300">
             <i className="ri-truck-line text-2xl ml-4"></i>
             <span className="text-lg ml-4">
               Easily track orders and view order history{" "}
             </span>
           </div>
-          <div className="flex  items-center text-gray-500 py-2">
+          <div className="flex  items-center text-gray-500 py-2 dark:text-gray-300">
             <i className="ri-checkbox-blank-circle-line text-2xl ml-4"></i>
             <span className="text-lg ml-4">Create A Regestry</span>
           </div>
-          <div className="flex  items-center text-gray-500 py-2">
+          <div className="flex  items-center text-gray-500 py-2 dark:text-gray-300">
             <i className="ri-git-repository-fill text-2xl ml-4"></i>
             <span className="text-lg ml-4">View your desgin packages</span>
           </div>
-          <div className="flex  items-center text-gray-500 py-2">
+          <div className="flex  items-center text-gray-500 py-2 dark:text-gray-300">
             <i className="ri-heart-add-line text-2xl ml-4"></i>
             <span className="text-lg ml-4">Manage Favorites Lists</span>
           </div>
           <Link to={"/register"}>
-            <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-3 w-1/2 mx-auto rounded-xl  flex justify-center items-center hover:scale-105 duration-300 hover:font-semibold ">
+            <button className="bg-white hover:bg-[#29BA2F] hover:text-white border py-3 w-1/2 mx-auto rounded-xl  flex justify-center items-center hover:scale-105 duration-300 font-semibold ">
               Register
             </button>
           </Link>

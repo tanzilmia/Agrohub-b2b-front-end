@@ -1,5 +1,3 @@
-
-
 import axios from "axios";
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
@@ -14,17 +12,15 @@ import Loadding from "../../sheardComponent/Loadding";
 const UpdateProductInfo = () => {
   const [size, setSize] = useState([]);
   const [category, setCategory] = useState("");
-  const [loading, setloading] = useState(false)
+  const [loading, setloading] = useState(false);
   const [selectedImages, setSelectedImages] = useState([]);
-  const Myproduct = useLoaderData()
- 
+  const Myproduct = useLoaderData();
 
   const [{ isLoading }] = usePostProductMutation();
   const { data: categories } = useGetCategoriesQuery();
   const { data: brands } = useGetBrandsQuery(category);
 
   const handleSubmit = async (event) => {
-
     event.preventDefault();
     const form = event.target;
     const name = form.productName.value;
@@ -33,9 +29,8 @@ const UpdateProductInfo = () => {
     const category = form.category.value;
     const brand = form.brand.value;
     const description = form.description.value;
-    setloading(true)
+    setloading(true);
     const handleImageUpload = async () => {
-        
       try {
         const formDataArray = selectedImages.map((image, index) => {
           const formData = new FormData();
@@ -65,18 +60,21 @@ const UpdateProductInfo = () => {
         };
 
         try {
-         
-       axios.put(`https://agrohub-b2b-new-server.vercel.app/common/edete-product?id=${Myproduct?._id}`, product)
-       .then(res => {
-        console.log(res.data);
-        if(res.data.message === "Update Success"){
-            // navigate("/dashboard/Seller")
-            window.history.back();
-            setloading(false)
-        }
-       })
+          axios
+            .put(
+              `https://agrohub-b2b-new-server.vercel.app/common/edete-product?id=${Myproduct?._id}`,
+              product
+            )
+            .then((res) => {
+              console.log(res.data);
+              if (res.data.message === "Update Success") {
+                // navigate("/dashboard/Seller")
+                window.history.back();
+                setloading(false);
+              }
+            });
         } catch (error) {
-         console.log(error.message)
+          console.log(error.message);
         }
       } catch (error) {
         console.error(error);
@@ -91,8 +89,8 @@ const UpdateProductInfo = () => {
     setSelectedImages([...selectedImages, ...files]);
   };
 
-  if(loading){
-    return <Loadding/>
+  if (loading) {
+    return <Loadding />;
   }
 
   return (
@@ -121,8 +119,8 @@ const UpdateProductInfo = () => {
           </svg>
         </div>
       ) : (
-        <div className="w-full">
-          <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40  ">
+        <div className="w-full ">
+          <div className="w-full dark:bg-[#1B1B1D] p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40  ">
             <h1 className="text-3xl font-semibold text-center text-indigo-700 uppercase">
               Update your products
             </h1>
@@ -132,11 +130,13 @@ const UpdateProductInfo = () => {
             >
               <div className="mb-2 col-span-1">
                 <label>
-                  <span className="text-gray-700">Product Name</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    Product Name
+                  </span>
                   <input
                     type="text"
                     name="productName"
-                    className="w-full border block px-4 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="w-full border block px-4 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300"
                     placeholder="Name"
                     required
                     defaultValue={Myproduct?.name}
@@ -145,11 +145,13 @@ const UpdateProductInfo = () => {
               </div>
               <div className="mb-2 col-span-1">
                 <label>
-                  <span className="text-gray-700">Product Image</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    Product Image
+                  </span>
                   <input
                     type="file"
                     name="image"
-                    className="w-full border block px-4 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="w-full border block px-4 py-2 mt-2 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     placeholder="Type here..."
                     required
                     onChange={handleImageSelection}
@@ -158,11 +160,13 @@ const UpdateProductInfo = () => {
               </div>
               <div className="mb-2 col-span-1">
                 <label>
-                  <span className="text-gray-700">Old Price</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    Old Price
+                  </span>
                   <input
                     name="oldPrice"
                     type="number"
-                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300"
                     placeholder="Old Price"
                     required
                     defaultValue={Myproduct?.oldPrice}
@@ -171,11 +175,13 @@ const UpdateProductInfo = () => {
               </div>
               <div className="mb-2 col-span-1">
                 <label>
-                  <span className="text-gray-700">New Price</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    New Price
+                  </span>
                   <input
                     name="newPrice"
                     type="number"
-                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300"
                     placeholder="New Price"
                     required
                     defaultValue={Myproduct?.newPrice}
@@ -184,17 +190,17 @@ const UpdateProductInfo = () => {
               </div>
               <div className="mb-2">
                 <label>
-                  <span className="text-gray-700">Category</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    Category
+                  </span>
                   <select
-                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300"
                     name="category"
                     required
-                   
                     onChange={(e) => setCategory(e.target.value)}
                   >
                     <option disabled selected>
                       Choose a category
-                      
                     </option>
 
                     {categories?.length &&
@@ -206,9 +212,11 @@ const UpdateProductInfo = () => {
               </div>
               <div className="mb-2">
                 <label>
-                  <span className="text-gray-700">Brand</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    Brand
+                  </span>
                   <select
-                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300"
                     name="brand"
                     required
                   >
@@ -222,9 +230,9 @@ const UpdateProductInfo = () => {
               </div>
               <div className="mb-2">
                 <label>
-                  <span className="text-gray-700">Size</span>
+                  <span className="text-gray-700 dark:text-gray-400">Size</span>
                   <select
-                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300"
                     name="size"
                     required
                     onChange={(event) => setSize([...size, event.target.value])}
@@ -241,12 +249,14 @@ const UpdateProductInfo = () => {
               </div>
               <div className="mb-2 col-span-2">
                 <label>
-                  <span className="text-gray-700">Description</span>
+                  <span className="text-gray-700 dark:text-gray-400">
+                    Description
+                  </span>
                   <textarea
                     name="description"
                     type="text"
                     placeholder="Write Here"
-                    className="block border w-full mt-2 px-4 py-8 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="block border w-full mt-2 px-4 py-8 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-[#81858D] dark:text-white dark:placeholder:text-gray-300"
                     rows="5"
                     required
                     defaultValue={Myproduct?.description}
@@ -257,7 +267,7 @@ const UpdateProductInfo = () => {
               <div className="mb-6">
                 <button
                   type="submit"
-                  className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"
+                  className="h-10 px-5 text-indigo-100 font-semibold bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"
                 >
                   Update Product Info
                 </button>

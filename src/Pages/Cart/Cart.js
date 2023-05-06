@@ -28,13 +28,13 @@ const Cart = () => {
   console.log(findProduct)
   return (
     <>
-      <div className="px-20 py-10 bg-white">
+      <div className="px-20 py-10 bg-white dark:bg-[#1B1B1D] ">
         <div>
-          <h1 className="font-bold text-2xl text-center my-10">
+          <h1 className="font-bold text-2xl text-center my-10 dark:text-gray-300">
             Shopping Cart
           </h1>
           <div>
-            <table className="w-full">
+            <table className="w-full dark:text-gray-300">
               <tr className="">
                 <th className="w-4/12">PRODUCT</th>
                 <th className="">PRICE</th>
@@ -57,10 +57,10 @@ const Cart = () => {
                   <td className="text-center">${product?.newPrice}</td>
                   <td className="">
                     <p className="flex items-center justify-center">
-                      <span className="flex items-center border border-black rounded-full">
+                      <span className="flex items-center border border-black dark:border-white rounded-full">
                         <button
                           onClick={() => dispatch(decreaseQuantity(product))}
-                          className="flex items-center justify-center h-8 w-8 rounded-l-full border-r border-black"
+                          className="flex items-center justify-center h-8 w-8 rounded-l-full border-r border-black dark:border-white"
                         >
                           <svg
                             width={15}
@@ -75,7 +75,7 @@ const Cart = () => {
                         </p>
                         <button
                           onClick={() => dispatch(increaseQuantity(product))}
-                          className="flex items-center justify-center h-8 w-8 rounded-r-full border-l border-black"
+                          className="flex items-center justify-center h-8 w-8 rounded-r-full border-l border-black dark:border-white"
                         >
                           <svg
                             width={15}
@@ -104,7 +104,7 @@ const Cart = () => {
           <div className="mt-4">
             <div className="flex justify-between">
               <Link to="/">
-                <span className="flex items-center gap-1 text-xl border px-4 py-3 bg-blue-600 text-white">
+                <span className="flex items-center gap-1 text-xl rounded px-4 py-3 bg-indigo-500 text-white">
                   <i class="ri-arrow-left-line"></i>
                   <button>Continue Shopping</button>
                 </span>
@@ -118,7 +118,7 @@ const Cart = () => {
             </div>
           </div>
           <div className="flex justify-end mt-10">
-            <div className="bg-gray-100 p-10">
+            <div className="bg-gray-100 dark:bg-[#4B5563] rounded p-10 dark:text-gray-300">
               <span className="flex items-center justify-between gap-2">
                 <p className="text-xl">Subtotal:</p>
                 <p className="text-xl font-bold">${cartTotalAmount}</p>

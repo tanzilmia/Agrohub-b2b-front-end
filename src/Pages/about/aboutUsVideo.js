@@ -53,14 +53,14 @@ export default function AboutUsVideo() {
             {features.map((item, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-x-2 text-gray-500 text-sm"
+                className="flex items-center gap-x-2 text-gray-500 text-sm dark:text-gray-300"
               >
                 {item.icon}
                 {item.name}
               </div>
             ))}
           </div>
-          <h1 className="text-4xl text-gray-800 font-extrabold mx-auto md:text-5xl">
+          <h1 className="text-4xl text-gray-500 font-extrabold mx-auto md:text-5xl dark:text-gray-300">
             About Us
           </h1>
           {/* <p className="max-w-xl mx-auto xl:mx-0">
@@ -70,7 +70,7 @@ export default function AboutUsVideo() {
           <div className="items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0 xl:justify-start">
             <Link
               to="/"
-              className="flex items-center justify-center gap-x-2 py-2 px-4 text-white font-medium bg-gray-800 duration-150 hover:bg-gray-700 active:bg-gray-900 rounded-lg md:inline-flex"
+              className="flex items-center justify-center gap-x-2 py-2 px-4 text-white font-medium bg-gray-500 duration-150 hover:bg-gray-700 active:bg-gray-900 rounded-lg md:inline-flex"
             >
               Home Page
               <svg
@@ -88,7 +88,7 @@ export default function AboutUsVideo() {
             </Link>
             <Link
               to="/"
-              className="flex items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg md:inline-flex"
+              className="flex items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg md:inline-flex dark:text-gray-400 dark:hover:text-gray-600"
             >
               Contact Us
               <svg

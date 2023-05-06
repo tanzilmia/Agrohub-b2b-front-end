@@ -32,7 +32,7 @@ export default function Footer() {
   return (
     <>
       {showMenu && (
-        <div className=" pt-12 bg-white dark:bg-[#242526] px-16">
+        <div className=" pt-12 bg-white dark:bg-[#242526] lg:px-16 px-5">
           <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
             <div className="sm:col-span-2">
               <Link to={"/"}>

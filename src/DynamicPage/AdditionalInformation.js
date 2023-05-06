@@ -44,14 +44,14 @@ const AdditionalInformation = () => {
 
   return (
     <div>
-      <div className="mx-20 mb-20">
-        <table className="border-2 border-black w-full">
+      <div className="mx-5 mb-20">
+        <table className="border-2 border-black w-full ">
           {datas.map((data) => (
-            <tr className="border-2 border-black">
-              <td className="border-2 border-black bg-gray-300 py-2 px-4 text-xl">
+            <tr className="border-2 border-black dark:border-gray-300">
+              <td className="border-2 border-black dark:border-gray-300 bg-gray-300 dark:text-gray-300 dark:bg-gray-500 py-2 px-4 text-xl">
                 {data.name}
               </td>
-              <td className="border-2 border-black py-2 px-4 text-xl">
+              <td className="border-2 border-black dark:border-gray-300 py-2 px-4 text-xl dark:text-gray-300">
                 {data.feature}
               </td>
             </tr>
@@ -60,26 +60,30 @@ const AdditionalInformation = () => {
       </div>
       <form
         onSubmit={onSubmit}
-        className="mx-20 mb-6 md:grid md:grid-cols-2 gap-x-20"
+        className="mx-20 md:grid md:grid-cols-2 gap-x-20"
       >
         <div className="mb-2">
           <label>
-            <span className="text-gray-700">Information name</span>
+            <span className="text-gray-700 dark:text-gray-300">
+              Information name
+            </span>
             <input
               name="name"
               type="text"
-              className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="block border w-full mt-2 px-4 py-2 dark:bg-[#5B5B5C]  border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               placeholder="Type here..."
             />
           </label>
         </div>
         <div className="mb-2">
           <label>
-            <span className="text-gray-700">Information value</span>
+            <span className="text-gray-700 dark:text-gray-300">
+              Information value
+            </span>
             <input
               name="value"
               type="text"
-              className="block border w-full mt-2 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="block border w-full mt-2 px-4 py-2 dark:bg-[#5B5B5C] border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               placeholder="Type here..."
             />
           </label>
@@ -87,7 +91,7 @@ const AdditionalInformation = () => {
         <div className="mb-6">
           <button
             type="submit"
-            className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"
+            className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 font-semibold"
           >
             Submit
           </button>

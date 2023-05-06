@@ -89,10 +89,10 @@ const UserReview = () => {
   }, [reviews]);
 
   return (
-    <div className="mx-10 sm:mx-20 mb-20">
+    <div className="mx-10 sm:mx-20 pb-5">
       <div className="flex flex-row gap-4 text-xl font-semibold">
-        <i className="ri-star-fill"></i>
-        <p> {reviews.length} Review & Rating</p>
+        <i className="ri-star-fill dark:text-indigo-400"></i>
+        <p className="dark:text-gray-300"> {reviews.length} Review & Rating</p>
       </div>
       <div className="grid lg:grid-cols-2 gap-20">
         <div>
@@ -109,33 +109,34 @@ const UserReview = () => {
                       />
                       <div>
                         <div className="flex items-center space-x-3">
-                          <p className="font-semibold text-sm text-gray-400">
+                          <p className="font-semibold text-sm text-gray-400 dark:text-gray-300">
                             {review?.userName}
                           </p>
                           <div className="flex gap-4 my-3"> {ratingStar}</div>
                         </div>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
                           {review && review?.date.slice(0, 10)}
                         </p>
                       </div>
                     </div>
                   </div>
-                  <p className="mt-4 ml-14">{review?.review}</p>
+                  <p className="mt-4 ml-14 dark:text-gray-300">
+                    {review?.review}
+                  </p>
                 </div>
               ))}
           </div>
-          <button className="mt-16 border-2 py-3 px-6 rounded-full hover:bg-orange-600 hover:text-white">
-            Show me all reviews
-          </button>
         </div>
         <div className="lg:col-span-1">
           <div>
-            <h2 className="text-xl font-semibold my-2">Review this product</h2>
-            <p className="text-sm">
+            <h2 className="text-xl font-semibold my-2 dark:text-gray-300">
+              Review this product
+            </h2>
+            <p className="text-sm dark:text-gray-400">
               Your email address will not be published. Required fields are
               marked *
             </p>
-            <p className="flex gap-2 mb-4  text-base font-semibold">
+            <p className="flex gap-2 mb-4  text-base dark:text-gray-300 font-semibold">
               Your Rating :
               <div className="flex gap-2 ">
                 {[1, 2, 3, 4, 5].map((number) => (
@@ -152,7 +153,7 @@ const UserReview = () => {
           </div>
           <form onSubmit={handleSubmit}>
             <textarea
-              className="border-2 p-2 w-full"
+              className="border-2 p-2 w-full dark:bg-[#5B5B5C]"
               placeholder="Write your review here..."
               name="review"
               id=""
@@ -161,9 +162,11 @@ const UserReview = () => {
               type="text"
             ></textarea>
             <span>
-              <label htmlFor="">Your name</label>
+              <label className="dark:text-gray-300" htmlFor="">
+                Your name
+              </label>
               <input
-                className="p-2 border-2 w-full"
+                className="p-2 border-2 w-full rounded"
                 placeholder={user?.name}
                 type="text"
                 name="name"
@@ -172,9 +175,11 @@ const UserReview = () => {
               />
             </span>
             <span>
-              <label htmlFor="email">Your email</label>
+              <label className="dark:text-gray-300" htmlFor="email">
+                Your email
+              </label>
               <input
-                className="p-2 border-2 w-full"
+                className="p-2 border-2 w-full rounded "
                 name="email"
                 placeholder={user?.email}
                 defaultValue={user?.email}
@@ -184,7 +189,7 @@ const UserReview = () => {
             </span>
             <button
               type="submit"
-              className="border-2 px-8 py-2 bg-green-600 text-white mt-6"
+              className="rounded-lg px-8 py-2 bg-green-600 text-white mt-6 font-semibold"
             >
               Submit
             </button>

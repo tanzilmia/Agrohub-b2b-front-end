@@ -16,7 +16,9 @@ const MyProduct = () => {
       const res = await axios.get("https://agrohub-b2b-new-server.vercel.app/common/sellers");
       const data = await res.data;
       setUserData(data);
-      const response = await axios.get("https://agrohub-b2b-new-server.vercel.app/common/buyer");
+      const response = await axios.get(
+        "https://agrohub-b2b-new-server.vercel.app/common/buyer"
+      );
       const resData = await response.data;
       setBuyerData(resData);
       const productdData = await axios.get(
@@ -74,7 +76,7 @@ const MyProduct = () => {
                 {" "}
                 <FaUsers />{" "}
               </div>
-              <p className="text-center text-2xl">
+              <p className="text-center text-2xl ">
                 {userData?.length} <span className="text-base">Sellers</span>
               </p>
             </div>
@@ -83,7 +85,7 @@ const MyProduct = () => {
                 {" "}
                 <FaUsers />{" "}
               </div>
-              <p className="text-center text-2xl">
+              <p className="text-center text-2xl dark:text-white">
                 {buyerData?.length} <span className="text-base">buyers</span>
               </p>
             </div>

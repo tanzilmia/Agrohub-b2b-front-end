@@ -40,14 +40,13 @@ const Register = () => {
     },
   });
 
-
-  if(Lodding){
-    return <Loadding/>
+  if (Lodding) {
+    return <Loadding />;
   }
 
   return (
-    <nav className="bg-gray-50 min-h-screen  flex items-center justify-center">
-      <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-7xl p-5 ">
+    <nav className="bg-gray-50 dark:bg-[#1B1B1D] min-h-screen  flex items-center justify-center">
+      <div className="bg-gray-100 dark:bg-[#4B5563] flex rounded-2xl shadow-lg max-w-7xl p-5 ">
         <div className="md:w-[700px] px-16">
           <h2 className="font-bold text-2xl text-[#29BA2F] text-center">
             Register
@@ -141,7 +140,7 @@ const Register = () => {
             onSubmit={(values, { setSubmitting }) => {
               const { email, password, phone, firstname, lastname, role } =
                 values;
-                setLodding(true)
+              setLodding(true);
               setloading(true);
 
               const userinfo = {
@@ -159,17 +158,16 @@ const Register = () => {
                 .then((res) => {
                   if (res.data.message === "Email Is Already Used") {
                     setregistrError("This Email AlReady Use");
-                    setLodding(false)
+                    setLodding(false);
                   }
                   if (res.data.message === "unwanted error") {
                     setregistrError("Wrong Input");
-                    setLodding(false)
+                    setLodding(false);
                   }
                   if (res.data.message === "success") {
                     neviget("/login");
-                    setLodding(false)
+                    setLodding(false);
                   }
-                  
                 })
                 .catch((e) => console.log(e.message));
 
@@ -181,7 +179,7 @@ const Register = () => {
                 <div className="flex justify-between">
                   <div className="w-[45%]">
                     <Field
-                      className="p-2 mt-8 rounded-xl border w-[100%]"
+                      className="p-2 mt-8 rounded-xl dark:bg-[#81858d] dark:text-white dark:placeholder:text-gray-300 border w-[100%]"
                       type="text"
                       name="firstname"
                       placeholder="First Name"
@@ -194,7 +192,7 @@ const Register = () => {
                   </div>
                   <div className="w-[45%]">
                     <Field
-                      className="p-2 mt-8 rounded-xl border w-[100%]"
+                      className="p-2 mt-8 dark:bg-[#81858d] dark:text-white dark:placeholder:text-gray-300 rounded-xl border w-[100%]"
                       type="text"
                       name="lastname"
                       placeholder="Last Name"
@@ -210,7 +208,7 @@ const Register = () => {
                 <div className="flex justify-between">
                   <div className="w-[45%]">
                     <Field
-                      className="p-2 mt-3 rounded-xl border w-[100%]"
+                      className="p-2 mt-3 dark:bg-[#81858d] dark:text-white dark:placeholder:text-gray-300 rounded-xl border w-[100%]"
                       type="number"
                       name="phone"
                       placeholder="Enter phone "
@@ -223,7 +221,7 @@ const Register = () => {
                   </div>
                   <div className="w-[45%]">
                     <Field
-                      className="p-2 mt-3 rounded-xl border w-[100%]"
+                      className="p-2 mt-3 dark:bg-[#81858d] dark:text-white dark:placeholder:text-gray-300 rounded-xl border w-[100%]"
                       type="email"
                       name="email"
                       placeholder="Enter Email"
@@ -238,7 +236,7 @@ const Register = () => {
 
                 <div className="relative">
                   <Field
-                    className="p-2 rounded-xl border w-full"
+                    className="p-2 dark:bg-[#81858d] dark:text-white dark:placeholder:text-gray-300 rounded-xl border w-full"
                     name="password"
                     id="password"
                     type={show ? "text" : "password"}
@@ -248,8 +246,8 @@ const Register = () => {
                     onClick={() => setShow(!show)}
                     className={
                       show
-                        ? "ri-eye-line absolute top-[23%] text-gray-500 right-3 cursor-pointer"
-                        : "ri-eye-off-line absolute top-[23%] text-gray-500 right-3 cursor-pointer"
+                        ? "ri-eye-line absolute top-[23%] text-gray-500 right-3 dark:text-white cursor-pointer"
+                        : "ri-eye-off-line absolute dark:text-white top-[23%] text-gray-500 right-3 cursor-pointer"
                     }
                   ></i>
                   <ErrorMessage
@@ -260,12 +258,12 @@ const Register = () => {
                 </div>
 
                 <div className="flex items-center mx-auto">
-                  <h1 className="text-sm text-gray-400">
+                  <h1 className="text-sm text-gray-400 dark:text-gray-200">
                     Please Select Trade Role:
                   </h1>
 
                   <div className="flex items-center ml-4">
-                    <div className="flex items-center mr-4">
+                    <div className="flex items-center mr-4 ">
                       <Field
                         id="inline-radio"
                         type="radio"
@@ -274,7 +272,7 @@ const Register = () => {
                       />
                       <label
                         htmlFor="inline-radio"
-                        className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-500"
+                        className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-200"
                       >
                         Buyer
                       </label>
@@ -288,7 +286,7 @@ const Register = () => {
                       />
                       <label
                         htmlFor="inline-2-radio"
-                        className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-500"
+                        className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-200"
                       >
                         Seller
                       </label>
@@ -310,10 +308,13 @@ const Register = () => {
                 >
                   Register Now
                 </button>
-                <div className="flex">
+                <div className="flex dark:text-[#29BA2F]">
                   <p className="text-xs">
                     Already Have an account ?{" "}
-                    <Link className="text-[#1c201e] font-bold" to="/login">
+                    <Link
+                      className="text-[#1c201e] dark:text-[#29BA2F] font-bold"
+                      to="/login"
+                    >
                       Login Now
                     </Link>
                   </p>

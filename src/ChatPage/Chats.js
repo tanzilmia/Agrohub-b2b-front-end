@@ -65,14 +65,14 @@ const Chats = () => {
   }, [user?.email]);
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100">
-      <h2 className="text-2xl font-bold ml-6">My Chats</h2>
-      <Link to="/" className="mb-4 mt-6 ml-6 text-blue-500 underline">
+    <div className="flex flex-col h-screen bg-gray-100 dark:bg-[#1B1B1D]">
+      <h2 className="text-2xl font-bold ml-6 dark:text-gray-300">My Chats</h2>
+      <Link to="/" className="mb-4 mt-6 ml-6 text-indigo-500">
         Back To Home
       </Link>
 
       {chats.length ? (
-        <div className="flex-1 w-full max-w-xs bg-white p-4 rounded-md shadow-md overflow-y-scroll">
+        <div className="flex-1 w-full max-w-xs bg-white dark:bg-[#4B5563] p-4 rounded-md shadow-md overflow-y-scroll">
           {chats.map(
             (chat) =>
               singleChat(user, chat.users) && (
@@ -80,7 +80,7 @@ const Chats = () => {
                   onClick={() => accessChat(user, chat.users, chat, chat?._id)}
                   to={`/seller/contact/chats/${singleChat(user, chat.users)}`}
                   key={chat._id}
-                  className={`block mb-2 text-blue-500 hover:underline ${
+                  className={`block mb-2 dark:text-indigo-300 text-indigo-500 ${
                     selectedChat?._id === singleChat(user, chat.users)
                       ? "font-bold"
                       : ""

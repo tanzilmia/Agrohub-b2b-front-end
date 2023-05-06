@@ -5,6 +5,7 @@ import { useContext } from "react";
 import ScrollableFeed from "react-scrollable-feed";
 import { myContext } from "../../contextApi/Authcontext";
 import { io } from "socket.io-client";
+import Loader from "../../Pages/shop/util/loader/Loader";
 
 // master barnch commit
 
@@ -111,9 +112,9 @@ const Inbox = () => {
       {selectedChat ? (
         <>
           {loading ? (
-            <p>Loading....</p>
+            <Loader></Loader>
           ) : (
-            <div className="h-screen bg-gray-100 flex border-l-4 border-blue-200">
+            <div className="h-screen bg-gray-100 dark:bg-[#4B5563] flex border-l-4 border-blue-200">
               {/* Sidebar */}
               {/* Add sidebar content here */}
 
@@ -123,7 +124,9 @@ const Inbox = () => {
                 <div className="flex items-center justify-between mb-4">
                   <div className="">
                     <div className="flex w-full justify-between">
-                      <h2 className="text-2xl font-semibold">{name}</h2>
+                      <h2 className="text-2xl font-semibold dark:text-white">
+                        {name}
+                      </h2>
                     </div>
                   </div>
                 </div>
@@ -163,7 +166,7 @@ const Inbox = () => {
                 <form className="mt-4 flex items-center" onSubmit={sendMessage}>
                   <input
                     type="text"
-                    className="flex-1 border border-gray-300 rounded-md px-4 py-2"
+                    className="flex-1 border border-gray-300 rounded-md px-4 py-2 dark:bg-[#81858D] dark:placeholder:text-gray-300 dark:text-white"
                     placeholder="Type your message..."
                     onChange={typingHandler}
                     value={newMessage}
@@ -171,7 +174,7 @@ const Inbox = () => {
                   <input
                     type="submit"
                     value="Send"
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md ml-2"
+                    className="bg-indigo-500 text-white px-4 py-2 rounded-md ml-2 "
                   />
                 </form>
               </div>
