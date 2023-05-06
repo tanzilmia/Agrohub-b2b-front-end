@@ -2,7 +2,7 @@
             @Project: Agrohub (b2b website)
             @Name: MD. Mahiuddin Tuhin
  * @ Modified by: Your name
- * @ Modified time: 2023-05-05 23:16:17
+ * @ Modified time: 2023-05-06 16:06:48
 */
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
@@ -131,6 +131,12 @@ const SideNav = () => {
             className="flex items-center md:px-4 py-2 mt-5 dark:bg-indigo-500 dark:text-white text-gray-600 transition-colors bg-[#f3e8e8] duration-300 transform rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
           >
             Add Product
+          </Link>
+          <Link
+            to="/dashboard/addBlog"
+            className="flex items-center md:px-4 py-2 mt-5 dark:bg-indigo-500 dark:text-white text-gray-600 transition-colors bg-[#f3e8e8] duration-300 transform rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-slate-900"
+          >
+            Add Blog
           </Link>
           <Link
             to="/"

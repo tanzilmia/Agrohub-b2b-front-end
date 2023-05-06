@@ -36,10 +36,12 @@ import AdminRouting from "./AdminRouting";
 import PrivetRouting from "./PrivetRouting";
 // import MyProduct from "../AdminDashboard/MyProduct";
 import CartProduct from "../Pages/CartProduct/CartProduct";
-import MyProduct from "../AdminDashboard/sellerBoard/MyProduct"
+import MyProduct from "../AdminDashboard/sellerBoard/MyProduct";
 import MyBuyers from "../AdminDashboard/sellerBoard/MyBuyers";
 import SellerAndAdmin from "./SellerAndAdmin";
 import CommonDashPage from "../AdminDashboard/CommonDashPage";
+import AddBlog from "../AdminDashboard/AddBlog";
+import BlogPost from "../DynamicPage/BlogPost";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +87,14 @@ const router = createBrowserRouter([
         element: <Cart />,
       },
       {
+        path: "/blogs/:id",
+        element: <BlogPost />,
+        loader: ({ params }) =>
+          fetch(
+            `http://localhost:5000/seller/single-blog/${params.id}`
+          ),
+      },
+      {
         path: "/cartProduct",
         element: <CartProduct />,
       },
@@ -111,25 +121,33 @@ const router = createBrowserRouter([
         path: "/details/:id",
         element: <ReviewLayout />,
         loader: ({ params }) =>
-          fetch(`https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`),
+          fetch(
+            `https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`
+          ),
         children: [
           {
             path: "/details/:id/description",
             element: <DetailsDescription />,
             loader: ({ params }) =>
-              fetch(`https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`),
+              fetch(
+                `https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`
+              ),
           },
           {
             path: "/details/:id/review",
             element: <UserReview />,
             loader: ({ params }) =>
-              fetch(`https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`),
+              fetch(
+                `https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`
+              ),
           },
           {
             path: "/details/:id/additional-information",
             element: <AdditionalInformation />,
             loader: ({ params }) =>
-              fetch(`https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`),
+              fetch(
+                `https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`
+              ),
           },
         ],
       },
@@ -137,7 +155,9 @@ const router = createBrowserRouter([
         path: "/details/payment-gateway/:id",
         element: <PaymentGateway></PaymentGateway>,
         loader: ({ params }) => {
-          return fetch(`https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`);
+          return fetch(
+            `https://agrohub-b2b-new-server.vercel.app/seller/all_Product/${params.id}`
+          );
         },
       },
       {
@@ -156,8 +176,6 @@ const router = createBrowserRouter([
           </SellerAndAdmin>
         ),
         children: [
-
-
           {
             path: "/dashboard",
             element: (
@@ -167,13 +185,13 @@ const router = createBrowserRouter([
             ),
           },
 
-// seller dashboard
+          // seller dashboard
 
           {
             path: "/dashboard/myproduct",
             element: (
               <SellerAndAdmin>
-                <MyProduct/>
+                <MyProduct />
               </SellerAndAdmin>
             ),
           },
@@ -181,7 +199,15 @@ const router = createBrowserRouter([
             path: "/dashboard/mybuyers",
             element: (
               <SellerAndAdmin>
-                <MyBuyers/> 
+                <MyBuyers />
+              </SellerAndAdmin>
+            ),
+          },
+          {
+            path: "/dashboard/addBlog",
+            element: (
+              <SellerAndAdmin>
+                <AddBlog />
               </SellerAndAdmin>
             ),
           },

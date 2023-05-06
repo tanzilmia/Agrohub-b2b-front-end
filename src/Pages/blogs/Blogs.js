@@ -1,13 +1,21 @@
+import axios from "axios";
 import React from "react";
-import { AiOutlineLogin } from "react-icons/ai";
-import { FaBloggerB } from "react-icons/fa";
-import { FiPhoneCall } from "react-icons/fi";
-import { RxHome } from "react-icons/rx";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
 import Blog from "./Blog";
-import { blogData } from "./utilities";
-
 const Blogs = () => {
+
+
+const [blogData, setblogData] = useState([])
+useEffect(() => {
+  axios.get(`http://localhost:5000/seller/all-blogs`)
+  .then(res => {
+    setblogData(res.data)
+    
+  })
+}, [])
+
+
   return (
     <div>
       <div className="py-12">
@@ -16,13 +24,11 @@ const Blogs = () => {
             <h2 className="text-3xl font-bold text-gray-600 md:text-4xl ">
               Sharing is Caring
             </h2>
-            <p className="text-xl md:text-3xl pt-12 font-bold lg:mx-auto lg:w-6/12 text-gray-600 dark:text-gray-400">
-              Blogs page
-            </p>
+            
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {blogData?.blogs.slice().map((blog, id) => (
-              <Blog blog={blog} key={id} id={id} />
+            {blogData?.map((blog) => (
+              <Blog blog={blog} key={blog._id} />
             ))}
           </div>
         </div>
