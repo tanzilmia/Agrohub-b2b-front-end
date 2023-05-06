@@ -57,8 +57,7 @@ export default function Statistics() {
               We do our best to make customers always happy
             </h3>
             <p className="mt-3 max-w-xl dark:text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-              venenatis sollicitudin quam ut tincidunt.
+            E-commerce is one of the most popular website types, and according to Kommando Tech, there are currently over 20 million e-commerce stores in total.
             </p>
           </div>
           <div className="flex-none mt-6 md:mt-0 lg:mt-6">
