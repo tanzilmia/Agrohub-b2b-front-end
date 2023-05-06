@@ -8,7 +8,7 @@ const Blogs = () => {
 
 const [blogData, setblogData] = useState([])
 useEffect(() => {
-  axios.get(`http://localhost:5000/seller/all-blogs`)
+  axios.get(`https://agrohub-b2b-new-server.vercel.app/seller/all-blogs`)
   .then(res => {
     setblogData(res.data)
     

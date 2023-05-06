@@ -10,7 +10,7 @@ const PopularBlogs = () => {
 
     useEffect(() => {
    try{
-    axios.get(`http://localhost:5000/seller/letest-blogs`)
+    axios.get(`https://agrohub-b2b-new-server.vercel.app/seller/letest-blogs`)
     .then(res =>{
        setpopularBlog(res.data)
     })

@@ -91,7 +91,7 @@ const router = createBrowserRouter([
         element: <BlogPost />,
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/seller/single-blog/${params.id}`
+            `https://agrohub-b2b-new-server.vercel.app/seller/single-blog/${params.id}`
           ),
       },
       {

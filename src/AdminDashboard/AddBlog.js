@@ -114,7 +114,7 @@ const AddBlog = () => {
               console.log(bloginfo);
 
              try{
-                axios.post(`http://localhost:5000/seller/add-blog`, bloginfo)
+                axios.post(`https://agrohub-b2b-new-server.vercel.app/seller/add-blog`, bloginfo)
                 .then(res => {
                     console.log(res.data);
                     if(res.data.message==="Post Is Already Exist"){
