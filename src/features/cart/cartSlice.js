@@ -13,11 +13,12 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
+      // console.log(action)
       const selectedProduct = state.cart.find(
-        (product) => product._id === action.payload._id
+        (product) => product._id === action.payload.products._id && product.userEmail === action.payload.email
       );
       if (!selectedProduct) {
-        const product = { ...action.payload, quantity: 1 };
+        const product = { ...action.payload.products, quantity: 1, userEmail: action.payload.email, uniqueId: action.payload.uniqueId };
         state.cart.push(product);
         toast.success("Product Added To Cart");
       } else {
@@ -30,30 +31,36 @@ const cartSlice = createSlice({
       localStorage.setItem("cartProduct", JSON.stringify(state.cart));
     },
     removeToCart: (state, action) => {
-      if (action.payload.quantity > 1) {
+      const selectedProduct = state.cart.find(
+        (product) => product._id === action.payload._id && product.userEmail === action.payload.userEmail
+      );
+      console.log(selectedProduct)
+      if (selectedProduct && action.payload.quantity > 1) {
         const product = {
           ...action.payload,
           quantity: action.payload.quantity - 1,
+          userEmail: action.payload.userEmail,
+          uniqueId: action.payload.uniqueId
         };
         state.cart = state.cart.filter(
-          (product) => product._id !== action.payload._id
+          (product) => product.uniqueId !== action.payload.uniqueId
         );
         state.cart.push(product);
-        toast.error("Product Quantity Decreased");
-      } else {
+      }
+      else {
         state.cart = state.cart.filter(
-          (product) => product._id !== action.payload._id
+          (product) => product.uniqueId !== action.payload.uniqueId
         );
-        toast.error("Product Remove From Cart");
       }
       localStorage.setItem("cartProduct", JSON.stringify(state.cart));
     },
     increaseQuantity: (state, action) => {
+      // console.log(action.payload)
       const selectedProduct = state.cart.find(
-        (product) => product._id === action.payload._id
+        (product) => product._id === action.payload._id && product.userEmail === action.payload.userEmail
       );
       if (!selectedProduct) {
-        const product = { ...action.payload, quantity: 1 };
+        const product = { ...action.payload, quantity: 1, userEmail: action.payload.userEmail, uniqueId: action.payload.uniqueId };
         state.cart.push(product);
       } else {
         selectedProduct.quantity += 1;
@@ -64,29 +71,41 @@ const cartSlice = createSlice({
       localStorage.setItem("cartProduct", JSON.stringify(state.cart));
     },
     decreaseQuantity: (state, action) => {
-      if (action.payload.quantity > 1) {
+      const selectedProduct = state.cart.find(
+        (product) => product._id === action.payload._id && product.userEmail === action.payload.userEmail
+      );
+      console.log(selectedProduct)
+      if (selectedProduct && action.payload.quantity > 1) {
         const product = {
           ...action.payload,
           quantity: action.payload.quantity - 1,
+          userEmail: action.payload.userEmail,
+          uniqueId: action.payload.uniqueId
         };
         state.cart = state.cart.filter(
-          (product) => product._id !== action.payload._id
+          (product) => product.uniqueId !== action.payload.uniqueId
         );
         state.cart.push(product);
-      } else {
+      }
+      else {
         state.cart = state.cart.filter(
-          (product) => product._id !== action.payload._id
+          (product) => product.uniqueId !== action.payload.uniqueId
         );
       }
       localStorage.setItem("cartProduct", JSON.stringify(state.cart));
     },
     clearCart: (state, action) => {
-      state.cart = [];
+      state.cart = state.cart.filter(
+        (product) => product.userEmail !== action.payload
+      );
+      console.log(action.payload)
+      // state.cart = [];
       toast.error("Clear All Product");
       localStorage.setItem("cartProduct", JSON.stringify(state.cart));
     },
     getTotals: (state, action) => {
-      let { total, totalQuantity } = state.cart.reduce(
+      const findProductByEmail = state.cart.filter(product => product.userEmail === action.payload)
+      let { total, totalQuantity } = findProductByEmail.reduce(
         (cartTotal, cartItem) => {
           const { newPrice, quantity } = cartItem;
           const itemTotal = newPrice * quantity;
