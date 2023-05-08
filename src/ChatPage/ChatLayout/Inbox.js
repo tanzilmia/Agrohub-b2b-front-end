@@ -86,7 +86,7 @@ const Inbox = () => {
     return () => {
       socket.off("message receive");
     };
-  });
+  },[message]);
 
   // [socket, selectedChatCompare, message]
 
