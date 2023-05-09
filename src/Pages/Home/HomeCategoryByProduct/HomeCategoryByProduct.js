@@ -84,7 +84,7 @@ const HomeCategoryByProduct = () => {
             <SwiperSlide key={categoryData._id}>
               <div className="block rounded-lg w-full overflow-hidden shadow-2xl shadow-indigo-100 dark:shadow-black hover:shadow-2xl transition-all duration-300 hover:bg-indigo-100 dark:bg-[#4B5563] dark:hover:bg-indigo-800 transform hover:-translate-y-2 hover:scale-95">
                 <img
-                  src={categoryData.image}
+                  src={categoryData.thumnail}
                   alt="Category"
                   className="h-44 w-full object-cover"
                 />
