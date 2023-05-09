@@ -42,6 +42,7 @@ const Navbar = () => {
       case "/contactus":
       case "/blogs":
       case "/custom":
+      case "/helpCenter":
         setshowMenu(true);
         break;
       default:

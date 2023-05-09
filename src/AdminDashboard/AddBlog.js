@@ -9,16 +9,13 @@ import useTitle from "../hooks/useTitle";
 import { useContext } from "react";
 import { myContext } from "../contextApi/Authcontext";
 
-
-
-
 const AddBlog = () => {
   const [file, setFile] = useState(null);
   const [thumbnail, setthumbnail] = useState("");
   const [registrError, setregistrError] = useState("");
   const [Lodding, setLodding] = useState(false);
-  const {user} =  useContext(myContext)
-  const naviget = useNavigate()
+  const { user } = useContext(myContext);
+  const naviget = useNavigate();
   const now = moment();
   const date = now.format("MM/DD/YY hh:mm a");
 
@@ -65,7 +62,11 @@ const AddBlog = () => {
               <input {...getInputProps()} />
               <div className={file === null || "hidden"}>
                 <div className="relative mx-auto w-28 h-28 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                 <img src="https://img.freepik.com/premium-vector/vector-photo-gallery-icon_723554-144.jpg" className="absolute w-[120px] h-28 text-gray-400 -left-1" alt="" />
+                  <img
+                    src="https://img.freepik.com/premium-vector/vector-photo-gallery-icon_723554-144.jpg"
+                    className="absolute w-[120px] h-28 text-gray-400 -left-1"
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
@@ -84,7 +85,7 @@ const AddBlog = () => {
             initialValues={{
               blogTitle: "",
               file: null,
-              blogDetails: ""
+              blogDetails: "",
             }}
             validate={(values) => {
               const errors = {};
@@ -99,9 +100,8 @@ const AddBlog = () => {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-              setLodding(true)
-              const {blogDetails, blogTitle } =
-                values;
+              setLodding(true);
+              const { blogDetails, blogTitle } = values;
 
               const bloginfo = {
                 author: user?.name,
@@ -109,37 +109,34 @@ const AddBlog = () => {
                 thumbnail,
                 blogTitle,
                 blogDetails,
-                date
+                date,
               };
               console.log(bloginfo);
 
-             try{
-                axios.post(`https://agrohub-b2b-new-server.vercel.app/seller/add-blog`, bloginfo)
-                .then(res => {
+              try {
+                axios
+                  .post(
+                    `https://agrohub-b2b-new-server.vercel.app/seller/add-blog`,
+                    bloginfo
+                  )
+                  .then((res) => {
                     console.log(res.data);
-                    if(res.data.message==="Post Is Already Exist"){
-                      setregistrError("Post Is Already Exist")
-                      setLodding(false)
+                    if (res.data.message === "Post Is Already Exist") {
+                      setregistrError("Post Is Already Exist");
+                      setLodding(false);
                     }
-                    if(res.data.message==="Save Success"){
-                      naviget("/blogs")
-                      setLodding(false)
+                    if (res.data.message === "Save Success") {
+                      naviget("/blogs");
+                      setLodding(false);
                     }
-                    if(res.data.message==="server error"){
-                      setregistrError("SomeThing Is Wrong")
-                      setLodding(false)
+                    if (res.data.message === "server error") {
+                      setregistrError("SomeThing Is Wrong");
+                      setLodding(false);
                     }
-                })
-             }catch(e){
+                  });
+              } catch (e) {}
 
-             }
-
-
-              
-        //    post blog data api 
-                
-
-              
+              //    post blog data api
             }}
           >
             {({ isSubmitting }) => (

@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 const DashboardSettingNav = () => {
   const tabItems = [
     "All-Product",
-    "edete"
+    "edete",
+    "add-doctor",
+    "add-officer"
   ];
   const [selectedItem, setSelectedItem] = useState(0);
 

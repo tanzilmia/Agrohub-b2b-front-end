@@ -42,6 +42,9 @@ import SellerAndAdmin from "./SellerAndAdmin";
 import CommonDashPage from "../AdminDashboard/CommonDashPage";
 import AddBlog from "../AdminDashboard/AddBlog";
 import BlogPost from "../DynamicPage/BlogPost";
+import HelpCenter from "../Pages/HelpCenter/HelpCenter";
+import AddDoctor from "../AdminDashboard/HelpcenterDashboard/AddDoctor";
+import AddOfficer from "../AdminDashboard/HelpcenterDashboard/AddOfficer";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "/aboutus",
         element: <AboutUs />,
+      },
+      {
+        path: "/helpCenter",
+        element: <HelpCenter />,
       },
       {
         path: "/contactus",
@@ -291,6 +298,22 @@ const router = createBrowserRouter([
                 element: (
                   <AdminRouting>
                     <Edete />
+                  </AdminRouting>
+                ),
+              },
+              {
+                path: "/dashboard/settings/add-doctor",
+                element: (
+                  <AdminRouting>
+                    <AddDoctor />
+                  </AdminRouting>
+                ),
+              },
+              {
+                path: "/dashboard/settings/add-officer",
+                element: (
+                  <AdminRouting>
+                    <AddOfficer />
                   </AdminRouting>
                 ),
               },
