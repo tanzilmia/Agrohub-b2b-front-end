@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { myContext } from "../../contextApi/Authcontext";
@@ -15,7 +16,11 @@ const ProductForm = () => {
   const [selectedImages, setSelectedImages] = useState([]);
   const { user, header } = useContext(myContext);
   const [Loadding, setLoadding] = useState(false);
+
+
   const navigate = useNavigate();
+  const now = moment();
+  const date = now.format("MM/DD/YY hh:mm a");
 
   const [createProduct, { isLoading }] = usePostProductMutation();
   const { data: categories } = useGetCategoriesQuery();
@@ -72,6 +77,7 @@ const ProductForm = () => {
           totalQuantity: 0,
           category: category,
           brand: brand,
+          date
         };
 
         try {

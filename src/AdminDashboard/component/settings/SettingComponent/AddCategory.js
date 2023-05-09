@@ -11,6 +11,7 @@ const AddCategory = () => {
 
     const newCategory = {
       category: values.category,
+      thumnail: values.thumnail,
     };
     axios
       .post(
@@ -26,6 +27,7 @@ const AddCategory = () => {
 
   const initialValues = {
     category: "",
+    thumnail: ""
   };
 
   return (
@@ -38,6 +40,9 @@ const AddCategory = () => {
           const errors = {};
           if (!values.category) {
             errors.category = "Category is required";
+          }
+          if (!values.thumnail) {
+            errors.thumnail = "thumnail is required";
           }
           return errors;
         }}
@@ -56,6 +61,22 @@ const AddCategory = () => {
               />
               <ErrorMessage
                 name="category"
+                component="div"
+                className="text-red-500 mt-1 text-sm"
+              />
+            </div>
+            <div className="mb-4">
+              <Field
+                name="thumnail"
+                placeholder="Enter Thumbnail Url Link"
+                className={`border border-gray-400 p-2 w-full rounded-lg ${
+                  errors.thumnail && touched.thumnail
+                    ? "border-red-500"
+                    : "focus:border-indigo-500"
+                }`}
+              />
+              <ErrorMessage
+                name="thumnail"
                 component="div"
                 className="text-red-500 mt-1 text-sm"
               />
