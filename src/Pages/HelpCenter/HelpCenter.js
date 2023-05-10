@@ -21,8 +21,10 @@ const HelpCenter = () => {
   console.log(Doctors);
 
   return (
-    <div>
-      <h1 className="text-center text-2xl font-bold my-6">Our Doctors </h1>
+    <div className="w-full h-screen">
+      <h1 className="text-center text-2xl font-bold my-6 dark:text-gray-300">
+        Our Doctors{" "}
+      </h1>
       <div className="flex flex-wrap justify-center mx-auto">
         <div className="flex flex-wrap  mx-auto">
           {/* doctors */}
@@ -31,7 +33,7 @@ const HelpCenter = () => {
             Doctors.map((doctor) => (
               <div
                 key={doctor._id}
-                className="md:flex bg-white rounded-lg p-6 mx-1 shadow-lg"
+                className="md:flex bg-white rounded-lg p-6 mx-1 shadow-lg dark:bg-[#4B5563]"
               >
                 <img
                   className="h-24 w-24 md:h-32 md:w-32 rounded-full mx-auto md:mx-0 md:mr-6"
@@ -39,9 +41,15 @@ const HelpCenter = () => {
                   alt={`Picture of ${doctor.doctorName}`}
                 />
                 <div className="text-center md:text-left">
-                  <h2 className="text-lg font-semibold">{doctor.doctorName}</h2>
-                  <p className="text-gray-600">{doctor.doctorEmail}</p>
-                  <p className="text-gray-600">{doctor.doctorPhone}</p>
+                  <h2 className="text-lg font-semibold dark:text-gray-300">
+                    {doctor.doctorName}
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    {doctor.doctorEmail}
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    {doctor.doctorPhone}
+                  </p>
                   <a
                     href={doctor.facebookUrl}
                     className="inline-block mt-2 px-4 py-2 text-sm font-medium leading-5 text-white bg-green-500 rounded-lg hover:bg-green-400 focus:outline-none focus:shadow-outline-green focus:border-green-600 active:bg-green-600 transition duration-150 ease-in-out"
@@ -54,7 +62,7 @@ const HelpCenter = () => {
             ))}
         </div>
       </div>
-      <h1 className="text-center text-2xl font-bold my-5">
+      <h1 className="text-center text-2xl font-bold my-5 dark:text-gray-300">
         Agreeculture officer
       </h1>
       <div className="flex flex-wrap justify-center mx-auto my-5">
@@ -65,7 +73,7 @@ const HelpCenter = () => {
             Officers.map((doctor) => (
               <div
                 key={doctor._id}
-                className="md:flex bg-white rounded-lg p-6 mx-1 shadow-lg"
+                className="md:flex bg-white rounded-lg p-6 mx-1 shadow-lg dark:bg-[#4B5563]"
               >
                 <img
                   className="h-24 w-24 md:h-32 md:w-32 rounded-full mx-auto md:mx-0 md:mr-6"
@@ -73,11 +81,15 @@ const HelpCenter = () => {
                   alt={`Picture of ${doctor.officerName}`}
                 />
                 <div className="text-center md:text-left">
-                  <h2 className="text-lg font-semibold">
+                  <h2 className="text-lg font-semibold dark:text-gray-300">
                     {doctor.officerName}
                   </h2>
-                  <p className="text-gray-600">{doctor.officerEmail}</p>
-                  <p className="text-gray-600">{doctor.officerPhone}</p>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    {doctor.officerEmail}
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    {doctor.officerPhone}
+                  </p>
                   <a
                     href={doctor.facebookUrl}
                     className="inline-block mt-2 px-4 py-2 text-sm font-medium leading-5 text-white bg-green-500 rounded-lg hover:bg-green-400 focus:outline-none focus:shadow-outline-green focus:border-green-600 active:bg-green-600 transition duration-150 ease-in-out"
@@ -94,7 +106,6 @@ const HelpCenter = () => {
         pageId="<114321811657491>"
         appId="<764013175078595>"
       />
-      
     </div>
   );
 };
