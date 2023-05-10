@@ -5,7 +5,6 @@
             @timestap: 31/3/23 - Friday - 4.30pm
 */
 import React, { useEffect, useState } from "react";
-import background from "./../../../Assets/Images/flashcardimage/grain.jpg";
 import { Link } from "react-router-dom";
 const OfferFlashCard = () => {
   const [days, setDays] = useState(1);
@@ -43,7 +42,7 @@ const OfferFlashCard = () => {
     <section
       className={`relative  bg-cover bg-center bg-no-repeat flex flex-col-reverse items-center lg:flex-row mt-28 text-white mx-10 rounded-lg `}
       style={{
-        backgroundImage: `url(https://images.unsplash.com/photo-1549421263-6064833b071b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80)`,
+        backgroundImage: `url(https://cdn.pixabay.com/photo/2016/07/01/20/25/rice-1491868_960_720.jpg)`,
       }}
     >
       {/* div for layer of background */}

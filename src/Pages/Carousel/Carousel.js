@@ -4,14 +4,20 @@ import { RxDotFilled } from "react-icons/rx";
 const Carousel = () => {
   const slides = [
     {
-      url: "https://i.ibb.co/D737Z1j/Whats-App-Image-2023-05-09-at-11-00-28-AM.jpg",
+      url: "https://i.ibb.co/WKH4W3k/plant-7702558.jpg",
     },
     {
-      url: "https://i.ibb.co/LC74vxy/Whats-App-Image-2023-05-09-at-11-00-33-AM.jpg",
+      url: "https://i.ibb.co/WPdVMSP/agriculture-1807549.jpg",
     },
 
     {
-      url: "https://images.pexels.com/photos/5047282/pexels-photo-5047282.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      url: "https://i.ibb.co/QkZ8kWv/farmer-6959620.jpg",
+    },
+    {
+      url: "https://i.ibb.co/Bn79JWc/rice-5356538.jpg",
+    },
+    {
+      url: "https://i.ibb.co/JqN3wd4/agriculture-6942153.jpg",
     },
   ];
 
@@ -43,7 +49,7 @@ const Carousel = () => {
     >
       <div
         style={{ backgroundImage: `url("${slides[currentIndex].url}")` }}
-        className="h-[300px] xl:h-[450px]  bg-center bg-cover duration-500"
+        className="h-[300px] xl:h-[470px]  bg-center bg-cover duration-500"
       ></div>
       <div className="flex absolute bottom-5 left-1/2 transform -translate-x-1/2 ">
         {slides.map((slide, slideIndex) => (
