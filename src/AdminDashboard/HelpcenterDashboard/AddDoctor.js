@@ -130,7 +130,7 @@ const AddDoctor = () => {
               console.log(doctorInfo);
 
              try{
-                axios.post(`http://localhost:5000/admin/add-doctor`,doctorInfo)
+                axios.post(` https://agrohub-b2b-new-server.vercel.app/admin/add-doctor`,doctorInfo)
                 .then(res =>{
                     console.log(res.data);
                     if(res.data.message === "Failed"){

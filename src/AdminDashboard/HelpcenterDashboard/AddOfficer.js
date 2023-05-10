@@ -133,7 +133,7 @@ const AddOfficer = () => {
               console.log(officerInfo);
 
              try{
-                axios.post(`http://localhost:5000/admin/add-officer`,officerInfo)
+                axios.post(` https://agrohub-b2b-new-server.vercel.app/admin/add-officer`,officerInfo)
                 .then(res =>{
                     console.log(res.data);
                     if(res.data.message === "Failed"){
