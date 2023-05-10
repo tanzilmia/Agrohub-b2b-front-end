@@ -275,6 +275,13 @@ const Navbar2 = () => {
                   >
                     About US
                   </Link>
+
+                  <Link
+                    to={"/helpCenter"}
+                    className="text-gray-600 dark:text-[#E3E3E3] dark:hover:text-indigo-400 dark:hover:border-b-indigo-700 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] "
+                  >
+                    Help Center
+                  </Link>
                   <Link
                     to={"/contactus"}
                     className="text-gray-600 dark:text-[#E3E3E3] dark:hover:text-indigo-400 dark:hover:border-b-indigo-700 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] "
@@ -356,6 +363,12 @@ const Navbar2 = () => {
                     className="flex justify-center px-6 py-4 hover:bg-gray-100 dark:hover:bg-indigo-500 transition"
                   >
                     <div className=" leading-3">About US</div>
+                  </Link>
+                  <Link
+                    to={"/helpCenter"}
+                    className="text-gray-600 dark:text-[#E3E3E3] dark:hover:text-indigo-400 dark:hover:border-b-indigo-700 hover:text-black hover:border-b-2 hover:border-b-[#29BA2F] "
+                  >
+                    Help Center
                   </Link>
                   <Link
                     to={"/contactus"}

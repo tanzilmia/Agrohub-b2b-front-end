@@ -63,12 +63,7 @@ const Sellers = () => {
               {singleSeller.email}
             </h3>
             <div className="flex mt-2">
-              <Link
-                to={`/seller-profile/${singleSeller._id}`}
-                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-4 rounded mr-2 transition duration-200 ease-in-out"
-              >
-                Profile
-              </Link>
+              
               <Link
                 to={`/seller/contact/chats`}
                 onClick={() => accessChat(singleSeller._id)}

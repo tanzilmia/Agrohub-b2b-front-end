@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { TbMessage2Share } from "react-icons/tb";
-import MessengerCustomerChat from "react-messenger-customer-chat"
+import MessengerCustomerChat from "react-messenger-customer-chat";
 
 const HelpCenter = () => {
   const [Officers, setOfficers] = useState([]);
@@ -54,11 +54,9 @@ const HelpCenter = () => {
             ))}
         </div>
       </div>
-
       <h1 className="text-center text-2xl font-bold my-5">
         Agreeculture officer
       </h1>
-
       <div className="flex flex-wrap justify-center mx-auto my-5">
         <div className="flex flex-wrap  mx-auto">
           {/* doctors */}
@@ -92,13 +90,11 @@ const HelpCenter = () => {
             ))}
         </div>
       </div>
-
       <MessengerCustomerChat
-    pageId="<114321811657491>"
-    appId="<764013175078595>"
-    
-  />,
-
+        pageId="<114321811657491>"
+        appId="<764013175078595>"
+      />
+      
     </div>
   );
 };

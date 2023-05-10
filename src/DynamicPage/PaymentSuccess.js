@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import Pdf from "react-to-pdf";
 
 const ref = React.createRef();
@@ -52,6 +53,7 @@ const PaymentSuccess = () => {
             )}
           </Pdf>
         </div>
+        <Link className="btn btn-primary bg-slate-500 px-4 py-2">Back To Home</Link>
       </div>
     </div>
   );
