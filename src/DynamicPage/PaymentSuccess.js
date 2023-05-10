@@ -53,7 +53,7 @@ const PaymentSuccess = () => {
             )}
           </Pdf>
         </div>
-        <Link className="btn btn-primary bg-slate-500 px-4 py-2">Back To Home</Link>
+        <Link to ="/" className="btn btn-primary bg-slate-500 px-4 py-2">Back To Home</Link>
       </div>
     </div>
   );
