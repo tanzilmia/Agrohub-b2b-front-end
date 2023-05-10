@@ -15,11 +15,10 @@ function Shop() {
   useTitle("Shope");
   const {
     data: filteringProduct,
-    isLoading,
     isError,
     error,
   } = useGetFilteringProductsQuery(searchValue);
-  const { data: allProducts } = useGetAllProductsQuery();
+  const { data: allProducts, isLoading } = useGetAllProductsQuery();
 
   const getUniqueData = (data, property) => {
     let values = data?.map((currentElement) => currentElement[property]);
