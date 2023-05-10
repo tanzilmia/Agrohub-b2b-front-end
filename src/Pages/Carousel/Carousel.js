@@ -16,9 +16,6 @@ const Carousel = () => {
     {
       url: "https://i.ibb.co/Bn79JWc/rice-5356538.jpg",
     },
-    {
-      url: "https://i.ibb.co/JqN3wd4/agriculture-6942153.jpg",
-    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(1);
