@@ -14,7 +14,7 @@ const ProductDetails = ({ products }) => {
   const [currentIndex, SetcurrentIndex] = useState(0);
   const { _id, name, description, newPrice, stock, size, images, brand } =
     products;
-    
+
   const dispatch = useDispatch();
   const uniqueId = Math.ceil(Math.random() * 100000);
   const { setProductInfo, user } = useContext(myContext);
@@ -225,7 +225,9 @@ const ProductDetails = ({ products }) => {
             {/* flex-col */}
             <div className="flex sm:flex-row md:flex-col lg:flex-row gap-3 mt-10">
               <button
-                onClick={() => dispatch(addToCart({products, email, uniqueId}))}
+                onClick={() =>
+                  dispatch(addToCart({ products, email, uniqueId }))
+                }
                 className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3 font-semibold hover:bg-orange-500 hover:text-white dark:text-gray-200 dark:hover:bg-indigo-600"
               >
                 ADD TO CART{" "}
@@ -244,13 +246,6 @@ const ProductDetails = ({ products }) => {
                   </button>
                 </Link>
               )}
-              <button
-                onClick={AddDataToWishlist}
-                className="border-2 max-w-[250px] rounded-full flex justify-center gap-2 py-2 px-3  font-semibold hover:bg-orange-500 hover:text-white dark:text-gray-200 dark:hover:bg-indigo-600"
-              >
-                ADD TO WISHLIST{" "}
-                <i className="ri-heart-line hidden lg:block"></i>
-              </button>
             </div>
           </div>
         </div>
