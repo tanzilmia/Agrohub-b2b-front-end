@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { TbMessage2Share } from "react-icons/tb";
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const HelpCenter = () => {
   const [Officers, setOfficers] = useState([]);
@@ -91,6 +92,13 @@ const HelpCenter = () => {
             ))}
         </div>
       </div>
+
+      <MessengerCustomerChat
+    pageId="<114321811657491>"
+    appId="<764013175078595>"
+    
+  />,
+
     </div>
   );
 };
