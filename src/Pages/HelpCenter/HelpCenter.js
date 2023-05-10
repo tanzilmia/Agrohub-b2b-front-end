@@ -46,7 +46,7 @@ const HelpCenter = () => {
                     className="inline-block mt-2 px-4 py-2 text-sm font-medium leading-5 text-white bg-green-500 rounded-lg hover:bg-green-400 focus:outline-none focus:shadow-outline-green focus:border-green-600 active:bg-green-600 transition duration-150 ease-in-out"
                   >
                     <TbMessage2Share className="inline mr-1" />
-                    Send Message
+                    Visite Profile
                   </a>
                 </div>
               </div>
@@ -84,7 +84,7 @@ const HelpCenter = () => {
                     className="inline-block mt-2 px-4 py-2 text-sm font-medium leading-5 text-white bg-green-500 rounded-lg hover:bg-green-400 focus:outline-none focus:shadow-outline-green focus:border-green-600 active:bg-green-600 transition duration-150 ease-in-out"
                   >
                     <TbMessage2Share className="inline mr-1" />
-                    Send Message
+                    Visite Profile
                   </a>
                 </div>
               </div>
