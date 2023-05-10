@@ -17,7 +17,10 @@ export default function Footer() {
       case "/":
       case "/shop":
       case "/aboutus":
-      case "/contact":
+      case "/contactus":
+      case "/blogs":
+      case "/custom":
+      case "/helpCenter":
         setshowMenu(true);
         break;
       default:
