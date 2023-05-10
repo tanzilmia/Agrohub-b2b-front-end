@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { TbMessage2Share } from "react-icons/tb";
-import MessengerCustomerChat from 'react-messenger-customer-chat';
+import MessengerCustomerChat from "react-messenger-customer-chat"
 
 const HelpCenter = () => {
   const [Officers, setOfficers] = useState([]);
