@@ -4,14 +4,14 @@ import { RxDotFilled } from "react-icons/rx";
 const Carousel = () => {
   const slides = [
     {
-      url: "http://magento2.magentech.com/themes/sm_metro/pub/media/wysiwyg/slideshow/home-2/item-1.jpg",
+      url: "https://i.ibb.co/D737Z1j/Whats-App-Image-2023-05-09-at-11-00-28-AM.jpg",
     },
     {
-      url: "http://magento2.magentech.com/themes/sm_metro/pub/media/wysiwyg/slideshow/home-2/item-3.jpg",
+      url: "https://i.ibb.co/LC74vxy/Whats-App-Image-2023-05-09-at-11-00-33-AM.jpg",
     },
 
     {
-      url: "http://magento2.magentech.com/themes/sm_metro/pub/media/wysiwyg/slideshow/home-2/item-2.jpg",
+      url: "https://images.pexels.com/photos/5047282/pexels-photo-5047282.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
   ];
 
