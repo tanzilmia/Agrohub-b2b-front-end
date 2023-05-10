@@ -33,16 +33,18 @@ const Home = () => {
       {/* Rakibul */}
 
       {/* Tuhin */}
+      <br /><br />
+      <PopularBlogs/>
       <OfferFlashCard />
       <Statistics />
-      <TeamTrustUs />
-      <HireUsToPromot />
+      {/* <TeamTrustUs /> */}
+      {/* <HireUsToPromot /> */}
       <OurTeam />
       <FAQ />
       {/* <ContactForm /> */}
       <ContactUs/>
       {/* <Newsletter /> */}
-      <PopularBlogs/>
+      
       {/* Tuhin */}
     </div>
   );
